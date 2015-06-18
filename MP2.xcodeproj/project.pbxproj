@@ -13,6 +13,21 @@
 		A1B583F01B33034900AD41D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B583EF1B33034900AD41D9 /* Images.xcassets */; };
 		A1B583F31B33034900AD41D9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B583F11B33034900AD41D9 /* LaunchScreen.xib */; };
 		A1B583FF1B33034900AD41D9 /* MP2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B583FE1B33034900AD41D9 /* MP2Tests.swift */; };
+		A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584091B3303F200AD41D9 /* swiftyJSON.swift */; };
+		A1B5840B1B3303F200AD41D9 /* swiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584091B3303F200AD41D9 /* swiftyJSON.swift */; };
+		A1B5840D1B33041700AD41D9 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5840C1B33041700AD41D9 /* ModelManager.swift */; };
+		A1B5840E1B33041700AD41D9 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5840C1B33041700AD41D9 /* ModelManager.swift */; };
+		A1B584111B33045400AD41D9 /* StatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584101B33045400AD41D9 /* StatusManager.swift */; };
+		A1B584121B33045400AD41D9 /* StatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584101B33045400AD41D9 /* StatusManager.swift */; };
+		A1B584141B3305B800AD41D9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584131B3305B800AD41D9 /* Server.swift */; };
+		A1B584151B3305B800AD41D9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584131B3305B800AD41D9 /* Server.swift */; };
+		A1B584171B3307A200AD41D9 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584161B3307A200AD41D9 /* Status.swift */; };
+		A1B584181B3307A200AD41D9 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584161B3307A200AD41D9 /* Status.swift */; };
+		A1B5841A1B332A1400AD41D9 /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584191B332A1400AD41D9 /* playerManager.swift */; };
+		A1B5841B1B332A1400AD41D9 /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584191B332A1400AD41D9 /* playerManager.swift */; };
+		A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5841C1B332E9900AD41D9 /* Player.swift */; };
+		A1B5841E1B332E9900AD41D9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5841C1B332E9900AD41D9 /* Player.swift */; };
+		A1B584201B33331200AD41D9 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +51,14 @@
 		A1B583F81B33034900AD41D9 /* MP2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MP2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B583FD1B33034900AD41D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B583FE1B33034900AD41D9 /* MP2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP2Tests.swift; sourceTree = "<group>"; };
+		A1B584091B3303F200AD41D9 /* swiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = swiftyJSON.swift; path = lib/swiftyJSON.swift; sourceTree = "<group>"; };
+		A1B5840C1B33041700AD41D9 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManager.swift; path = protocol/ModelManager.swift; sourceTree = "<group>"; };
+		A1B584101B33045400AD41D9 /* StatusManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusManager.swift; path = protocol/StatusManager.swift; sourceTree = "<group>"; };
+		A1B584131B3305B800AD41D9 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		A1B584161B3307A200AD41D9 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		A1B584191B332A1400AD41D9 /* playerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = playerManager.swift; path = protocol/playerManager.swift; sourceTree = "<group>"; };
+		A1B5841C1B332E9900AD41D9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A1B5841F1B33331200AD41D9 /* resource */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resource; path = MP2/resource; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +82,7 @@
 		A1B583DA1B33034900AD41D9 = {
 			isa = PBXGroup;
 			children = (
+				A1B5841F1B33331200AD41D9 /* resource */,
 				A1B583E51B33034900AD41D9 /* MP2 */,
 				A1B583FB1B33034900AD41D9 /* MP2Tests */,
 				A1B583E41B33034900AD41D9 /* Products */,
@@ -77,12 +101,17 @@
 		A1B583E51B33034900AD41D9 /* MP2 */ = {
 			isa = PBXGroup;
 			children = (
+				A1B5840F1B33043500AD41D9 /* protocol */,
+				A1B584081B3303D700AD41D9 /* lib */,
 				A1B583E81B33034900AD41D9 /* AppDelegate.swift */,
 				A1B583EA1B33034900AD41D9 /* ViewController.swift */,
 				A1B583EC1B33034900AD41D9 /* Main.storyboard */,
 				A1B583EF1B33034900AD41D9 /* Images.xcassets */,
 				A1B583F11B33034900AD41D9 /* LaunchScreen.xib */,
 				A1B583E61B33034900AD41D9 /* Supporting Files */,
+				A1B584131B3305B800AD41D9 /* Server.swift */,
+				A1B584161B3307A200AD41D9 /* Status.swift */,
+				A1B5841C1B332E9900AD41D9 /* Player.swift */,
 			);
 			path = MP2;
 			sourceTree = "<group>";
@@ -110,6 +139,24 @@
 				A1B583FD1B33034900AD41D9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1B584081B3303D700AD41D9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				A1B584091B3303F200AD41D9 /* swiftyJSON.swift */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		A1B5840F1B33043500AD41D9 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A1B5840C1B33041700AD41D9 /* ModelManager.swift */,
+				A1B584101B33045400AD41D9 /* StatusManager.swift */,
+				A1B584191B332A1400AD41D9 /* playerManager.swift */,
+			);
+			name = protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B584201B33331200AD41D9 /* resource in Resources */,
 				A1B583EE1B33034900AD41D9 /* Main.storyboard in Resources */,
 				A1B583F31B33034900AD41D9 /* LaunchScreen.xib in Resources */,
 				A1B583F01B33034900AD41D9 /* Images.xcassets in Resources */,
@@ -213,7 +261,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B583EB1B33034900AD41D9 /* ViewController.swift in Sources */,
+				A1B584111B33045400AD41D9 /* StatusManager.swift in Sources */,
+				A1B584171B3307A200AD41D9 /* Status.swift in Sources */,
+				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
+				A1B584141B3305B800AD41D9 /* Server.swift in Sources */,
+				A1B5841A1B332A1400AD41D9 /* playerManager.swift in Sources */,
+				A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */,
+				A1B5840D1B33041700AD41D9 /* ModelManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +276,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B584151B3305B800AD41D9 /* Server.swift in Sources */,
 				A1B583FF1B33034900AD41D9 /* MP2Tests.swift in Sources */,
+				A1B5840E1B33041700AD41D9 /* ModelManager.swift in Sources */,
+				A1B5841B1B332A1400AD41D9 /* playerManager.swift in Sources */,
+				A1B5841E1B332E9900AD41D9 /* Player.swift in Sources */,
+				A1B5840B1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
+				A1B584121B33045400AD41D9 /* StatusManager.swift in Sources */,
+				A1B584181B3307A200AD41D9 /* Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

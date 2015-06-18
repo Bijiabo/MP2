@@ -1,0 +1,25 @@
+//
+//  playerManager.swift
+//  MP2
+//
+//  Created by bijiabo on 15/6/19.
+//  Copyright (c) 2015年 JYLabs. All rights reserved.
+//
+
+import Foundation
+
+protocol PlayerManager
+{
+    //播放状态
+    var playing : Bool {get}
+    
+    //切换到播放状态
+    func play()
+    //切换到暂停状态
+    func pause()
+
+    //播放来源
+    var source : NSURL {get}
+    //设定播放来源
+    func setSource (source : NSURL)
+}
