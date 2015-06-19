@@ -129,4 +129,7 @@ class Server : ModelManager ,StatusObserver {
         NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
     }
     
+    
+    
+    
 }

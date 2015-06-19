@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-class Player : PlayerManager
+class Player : NSObject , PlayerManager
 {
     //播放状态
     var playing : Bool {
@@ -29,10 +29,14 @@ class Player : PlayerManager
     private var _player : AVAudioPlayer = AVAudioPlayer()
     
     //初始化方法
-    init()
+    override init()
     {
+        super.init()
         
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+        AVAudioSession.sharedInstance().setActive(true, error: nil)
         
+        _addObserver()
     }
 
     //切换到播放状态
@@ -58,6 +62,75 @@ class Player : PlayerManager
         
     }
     
+    func _addObserver() -> Void
+    {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("avaudioSessionInterruption:"), name: AVAudioSessionInterruptionNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("audioSessionRouteChanged:"), name: AVAudioSessionRouteChangeNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("audioSessionMediaServicesWereLost:"), name: AVAudioSessionMediaServicesWereLostNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("audioSessionMediaServicesWereReset:"), name: AVAudioSessionMediaServicesWereResetNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("audioSessionSilenceSecondaryAudioHint:"), name: AVAudioSessionSilenceSecondaryAudioHintNotification, object: nil)
+        
+        
+    }
     
+    func avaudioSessionInterruption(notification : NSNotification)
+    {
+        
+        let interuption : NSDictionary = notification.userInfo!
+        let interuptionType : UInt = interuption.valueForKey(AVAudioSessionInterruptionTypeKey) as! UInt
+        
+        
+        if interuptionType == AVAudioSessionInterruptionType.Began.rawValue
+        {
+            println("began")
+            
+            _player.pause()
+        }
+        else if interuptionType == AVAudioSessionInterruptionType.Ended.rawValue
+        {   
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1), dispatch_get_main_queue(), { () -> Void in
+                //self.player.currentTime = NSTimeInterval(0)
+                self._player.play()
+            })
+            
+            
+            AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+            AVAudioSession.sharedInstance().setActive(true, error: nil)
+            
+            println("end")
+            
+        }
+        
+    }
+    
+    func audioSessionRouteChanged (notification : NSNotification)
+    {
+    }
+    
+    func audioSessionMediaServicesWereLost (notification : NSNotification)
+    {
+        
+    }
+    
+    func audioSessionMediaServicesWereReset (notification : NSNotification)
+    {
+        
+    }
+    
+    func audioSessionSilenceSecondaryAudioHint (notification : NSNotification)
+    {
+        
+    }
+    
+    
+    func audioSessionInterruptionTypeEnded (notification : NSNotification)
+    {
+        println("audioSessionInterruptionTypeEnded")
+    }
+
     
 }

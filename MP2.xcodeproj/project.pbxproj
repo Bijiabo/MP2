@@ -30,10 +30,8 @@
 		A1B584201B33331200AD41D9 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
 		A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584211B33F26700AD41D9 /* ViewManager.swift */; };
 		A1B584231B33F26700AD41D9 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584211B33F26700AD41D9 /* ViewManager.swift */; };
-		A1B584261B3429FA00AD41D9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584251B3429FA00AD41D9 /* Observable.swift */; };
-		A1B584271B3429FA00AD41D9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584251B3429FA00AD41D9 /* Observable.swift */; };
-		A1B584291B342A9200AD41D9 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584281B342A9200AD41D9 /* Events.swift */; };
-		A1B5842A1B342A9200AD41D9 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584281B342A9200AD41D9 /* Events.swift */; };
+		A1B5842C1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5842B1B34557300AD41D9 /* NowPlayingInfoCenter.swift */; };
+		A1B5842D1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5842B1B34557300AD41D9 /* NowPlayingInfoCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +64,7 @@
 		A1B5841C1B332E9900AD41D9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A1B5841F1B33331200AD41D9 /* resource */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resource; path = MP2/resource; sourceTree = "<group>"; };
 		A1B584211B33F26700AD41D9 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewManager.swift; path = protocol/ViewManager.swift; sourceTree = "<group>"; };
-		A1B584251B3429FA00AD41D9 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = protocol/support/Observable.swift; sourceTree = "<group>"; };
-		A1B584281B342A9200AD41D9 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Events.swift; path = protocol/support/Events.swift; sourceTree = "<group>"; };
+		A1B5842B1B34557300AD41D9 /* NowPlayingInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingInfoCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +118,7 @@
 				A1B584131B3305B800AD41D9 /* Server.swift */,
 				A1B584161B3307A200AD41D9 /* Status.swift */,
 				A1B5841C1B332E9900AD41D9 /* Player.swift */,
+				A1B5842B1B34557300AD41D9 /* NowPlayingInfoCenter.swift */,
 			);
 			path = MP2;
 			sourceTree = "<group>";
@@ -161,22 +159,12 @@
 		A1B5840F1B33043500AD41D9 /* protocol */ = {
 			isa = PBXGroup;
 			children = (
-				A1B584241B3429D700AD41D9 /* support */,
 				A1B5840C1B33041700AD41D9 /* ModelManager.swift */,
 				A1B584101B33045400AD41D9 /* StatusManager.swift */,
 				A1B584191B332A1400AD41D9 /* PlayerManager.swift */,
 				A1B584211B33F26700AD41D9 /* ViewManager.swift */,
 			);
 			name = protocol;
-			sourceTree = "<group>";
-		};
-		A1B584241B3429D700AD41D9 /* support */ = {
-			isa = PBXGroup;
-			children = (
-				A1B584251B3429FA00AD41D9 /* Observable.swift */,
-				A1B584281B342A9200AD41D9 /* Events.swift */,
-			);
-			name = support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,8 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1B584291B342A9200AD41D9 /* Events.swift in Sources */,
-				A1B584261B3429FA00AD41D9 /* Observable.swift in Sources */,
+				A1B5842C1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */,
 				A1B583EB1B33034900AD41D9 /* ViewController.swift in Sources */,
 				A1B584111B33045400AD41D9 /* StatusManager.swift in Sources */,
 				A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */,
@@ -305,13 +292,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B584151B3305B800AD41D9 /* Server.swift in Sources */,
-				A1B5842A1B342A9200AD41D9 /* Events.swift in Sources */,
 				A1B583FF1B33034900AD41D9 /* MP2Tests.swift in Sources */,
 				A1B5840E1B33041700AD41D9 /* ModelManager.swift in Sources */,
 				A1B5841B1B332A1400AD41D9 /* PlayerManager.swift in Sources */,
 				A1B5841E1B332E9900AD41D9 /* Player.swift in Sources */,
+				A1B5842D1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */,
 				A1B5840B1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
-				A1B584271B3429FA00AD41D9 /* Observable.swift in Sources */,
 				A1B584121B33045400AD41D9 /* StatusManager.swift in Sources */,
 				A1B584231B33F26700AD41D9 /* ViewManager.swift in Sources */,
 				A1B584181B3307A200AD41D9 /* Status.swift in Sources */,
