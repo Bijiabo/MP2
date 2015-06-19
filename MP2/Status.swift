@@ -10,8 +10,24 @@ import Foundation
 
 class Status : StatusManager {
     
+    //状态观察者
+    var observer : StatusObserver = statusObserver()
+    
     //当前情景
-    var currentScene : String = ""
+    dynamic var currentScene : String = "" {
+        didSet {
+            observer.statusHasChanged("currentScene")
+            
+            NSUserDefaults.standardUserDefaults().setObject(currentScene, forKey: "currentScene")
+        }
+    }
+    
+    //当前情景播放序数
+    dynamic var currentSceneIndex : Int = 0 {
+        didSet {
+            observer.statusHasChanged("currentSceneIndex")
+        }
+    }
     
     //各个情景播放序数缓存
     private var _sceneIndexStatusCache : Dictionary<String,Int> = Dictionary<String,Int> ()
@@ -24,23 +40,31 @@ class Status : StatusManager {
     
     init()
     {
-        currentScene = ""
+
         
         //初始化各个情景播放序数缓存
         if let sceneCache :Dictionary<String,Int> = NSUserDefaults.standardUserDefaults().objectForKey("_sceneIndexStatusCache") as? Dictionary<String,Int>
         {
             _sceneIndexStatusCache = sceneCache
         }
+        
+        let savedCurrentScene: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("currentScene")
+        currentScene = savedCurrentScene == nil ? "" : savedCurrentScene as! String
     }
     
     //设置当前情景
-    func setCurrentScene(scene: String) {
+    func set_CurrentScene(scene: String) {
         currentScene = scene
         
         if _sceneIndexStatusCache[scene] == nil
         {
            _sceneIndexStatusCache[scene] = 0
         }
+    }
+    
+    //设置当前情景播放序数
+    func set_CurrentSceneIndex(index: Int) {
+        set_IndexForScene(currentScene, index: index)
     }
     
     //获取指定情景播放序数
@@ -57,7 +81,23 @@ class Status : StatusManager {
     }
     
     //设定指定情景播放序数
-    func setIndexForScene(scene: String, index: Int) {
+    func set_IndexForScene(scene: String, index: Int) {
         _sceneIndexStatusCache[scene] = index
+        
+        if scene == currentScene
+        {
+            currentSceneIndex = index
+        }
+    }
+}
+
+class statusObserver : StatusObserver {
+    init()
+    {
+        
+    }
+    
+    func statusHasChanged(keyPath: String) {
+        
     }
 }

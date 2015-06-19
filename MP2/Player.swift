@@ -32,6 +32,7 @@ class Player : PlayerManager
     init()
     {
         
+        
     }
 
     //切换到播放状态
@@ -56,4 +57,7 @@ class Player : PlayerManager
         }
         
     }
+    
+    
+    
 }

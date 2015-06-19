@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>18E3B980-069E-4DDD-9433-292E55EBE570</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ED91B10C62FE1F8839015F3775B00A6D0F88E755</key>
+		<string>https://github.com/Bijiabo/MP2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MP2.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ED91B10C62FE1F8839015F3775B00A6D0F88E755</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Bijiabo/MP2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ED91B10C62FE1F8839015F3775B00A6D0F88E755</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ED91B10C62FE1F8839015F3775B00A6D0F88E755</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MP2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

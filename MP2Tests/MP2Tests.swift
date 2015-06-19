@@ -68,17 +68,32 @@ class MP2Tests: XCTestCase {
         
         let currentPlayingData = server.currentPlayingData
         
-        server.status.setCurrentScene("qichuang")
-        server.status.setIndexForScene(server.status.currentScene, index: 1)
+        server.status.set_CurrentScene("qichuang")
+        server.status.set_IndexForScene(server.status.currentScene, index: 1)
         
         var getNameSuccess : Bool = false
         
         if let name : String = currentPlayingData["name"] as? String
         {
-            getNameSuccess = name == "the music room"
+            getNameSuccess = ( name == "the music room" )
         }
         
         XCTAssert( getNameSuccess, "get currentPlayingData")
+    }
+    
+    //用户改变场景后server刷新currentPlayingData
+    func test_server_refresh_currentPlayingData_when_currentScene_changed ()
+    {
+        let server : ModelManager = Server(data: modelTestData, statusManager: Status())
+        
+        server.status.set_CurrentScene("qichuang")
+        server.status.set_CurrentSceneIndex(0)
+        server.status.set_IndexForScene("shuiqian", index: 0)
+        
+        server.status.set_CurrentScene("shuiqian")
+        
+        XCTAssert(server.currentPlayingData["name"] as! String == "good night", "test_server_refresh_currentPlayingData_when_currentScene_changed")
+        
     }
     
     //MARK:
@@ -90,6 +105,8 @@ class MP2Tests: XCTestCase {
         let status : StatusManager = Status()
         let server : ModelManager = Server(data: modelTestData , statusManager : status)
         
+        server.status.set_CurrentScene("qichuang")
+        
         XCTAssert(status.currentScene == "qichuang", "status current scene test success.")
     }
     
@@ -98,6 +115,9 @@ class MP2Tests: XCTestCase {
     {
         let status : StatusManager = Status()
         let server : ModelManager = Server(data: modelTestData , statusManager : status)
+        
+        server.status.set_IndexForScene("qichuangxxx", index: 0)
+        server.status.set_IndexForScene("qichuang", index: 1)
         
         let checkSceneIndexForNoSuchScene : Bool = status.playIndexForScene("qichuangxxx") == 0
         //test_Server_currentPlayingData() 设定qichuang模式序数为1
@@ -112,7 +132,7 @@ class MP2Tests: XCTestCase {
         let status : StatusManager = Status()
         let server : ModelManager = Server(data: modelTestData , statusManager : status)
         
-        status.setIndexForScene("qichuangTestMode" , index : 5)
+        status.set_IndexForScene("qichuangTestMode" , index : 5)
         
         let status2 : StatusManager = Status()
         
@@ -159,5 +179,6 @@ class MP2Tests: XCTestCase {
         
         XCTAssert(player.playing == false, "test player pause")
     }
+    
     
 }

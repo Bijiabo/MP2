@@ -17,4 +17,7 @@ protocol ModelManager
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> {get}
+    
+    //播放管理
+    var playerManager : PlayerManager {get set}
 }

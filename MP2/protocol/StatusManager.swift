@@ -11,13 +11,28 @@ import Foundation
 protocol StatusManager
 {
     //当前情景
-    var currentScene : String {get}
+    var currentScene : String { get }
+    //当前情景播放序数
+    var currentSceneIndex : Int { get }
+    
     //设置当前情景
-    func setCurrentScene(scene : String)
+    func set_CurrentScene(scene : String)
+    
+    //设置当前情景播放序数
+    func set_CurrentSceneIndex(index : Int)
     
     //获取指定情景播放序数
     func playIndexForScene(scene : String) -> Int
     
     //设定指定情景播放序数
-    func setIndexForScene(scene : String , index : Int)
+    func set_IndexForScene(scene : String , index : Int)
+    
+    //状态观察者
+    var observer : StatusObserver { get set }
+}
+
+protocol StatusObserver
+{
+    //状态已改变
+    func statusHasChanged(keyPath : String)
 }

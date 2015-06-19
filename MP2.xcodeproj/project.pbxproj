@@ -23,11 +23,17 @@
 		A1B584151B3305B800AD41D9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584131B3305B800AD41D9 /* Server.swift */; };
 		A1B584171B3307A200AD41D9 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584161B3307A200AD41D9 /* Status.swift */; };
 		A1B584181B3307A200AD41D9 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584161B3307A200AD41D9 /* Status.swift */; };
-		A1B5841A1B332A1400AD41D9 /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584191B332A1400AD41D9 /* playerManager.swift */; };
-		A1B5841B1B332A1400AD41D9 /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584191B332A1400AD41D9 /* playerManager.swift */; };
+		A1B5841A1B332A1400AD41D9 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584191B332A1400AD41D9 /* PlayerManager.swift */; };
+		A1B5841B1B332A1400AD41D9 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584191B332A1400AD41D9 /* PlayerManager.swift */; };
 		A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5841C1B332E9900AD41D9 /* Player.swift */; };
 		A1B5841E1B332E9900AD41D9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5841C1B332E9900AD41D9 /* Player.swift */; };
 		A1B584201B33331200AD41D9 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
+		A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584211B33F26700AD41D9 /* ViewManager.swift */; };
+		A1B584231B33F26700AD41D9 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584211B33F26700AD41D9 /* ViewManager.swift */; };
+		A1B584261B3429FA00AD41D9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584251B3429FA00AD41D9 /* Observable.swift */; };
+		A1B584271B3429FA00AD41D9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584251B3429FA00AD41D9 /* Observable.swift */; };
+		A1B584291B342A9200AD41D9 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584281B342A9200AD41D9 /* Events.swift */; };
+		A1B5842A1B342A9200AD41D9 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B584281B342A9200AD41D9 /* Events.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +62,12 @@
 		A1B584101B33045400AD41D9 /* StatusManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusManager.swift; path = protocol/StatusManager.swift; sourceTree = "<group>"; };
 		A1B584131B3305B800AD41D9 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		A1B584161B3307A200AD41D9 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		A1B584191B332A1400AD41D9 /* playerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = playerManager.swift; path = protocol/playerManager.swift; sourceTree = "<group>"; };
+		A1B584191B332A1400AD41D9 /* PlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerManager.swift; path = protocol/PlayerManager.swift; sourceTree = "<group>"; };
 		A1B5841C1B332E9900AD41D9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A1B5841F1B33331200AD41D9 /* resource */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resource; path = MP2/resource; sourceTree = "<group>"; };
+		A1B584211B33F26700AD41D9 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewManager.swift; path = protocol/ViewManager.swift; sourceTree = "<group>"; };
+		A1B584251B3429FA00AD41D9 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = protocol/support/Observable.swift; sourceTree = "<group>"; };
+		A1B584281B342A9200AD41D9 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Events.swift; path = protocol/support/Events.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,11 +161,22 @@
 		A1B5840F1B33043500AD41D9 /* protocol */ = {
 			isa = PBXGroup;
 			children = (
+				A1B584241B3429D700AD41D9 /* support */,
 				A1B5840C1B33041700AD41D9 /* ModelManager.swift */,
 				A1B584101B33045400AD41D9 /* StatusManager.swift */,
-				A1B584191B332A1400AD41D9 /* playerManager.swift */,
+				A1B584191B332A1400AD41D9 /* PlayerManager.swift */,
+				A1B584211B33F26700AD41D9 /* ViewManager.swift */,
 			);
 			name = protocol;
+			sourceTree = "<group>";
+		};
+		A1B584241B3429D700AD41D9 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				A1B584251B3429FA00AD41D9 /* Observable.swift */,
+				A1B584281B342A9200AD41D9 /* Events.swift */,
+			);
+			name = support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +228,11 @@
 				TargetAttributes = {
 					A1B583E21B33034900AD41D9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					A1B583F71B33034900AD41D9 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -260,13 +285,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B584291B342A9200AD41D9 /* Events.swift in Sources */,
+				A1B584261B3429FA00AD41D9 /* Observable.swift in Sources */,
 				A1B583EB1B33034900AD41D9 /* ViewController.swift in Sources */,
 				A1B584111B33045400AD41D9 /* StatusManager.swift in Sources */,
+				A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */,
 				A1B584171B3307A200AD41D9 /* Status.swift in Sources */,
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
 				A1B584141B3305B800AD41D9 /* Server.swift in Sources */,
-				A1B5841A1B332A1400AD41D9 /* playerManager.swift in Sources */,
+				A1B5841A1B332A1400AD41D9 /* PlayerManager.swift in Sources */,
 				A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */,
 				A1B5840D1B33041700AD41D9 /* ModelManager.swift in Sources */,
 			);
@@ -277,12 +305,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B584151B3305B800AD41D9 /* Server.swift in Sources */,
+				A1B5842A1B342A9200AD41D9 /* Events.swift in Sources */,
 				A1B583FF1B33034900AD41D9 /* MP2Tests.swift in Sources */,
 				A1B5840E1B33041700AD41D9 /* ModelManager.swift in Sources */,
-				A1B5841B1B332A1400AD41D9 /* playerManager.swift in Sources */,
+				A1B5841B1B332A1400AD41D9 /* PlayerManager.swift in Sources */,
 				A1B5841E1B332E9900AD41D9 /* Player.swift in Sources */,
 				A1B5840B1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
+				A1B584271B3429FA00AD41D9 /* Observable.swift in Sources */,
 				A1B584121B33045400AD41D9 /* StatusManager.swift in Sources */,
+				A1B584231B33F26700AD41D9 /* ViewManager.swift in Sources */,
 				A1B584181B3307A200AD41D9 /* Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
