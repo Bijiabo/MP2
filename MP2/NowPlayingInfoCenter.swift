@@ -12,6 +12,8 @@ import MediaPlayer
 
 class NowPlayingInfoCenterController : NSObject, ViewManager {
     
+    var delegate : Operation?
+    
     var model : ModelManager?
     
     private let _view: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.defaultCenter()
@@ -20,22 +22,30 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     {
         super.init()
         
+        setupViewControls()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
     }
     
     func CurrentPlayingDataHasChanged(notification : NSNotification)
     {
-        _updateView()
-        
+        updateView()
     }
     
-    private func _updateView ()
+    func playingStatusChanged(notification : NSNotification)
+    {
+        updateView()
+    }
+    
+    func updateView ()
     {
         _view.nowPlayingInfo = [
             MPMediaItemPropertyAlbumArtist: "MPMediaItemPropertyAlbumArtist", // not displayed
             MPMediaItemPropertyAlbumTitle: "磨耳朵",
             MPMediaItemPropertyTitle: model?.currentPlayingData["name"] as! String,
-            MPMediaItemPropertyArtist:  "MPMediaItemPropertyArtist",
+            MPMediaItemPropertyArtist:  model!.status.currentScene,
             //            MPMediaItemPropertyArtwork: artwork,
             //            MPNowPlayingInfoPropertyElapsedPlaybackTime : player.currentTime,
             //            MPNowPlayingInfoPropertyPlaybackRate : 1.0,
@@ -50,9 +60,13 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         remoteCommandCenter.playCommand.addTarget(self, action: Selector("playCommand:"))
         
         remoteCommandCenter.pauseCommand.addTargetWithHandler { (event: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus in
-            //self.app.player.pause()
+            
+            self.delegate?.pause()
+            
             return MPRemoteCommandHandlerStatus.Success
         }
+        
+        remoteCommandCenter.playCommand.enabled = true
         
         remoteCommandCenter.togglePlayPauseCommand.addTargetWithHandler { (event: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus in
             return MPRemoteCommandHandlerStatus.Success
@@ -78,6 +92,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         remoteCommandCenter.likeCommand.localizedTitle = "😃 孩子喜欢"
         
         remoteCommandCenter.likeCommand.addTarget(self, action: Selector("childLike:"))
+        
         //child dislike
         remoteCommandCenter.dislikeCommand.localizedTitle = "😞 孩子不喜欢"
         
@@ -89,28 +104,21 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     internal func pauseCommand (e: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus
     {
-        model?.playerManager.pause()
+        delegate?.pause()
         
         return MPRemoteCommandHandlerStatus.Success
     }
     
     internal func playCommand (e: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus
     {
-        model?.playerManager.play()
+        delegate?.play()
         
         return MPRemoteCommandHandlerStatus.Success
     }
     
     internal func togglePlayPauseCommand (e: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus
     {
-        if model?.playerManager.playing == true
-        {
-            model?.playerManager.pause()
-        }
-        else
-        {
-            model?.playerManager.play()
-        }
+        delegate?.togglePlayPause()
         
         return MPRemoteCommandHandlerStatus.Success
     }
@@ -123,6 +131,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     internal func nextTrackCommand (e: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus
     {
+        delegate?.playNext()
         
         return MPRemoteCommandHandlerStatus.Success
     }
@@ -134,6 +143,8 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         commandCenter.likeCommand.active = true
         commandCenter.dislikeCommand.active = false
         
+        delegate?.doLike()
+        
         return MPRemoteCommandHandlerStatus.Success
     }
     
@@ -144,7 +155,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         commandCenter.likeCommand.active = false
         commandCenter.dislikeCommand.active = false
         
-
+        delegate?.doDislike()
         
         return MPRemoteCommandHandlerStatus.Success
     }

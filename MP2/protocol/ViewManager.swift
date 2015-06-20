@@ -10,5 +10,7 @@ import Foundation
 
 protocol ViewManager
 {
+    var delegate : Operation? {get set}
+    
     var model : ModelManager? {get set}
 }

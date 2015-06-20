@@ -10,11 +10,15 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
 
     var window: UIWindow?
 
     var model : ModelManager!
+    
+    var player : PlayerManager!
+    
+    var operation : Operation!
     
     var nowPlayingInfoCenter : ViewManager!
 
@@ -24,25 +28,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [
                 "name" : "qichuang",
                 "list" : [
-                    ["name" : "color song"],
-                    ["name" : "the music room"]
+                    [
+                        "name" : "color song",
+                        "localUri" : "0yriqss4.1iq.m4a"
+                    ],
+                    [
+                        "name" : "the music room",
+                        "localUri" : "1p42n5xz.l0t.m4a"
+                    ]
                 ]
             ],
             [
                 "name" : "shuiqian",
                 "list" : [
-                    ["name" : "good ni8ght"],
-                    ["name" : "little star"]
+                    [
+                        "name" : "good ni8ght",
+                        "localUri" : "3dwtaehv.c2d.m4a"
+                    ],
+                    [
+                        "name" : "little star",
+                        "localUri" : "3nkbvksq.xmz.m4a"
+                    ]
                 ]
             ]
         ]
         
         //设定model和player
         model = Server(data: modelTestData, statusManager: Status())
+        model.delegate = self
         
-        let testMediaFileURL : NSURL = NSBundle.mainBundle().URLForResource("AreYouOK", withExtension: "mp3", subdirectory: "resource/media")!
+        let mediaFileURL : NSURL = NSBundle.mainBundle().URLForResource(model?.currentPlayingData["localUri"] as! String, withExtension: "", subdirectory: "resource/media")!
+
         
-        model.playerManager.setSource(testMediaFileURL)
+        player = Player(source: mediaFileURL)
+        player.delegate = self
+        
         
         //获取主界面view controller
         var mainVC : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
@@ -53,10 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var VC : ViewManager = mainVC as! ViewManager
 
             VC.model = self.model
+            VC.delegate = self
         }
         
         nowPlayingInfoCenter = NowPlayingInfoCenterController()
         nowPlayingInfoCenter.model = self.model
+        nowPlayingInfoCenter.delegate = self
         
         let screen: AnyObject = UIScreen.screens()[0]
         self.window = UIWindow(frame: screen.bounds)
@@ -84,6 +106,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
     }
+    
+    
+    var playing : Bool {
+        get {
+            return player.playing
+        }
+    }
+    
+    func doLike() {
+        
+    }
+    
+    func doDislike() {
+        playNext()
+    }
 
+    func wrongPlayerUrl() {
+        
+    }
+    
+    func playerDidFinishPlaying()
+    {
+        playNext()
+    }
+    
+    func switchToScene(scene : String)
+    {
+        model.status.set_CurrentScene(scene)
+    }
+    
+    func playNext()
+    {
+        model.next()
+    }
+    
+    func updateChildInformation()
+    {
+        
+    }
+
+    func sendPlayingStatusChangeNotification()
+    {
+        NSNotificationCenter.defaultCenter().postNotificationName("PlayingStatusChanged", object: playing)
+    }
+    
+    func play()
+    {
+        player.play()
+        
+        sendPlayingStatusChangeNotification()
+        
+    }
+    
+    func pause()
+    {
+        player.pause()
+        
+        sendPlayingStatusChangeNotification()
+    }
+    
+    func togglePlayPause()
+    {
+        if playing
+        {
+            pause()
+        }
+        else
+        {
+            play()
+        }
+    }
+    
+    func currentPlayingDataHasChanged() {
+        
+        let previousPlaying : Bool = playing
+        
+        let mediaFileURL : NSURL = NSBundle.mainBundle().URLForResource(model?.currentPlayingData["localUri"] as! String, withExtension: "", subdirectory: "resource/media")!
+        
+        player.setSource(mediaFileURL)
+        
+        if previousPlaying { play() }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
+    }
 }
 

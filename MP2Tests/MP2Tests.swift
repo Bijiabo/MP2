@@ -143,22 +143,12 @@ class MP2Tests: XCTestCase {
     //MARK: 播放者
     let testMediaFileURL : NSURL = NSBundle.mainBundle().URLForResource("AreYouOK", withExtension: "mp3", subdirectory: "resource/media")!
     
-    //player设定source
-    func test_Player_source()
-    {
-        let player : Player = Player()
-
-        player.setSource(testMediaFileURL)
-        
-        XCTAssert(player.source == testMediaFileURL, "test player source")
-    }
     
     //player播放
     func test_Player_play()
     {
-        let player : Player = Player()
-        
-        player.setSource(testMediaFileURL)
+        let player : Player = Player(source: testMediaFileURL)
+
         
         player.play()
         
@@ -169,9 +159,7 @@ class MP2Tests: XCTestCase {
     //player暂停
     func test_Player_pause()
     {
-        let player : Player = Player()
-        
-        player.setSource(testMediaFileURL)
+        let player : Player = Player(source: testMediaFileURL)
         
         player.play()
         

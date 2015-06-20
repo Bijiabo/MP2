@@ -12,6 +12,7 @@ class Status : StatusManager {
     
     //状态观察者
     var observer : StatusObserver = statusObserver()
+
     
     //当前情景
     dynamic var currentScene : String = "" {

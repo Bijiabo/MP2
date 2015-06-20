@@ -10,13 +10,14 @@ import Foundation
 import AVFoundation
 
 class Server : ModelManager ,StatusObserver {
+
+    var delegate : Operation?
+    
     //情景列表
     var scenelist : Array<String> = Array<String>()
     //状态管理
     var status : StatusManager = Status()
-    
-    //播放管理
-    var playerManager : PlayerManager = Player()
+
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
@@ -72,7 +73,7 @@ class Server : ModelManager ,StatusObserver {
         }
     }
     
-    private func _getCurrentPlayingData () -> Dictionary<String,AnyObject>
+    private func _getCurrentScenePlaylist () -> [Dictionary<String,AnyObject>]
     {
         for var i=0; i<_data.count; i++
         {
@@ -85,14 +86,7 @@ class Server : ModelManager ,StatusObserver {
                         //取得对应播放列表数据
                         if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
                         {
-                            if list.count > status.playIndexForScene(status.currentScene)
-                            {
-                                return list[status.playIndexForScene(status.currentScene)]
-                            }
-                            else if list.count>0
-                            {
-                                return list[0]
-                            }
+                            return list
                         }
                     }
                 }
@@ -106,27 +100,63 @@ class Server : ModelManager ,StatusObserver {
             {
                 if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
                 {
-                    if list.count>0
-                    {
-                        return list[0]
-                    }
+                    return list
                 }
             }
         }
         
-        return Dictionary<String,AnyObject>()
+        return [Dictionary<String,AnyObject>]()
+    }
+    
+    private func _getCurrentPlayingData () -> Dictionary<String,AnyObject>
+    {
+        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
+        
+        if currentScenePlaylist.count > status.currentSceneIndex
+        {
+            return currentScenePlaylist[status.currentSceneIndex]
+        }
+        else if currentScenePlaylist.count > 0
+        {
+            return currentScenePlaylist[0]
+        }
+        else
+        {
+            return Dictionary<String,AnyObject>()
+        }
     }
     
     private func _updateCurrentPlayingData ()
     {
-        currentPlayingData = _getCurrentPlayingData()
+        let playingData : Dictionary<String, AnyObject> = _getCurrentPlayingData()
+        
+        for (key , value) in playingData
+        {
+            currentPlayingData[key] = value
+        }
+        
+    }
+    
+    //切换为下一首音频
+    func next() {
+        
+        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
+        
+        if currentScenePlaylist.count > ( status.currentSceneIndex + 1 )
+        {
+            status.set_CurrentSceneIndex(status.currentSceneIndex + 1)
+        }
+        else
+        {
+            status.set_CurrentSceneIndex(0)
+        }
     }
     
     //状态已改变
     func statusHasChanged(keyPath: String) {
         _updateCurrentPlayingData()
         
-        NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
+        delegate?.currentPlayingDataHasChanged()
     }
     
     

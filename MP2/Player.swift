@@ -9,30 +9,48 @@
 import Foundation
 import AVFoundation
 
-class Player : NSObject , PlayerManager
+class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
 {
+    var delegate : Operation?
+    
     //播放状态
     var playing : Bool {
         get {
-            return _player.playing
+            if _player == nil
+            {
+                return false
+            }
+            else
+            {
+                return _player.playing
+            }
         }
     }
     
     //播放来源
     var source : NSURL {
         get {
-            return _player.url
+            if _player == nil
+            {
+                return NSURL()
+            }
+            else
+            {
+                return _player.url
+            }
         }
     }
     
     //player对象，内部使用
-    private var _player : AVAudioPlayer = AVAudioPlayer()
+    private var _player : AVAudioPlayer!
     
     //初始化方法
-    override init()
+    init(source : NSURL)
     {
         super.init()
         
+        setSource(source)
+
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
         AVAudioSession.sharedInstance().setActive(true, error: nil)
         
@@ -53,6 +71,9 @@ class Player : NSObject , PlayerManager
     func setSource(source: NSURL) {
         var isNotDir : ObjCBool = false
         
+        //若与原音频相同，则不做操作
+        if source == self.source {return}
+        
         if NSFileManager.defaultManager().fileExistsAtPath(source.relativePath!, isDirectory: &isNotDir)
         {
             _player = AVAudioPlayer(contentsOfURL: source, error: nil)
@@ -62,6 +83,15 @@ class Player : NSObject , PlayerManager
         
     }
     
+    //MARK:
+    //MARK: avaudioPlayerDelegate
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        delegate?.playerDidFinishPlaying()
+    }
+    
+    
+    //MARK:
+    //MARK:中断与恢复
     func _addObserver() -> Void
     {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("avaudioSessionInterruption:"), name: AVAudioSessionInterruptionNotification, object: nil)

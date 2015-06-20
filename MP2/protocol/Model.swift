@@ -10,6 +10,8 @@ import Foundation
 
 protocol ModelManager
 {
+    var delegate : Operation? {get set}
+    
     //情景列表
     var scenelist : Array<String> {get}
     //状态管理
@@ -18,6 +20,6 @@ protocol ModelManager
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> {get}
     
-    //播放管理
-    var playerManager : PlayerManager {get set}
+    //切换为下一首音频
+    func next()
 }

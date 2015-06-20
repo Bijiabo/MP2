@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController , UITabBarDelegate , ViewManager
 {
+    var delegate : Operation?
 
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var tabBar: UITabBar!
@@ -30,6 +31,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager
         initAudioInfoView()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,24 +41,20 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager
     }
 
     @IBAction func togglePlayPause(sender: AnyObject) {
-        if playPauseButton.tag == 0
+        
+        if delegate?.playing == true
         {
-            playPauseButton.setTitle("pause", forState: UIControlState.Normal)
-            
-            model?.playerManager.play()
-            playPauseButton.tag = 1
+            delegate?.pause()
         }
         else
         {
-            playPauseButton.setTitle("play", forState: UIControlState.Normal)
-            
-            model?.playerManager.pause()
-            playPauseButton.tag = 0
+            delegate?.play()
         }
     }
     
     func initTabBar()
     {
+        //设定tabbar items
         var tabBarItems : [UITabBarItem] = []
         for var i=0; i<model?.scenelist.count ; i++
         {
@@ -64,11 +63,25 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager
         }
         
         tabBar.setItems(tabBarItems, animated: false)
+        
+        //设定tabbar默认选中项目
+        if let selectedIndex : Int = find(model!.scenelist, model!.status.currentScene)
+        {
+            for tabbarItem in tabBar.items as! [UITabBarItem]
+            {
+                if tabbarItem.tag == selectedIndex
+                {
+                    tabBar.selectedItem = tabbarItem
+                    break
+                }
+            }
+        }
+        
     }
     
     func initPlayPauseButton()
     {
-        if model?.playerManager.playing == true
+        if delegate?.playing == true
         {
             playPauseButton.setTitle("pause", forState: UIControlState.Normal)
             
@@ -97,8 +110,32 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!)
     {
         let selectedIndex : Int = item.tag
+        let targetScene : String = model!.scenelist[selectedIndex]
         
-        model?.status.set_CurrentScene(model!.scenelist[selectedIndex])
+        delegate?.switchToScene(targetScene)
+    }
+    
+    @IBAction func tapLikeButton(sender: AnyObject)
+    {
+        delegate?.doLike()
+    }
+    
+    @IBAction func tapDislikeButton(sender: AnyObject)
+    {
+        delegate?.doDislike()
+    }
+    
+    func playingStatusChanged(notification : NSNotification)
+    {
+        if delegate?.playing == true
+        {
+            self.playPauseButton.setTitle("pause", forState: UIControlState.Normal)
+        }
+        else
+        {
+            self.playPauseButton.setTitle("play", forState: UIControlState.Normal)
+            
+        }
     }
 }
 
