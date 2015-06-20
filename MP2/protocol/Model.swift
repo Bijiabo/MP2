@@ -10,7 +10,7 @@ import Foundation
 
 protocol ModelManager
 {
-    var delegate : Operation? {get set}
+    var delegate : Operations? {get set}
     
     //情景列表
     var scenelist : Array<String> {get}

@@ -8,10 +8,8 @@
 
 import Foundation
 
-protocol Operation {
+protocol ViewOperation {
 
-    var playing : Bool {get}
-    
     func doLike()
     
     func doDislike()
@@ -24,6 +22,14 @@ protocol Operation {
     
     func updateChildInformation()
     
+    
+    func currentPlayingDataHasChanged()
+}
+
+protocol PlayerOperation
+{
+    var playing : Bool {get}
+    
     func play()
     
     func pause()
@@ -31,6 +37,6 @@ protocol Operation {
     func togglePlayPause()
     
     func playerDidFinishPlaying()
-    
-    func currentPlayingDataHasChanged()
 }
+
+typealias Operations = protocol<PlayerOperation , ViewOperation>

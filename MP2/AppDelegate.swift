@@ -10,15 +10,13 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
+class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
 
     var window: UIWindow?
 
     var model : ModelManager!
     
     var player : PlayerManager!
-    
-    var operation : Operation!
     
     var nowPlayingInfoCenter : ViewManager!
 
@@ -40,6 +38,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
             ],
             [
                 "name" : "shuiqian",
+                "list" : [
+                    [
+                        "name" : "good ni8ght",
+                        "localUri" : "3dwtaehv.c2d.m4a"
+                    ],
+                    [
+                        "name" : "little star",
+                        "localUri" : "3nkbvksq.xmz.m4a"
+                    ]
+                ]
+            ],
+            [
+                "name" : "wanshua",
                 "list" : [
                     [
                         "name" : "good ni8ght",
@@ -114,6 +125,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
         }
     }
     
+    private var _previousPlaying : Bool = false
+    private var _justFinishPlaying : Bool = false
+    
     func doLike() {
         
     }
@@ -128,6 +142,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
     
     func playerDidFinishPlaying()
     {
+        _justFinishPlaying = true
+        
         playNext()
     }
     
@@ -138,6 +154,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
     
     func playNext()
     {
+        _previousPlaying = playing
+        
         model.next()
     }
     
@@ -180,13 +198,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operation {
     
     func currentPlayingDataHasChanged() {
         
-        let previousPlaying : Bool = playing
-        
         let mediaFileURL : NSURL = NSBundle.mainBundle().URLForResource(model?.currentPlayingData["localUri"] as! String, withExtension: "", subdirectory: "resource/media")!
         
         player.setSource(mediaFileURL)
         
-        if previousPlaying { play() }
+        if _previousPlaying || _justFinishPlaying
+        {
+            play()
+
+            _previousPlaying = false
+            _justFinishPlaying = false
+        }
+        
         
         NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
     }

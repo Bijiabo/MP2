@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "456489247.133291"
+            timestampString = "456513167.723902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "doDislike()"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/NowPlayingInfoCenter.swift"
-            timestampString = "456489169.754509"
+            timestampString = "456513929.197989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "pauseCommand(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/NowPlayingInfoCenter.swift"
-            timestampString = "456489169.754509"
+            timestampString = "456513929.197989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "playCommand(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,13 +106,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/NowPlayingInfoCenter.swift"
-            timestampString = "456489169.754509"
+            timestampString = "456513929.197989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "togglePlayPauseCommand(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MP2/NowPlayingInfoCenter.swift"
+            timestampString = "456513929.197989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "saveSceneIndexToCache(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

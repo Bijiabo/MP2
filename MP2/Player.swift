@@ -11,7 +11,7 @@ import AVFoundation
 
 class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
 {
-    var delegate : Operation?
+    var delegate : PlayerOperation?
     
     //播放状态
     var playing : Bool {
@@ -77,8 +77,12 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         if NSFileManager.defaultManager().fileExistsAtPath(source.relativePath!, isDirectory: &isNotDir)
         {
             _player = AVAudioPlayer(contentsOfURL: source, error: nil)
+            _player.delegate = self
             
             _player.prepareToPlay()
+            
+            //测试切换歌曲
+            //_player.currentTime = _player.duration - 10
         }
         
     }

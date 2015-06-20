@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController , UITabBarDelegate , ViewManager
 {
-    var delegate : Operation?
+    var delegate : Operations?
 
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var tabBar: UITabBar!

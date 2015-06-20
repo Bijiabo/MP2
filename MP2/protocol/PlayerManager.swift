@@ -10,7 +10,7 @@ import Foundation
 
 protocol PlayerManager
 {
-    var delegate : Operation? {get set}
+    var delegate : PlayerOperation? {get set}
     
     //播放状态
     var playing : Bool {get}

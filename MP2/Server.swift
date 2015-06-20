@@ -11,7 +11,7 @@ import AVFoundation
 
 class Server : ModelManager ,StatusObserver {
 
-    var delegate : Operation?
+    var delegate : Operations?
     
     //情景列表
     var scenelist : Array<String> = Array<String>()
