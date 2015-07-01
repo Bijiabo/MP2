@@ -9,8 +9,9 @@
 import Foundation
 import AVFoundation
 
-class Server : ModelManager ,StatusObserver {
-
+class Server : NSObject , ModelManager ,StatusObserver , DownloaderObserverProtocol
+{
+    
     var delegate : Operations?
     
     //情景列表
@@ -25,12 +26,15 @@ class Server : ModelManager ,StatusObserver {
     private var _data : Array<AnyObject> = Array<AnyObject>()
     private var currentSceneIndex : Int = 0
     
-    init()
+    override init()
     {
+        super.init()
     }
     
     init (data : Array<AnyObject>)
     {
+        super.init()
+        
         _data = data
         
         _updateScenelist(_data)
@@ -42,6 +46,8 @@ class Server : ModelManager ,StatusObserver {
     
     init (data : Array<AnyObject> , statusManager : StatusManager)
     {
+        super.init()
+        
         _data = data
         
         _updateScenelist(_data)
@@ -159,7 +165,17 @@ class Server : ModelManager ,StatusObserver {
         delegate?.currentPlayingDataHasChanged()
     }
     
+    //MARK:
+    //MARK: DownlaoderProtocol
+    func downloadCompleted(data : AnyObject) {
+        
+        let item = data as! DownloadItem
+        
+    }
     
+    func downloadErrorOccurd(data : AnyObject) {
+        println("downloadErrorOccurd")
+    }
     
     
 }

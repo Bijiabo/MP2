@@ -25,6 +25,7 @@ class Status : StatusManager {
     
     //当前情景播放序数
     dynamic var currentSceneIndex : Int = 0 {
+        
         didSet {
             observer.statusHasChanged("currentSceneIndex")
         }
@@ -61,6 +62,8 @@ class Status : StatusManager {
         {
            _sceneIndexStatusCache[scene] = 0
         }
+        
+        currentSceneIndex = _sceneIndexStatusCache[scene]!
     }
     
     //设置当前情景播放序数

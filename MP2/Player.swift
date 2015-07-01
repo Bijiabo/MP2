@@ -76,7 +76,14 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         
         if NSFileManager.defaultManager().fileExistsAtPath(source.relativePath!, isDirectory: &isNotDir)
         {
-            _player = AVAudioPlayer(contentsOfURL: source, error: nil)
+            var error : NSError?
+            
+            var playerData : NSData = NSData(contentsOfURL: source)!
+            
+            _player = AVAudioPlayer(data: playerData, error: &error)
+                //AVAudioPlayer(contentsOfURL: source, error: &error)
+            println(error)
+            
             _player.delegate = self
             
             _player.prepareToPlay()
