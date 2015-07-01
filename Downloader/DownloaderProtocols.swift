@@ -24,6 +24,8 @@ protocol DownloadItemProtocol
 
 protocol DownloaderProtocol
 {
+    var delegate : DownloaderObserverProtocol? {get set}
+    
     //建立下载任务，返回下载任务id
     func download(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
     
