@@ -172,16 +172,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
     
     func currentPlayingDataHasChanged() {
         
+        if checkCurrentMediaFileExists()
+        {
+            let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
+            
+            player = Player(source: mediaFileURL)
+            player.delegate = self
+            
+            if playing
+            {
+                play()
+                
+            }
+        }
+        /*
         let mediaFileURL : NSURL = NSBundle.mainBundle().URLForResource(model?.currentPlayingData["localUri"] as! String, withExtension: "", subdirectory: "resource/media")!
         
         player.setSource(mediaFileURL)
+        */
         
-        if playing
-        {
-            play()
-
-         
-        }
+        
         
         
         NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
