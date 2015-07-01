@@ -51,10 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
             player.delegate = self
         }
         
-        //检查
-        
-        
-        
         
         //获取主界面view controller
         var mainVC : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
@@ -176,8 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         {
             let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
             
-            player = Player(source: mediaFileURL)
-            player.delegate = self
+            player.setSource(mediaFileURL)
             
             if playing
             {
@@ -185,11 +180,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
                 
             }
         }
-        /*
-        let mediaFileURL : NSURL = NSBundle.mainBundle().URLForResource(model?.currentPlayingData["localUri"] as! String, withExtension: "", subdirectory: "resource/media")!
-        
-        player.setSource(mediaFileURL)
-        */
+        else
+        {
+            model.previous()
+        }
         
         
         

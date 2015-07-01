@@ -30,7 +30,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
     //播放来源
     var source : NSURL {
         get {
-            if _player == nil
+            if _player == nil || _player.url == nil
             {
                 return NSURL()
             }
@@ -82,7 +82,6 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             
             _player = AVAudioPlayer(data: playerData, error: &error)
                 //AVAudioPlayer(contentsOfURL: source, error: &error)
-            println(error)
             
             _player.delegate = self
             
@@ -127,7 +126,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         
         if interuptionType == AVAudioSessionInterruptionType.Began.rawValue
         {
-            println("began")
+            println("began interuption")
             
             _player.pause()
         }
@@ -142,7 +141,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
             AVAudioSession.sharedInstance().setActive(true, error: nil)
             
-            println("end")
+            println("end interuption")
             
         }
         

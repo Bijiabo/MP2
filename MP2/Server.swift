@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-class Server : NSObject , ModelManager ,StatusObserver , DownloaderObserverProtocol
+class Server : NSObject , ModelManager ,StatusObserver
 {
     
     var delegate : Operations?
@@ -158,6 +158,20 @@ class Server : NSObject , ModelManager ,StatusObserver , DownloaderObserverProto
         }
     }
     
+    //切换上一个音频
+    func previous() {
+        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
+        
+        if status.currentSceneIndex > 0
+        {
+            status.set_CurrentSceneIndex(status.currentSceneIndex - 1)
+        }
+        else
+        {
+            status.set_CurrentSceneIndex(currentScenePlaylist.count - 1)
+        }
+    }
+    
     //状态已改变
     func statusHasChanged(keyPath: String) {
         _updateCurrentPlayingData()
@@ -165,16 +179,9 @@ class Server : NSObject , ModelManager ,StatusObserver , DownloaderObserverProto
         delegate?.currentPlayingDataHasChanged()
     }
     
-    //MARK:
-    //MARK: DownlaoderProtocol
-    func downloadCompleted(data : AnyObject) {
+    //获取下载列表
+    func getDownloadList() {
         
-        let item = data as! DownloadItem
-        
-    }
-    
-    func downloadErrorOccurd(data : AnyObject) {
-        println("downloadErrorOccurd")
     }
     
     

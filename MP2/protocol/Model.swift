@@ -22,4 +22,10 @@ protocol ModelManager
     
     //切换为下一首音频
     func next()
+    
+    //切换为上一首音频
+    func previous()
+    
+    //获取下载列表
+    func getDownloadList()
 }
