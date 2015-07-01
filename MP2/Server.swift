@@ -181,6 +181,8 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //获取下载列表
     func getDownloadList() {
+        var list : [String] = [String]()
+        
         
     }
     
