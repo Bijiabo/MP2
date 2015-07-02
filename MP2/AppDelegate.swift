@@ -30,16 +30,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
         
-        //初始化downloader
-        downloader = Downloader()
-        
         //读取数据
         var modelTestData = loadData()
+        
 
         
         //设定model和player
         model = Server(data: modelTestData, statusManager: Status())
         model.delegate = self
+        
+        //初始化downloader
+        downloader = Downloader()
+        
+        let downloadList : [Dictionary<String,String>] = model.getDownloadList()
+        //下载全部媒体文件
+        for item in downloadList
+        {
+            downloader?.download(item["remoteURL"]!, cacheRootURL: cacheRootURL, filename: item["filename"])
+        }
+        
         
         
         //检查音频文件是否存在

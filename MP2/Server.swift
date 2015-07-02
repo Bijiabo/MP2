@@ -180,9 +180,40 @@ class Server : NSObject , ModelManager ,StatusObserver
     }
     
     //获取下载列表
-    func getDownloadList() {
-        var list : [String] = [String]()
+    func getDownloadList() -> [Dictionary<String,String>]
+    {
         
+        let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
+        let cacheRootURL : NSURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
+        
+        var downloadList : [Dictionary<String,String>] = [Dictionary<String,String>]()
+        
+        for var i=0; i<_data.count; i++
+        {
+            if let dataItem = _data[i] as? Dictionary<String,AnyObject>
+            {
+                let list = dataItem["list"] as! [Dictionary<String,AnyObject>]
+                
+                for listItem in list
+                {
+                    var  isNotDir : ObjCBool = false
+                    
+                    if NSFileManager.defaultManager().fileExistsAtPath(cacheRootURL.URLByAppendingPathComponent(listItem["localURI"] as! String).relativePath!, isDirectory: &isNotDir) == false
+                    {
+                        let remoteURL : String = (listItem["remoteURL"] as! [String])[0]
+                        let filename : String = listItem["localURI"] as! String
+                        downloadList.append([
+                            "remoteURL" : remoteURL,
+                            "filename" : filename
+                            ])
+                    }
+                }
+            }
+        }
+        
+        
+        
+        return downloadList
         
     }
     

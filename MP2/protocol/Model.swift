@@ -27,5 +27,5 @@ protocol ModelManager
     func previous()
     
     //获取下载列表
-    func getDownloadList()
+    func getDownloadList() -> [Dictionary<String,String>]
 }
