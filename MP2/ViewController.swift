@@ -15,6 +15,9 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     @IBOutlet var tabBar: UITabBar!
     @IBOutlet var audioName: UILabel!
     @IBOutlet var audioTag: UILabel!
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var mainNavigationBar: UINavigationBar!
+    @IBOutlet var navigationBarTitle: UINavigationItem!
 
     var model : ModelManager?
     
@@ -29,11 +32,16 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         initAudioInfoView()
         
+        _refreshBackgroundImageView(view: backgroundImageView)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
         
         initUIAlertView()
+        
+        _refreshNavigationBar(navigationBar: mainNavigationBar)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +67,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         var tabBarItems : [UITabBarItem] = []
         for var i=0; i<model?.scenelist.count ; i++
         {
-            let barItem : UITabBarItem = UITabBarItem(title: model?.scenelist[i], image: UIImage(), tag: i)
+            let barItem : UITabBarItem = UITabBarItem(title: model?.scenelist[i], image: UIImage(named: "Mode-\(model!.scenelist[i])"), tag: i)
             tabBarItems.append( barItem )
         }
         
@@ -107,6 +115,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     {
         audioName.text = model?.currentPlayingData["name"] as? String
         audioTag.text = model?.currentPlayingData["tag"] as? String
+        
+        _refreshBackgroundImageView(view: backgroundImageView)
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!)
@@ -218,6 +228,33 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         {
             //user click cancel
         }
+    }
+    
+    private func _refreshBackgroundImageView (#view : UIImageView?) -> Void
+    {
+        if view == nil {return}
+        
+        let resourceURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/image", isDirectory: true)
+        
+        let sceneKey : String = model!.status.currentScene
+        
+        let imagePath : NSURL = resourceURL.URLByAppendingPathComponent("\(sceneKey).jpg")
+        
+        view!.image = UIImage(contentsOfFile: imagePath.relativePath!)
+    }
+    
+    func _refreshNavigationBar (#navigationBar : UINavigationBar?) -> Void
+    {
+        if navigationBar == nil {return}
+        
+        navigationBar!.translucent = true
+        navigationBar!.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        
+        navigationBar!.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.whiteColor()
+        ]
+        navigationBar!.shadowImage = UIImage()
+        
     }
 }
 

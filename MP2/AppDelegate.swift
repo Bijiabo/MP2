@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
         
+        //拷贝音频资源到cache目录
+        CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
+        
         //读取数据
         var modelTestData = loadData()
         
@@ -174,7 +177,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         {
             let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
             
-            player.setSource(mediaFileURL)
+            if player != nil
+            {
+                player.setSource(mediaFileURL)
+            }
+            else
+            {
+                player = Player(source: mediaFileURL)
+            }
             
             if playing
             {
@@ -199,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
     func loadData() -> [Dictionary<String,AnyObject>]
     {
         let dataRootURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data")
-        let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent("standard.json"))!
+        let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent("6.json"))!
         let dataFileJSON : JSON = JSON(data:dataFileData)
         
         var dataList : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()

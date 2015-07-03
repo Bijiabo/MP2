@@ -38,5 +38,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
