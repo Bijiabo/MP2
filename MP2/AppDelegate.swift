@@ -42,13 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         //初始化downloader
         downloader = Downloader()
         
-        let downloadList : [Dictionary<String,String>] = model.getDownloadList()
-        //下载全部媒体文件
-        for item in downloadList
-        {
-            downloader?.download(item["remoteURL"]!, cacheRootURL: cacheRootURL, filename: item["filename"])
-        }
-        
         
         
         //检查音频文件是否存在
@@ -268,6 +261,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         }
     }
     
+    //Download Operation Protocol
+    
+    func startAllDownload() {
+        
+        //获取下载列表
+        let downloadList : [Dictionary<String,String>] = model.getDownloadList()
+        
+        //下载全部媒体文件
+        for item in downloadList
+        {
+            downloader?.download(item["remoteURL"]!, cacheRootURL: cacheRootURL, filename: item["filename"])
+        }
+    }
     
     
 }

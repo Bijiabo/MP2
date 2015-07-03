@@ -141,6 +141,30 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         }
     }
     
+    func checkIsWifi() -> Bool
+    {
+        if IJReachability.isConnectedToNetworkOfType() != .WiFi
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
+    
+    func checkIsConnected() -> Bool
+    {
+        if IJReachability.isConnectedToNetwork()
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
     func initUIAlertView()
     {
         let tittle : String = "下载媒体资源"
@@ -150,6 +174,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         alert.show()
         
+        /*
         var availabilityLabel : UILabel = UILabel()
         var connectionTypeLabel : UILabel = UILabel()
         
@@ -177,6 +202,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         }
         
         println("connectionTypeLabel : \(connectionTypeLabel.text)")
+        */
+        
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
@@ -185,6 +212,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         if buttonIndex == 1
         {
             //user click down
+            delegate?.startAllDownload()
         }
         else
         {

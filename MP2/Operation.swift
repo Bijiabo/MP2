@@ -39,4 +39,10 @@ protocol PlayerOperation
     func playerDidFinishPlaying()
 }
 
-typealias Operations = protocol<PlayerOperation , ViewOperation>
+protocol DownloadOperation
+{
+    //下载全部媒体文件
+    func startAllDownload()
+}
+
+typealias Operations = protocol<PlayerOperation , ViewOperation , DownloadOperation>

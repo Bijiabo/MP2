@@ -82,10 +82,12 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             
             _player = AVAudioPlayer(data: playerData, error: &error)
                 //AVAudioPlayer(contentsOfURL: source, error: &error)
+            if _player != nil
+            {
+                _player.delegate = self
             
-            _player.delegate = self
-            
-            _player.prepareToPlay()
+                _player.prepareToPlay()
+            }
             
             //测试切换歌曲
             //_player.currentTime = _player.duration - 10
