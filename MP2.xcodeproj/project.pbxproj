@@ -11,6 +11,9 @@
 		A126FB051B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
 		A126FB071B43C21F009BE576 /* DownloaderClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB061B43C21F009BE576 /* DownloaderClasses.swift */; };
 		A126FB081B43C21F009BE576 /* DownloaderClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB061B43C21F009BE576 /* DownloaderClasses.swift */; };
+		A126FB0B1B468957009BE576 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A126FB0A1B468957009BE576 /* SystemConfiguration.framework */; };
+		A126FB0D1B468EBE009BE576 /* IJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB0C1B468EBE009BE576 /* IJReachability.swift */; };
+		A126FB0E1B468EBE009BE576 /* IJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB0C1B468EBE009BE576 /* IJReachability.swift */; };
 		A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B583E81B33034900AD41D9 /* AppDelegate.swift */; };
 		A1B583EB1B33034900AD41D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B583EA1B33034900AD41D9 /* ViewController.swift */; };
 		A1B583EE1B33034900AD41D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B583EC1B33034900AD41D9 /* Main.storyboard */; };
@@ -89,6 +92,8 @@
 		A126FAE31B43AC7F009BE576 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		A126FB031B43C203009BE576 /* DownloaderProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloaderProtocols.swift; path = Downloader/DownloaderProtocols.swift; sourceTree = "<group>"; };
 		A126FB061B43C21F009BE576 /* DownloaderClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloaderClasses.swift; path = Downloader/DownloaderClasses.swift; sourceTree = "<group>"; };
+		A126FB0A1B468957009BE576 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A126FB0C1B468EBE009BE576 /* IJReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IJReachability.swift; path = lib/IJReachability.swift; sourceTree = "<group>"; };
 		A1B583E31B33034900AD41D9 /* MP2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MP2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B583E71B33034900AD41D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B583E81B33034900AD41D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A126FB0B1B468957009BE576 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +159,8 @@
 		A1B583DA1B33034900AD41D9 = {
 			isa = PBXGroup;
 			children = (
+				A126FB0C1B468EBE009BE576 /* IJReachability.swift */,
+				A126FB0A1B468957009BE576 /* SystemConfiguration.framework */,
 				A126FB091B43C2CB009BE576 /* Downloader */,
 				A126FAE31B43AC7F009BE576 /* Alamofire.xcodeproj */,
 				A1B5841F1B33331200AD41D9 /* resource */,
@@ -391,6 +399,7 @@
 				A1B5841A1B332A1400AD41D9 /* PlayerManager.swift in Sources */,
 				A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */,
 				A1B5840D1B33041700AD41D9 /* Model.swift in Sources */,
+				A126FB0D1B468EBE009BE576 /* IJReachability.swift in Sources */,
 				A1B5842F1B3480EC00AD41D9 /* Operation.swift in Sources */,
 				A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */,
 			);
@@ -413,6 +422,7 @@
 				A1B584231B33F26700AD41D9 /* ViewManager.swift in Sources */,
 				A1B584181B3307A200AD41D9 /* Status.swift in Sources */,
 				A126FB081B43C21F009BE576 /* DownloaderClasses.swift in Sources */,
+				A126FB0E1B468EBE009BE576 /* IJReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +497,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -525,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
