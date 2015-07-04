@@ -87,7 +87,6 @@ class Downloader : DownloaderProtocol
     }
     
     func start(index: Int) {
-        println("start : index \(index)")
         
         let item = list[index]
         

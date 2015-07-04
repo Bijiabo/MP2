@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>18E3B980-069E-4DDD-9433-292E55EBE570</string>
 	<key>IDESourceControlProjectName</key>
-	<string>MP2</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
@@ -16,11 +16,11 @@
 		<string>https://github.com/Bijiabo/MP2.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MP2.xcodeproj</string>
+	<string>MP2.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>../../Alamofire/</string>
+		<string>../..Alamofire/</string>
 		<key>ED91B10C62FE1F8839015F3775B00A6D0F88E755</key>
 		<string>../..</string>
 	</dict>

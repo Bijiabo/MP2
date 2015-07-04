@@ -38,8 +38,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
         
-        initUIAlertView()
-        
         _refreshNavigationBar(navigationBar: mainNavigationBar)
         
     }
@@ -148,67 +146,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         {
             playPauseButton.setBackgroundImage(UIImage(named: "playButton") , forState: UIControlState.Normal)
             
-        }
-    }
-    
-    func checkIsWifi() -> Bool
-    {
-        if IJReachability.isConnectedToNetworkOfType() == .WiFi
-        {
-            return true
-        }
-        else
-        {
-            return false
-        }
-    }
-    
-    func checkIsConnected() -> Bool
-    {
-        if IJReachability.isConnectedToNetwork()
-        {
-            return true
-        }
-        else
-        {
-            return false
-        }
-    }
-    
-    func initUIAlertView()
-    {
-        if checkIsConnected()
-        {
-            if checkIsWifi() == false
-            {
-                
-                let tittle : String = "下载媒体资源"
-                let message : String = "检测到您的设备处于蜂窝网络环境下，是否继续下载必要的媒体资源？"
-                
-                let alert : UIAlertView = UIAlertView(title: tittle, message: message, delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "下载")
-                
-                alert.show()
-                
-            }
-        }
-        else
-        {
-            //网络不通畅
-            
-        }
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        println("alart view click button at index : \(buttonIndex)")
-        
-        if buttonIndex == 1
-        {
-            //user click down
-            delegate?.startAllDownload()
-        }
-        else
-        {
-            //user click cancel
         }
     }
     

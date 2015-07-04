@@ -59,12 +59,18 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
 
     //切换到播放状态
     func play() {
-        _player.play()
+        if _player != nil
+        {
+            _player.play()
+        }
     }
     
     //切换到暂停状态
     func pause() {
-        _player.pause()
+        if _player != nil
+        {
+            _player.pause()
+        }
     }
     
     //设定播放来源
@@ -135,8 +141,10 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         else if interuptionType == AVAudioSessionInterruptionType.Ended.rawValue
         {   
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1), dispatch_get_main_queue(), { () -> Void in
-                //self.player.currentTime = NSTimeInterval(0)
-                self._player.play()
+                if self.delegate?.playing == true
+                {
+                    self.delegate?.play()
+                }
             })
             
             

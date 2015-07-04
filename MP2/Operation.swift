@@ -45,4 +45,14 @@ protocol DownloadOperation
     func startAllDownload()
 }
 
-typealias Operations = protocol<PlayerOperation , ViewOperation , DownloadOperation>
+protocol NetWorkOperation
+{
+    //网络状态
+    var Wifi : Bool {get}
+    var Connected : Bool {get}
+    var CellularNetwork : Bool {get}
+    
+    
+}
+
+typealias Operations = protocol<PlayerOperation , ViewOperation , DownloadOperation , NetWorkOperation>

@@ -10,7 +10,8 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
+class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate
+{
 
     var window: UIWindow?
 
@@ -23,6 +24,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
     var downloader : Downloader?
     
     var cacheRootURL : NSURL!
+    
+    //Network protocol
+    var Wifi : Bool {
+        get{
+            return IJReachability.isConnectedToNetworkOfType() == .WiFi
+        }
+    }
+    
+    var Connected : Bool {
+        get{
+            return IJReachability.isConnectedToNetwork()
+        }
+    }
+    
+    var CellularNetwork : Bool {
+        return IJReachability.isConnectedToNetworkOfType() == .WWAN
+    }
+    
+    //检测网络变化
+    let reachability = Reachability.reachabilityForInternetConnection()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -48,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         
         
         //检查音频文件是否存在
-        if checkCurrentMediaFileExists()
+        if currentMediaFileExist()
         {
             let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
             
@@ -81,6 +102,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         
         self.becomeFirstResponder()
+        
+        //若之前没有下载过内容，则自动下载
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasDownloadAllMediaFiles") == false
+        {
+            if CellularNetwork
+            {
+                showDownloadAlert(allDownload: true)
+            }
+            else
+            {
+                startAllDownload()
+            }
+        }
+        
+        //检测网络变化 test
+        reachability.whenReachable = { reachability in
+            if reachability.isReachableViaWiFi() {
+                println("Reachable via WiFi")
+            } else {
+                println("Reachable via Cellular")
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            println("Not reachable")
+        }
+
+        reachability.startNotifier()
         
         return true
     }
@@ -173,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
     
     func currentPlayingDataHasChanged() {
         
-        if checkCurrentMediaFileExists()
+        if currentMediaFileExist()
         {
             let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
             
@@ -194,7 +242,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         }
         else
         {
-            model.previous()
+            if CellularNetwork
+            {
+                showDownloadAlert(allDownload: false)
+            }
+            
+            model.next()
         }
         
         
@@ -217,6 +270,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         for (key:String,subJSON:JSON) in dataFileJSON
         {
             var item : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+            
             //[name:"起床", list:[ item0, item1, item2... ] ]
             for (key_1:String,subJSON_1:JSON) in subJSON
             {
@@ -238,7 +292,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
                     item[key_1] = scenelist
                 }
                 
-                
             }
             
             dataList.append(item)
@@ -248,7 +301,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
     }
     
     //检测文件是否存在，若不存在则下载
-    func checkCurrentMediaFileExists () -> Bool
+    func currentMediaFileExist () -> Bool
     {
         var isNotDir : ObjCBool = false
         let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
@@ -259,15 +312,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         }
         else
         {
-            println("media file is not exist. Will to be download...")
-            
-            
-            let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
-            let mediaRemoteFileURL : NSURL = NSURL(string: mediaRemoteURLString )!
-            
-            downloader?.download(mediaRemoteURLString, cacheRootURL: cacheRootURL, filename :model?.currentPlayingData["localURI"] as? String )
-
             return false
+        }
+    }
+    
+    private func _downloadCurrentMediaFile()
+    {
+
+        
+        let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
+        let mediaRemoteFileURL : NSURL = NSURL(string: mediaRemoteURLString )!
+        
+        let id : Int? = downloader?.download(mediaRemoteURLString, cacheRootURL: cacheRootURL, filename :model?.currentPlayingData["localURI"] as? String )
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
+        
+        
+    }
+    
+    //枚举：下载提示alertView绑定动作
+    enum DownloadAlertAction : Int
+    {
+        //下载全部
+        case downloadAll
+        //下载当前所需
+        case downloadCurrentMedia
+    }
+    
+    //显示下载提示
+    func showDownloadAlert(#allDownload : Bool)
+    {
+        let tittle : String = "下载媒体资源"
+        let message : String = "检测到您的设备处于蜂窝网络环境下，是否继续下载相关的媒体资源？"
+        
+        let alert : UIAlertView = UIAlertView(title: tittle, message: message, delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "下载")
+        
+        if allDownload
+        {
+            alert.tag = DownloadAlertAction.downloadAll.rawValue
+        }
+        else
+        {
+            alert.tag = DownloadAlertAction.downloadCurrentMedia.rawValue
+        }
+        
+        
+        alert.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        if alertView.tag == DownloadAlertAction.downloadCurrentMedia.rawValue
+        {
+            //下载当前媒体资源
+            _downloadCurrentMediaFile()
+        }
+        else if alertView.tag == DownloadAlertAction.downloadAll.rawValue
+        {
+            //下载全部媒体资源
+            if buttonIndex == 1
+            {
+                //用户确认点击了下载按钮
+                startAllDownload()
+            }
         }
     }
     
@@ -283,6 +390,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations {
         {
             downloader?.download(item["remoteURL"]!, cacheRootURL: cacheRootURL, filename: item["filename"])
         }
+        
+        //记录 用户已经选择下载过全部内容
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasDownloadAllMediaFiles")
     }
     
     
