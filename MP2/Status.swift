@@ -16,6 +16,7 @@ class Status : StatusManager {
     
     //当前情景
     dynamic var currentScene : String = "" {
+        
         didSet {
             observer.statusHasChanged("currentScene")
             
@@ -42,7 +43,6 @@ class Status : StatusManager {
     
     init()
     {
-
         
         //初始化各个情景播放序数缓存
         if let sceneCache :Dictionary<String,Int> = NSUserDefaults.standardUserDefaults().objectForKey("_sceneIndexStatusCache") as? Dictionary<String,Int>

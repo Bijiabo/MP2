@@ -14,11 +14,11 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     var delegate : Operations?
     
-    //情景(名称)列表
+    //情景(名称)列表，保存所有场景，如：["起床","玩耍","午后","睡前"]
     var scenelist : Array<String> = Array<String>()
+
     //状态管理
     var status : StatusManager = Status()
-
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
@@ -52,18 +52,22 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         _updateScenelist(_data)
         
-        self.status = statusManager//初始化播放器状态管理
+        //初始化播放器状态管理
+        self.status = statusManager
         
         status.observer = self
         
-        if self.status.currentScene == ""//启动默认设置场景为第一个
+        //设定启动默认设置场景为上次退出前场景
+        if self.status.currentScene.isEmpty
         {
-            self.status.set_CurrentScene(scenelist[0])//$$稍微不理解,不知道scenelist从哪里来$$
+            //先前没有保存对应场景，则默认为第一个
+            self.status.set_CurrentScene(scenelist[0])
         }
         
         currentSceneIndex = status.currentSceneIndex
         
-        _updateCurrentPlayingData()//修改当前场景播放数据
+        //修改当前场景播放数据
+        _updateCurrentPlayingData()
     
     }
     
