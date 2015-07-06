@@ -55,9 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
         
         //读取数据
-        var modelTestData = loadData()
-        
-
+        let jsonData : JSON = loadJSONData("6.json")
+        var modelTestData = convertJSONtoArray(jsonData)
         
         //设定model和player
         model = Server(data: modelTestData, statusManager: Status())//初始化当前场景和场景需要数据
@@ -65,8 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //初始化downloader
         downloader = Downloader()
-        
-        
         
         //检查音频文件是否存在
         if currentMediaFileExist()
@@ -76,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             player = Player(source: mediaFileURL)
             player.delegate = self
         }
-        
         
         //获取主界面view controller
         var mainVC : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
@@ -251,26 +247,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             model.next()
         }
         
-        
-        
-        
         NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
     }
     
     
     //MARK:
-    //MARK: 读取数据
-    func loadData() -> [Dictionary<String,AnyObject>]
+    //MARK: 读取数据，并将其他格式数据转换为原生数组
+    func loadJSONData(dataFilename : String) -> JSON
     {
+        //读取文件内容
         let dataRootURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data")
 
-        let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent("6.json"))!
+        let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent( dataFilename ))!
 
         let dataFileJSON : JSON = JSON(data:dataFileData)
         
-        var dataList : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
+        return dataFileJSON
+    }
+    
+    //将json格式数据转换为原生数组
+    func convertJSONtoArray (jsonData : JSON) -> [Dictionary<String,AnyObject>]
+    {
+        //所有数据
+        var data : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
         
-        for (key:String,subJSON:JSON) in dataFileJSON
+        for (key:String,subJSON:JSON) in jsonData
         {
             var item : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
             
@@ -297,13 +298,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 
             }
             
-            dataList.append(item)
+            data.append(item)
         }
         
-        return dataList
+        return data
     }
     
-    //检测文件是否存在，若不存在则下载
+    //检测文件是否存在
     func currentMediaFileExist () -> Bool
     {
         var isNotDir : ObjCBool = false
@@ -319,6 +320,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
     }
     
+    //执行下载操作
     private func _downloadCurrentMediaFile()
     {
 
