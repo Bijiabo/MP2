@@ -125,11 +125,12 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         delegate?.switchToScene(targetScene)
     }
     
+    //喜欢按钮触发事件
     @IBAction func tapLikeButton(sender: AnyObject)
     {
         delegate?.doLike()
     }
-    
+    //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
         delegate?.doDislike()

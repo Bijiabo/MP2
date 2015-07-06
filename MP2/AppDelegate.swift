@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
 
         
         //设定model和player
-        model = Server(data: modelTestData, statusManager: Status())
+        model = Server(data: modelTestData, statusManager: Status())//初始化当前场景和场景需要数据
         model.delegate = self
         
         //初始化downloader
@@ -97,9 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         let screen: AnyObject = UIScreen.screens()[0]
         self.window = UIWindow(frame: screen.bounds)
         self.window!.rootViewController = mainVC
-        self.window!.makeKeyAndVisible()
+        self.window!.makeKeyAndVisible()//调用这个方法,显示界面
         
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()//开始监听事件
         
         self.becomeFirstResponder()
         
@@ -183,6 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
     }
 
+    //播放器播放状态改变发送一个通知
     func sendPlayingStatusChangeNotification()
     {
         NSNotificationCenter.defaultCenter().postNotificationName("PlayingStatusChanged", object: playing)
@@ -262,7 +263,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func loadData() -> [Dictionary<String,AnyObject>]
     {
         let dataRootURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data")
+
         let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent("6.json"))!
+
         let dataFileJSON : JSON = JSON(data:dataFileData)
         
         var dataList : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
@@ -275,13 +278,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             for (key_1:String,subJSON_1:JSON) in subJSON
             {
                 
-                if let value = subJSON_1.string
+                if let value = subJSON_1.string//判断场景名,[起床,午后,玩耍,睡前]
                 {
-                    item[key_1] = value
+                    item[key_1] = value//存场景名字
                 }
                 else
                 {
-                    //继续遍历
+                    //继续遍历:对应场景的音乐
                     var scenelist : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
                     
                     for (key_2:String, subJSON_2:JSON) in subJSON_1
@@ -289,7 +292,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                         scenelist.append(subJSON_2.dictionaryObject!)
                     }
                     
-                    item[key_1] = scenelist
+                    item[key_1] = scenelist//存对应场景的列表???稍微不理解,上面存得是string类型,这里是json类型$$$
                 }
                 
             }

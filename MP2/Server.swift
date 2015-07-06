@@ -14,7 +14,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     var delegate : Operations?
     
-    //情景列表
+    //情景(名称)列表
     var scenelist : Array<String> = Array<String>()
     //状态管理
     var status : StatusManager = Status()
@@ -52,17 +52,18 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         _updateScenelist(_data)
         
-        self.status = statusManager
+        self.status = statusManager//初始化播放器状态管理
+        
         status.observer = self
         
-        if self.status.currentScene == ""
+        if self.status.currentScene == ""//启动默认设置场景为第一个
         {
-            self.status.set_CurrentScene(scenelist[0])
+            self.status.set_CurrentScene(scenelist[0])//$$稍微不理解,不知道scenelist从哪里来$$
         }
         
         currentSceneIndex = status.currentSceneIndex
         
-        _updateCurrentPlayingData()
+        _updateCurrentPlayingData()//修改当前场景播放数据
     
     }
     
@@ -70,6 +71,8 @@ class Server : NSObject , ModelManager ,StatusObserver
  
     private func _updateScenelist (data : Array<AnyObject>)
     {
+        scenelist = Array<String>()
+        
         for var i=0; i<data.count; i++
         {
             if let dataItem = data[i] as? Dictionary<String,AnyObject>

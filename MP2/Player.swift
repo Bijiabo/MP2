@@ -54,7 +54,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
         AVAudioSession.sharedInstance().setActive(true, error: nil)
         
-        _addObserver()
+        _addObserver()//添加一个观察者
     }
 
     //切换到播放状态
