@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     var cacheRootURL : NSURL!
     
-    //Network protocol
+    //MARK:
+    //MARK: Network Operation
+    
     var Wifi : Bool {
         get{
             return IJReachability.isConnectedToNetworkOfType() == .WiFi
@@ -42,9 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         return IJReachability.isConnectedToNetworkOfType() == .WWAN
     }
     
-    //检测网络变化
+    //MARK:
+    //MARK: 检测网络变化
     let reachability = Reachability.reachabilityForInternetConnection()
 
+    
+    //MARK:
+    //MARK: application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //初始化路径
@@ -144,6 +150,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func applicationWillTerminate(application: UIApplication) {
     }
     
+    //MARK:
+    //MARK: PlayerOperation
     
     var playing : Bool = false
     
@@ -324,14 +332,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     private func _downloadCurrentMediaFile()
     {
 
-        
         let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
         let mediaRemoteFileURL : NSURL = NSURL(string: mediaRemoteURLString )!
         
         let id : Int? = downloader?.download(mediaRemoteURLString, cacheRootURL: cacheRootURL, filename :model?.currentPlayingData["localURI"] as? String )
         
         NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
-        
         
     }
     
@@ -383,8 +389,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
     }
     
-    //Download Operation Protocol
-    
+    //MARK:
+    //MARK: Download Operation Protocol
     func startAllDownload() {
         
         //获取下载列表
