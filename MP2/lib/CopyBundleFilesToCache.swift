@@ -46,6 +46,14 @@ class CopyBundleFilesToCache {
         let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
         
         let targetPath : String = cachePath + "/\(targetDirectoryInCache)/"
+
+        //若目标文件夹不存在，则创建
+        var isDir : ObjCBool = true
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(targetPath, isDirectory: &isDir) == false
+        {
+            NSFileManager.defaultManager().createDirectoryAtPath(targetPath, withIntermediateDirectories: true, attributes: [NSFileProtectionKey : NSFileProtectionNone], error: nil)
+        }
         
         let bundleResourceDirectoryURL : NSURL! = NSBundle.mainBundle().resourceURL?.URLByAppendingPathComponent("resource/media")
         
@@ -106,22 +114,20 @@ class CopyBundleFilesToCache {
     
     func removeFileProtection (#path : String) -> Void
     {
-        //        println(path)
         
         let attributes : Dictionary = [NSFileProtectionKey : NSFileProtectionNone]
         
         var error : NSError?
         
         NSFileManager.defaultManager().setAttributes(attributes, ofItemAtPath: path, error: &error)
-        
-        //        println("remove fileprotection error : ")
-        //        println(error)
-        //        println("------")
+
     }
     
     func loopFilesToRemoveProtection (#path : String) -> Void
     {
-        let list : [AnyObject] = NSFileManager.defaultManager().contentsOfDirectoryAtURL(NSURL(fileURLWithPath: path)!, includingPropertiesForKeys: nil, options: nil, error: nil)!
+        let fileURL : NSURL = NSURL(fileURLWithPath: path)!
+        
+        let list = NSFileManager.defaultManager().contentsOfDirectoryAtURL(fileURL, includingPropertiesForKeys: nil, options: nil, error: nil)!
         
         for item in list //as [AnyObject]
         {
