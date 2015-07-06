@@ -39,7 +39,12 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
         
         _refreshNavigationBar(navigationBar: mainNavigationBar)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
+        _refreshPlayButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,15 +143,18 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func playingStatusChanged(notification : NSNotification)
     {
+        _refreshPlayButton()
+    }
+    
+    private func _refreshPlayButton()
+    {
         if delegate?.playing == true
         {
             playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
-
         }
         else
         {
             playPauseButton.setBackgroundImage(UIImage(named: "playButton") , forState: UIControlState.Normal)
-            
         }
     }
     

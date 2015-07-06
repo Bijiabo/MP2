@@ -151,9 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     }
     
     //MARK:
-    //MARK: PlayerOperation
-    
-    var playing : Bool = false
+    //MARK: ViewOperation
     
     func doLike() {
         
@@ -167,10 +165,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
     }
     
-    func playerDidFinishPlaying()
-    {
-        playNext()
-    }
     
     func switchToScene(scene : String)
     {
@@ -192,6 +186,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     {
         NSNotificationCenter.defaultCenter().postNotificationName("PlayingStatusChanged", object: playing)
     }
+    
+    //MARK:
+    //MARK: PlayerOperation
+    
+    var playing : Bool = false
     
     func play()
     {
@@ -224,6 +223,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
     }
     
+    func playerDidFinishPlaying()
+    {
+        playNext()
+    }
+    
+    //MARK:
+    //MARK: 播放内容更新
+    
     func currentPlayingDataHasChanged() {
         
         if currentMediaFileExist()
@@ -242,14 +249,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             if playing
             {
                 play()
-                
             }
+            
+            //处理音频无法播放bug，跳至下一首
+            if player == nil
+            {
+                model.next()
+            }
+            
         }
         else
         {
             if CellularNetwork
             {
-                showDownloadAlert(allDownload: false)
+                let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
+                
+                let filename : String? = model?.currentPlayingData["localURI"] as? String
+                
+                singleMediaNeedToDownload(remoteURL: mediaRemoteURLString, filename: filename)
+                
             }
             
             model.next()
@@ -328,18 +346,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
     }
     
-    //执行下载操作
-    private func _downloadCurrentMediaFile()
+    //MARK:
+    //MARK: 下载相关
+    var mediaFilesNeedToDownloadQueue : [Dictionary<String,String?>] = [Dictionary<String,String?>]()
+    //var mediaFileDownloadingQueue : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
+    
+    func singleMediaNeedToDownload(#remoteURL : String , filename : String?)
     {
-
-        let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
-        let mediaRemoteFileURL : NSURL = NSURL(string: mediaRemoteURLString )!
+        /*
+        var taskdidNotAppend : Bool = true
         
-        let id : Int? = downloader?.download(mediaRemoteURLString, cacheRootURL: cacheRootURL, filename :model?.currentPlayingData["localURI"] as? String )
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
-        
+        //验证是否已经存在此任务
+        for i in 0..<mediaFilesNeedToDownloadQueue.count
+        {
+            let sameRemoteURL : Bool = mediaFilesNeedToDownloadQueue[i]["remoteURL"]! == remoteURL
+            let sameFilename : Bool = mediaFilesNeedToDownloadQueue[i]["filename"]! == filename
+            
+            if sameRemoteURL && sameFilename
+            {
+                taskdidNotAppend = false
+                break
+            }
+        }
+        */
+        //if taskdidNotAppend
+        //{
+            mediaFilesNeedToDownloadQueue.append([
+                "remoteURL" : remoteURL,
+                "filename" : filename
+                ])
+            
+            showDownloadAlert(allDownload: false)
+        //}
     }
+    
+    func downloadMediaFilesInQueue ()
+    {
+        for i in 0..<mediaFilesNeedToDownloadQueue.count
+        {
+            let remoteURL : String = mediaFilesNeedToDownloadQueue[i]["remoteURL"]!!
+            let filename : String? = mediaFilesNeedToDownloadQueue[i]["filename"]!
+            let id : Int? = downloader?.download(remoteURL, cacheRootURL: cacheRootURL, filename : filename )
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
+        }
+        
+        mediaFilesNeedToDownloadQueue.removeAll(keepCapacity: false)
+    }
+    
     
     //枚举：下载提示alertView绑定动作
     enum DownloadAlertAction : Int
@@ -351,32 +405,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     }
     
     //显示下载提示
+    var downloadAlertView : UIAlertView = UIAlertView()
+    var downloadAlertViewIsShowing : Bool = false
+    
     func showDownloadAlert(#allDownload : Bool)
     {
+        if downloadAlertViewIsShowing {
+            return
+        }
+        
         let tittle : String = "下载媒体资源"
         let message : String = "检测到您的设备处于蜂窝网络环境下，是否继续下载相关的媒体资源？"
         
-        let alert : UIAlertView = UIAlertView(title: tittle, message: message, delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "下载")
+        downloadAlertView = UIAlertView(title: tittle, message: message, delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "下载")
         
         if allDownload
         {
-            alert.tag = DownloadAlertAction.downloadAll.rawValue
+            downloadAlertView.tag = DownloadAlertAction.downloadAll.rawValue
         }
         else
         {
-            alert.tag = DownloadAlertAction.downloadCurrentMedia.rawValue
+            downloadAlertView.tag = DownloadAlertAction.downloadCurrentMedia.rawValue
         }
         
-        
-        alert.show()
+        downloadAlertView.show()
+        downloadAlertViewIsShowing = true
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         
         if alertView.tag == DownloadAlertAction.downloadCurrentMedia.rawValue
         {
-            //下载当前媒体资源
-            _downloadCurrentMediaFile()
+            if buttonIndex == 1
+            {
+                //下载媒体资源
+                downloadMediaFilesInQueue()
+            }
         }
         else if alertView.tag == DownloadAlertAction.downloadAll.rawValue
         {
@@ -387,6 +451,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 startAllDownload()
             }
         }
+        
+        downloadAlertViewIsShowing = false
     }
     
     //MARK:
