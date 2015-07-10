@@ -10,10 +10,12 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol
+class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol , ModuleLader
 {
     //模拟蜂窝网络网络调试，设为`true`时，会识别网络为蜂窝网络。正式上线和测试产品时应为false。
     let isCellPhoneDebug : Bool = true
+    
+    var mainVC : UIViewController!
 
     var window: UIWindow?
 
@@ -83,17 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             player.delegate = self
         }
         
-        //获取主界面view controller
-        var mainVC : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
-        
-        //传入model给main view controller
-        if let vc : ViewManager = mainVC as? ViewManager
-        {
-            var VC : ViewManager = mainVC as! ViewManager
-
-            VC.model = self.model
-            VC.delegate = self
-        }
+        //MARK:
+        //MARK: 获取主界面view controller
+        self.loadModule("Guide", storyboardIdentifier: "mainVC")
         
         nowPlayingInfoCenter = NowPlayingInfoCenterController()
         nowPlayingInfoCenter.model = self.model
@@ -543,6 +537,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //下载出错
     func downloadErrorOccurd(data : AnyObject)
     {
+        
+    }
+    
+    //Module Loader Protocol
+    
+    func loadModule(storyboardName: String, storyboardIdentifier: String) {
+        
+        switch storyboardName
+        {
+            case "Guide":
+            //yuan
+                mainVC = UIStoryboard(name: "Guide", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
+                
+                if let vc : Module = mainVC as? Module
+                {
+                    var VC : Module = mainVC as! Module
+                    
+                    VC.moduleLoader = self
+                }
+            
+            case "Main":
+            //hu
+                mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
+                
+                if let vc : ViewManager = mainVC as? ViewManager
+                {
+                    var VC : ViewManager = mainVC as! ViewManager
+                    
+                    VC.model = self.model
+                    VC.delegate = self
+                }
+            
+            
+            default:
+                break
+        }
+        
+        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: nil)
+        
         
     }
     

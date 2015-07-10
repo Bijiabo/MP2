@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Guide View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController storyboardIdentifier="mainVC" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="GuideViewController" customModule="UIScrollViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEj-2o-uOQ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="THc-oC-BAw">
+                                <rect key="frame" x="280" y="553" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.17178184160000001" green="0.83547266200000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gEj-2o-uOQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="KS9-ei-7o5"/>
+                            <constraint firstAttribute="centerX" secondItem="THc-oC-BAw" secondAttribute="centerX" id="car-Nn-0j8"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="THc-oC-BAw" secondAttribute="bottom" constant="10" id="hJ9-1p-6QK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gEj-2o-uOQ" secondAttribute="trailing" constant="-16" id="i5H-fK-BrO"/>
+                            <constraint firstItem="gEj-2o-uOQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="k4C-kD-ohF"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="gEj-2o-uOQ" secondAttribute="bottom" id="pf0-Sc-wow"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="THc-oC-BAw" id="awE-Uk-A95"/>
+                        <outlet property="scrollVIew1" destination="gEj-2o-uOQ" id="PUY-q5-GtG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331" y="404"/>
+        </scene>
+        <!--Date Picker View Controller-->
+        <scene sceneID="SLW-Fe-vMi">
+            <objects>
+                <viewController storyboardIdentifier="datePickerVC" id="oCt-Cm-31T" customClass="datePickerViewController" customModule="UIScrollViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lAj-7w-HQS"/>
+                        <viewControllerLayoutGuide type="bottom" id="BzM-Bx-CRQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RCg-Lb-wM3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Sfc-sw-BhR">
+                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="458211125.838983">
+                                    <!--2015-07-10 08:52:05 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-946731600">
+                                    <!--1971-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goV-33-RaE">
+                                <rect key="frame" x="248" y="550" width="105" height="30"/>
+                                <state key="normal" title="开启磨耳朵之旅">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Sfc-sw-BhR" secondAttribute="centerX" id="CZH-w3-eNa"/>
+                            <constraint firstAttribute="centerX" secondItem="goV-33-RaE" secondAttribute="centerX" id="LAC-4y-7wh"/>
+                            <constraint firstItem="BzM-Bx-CRQ" firstAttribute="top" secondItem="goV-33-RaE" secondAttribute="bottom" constant="20" id="Pli-PC-JsS"/>
+                            <constraint firstAttribute="centerY" secondItem="Sfc-sw-BhR" secondAttribute="centerY" id="b70-IJ-bLK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4K-sW-7NZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="404"/>
+        </scene>
+    </scenes>
+</document>

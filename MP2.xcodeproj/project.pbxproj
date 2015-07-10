@@ -10,7 +10,7 @@
 		3328D6171B46A7BA00704F48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3328D6161B46A7BA00704F48 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3328D61B1B46A99E00704F48 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
 		3328D61E1B46AA2F00704F48 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A126FAEB1B43AC7F009BE576 /* Alamofire.framework */; };
-		3328D6201B46AA3B00704F48 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A126FAED1B43AC7F009BE576 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3328D6201B46AA3B00704F48 /* Alamofire.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A126FAED1B43AC7F009BE576 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
 		A126FB051B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
 		A126FB071B43C21F009BE576 /* DownloaderClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB061B43C21F009BE576 /* DownloaderClasses.swift */; };
@@ -49,8 +49,13 @@
 		A1B5842D1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5842B1B34557300AD41D9 /* NowPlayingInfoCenter.swift */; };
 		A1B5842F1B3480EC00AD41D9 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5842E1B3480EC00AD41D9 /* Operation.swift */; };
 		A1B584301B3480EC00AD41D9 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5842E1B3480EC00AD41D9 /* Operation.swift */; };
+		A1B5987A1B4FD92300257DDB /* module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B598791B4FD92300257DDB /* module.swift */; };
 		A1C99B8B1B481E3400BA3881 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C99B8A1B481E3400BA3881 /* Reachability.swift */; };
 		A1C99B8C1B481E3400BA3881 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C99B8A1B481E3400BA3881 /* Reachability.swift */; };
+		A1E321DB1B4FD4360008D265 /* datePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E321D91B4FD4360008D265 /* datePickerViewController.swift */; };
+		A1E321DC1B4FD4360008D265 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E321DA1B4FD4360008D265 /* GuideViewController.swift */; };
+		A1E321DE1B4FD44F0008D265 /* Guide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E321DD1B4FD44F0008D265 /* Guide.storyboard */; };
+		A1E321E01B4FD4780008D265 /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = A1E321DF1B4FD4780008D265 /* Guide-images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,14 +104,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3328D6111B46A59F00704F48 /* CopyFiles */ = {
+		3328D6111B46A59F00704F48 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3328D6201B46AA3B00704F48 /* Alamofire.framework in CopyFiles */,
+				3328D6201B46AA3B00704F48 /* Alamofire.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3328D6131B46A5AF00704F48 /* CopyFiles */ = {
@@ -150,7 +156,12 @@
 		A1B584211B33F26700AD41D9 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewManager.swift; path = protocol/ViewManager.swift; sourceTree = "<group>"; };
 		A1B5842B1B34557300AD41D9 /* NowPlayingInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingInfoCenter.swift; sourceTree = "<group>"; };
 		A1B5842E1B3480EC00AD41D9 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		A1B598791B4FD92300257DDB /* module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = module.swift; path = protocol/module.swift; sourceTree = "<group>"; };
 		A1C99B8A1B481E3400BA3881 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = lib/Reachability.swift; sourceTree = "<group>"; };
+		A1E321D91B4FD4360008D265 /* datePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = datePickerViewController.swift; path = Guide/datePickerViewController.swift; sourceTree = "<group>"; };
+		A1E321DA1B4FD4360008D265 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GuideViewController.swift; path = Guide/GuideViewController.swift; sourceTree = "<group>"; };
+		A1E321DD1B4FD44F0008D265 /* Guide.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Guide.storyboard; path = Guide/Guide.storyboard; sourceTree = "<group>"; };
+		A1E321DF1B4FD4780008D265 /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Guide-images"; path = "Guide/Guide-images"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +207,7 @@
 		A1B583DA1B33034900AD41D9 = {
 			isa = PBXGroup;
 			children = (
+				A1E321E11B4FD4810008D265 /* Guide */,
 				3328D6161B46A7BA00704F48 /* SystemConfiguration.framework */,
 				A126FB0C1B468EBE009BE576 /* IJReachability.swift */,
 				A126FB091B43C2CB009BE576 /* Downloader */,
@@ -280,8 +292,20 @@
 				A1B584191B332A1400AD41D9 /* PlayerManager.swift */,
 				A1B584211B33F26700AD41D9 /* ViewManager.swift */,
 				A1B5842E1B3480EC00AD41D9 /* Operation.swift */,
+				A1B598791B4FD92300257DDB /* module.swift */,
 			);
 			name = protocol;
+			sourceTree = "<group>";
+		};
+		A1E321E11B4FD4810008D265 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				A1E321DF1B4FD4780008D265 /* Guide-images */,
+				A1E321DD1B4FD44F0008D265 /* Guide.storyboard */,
+				A1E321D91B4FD4360008D265 /* datePickerViewController.swift */,
+				A1E321DA1B4FD4360008D265 /* GuideViewController.swift */,
+			);
+			name = Guide;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +318,7 @@
 				A1B583DF1B33034900AD41D9 /* Sources */,
 				A1B583E01B33034900AD41D9 /* Frameworks */,
 				A1B583E11B33034900AD41D9 /* Resources */,
-				3328D6111B46A59F00704F48 /* CopyFiles */,
+				3328D6111B46A59F00704F48 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -409,6 +433,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E321E01B4FD4780008D265 /* Guide-images in Resources */,
+				A1E321DE1B4FD44F0008D265 /* Guide.storyboard in Resources */,
 				3328D61B1B46A99E00704F48 /* resource in Resources */,
 				A1B583EE1B33034900AD41D9 /* Main.storyboard in Resources */,
 				A1B583F31B33034900AD41D9 /* LaunchScreen.xib in Resources */,
@@ -430,6 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E321DB1B4FD4360008D265 /* datePickerViewController.swift in Sources */,
+				A1E321DC1B4FD4360008D265 /* GuideViewController.swift in Sources */,
 				A1B5842C1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */,
 				A126FB071B43C21F009BE576 /* DownloaderClasses.swift in Sources */,
 				A1C99B8B1B481E3400BA3881 /* Reachability.swift in Sources */,
@@ -442,6 +470,7 @@
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
 				A1B584141B3305B800AD41D9 /* Server.swift in Sources */,
+				A1B5987A1B4FD92300257DDB /* module.swift in Sources */,
 				A1B5841A1B332A1400AD41D9 /* PlayerManager.swift in Sources */,
 				A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */,
 				A1B5840D1B33041700AD41D9 /* Model.swift in Sources */,
