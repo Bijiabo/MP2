@@ -380,7 +380,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         {
             let remoteURL : String = mediaFilesNeedToDownloadQueue[i]["remoteURL"]!!
             let filename : String? = mediaFilesNeedToDownloadQueue[i]["filename"]!
-            let id : Int? = downloader?.download(remoteURL, cacheRootURL: cacheRootURL, filename : filename )
+            let id : Int? = downloader?.addTask(remoteURL, cacheRootURL: cacheRootURL, filename : filename )
             
             //更新总体下载队列暂存
             addTaskRecordsToDownloadQueue([
@@ -493,15 +493,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             let remoteURL : String = item["remoteURL"]!
             let filename : String? = item["filename"]
             
-            downloader?.download(remoteURL, cacheRootURL: cacheRootURL, filename: filename)
+            downloader?.addTask(remoteURL, cacheRootURL: cacheRootURL, filename: filename)
             
             //更新总体下载进度暂存
             addTaskRecordsToDownloadQueue([
                 "remoteURL" : remoteURL,
                 "filename" : filename
                 ])
-
         }
+        
+        downloader?.startDownload()
         
         //记录 用户已经选择下载过全部内容
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasDownloadAllMediaFiles")

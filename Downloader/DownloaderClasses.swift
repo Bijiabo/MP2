@@ -15,6 +15,9 @@ class DownloadItem : DownloadItemProtocol
     var remoteURL : NSURL
     var cacheRootURL : NSURL
     var filename : String = ""
+
+    var downloadComplete : Bool = false
+    var status : String = "start"
     
     init(remoteURL : NSURL , cacheRootURL : NSURL)
     {
@@ -36,7 +39,7 @@ class Downloader : DownloaderProtocol
         
     }
     
-    func download(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
+    func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
     {
         var item : DownloadItemProtocol = DownloadItem(remoteURL: NSURL(string: remoteURL)!, cacheRootURL: cacheRootURL)
         
@@ -77,30 +80,79 @@ class Downloader : DownloaderProtocol
         }
         
         //开始下载
-        start(id)
+        //start(id)
         
         return id
     }
+    
+    func startDownload()
+    {
+        
+        for i in 0..<list.count
+        {
+            if list[i].status == "start"
+            {
+                let destination : (NSURL, NSHTTPURLResponse) -> NSURL = _getDestination(remoteURL : list[i].remoteURL, cacheRootURL : list[i].cacheRootURL, filename : list[i].filename)
+                
+                let request = Alamofire.download(.GET, list[i].remoteURL, destination)
+                
+                //delegate是否有进度显示,若支持，则提供下载进度更新
+                if self.delegate?.refreshDownloadProgressFor != nil
+                {
+                    request.progress { (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+                        
+                        let percent = Float(totalBytesRead) / Float(totalBytesExpectedToRead)
+                        
+                        self.delegate?.refreshDownloadProgressFor!(id: self.list[i].id, progress: percent)
+                        
+                    }
+                }
+                
+                
+                request.response { (request, response, _, error) in
+                    
+                    println("download complete  [\(self.list[i].remoteURL)]\n\n")
+                    
+                    self.list[i].status = "complete"
+                    
+                    self.delegate?.downloadCompleted( self.list[i] as! AnyObject )
+                    
+                    self.startDownload()
+                }
+                
+                break
+            }
+            
+        }
+    }
+    
+    
+    private func _getDestination ( #remoteURL : NSURL , cacheRootURL : NSURL , filename : String ) -> (NSURL, NSHTTPURLResponse) -> NSURL
+    {
+        let destination : (NSURL, NSHTTPURLResponse) -> NSURL = {(temporaryURL, response) -> NSURL in
+            
+            var _filename : String = remoteURL.lastPathComponent!
+            
+            if filename != ""
+            {
+                _filename = filename
+            }
+            
+            let url : NSURL = cacheRootURL.URLByAppendingPathComponent(_filename)
+            
+            return url
+        }
+        
+        return destination
+    }
+    
     
     func start(index: Int) {
         
         let item = list[index]
         
-        let destination : (NSURL, NSHTTPURLResponse) -> NSURL = {(temporaryURL, response) -> NSURL in
-            
-            var filename : String = item.remoteURL.lastPathComponent!
-            
-            if item.filename != ""
-            {
-                filename = item.filename
-            }
-            
-            let url : NSURL = item.cacheRootURL.URLByAppendingPathComponent(filename)
-            
-            return url
-        }
-        
-        
+        let destination : (NSURL, NSHTTPURLResponse) -> NSURL = _getDestination(remoteURL : item.remoteURL, cacheRootURL : item.cacheRootURL, filename : item.filename)
+
         
         if requestlist.count > index
         {
@@ -117,8 +169,6 @@ class Downloader : DownloaderProtocol
                     
                     let percent = Float(totalBytesRead) / Float(totalBytesExpectedToRead)
                     
-                    
-                    
                     self.delegate?.refreshDownloadProgressFor!(id: item.id, progress: percent)
                     
                 }
@@ -126,9 +176,12 @@ class Downloader : DownloaderProtocol
             
             
             request.response { (request, response, _, error) in
-
-                    println("download complete  [\(item.remoteURL)]\n\n")
-                    self.delegate?.downloadCompleted( item as! AnyObject )
+                
+                println("download complete 111  [\(item.remoteURL)]\n\n")
+                
+                self.list[index].downloadComplete = true
+                
+                self.delegate?.downloadCompleted( item as! AnyObject )
             }
             
             requestlist.append(request)

@@ -20,6 +20,12 @@ protocol DownloadItemProtocol
     
     //本地保存文件名
     var filename : String {get set}
+    
+    //是否已经下载完成
+    var downloadComplete : Bool {get set}
+    
+    //状态
+    var status : String {get set}
 }
 
 protocol DownloaderProtocol
@@ -27,7 +33,7 @@ protocol DownloaderProtocol
     var delegate : DownloaderObserverProtocol? {get set}
     
     //建立下载任务，返回下载任务id
-    func download(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
+    func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
     
     func start(index : Int)
     func pause(index : Int)
