@@ -7,8 +7,10 @@
 //
 import UIKit
 
-class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate
+class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate , Module
 {
+    var moduleLoader : ModuleLader?
+    
     var delegate : Operations?
 
     @IBOutlet var playPauseButton: UIButton!

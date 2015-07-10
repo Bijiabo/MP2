@@ -203,18 +203,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
     
     func clickConfirmButton(){
         
-        var storyboard : UIStoryboard = UIStoryboard(name: "Guide", bundle: nil)
-        var datePickerVC : UIViewController = storyboard.instantiateViewControllerWithIdentifier("datePickerVC") as! UIViewController
-        
-        if let vc : Module = datePickerVC as? Module
-        {
-            var VC : Module =  datePickerVC as! Module
-            VC.moduleLoader = self.moduleLoader
-        }
-        
-        self.presentViewController(datePickerVC, animated: true) { () -> Void in
-            println("xcxcx")
-        }
+        moduleLoader?.loadModule("Main", storyboardIdentifier: "userInformationSetting")
         
     }
     

@@ -548,7 +548,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         {
             case "Guide":
             //yuan
-                mainVC = UIStoryboard(name: "Guide", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
+                mainVC = UIStoryboard(name: "Guide", bundle: nil).instantiateViewControllerWithIdentifier(storyboardIdentifier) as! UIViewController
                 
                 if let vc : Module = mainVC as? Module
                 {
@@ -559,14 +559,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             
             case "Main":
             //hu
-                mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UIViewController
+                mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(storyboardIdentifier) as! UIViewController
                 
-                if let vc : ViewManager = mainVC as? ViewManager
+                //若mainVC符合Module，则传入ModuleLoader
+                if let vc : Module = mainVC as? Module
                 {
-                    var VC : ViewManager = mainVC as! ViewManager
+                    var VC : Module = mainVC as! Module
                     
-                    VC.model = self.model
-                    VC.delegate = self
+                    VC.moduleLoader = self
+                }
+                
+                if storyboardIdentifier == "mainVC"
+                {
+                    if let vc : ViewManager = mainVC as? ViewManager
+                    {
+                        var VC : ViewManager = mainVC as! ViewManager
+                        
+                        VC.model = self.model
+                        VC.delegate = self
+                    }
                 }
             
             
@@ -574,8 +585,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 break
         }
         
-        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: nil)
-        
+        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: {
+            () -> Void in
+            
+            println("present view controller to [\(storyboardName)]'s \(storyboardIdentifier)")
+        })
         
     }
     

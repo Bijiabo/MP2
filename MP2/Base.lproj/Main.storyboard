@@ -9,7 +9,7 @@
         <!--User Information View Controller-->
         <scene sceneID="uOU-sJ-w01">
             <objects>
-                <viewController id="jaj-xC-Y4q" customClass="userInformationViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userInformationSetting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jaj-xC-Y4q" customClass="userInformationViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cxt-ag-Mk3"/>
                         <viewControllerLayoutGuide type="bottom" id="bzZ-De-dVd"/>

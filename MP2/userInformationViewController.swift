@@ -8,8 +8,10 @@
 
 import UIKit
 
-class userInformationViewController: UIViewController {
-
+class userInformationViewController: UIViewController , Module
+{
+    var moduleLoader : ModuleLader?
+    
     @IBOutlet var childNameTextField: UITextField!
     @IBOutlet var childSexualitySegmentedControl: UISegmentedControl!
     @IBOutlet var childBirthdayDatePicker: UIDatePicker!
@@ -107,7 +109,9 @@ class userInformationViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(childBirthdayDatePicker.date, forKey: "childBirthday")
         
         //关闭页面
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
+        
     }
     
 }
