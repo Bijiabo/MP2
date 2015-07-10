@@ -66,10 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //读取数据
         let jsonData : JSON = loadJSONData("6.json")
-        var modelTestData = convertJSONtoArray(jsonData)
+        var data = convertJSONtoArray(jsonData)
         
         //设定model和player
-        model = Server(data: modelTestData, statusManager: Status())//初始化当前场景和场景需要数据
+        model = Server(data: data, statusManager: Status())//初始化当前场景和场景需要数据
         model.delegate = self
         
         //初始化downloader
@@ -128,6 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
 
         reachability.startNotifier()
+        
+        addObserver()
         
         return true
     }
@@ -346,7 +348,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     var downloadQueue : [Dictionary<String,String?>] = [Dictionary<String,String?>]()
     //单个文件下载队列
     var mediaFilesNeedToDownloadQueue : [Dictionary<String,String?>] = [Dictionary<String,String?>]()
-    //var mediaFileDownloadingQueue : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
     
     func singleMediaNeedToDownload(#remoteURL : String , filename : String?)
     {
@@ -585,14 +586,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 break
         }
         
-        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: {
-            () -> Void in
-            
-            println("present view controller to [\(storyboardName)]'s \(storyboardIdentifier)")
-        })
+        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: nil)
         
     }
     
+    func addObserver()
+    {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("ageChanged:"), name: "childAgeGroupChanged", object: nil)
+    }
+    
+    func ageChanged (notification : NSNotification)
+    {
+        let ageObject : Dictionary<String,Int> = notification.object as! Dictionary<String,Int>
+        let age : Int = ageObject["age"]!
+        
+        println("age : \(age)")
+        
+        let jsonData : JSON = loadJSONData("6.json")
+        var data = convertJSONtoArray(jsonData)
+        
+        model.updateData(data)
+    }
     
 }
 

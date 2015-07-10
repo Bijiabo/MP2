@@ -21,6 +21,8 @@ class userInformationViewController: UIViewController , Module
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initView()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +50,8 @@ class userInformationViewController: UIViewController , Module
                 }
             }
         }
+        
+        
         
     }
     
@@ -109,8 +113,8 @@ class userInformationViewController: UIViewController , Module
         NSUserDefaults.standardUserDefaults().setObject(childBirthdayDatePicker.date, forKey: "childBirthday")
         
         //关闭页面
-        //self.dismissViewControllerAnimated(true, completion: nil)
-        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
+        self.dismissViewControllerAnimated(true, completion: nil)
+//        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
         
     }
     

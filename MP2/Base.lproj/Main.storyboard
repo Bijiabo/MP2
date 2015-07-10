@@ -42,7 +42,7 @@
                                     <segment title="女孩"/>
                                 </segments>
                             </segmentedControl>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="N9g-xG-hhM">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="N9g-xG-hhM">
                                 <rect key="frame" x="0.0" y="286" width="600" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="457619370.85470998">
                                     <!--2015-07-03 12:29:30 +0000-->

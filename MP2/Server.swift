@@ -225,4 +225,15 @@ class Server : NSObject , ModelManager ,StatusObserver
     }
     
     
+    func updateData (data : Array<AnyObject>)
+    {
+        _data = data
+        
+        _updateScenelist(_data)
+        
+        _updateCurrentPlayingData()
+        
+        delegate?.currentPlayingDataHasChanged()
+    }
+    
 }

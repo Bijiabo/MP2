@@ -28,4 +28,7 @@ protocol ModelManager
     
     //获取下载列表
     func getDownloadList() -> [Dictionary<String,String>]
+    
+    //更新数据
+    func updateData (data : Array<AnyObject>)
 }
