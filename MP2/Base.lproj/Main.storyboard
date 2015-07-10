@@ -152,7 +152,7 @@
                                 <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                             </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="audio name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfk-s2-4hZ">
-                                <rect key="frame" x="28" y="473" width="200" height="34"/>
+                                <rect key="frame" x="28" y="473" width="200" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="TWm-Gs-3H8"/>
                                 </constraints>
@@ -161,7 +161,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="audio tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4V-gn-DN2">
-                                <rect key="frame" x="28" y="444" width="116" height="22"/>
+                                <rect key="frame" x="28" y="443" width="116" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="5OE-Mf-RRw"/>
                                 </constraints>
@@ -210,12 +210,35 @@
                                     <action selector="tapLikeButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fYW-5d-vtF"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3S-tj-hUN" userLabel="downloadTipView">
+                                <rect key="frame" x="205" y="64" width="189" height="54"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="MbV-Ky-eTT">
+                                        <rect key="frame" x="14" y="16" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="媒体资源下载中..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qx7-Vf-BKj">
+                                        <rect key="frame" x="42" y="16" width="133.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Qx7-Vf-BKj" firstAttribute="leading" secondItem="MbV-Ky-eTT" secondAttribute="trailing" constant="8" id="KpY-L2-qOS"/>
+                                    <constraint firstAttribute="height" constant="54" id="Pvg-wD-6iT"/>
+                                    <constraint firstItem="Qx7-Vf-BKj" firstAttribute="top" secondItem="f3S-tj-hUN" secondAttribute="top" constant="16" id="XY9-fp-BTS"/>
+                                    <constraint firstAttribute="width" constant="189" id="jlp-NT-XfK"/>
+                                    <constraint firstItem="MbV-Ky-eTT" firstAttribute="leading" secondItem="f3S-tj-hUN" secondAttribute="leading" constant="14" id="m9y-Jf-GyV"/>
+                                    <constraint firstItem="MbV-Ky-eTT" firstAttribute="top" secondItem="f3S-tj-hUN" secondAttribute="top" constant="16" id="mMj-s7-Qcu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="top" secondItem="g4V-gn-DN2" secondAttribute="bottom" constant="86" id="1r4-8H-NcF"/>
                             <constraint firstItem="DZt-NT-gVh" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="24f-Fz-6i3"/>
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="top" secondItem="cfk-s2-4hZ" secondAttribute="bottom" constant="37" id="2a3-1v-U0n"/>
+                            <constraint firstItem="f3S-tj-hUN" firstAttribute="top" secondItem="2bO-ec-vPU" secondAttribute="bottom" id="3BG-sc-7e3"/>
                             <constraint firstItem="TB8-KA-NA8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="553-sw-6QU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zkd-lm-jaY" secondAttribute="trailingMargin" constant="-16" id="9CG-yp-Bvv"/>
                             <constraint firstItem="TB8-KA-NA8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="DPb-4P-L6Q"/>
@@ -235,6 +258,7 @@
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="top" secondItem="DZt-NT-gVh" secondAttribute="bottom" constant="44" id="l1Y-RJ-PhQ"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Zkd-lm-jaY" secondAttribute="bottom" id="l5g-CP-0Ba"/>
                             <constraint firstItem="g4V-gn-DN2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="12" id="lfe-e0-Yx4"/>
+                            <constraint firstAttribute="centerX" secondItem="f3S-tj-hUN" secondAttribute="centerX" id="n6C-U0-tGO"/>
                             <constraint firstItem="DZt-NT-gVh" firstAttribute="leading" secondItem="zdI-Vu-XdK" secondAttribute="trailing" constant="3" id="tG2-GN-MZg"/>
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="top" secondItem="RaV-Nu-56K" secondAttribute="bottom" id="tXV-zQ-CWF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RaV-Nu-56K" secondAttribute="trailingMargin" constant="-16" id="uMC-eR-kjd"/>
@@ -256,6 +280,9 @@
                         <outlet property="audioName" destination="cfk-s2-4hZ" id="Y0g-du-wd1"/>
                         <outlet property="audioTag" destination="g4V-gn-DN2" id="km1-5x-OVY"/>
                         <outlet property="backgroundImageView" destination="56b-pC-UrY" id="jjx-Sg-Xk4"/>
+                        <outlet property="downloadingTipActivityView" destination="MbV-Ky-eTT" id="Imk-wa-PXl"/>
+                        <outlet property="downloadingTipLabel" destination="Qx7-Vf-BKj" id="jYg-Vf-86b"/>
+                        <outlet property="downloadingTipView" destination="f3S-tj-hUN" id="H2M-Gm-8tG"/>
                         <outlet property="mainNavigationBar" destination="2bO-ec-vPU" id="XRM-Kw-2ax"/>
                         <outlet property="navigationBarTitle" destination="atI-Ic-jCa" id="78L-h2-yQZ"/>
                         <outlet property="playPauseButton" destination="Tiz-L9-K1C" id="hPc-mZ-Q9F"/>

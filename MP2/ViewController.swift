@@ -18,6 +18,9 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var mainNavigationBar: UINavigationBar!
     @IBOutlet var navigationBarTitle: UINavigationItem!
+    @IBOutlet var downloadingTipView: UIView!
+    @IBOutlet var downloadingTipLabel: UILabel!
+    @IBOutlet var downloadingTipActivityView: UIActivityIndicatorView!
 
     var model : ModelManager?
     
@@ -39,6 +42,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
         
         _refreshNavigationBar(navigationBar: mainNavigationBar)
+        
+        initDownloadTipView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -110,14 +115,23 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func initAudioInfoView ()
     {
+        refreshAudioInfoView()
+    }
+    
+    func refreshAudioInfoView ()
+    {
         audioName.text = model?.currentPlayingData["name"] as? String
         audioTag.text = model?.currentPlayingData["tag"] as? String
+        
+        if let currentScene : String = model?.status.currentScene
+        {
+            navigationBarTitle.title = "\(currentScene)磨耳朵"
+        }
     }
     
     func CurrentPlayingDataHasChanged(notification : NSNotification)
     {
-        audioName.text = model?.currentPlayingData["name"] as? String
-        audioTag.text = model?.currentPlayingData["tag"] as? String
+        refreshAudioInfoView()
         
         _refreshBackgroundImageView(view: backgroundImageView)
     }
@@ -160,6 +174,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     private func _refreshBackgroundImageView (#view : UIImageView?) -> Void
     {
+        
         if view == nil {return}
         
         let resourceURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/image", isDirectory: true)
@@ -183,6 +198,46 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         ]
         navigationBar!.shadowImage = UIImage()
         
+    }
+    
+    //MARK:
+    //MARK: downloading Tip
+    func initDownloadTipView()
+    {
+        hideDownloadingTip()
+        
+        addDownloadingObserver()
+    }
+    
+    func addDownloadingObserver ()
+    {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("downloadStarted:"), name: "DownloadStarted", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("downloadStoped:"), name: "DownloadStoped", object: nil)
+    }
+    
+    //下载开始
+    func downloadStarted(notification : NSNotification)
+    {
+        showDownloadingTip()
+    }
+    
+    //下载停止
+    func downloadStoped(notification : NSNotification)
+    {
+        hideDownloadingTip()
+    }
+    
+    func showDownloadingTip ()
+    {
+        downloadingTipActivityView.startAnimating()
+        downloadingTipView.hidden = false
+    }
+    
+    func hideDownloadingTip ()
+    {
+        downloadingTipActivityView.stopAnimating()
+        downloadingTipView.hidden = true
     }
 }
 

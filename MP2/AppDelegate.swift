@@ -10,8 +10,10 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol
 {
+    //模拟蜂窝网络网络调试，设为`true`时，会识别网络为蜂窝网络。正式上线和测试产品时应为false。
+    let isCellPhoneDebug : Bool = true
 
     var window: UIWindow?
 
@@ -41,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     }
     
     var CellularNetwork : Bool {
-        return IJReachability.isConnectedToNetworkOfType() == .WWAN
+        return  isCellPhoneDebug ? true : IJReachability.isConnectedToNetworkOfType() == .WWAN
     }
     
     //MARK:
@@ -70,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //初始化downloader
         downloader = Downloader()
+        downloader?.delegate = self
         
         //检查音频文件是否存在
         if currentMediaFileExist()
@@ -106,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         self.becomeFirstResponder()
         
         //若之前没有下载过内容，则自动下载
-        if NSUserDefaults.standardUserDefaults().boolForKey("hasDownloadAllMediaFiles") == false
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasDownloadAllMediaFiles") == false || isCellPhoneDebug
         {
             if CellularNetwork
             {
@@ -260,15 +263,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
         else
         {
-            if CellularNetwork
-            {
-                let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
-                
-                let filename : String? = model?.currentPlayingData["localURI"] as? String
-                
-                singleMediaNeedToDownload(remoteURL: mediaRemoteURLString, filename: filename)
-                
-            }
+            let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
+            
+            let filename : String? = model?.currentPlayingData["localURI"] as? String
+            
+            singleMediaNeedToDownload(remoteURL: mediaRemoteURLString, filename: filename)
             
             model.next()
         }
@@ -348,36 +347,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     //MARK:
     //MARK: 下载相关
+    
+    //下载Item的id队列，用于检测是否所有下载已完成
+    var downloadQueue : [Dictionary<String,String?>] = [Dictionary<String,String?>]()
+    //单个文件下载队列
     var mediaFilesNeedToDownloadQueue : [Dictionary<String,String?>] = [Dictionary<String,String?>]()
     //var mediaFileDownloadingQueue : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
     
     func singleMediaNeedToDownload(#remoteURL : String , filename : String?)
     {
-        /*
-        var taskdidNotAppend : Bool = true
-        
-        //验证是否已经存在此任务
-        for i in 0..<mediaFilesNeedToDownloadQueue.count
+        mediaFilesNeedToDownloadQueue.append([
+            "remoteURL" : remoteURL,
+            "filename" : filename
+            ])
+     
+        if CellularNetwork
         {
-            let sameRemoteURL : Bool = mediaFilesNeedToDownloadQueue[i]["remoteURL"]! == remoteURL
-            let sameFilename : Bool = mediaFilesNeedToDownloadQueue[i]["filename"]! == filename
-            
-            if sameRemoteURL && sameFilename
-            {
-                taskdidNotAppend = false
-                break
-            }
-        }
-        */
-        //if taskdidNotAppend
-        //{
-            mediaFilesNeedToDownloadQueue.append([
-                "remoteURL" : remoteURL,
-                "filename" : filename
-                ])
-            
+            //蜂窝网络环境，申请用户下载许可
             showDownloadAlert(allDownload: false)
-        //}
+        }
+        else
+        {
+            //直接下载
+            downloadMediaFilesInQueue()
+        }
+        
     }
     
     func downloadMediaFilesInQueue ()
@@ -388,10 +382,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             let filename : String? = mediaFilesNeedToDownloadQueue[i]["filename"]!
             let id : Int? = downloader?.download(remoteURL, cacheRootURL: cacheRootURL, filename : filename )
             
+            //更新总体下载队列暂存
+            addTaskRecordsToDownloadQueue([
+                "remoteURL" : remoteURL,
+                "filename" : filename
+                ])
+
+            
             NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
         }
         
         mediaFilesNeedToDownloadQueue.removeAll(keepCapacity: false)
+    }
+    
+    //记录下载任务至下载队列，便于总体下载状态统计，是否已经全部完成
+    func addTaskRecordsToDownloadQueue(item : Dictionary<String,String?>)
+    {
+        var aleardyHasTask : Bool = false
+        
+        for item in downloadQueue
+        {
+            let sameRemoteURL : Bool = item["remoteURL"]! == item["remoteURL"]!
+            let sameFilename : Bool = item["filename"]! == item["filename"]!
+            
+            if sameRemoteURL && sameFilename
+            {
+                aleardyHasTask = true
+                break
+            }
+        }
+        
+        if aleardyHasTask == false
+        {
+            println("aleardyHasTask == false")
+            downloadQueue.append(item)
+        }
     }
     
     
@@ -465,11 +490,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         //下载全部媒体文件
         for item in downloadList
         {
-            downloader?.download(item["remoteURL"]!, cacheRootURL: cacheRootURL, filename: item["filename"])
+            let remoteURL : String = item["remoteURL"]!
+            let filename : String? = item["filename"]
+            
+            downloader?.download(remoteURL, cacheRootURL: cacheRootURL, filename: filename)
+            
+            //更新总体下载进度暂存
+            addTaskRecordsToDownloadQueue([
+                "remoteURL" : remoteURL,
+                "filename" : filename
+                ])
+
         }
         
         //记录 用户已经选择下载过全部内容
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasDownloadAllMediaFiles")
+    }
+    
+    //MARK:
+    //MARK: download observer protocol
+    
+    //下载完成
+    func downloadCompleted(data : AnyObject)
+    {
+        if let downloadItem : DownloadItemProtocol = data as? DownloadItemProtocol
+        {
+            for var i = 0 ; i < downloadQueue.count ; i++
+            {
+                let item = downloadQueue[i]
+                let sameRemoteURL : Bool = NSURL(string: item["remoteURL"]!!)! == downloadItem.remoteURL
+                let sameFilename : Bool = item["filename"]! == downloadItem.filename
+                
+                if sameRemoteURL && sameFilename
+                {
+                    downloadQueue.removeAtIndex(i)
+                    break
+                }
+            }
+        }
+        
+        println("downloadItemIdQueue.count \(downloadQueue.count)")
+        
+        if downloadQueue.count == 0
+        {
+            NSNotificationCenter.defaultCenter().postNotificationName("DownloadStoped", object: nil)
+        }
+    }
+    
+    //下载出错
+    func downloadErrorOccurd(data : AnyObject)
+    {
+        
     }
     
     

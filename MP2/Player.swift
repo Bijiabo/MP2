@@ -13,6 +13,9 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
 {
     var delegate : PlayerOperation?
     
+    //中断前的播放状态
+    var playingBeforeInteruption : Bool = false
+    
     //播放状态
     var playing : Bool {
         get {
@@ -120,9 +123,6 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("audioSessionMediaServicesWereReset:"), name: AVAudioSessionMediaServicesWereResetNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("audioSessionSilenceSecondaryAudioHint:"), name: AVAudioSessionSilenceSecondaryAudioHintNotification, object: nil)
-        
-        
     }
     
     func avaudioSessionInterruption(notification : NSNotification)
@@ -136,12 +136,15 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         {
             println("began interuption")
             
-            _player.pause()
+            playingBeforeInteruption = _player.playing
+            
+            delegate?.pause()
+            
         }
         else if interuptionType == AVAudioSessionInterruptionType.Ended.rawValue
         {   
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1), dispatch_get_main_queue(), { () -> Void in
-                if self.delegate?.playing == true
+                if self.playingBeforeInteruption
                 {
                     self.delegate?.play()
                 }
@@ -171,10 +174,6 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         
     }
     
-    func audioSessionSilenceSecondaryAudioHint (notification : NSNotification)
-    {
-        
-    }
     
     
     func audioSessionInterruptionTypeEnded (notification : NSNotification)

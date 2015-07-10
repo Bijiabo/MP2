@@ -71,14 +71,10 @@ class Downloader : DownloaderProtocol
                 NSFileManager.defaultManager().createDirectoryAtURL(cacheRootURL, withIntermediateDirectories: true, attributes: [NSFileProtectionKey : NSFileProtectionNone], error: nil)
             }
             
-            id = list.count
-            
-            item.id = id
+            item.id = list.count
             
             list.append(item)
         }
-        
-        
         
         //开始下载
         start(id)
@@ -137,6 +133,9 @@ class Downloader : DownloaderProtocol
             
             requestlist.append(request)
         }
+        
+        //发送通知
+        NSNotificationCenter.defaultCenter().postNotificationName("DownloadStarted", object: nil)
         
     }
     
