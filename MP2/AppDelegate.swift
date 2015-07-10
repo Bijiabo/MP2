@@ -392,6 +392,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
         }
         
+        downloader?.startDownload()
+        
         mediaFilesNeedToDownloadQueue.removeAll(keepCapacity: false)
     }
     
