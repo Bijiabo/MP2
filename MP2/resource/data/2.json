@@ -1,0 +1,154 @@
+[
+    {
+       "list": [
+         {
+           "id": "9197729e-ce54-48a1-a6f1-245b73c67ca9",
+           "localURI": "krze50os.2ya.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/0/eycg9ujb.audio"
+           ],
+           "series": null,
+           "name": "清晨",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "4399cc72-b21d-4a72-9f25-15688b61adeb",
+           "localURI": "p0r51hyy.wkc.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/2/yr31ivyi.audio"
+           ],
+           "series": null,
+           "name": "雪花天上来",
+           "tag": "音乐",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "a4bada06-33bb-492c-9b63-f415bda4d8ad",
+           "localURI": "fgwsvlqb.xfd.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/5/s1tvlx1a.audio"
+           ],
+           "series": null,
+           "name": "You Are My Sunshine",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         }
+       ],
+       "name": "起床"
+     },
+     {
+       "list": [
+         {
+           "id": "6d597434-c952-4326-8f9c-23213ab94050",
+           "localURI": "oeok5pic.qlh.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/1/odfbe44.audio"
+           ],
+           "series": null,
+           "name": "Bumblebee",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "e01707cd-b9db-468b-b195-9bef46a2f6da",
+           "localURI": "hc2mv0vz.o0x.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/0/bs6daur0.audio"
+           ],
+           "series": null,
+           "name": "In the Good, Old Summertime",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "ed286118-7cbd-4a7b-8fa8-e537b49a3e71",
+           "localURI": "tju1atgw.054.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/5/o8gkqk2h.audio"
+           ],
+           "series": null,
+           "name": "Little Green Frog",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         }
+       ],
+       "name": "午后"
+     },
+     {
+       "list": [
+         {
+           "id": "fa92d6e0-0c22-4e46-975d-fea5113f9b3b",
+           "localURI": "1p42n5xz.l0t.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/5/jhxikgnf.audio"
+           ],
+           "series": null,
+           "name": "Big Rock Candy Mountain",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "8bd66fbc-494b-4d5c-9865-afd626a30d16",
+           "localURI": "m4p1gves.hsz.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/9/u6bfvk1v.audio"
+           ],
+           "series": null,
+           "name": "Can You Feel the Love Tonight",
+           "tag": "音乐",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "8cce8bf7-6313-4343-bbb4-b772cc881162",
+           "localURI": "qc5t3jns.kt2.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/9/a81ustsm.audio"
+           ],
+           "series": null,
+           "name": "Deck the Hall",
+           "tag": "儿歌",
+           "numberOfLoops": 1,
+           "duration": 0
+         }
+       ],
+       "name": "玩耍"
+     },
+     {
+       "list": [
+         {
+           "id": "a8b4d788-e4bc-4df8-9ca0-337dab1da9dc",
+           "localURI": "22lophbm.fb3.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/5/di34cjru.audio"
+           ],
+           "series": null,
+           "name": "整个夜晚",
+           "tag": "音乐",
+           "numberOfLoops": 1,
+           "duration": 0
+         },
+         {
+           "id": "1a33d853-c3cf-4918-94d9-c9b119a11971",
+           "localURI": "otmeddo0.2x4.m4a",
+           "remoteURL": [
+             "http://aoss.appshare.cn/a/4/3wnmxm5a.audio"
+           ],
+           "series": null,
+           "name": "Always With Me",
+           "tag": "音乐",
+           "numberOfLoops": 1,
+           "duration": 0
+         }
+       ],
+       "name": "睡前"
+     }
+   ]

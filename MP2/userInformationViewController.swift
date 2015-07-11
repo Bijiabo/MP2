@@ -16,7 +16,7 @@ class userInformationViewController: UIViewController , Module
     @IBOutlet var childSexualitySegmentedControl: UISegmentedControl!
     @IBOutlet var childBirthdayDatePicker: UIDatePicker!
     
-    let ageMax : Int = 3
+    let ageMax : Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +50,6 @@ class userInformationViewController: UIViewController , Module
                 }
             }
         }
-        
-        
         
     }
     

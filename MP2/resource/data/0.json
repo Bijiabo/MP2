@@ -1,0 +1,154 @@
+[
+    {
+   "list": [
+     {
+       "id": "a9064699-0574-4b37-a549-a1134a58513a",
+       "localURI": "3x3k0bip.hqx.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/9/rgx8fa8x.audio"
+       ],
+       "series": null,
+       "name": "Sunshine on Oxcart",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "e6db883d-1faf-4cac-94f6-f7e22eca17bf",
+       "localURI": "21yamtf4.vi5.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/4/cu2wj64w.audio"
+       ],
+       "series": null,
+       "name": "Baby toys meet melody",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "1873605a-9b6b-4a1c-bfef-1d8a63c5e9e5",
+       "localURI": "0yriqss4.1iq.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/7/4hir93vx.audio"
+       ],
+       "series": null,
+       "name": "寂静的森林",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     }
+   ],
+   "name": "起床"
+ },
+ {
+   "list": [
+     {
+       "id": "7476bf53-cbe6-477f-ba2b-e073064bddfe",
+       "localURI": "otmeddo0.2x4.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/4/3wnmxm5a.audio"
+       ],
+       "series": null,
+       "name": "Always With Me",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "566b8816-ca13-4d4a-9cef-619412ad2e54",
+       "localURI": "gxynyub4.mqn.m4a",
+       "remoteURL": [
+         "http://7xige8.com1.z0.glb.clouddn.com/Bingo.mp3"
+       ],
+       "series": null,
+       "name": "Bingo",
+       "tag": "儿歌",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "2e498b02-44bf-429e-9081-7409a5296cc1",
+       "localURI": "ivbyz35e.bh0.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/0/vhu2bzv5.audio"
+       ],
+       "series": null,
+       "name": "Boy And Girl",
+       "tag": "儿歌",
+       "numberOfLoops": 1,
+       "duration": 0
+     }
+   ],
+   "name": "午后"
+ },
+ {
+   "list": [
+     {
+       "id": "174a0e64-e62c-4c01-b33b-4854a54b0038",
+       "localURI": "gm5iqast.zyu.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/4/u5q3ew8b.audio"
+       ],
+       "series": null,
+       "name": "Down in the Valley",
+       "tag": "儿歌",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "080636d2-a0c1-41fa-bf59-5c343a958a5d",
+       "localURI": "mieqvobl.4rb.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/2/owkxt49i.audio"
+       ],
+       "series": null,
+       "name": "Five Little Speckled Frogs",
+       "tag": "儿歌",
+       "numberOfLoops": 1,
+       "duration": 0
+     }
+   ],
+   "name": "玩耍"
+ },
+ {
+   "list": [
+     {
+       "id": "84ba1538-b0ad-48a7-aa6a-76151fef742b",
+       "localURI": "3nkbvksq.xmz.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/1/kuchplvq.audio"
+       ],
+       "series": null,
+       "name": "Cradle Hymn",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "223d22e5-2a7d-4f3c-a5a2-e26be1a01a27",
+       "localURI": "22lophbm.fb3.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/5/di34cjru.audio"
+       ],
+       "series": null,
+       "name": "整个夜晚",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     },
+     {
+       "id": "0dc00081-4d8f-4bd3-8406-b9350fc2b8ca",
+       "localURI": "ruwp52fz.luk.m4a",
+       "remoteURL": [
+         "http://aoss.appshare.cn/a/0/jybc86c6.audio"
+       ],
+       "series": null,
+       "name": "好甜好甜的梦",
+       "tag": "音乐",
+       "numberOfLoops": 1,
+       "duration": 0
+     }
+   ],
+   "name": "睡前"
+ }
+]

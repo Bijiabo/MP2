@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -8,7 +9,7 @@
         <!--Guide View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="mainVC" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="GuideViewController" customModule="UIScrollViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="GuideViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -48,7 +49,7 @@
         <!--Date Picker View Controller-->
         <scene sceneID="SLW-Fe-vMi">
             <objects>
-                <viewController storyboardIdentifier="datePickerVC" id="oCt-Cm-31T" customClass="datePickerViewController" customModule="UIScrollViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="datePickerVC" id="oCt-Cm-31T" customClass="datePickerViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lAj-7w-HQS"/>
                         <viewControllerLayoutGuide type="bottom" id="BzM-Bx-CRQ"/>
@@ -70,20 +71,26 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goV-33-RaE">
-                                <rect key="frame" x="248" y="550" width="105" height="30"/>
+                                <rect key="frame" x="248" y="530" width="105" height="30"/>
                                 <state key="normal" title="开启磨耳朵之旅">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapStartButton:" destination="oCt-Cm-31T" eventType="touchUpInside" id="1OU-oJ-aU5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Sfc-sw-BhR" secondAttribute="centerX" id="CZH-w3-eNa"/>
                             <constraint firstAttribute="centerX" secondItem="goV-33-RaE" secondAttribute="centerX" id="LAC-4y-7wh"/>
-                            <constraint firstItem="BzM-Bx-CRQ" firstAttribute="top" secondItem="goV-33-RaE" secondAttribute="bottom" constant="20" id="Pli-PC-JsS"/>
+                            <constraint firstItem="BzM-Bx-CRQ" firstAttribute="top" secondItem="goV-33-RaE" secondAttribute="bottom" constant="40" id="Pli-PC-JsS"/>
                             <constraint firstAttribute="centerY" secondItem="Sfc-sw-BhR" secondAttribute="centerY" id="b70-IJ-bLK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="childBirthdayDatePicker" destination="Sfc-sw-BhR" id="oPn-Jp-Ah9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4K-sW-7NZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

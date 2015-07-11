@@ -102,19 +102,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         self.becomeFirstResponder()
         
-        //若之前没有下载过内容，则自动下载
-        if NSUserDefaults.standardUserDefaults().boolForKey("hasDownloadAllMediaFiles") == false || isCellPhoneDebug
-        {
-            if CellularNetwork
-            {
-                showDownloadAlert(allDownload: true)
-            }
-            else
-            {
-                startAllDownload()
-            }
-        }
-        
         //检测网络变化 test
         reachability.whenReachable = { reachability in
             if reachability.isReachableViaWiFi() {
@@ -592,13 +579,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     func addObserver()
     {
+        //年龄改变
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("ageChanged:"), name: "childAgeGroupChanged", object: nil)
+        
+        //主播放界面加载完毕
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("mainPlayerViewControllerDidLoad:"), name: "MainPlayerViewControllerDidLoad", object: nil)
     }
     
     func ageChanged (notification : NSNotification)
     {
         let ageObject : Dictionary<String,Int> = notification.object as! Dictionary<String,Int>
-        let age : Int = ageObject["age"]!
+        var age : Int = ageObject["age"]!
+        
+        //MARK: 调试，超过三岁的暂用6岁数据
+        if age>3 {age = 6}
         
         println("age : \(age)")
         
@@ -606,6 +600,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         var data = convertJSONtoArray(jsonData)
         
         model.updateData(data)
+    }
+    
+    func mainPlayerViewControllerDidLoad (notification : NSNotification)
+    {
+        //若之前没有下载过内容，则自动下载
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasDownloadAllMediaFiles") == false || isCellPhoneDebug
+        {
+            if CellularNetwork
+            {
+                showDownloadAlert(allDownload: true)
+            }
+            else
+            {
+                startAllDownload()
+            }
+        }
     }
     
 }

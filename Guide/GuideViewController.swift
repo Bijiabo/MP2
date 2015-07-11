@@ -203,7 +203,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
     
     func clickConfirmButton(){
         
-        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
+        moduleLoader?.loadModule("Guide", storyboardIdentifier: "datePickerVC")
         
     }
     

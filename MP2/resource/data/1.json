@@ -1,0 +1,154 @@
+[
+    {
+        "list": [
+          {
+            "id": "6c2a7391-a0e7-46e4-bd09-c4f19c3fc08c",
+            "localURI": "3x3k0bip.hqx.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/9/rgx8fa8x.audio"
+            ],
+            "series": null,
+            "name": "Sunshine on Oxcart",
+            "tag": "音乐",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "6f0e26bf-7076-4ff9-8189-0d6187c4aa2a",
+            "localURI": "lgwvu51z.hxw.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/2/d06pyskb.audio"
+            ],
+            "series": null,
+            "name": "Introduction and Royal March of the Lion",
+            "tag": "音乐",
+            "numberOfLoops": 1,
+            "duration": 0
+          }
+        ],
+        "name": "起床"
+      },
+      {
+        "list": [
+          {
+            "id": "3fe6c932-e9d3-44df-8c71-be53f6247566",
+            "localURI": "k3rfryw0.lvi.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/3/rz4d43rz.audio"
+            ],
+            "series": null,
+            "name": "Dance Your Fingers",
+            "tag": "童谣",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "b103c2c2-e201-4980-8418-1e889d4b3183",
+            "localURI": "ix4yjkcy.jej.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/1/4jew8t3e.audio"
+            ],
+            "series": null,
+            "name": "Donkey Donkey I Beg You",
+            "tag": "儿歌",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "cf945ad7-41fd-4ed9-9d1d-f846e3081063",
+            "localURI": "hvok3ivg.24u.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/3/mlukucso.audio"
+            ],
+            "series": null,
+            "name": "Found A Peaunt",
+            "tag": "儿歌",
+            "numberOfLoops": 1,
+            "duration": 0
+          }
+        ],
+        "name": "午后"
+      },
+      {
+        "list": [
+          {
+            "id": "71b6d832-84d7-4d7c-b36e-7ddaed9764bd",
+            "localURI": "zbgcius0.52p.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/0/avorlzt0.audio"
+            ],
+            "series": null,
+            "name": "A True, True Friend",
+            "tag": "儿歌",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "33cdc7c7-766b-4124-95d8-9f69158c2ba8",
+            "localURI": "3dwtaehv.c2d.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/0/zjwe9gpk.audio"
+            ],
+            "series": null,
+            "name": "Babs Seed",
+            "tag": "儿歌",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "60cc6c16-db82-40af-94ab-195e10a2e0ca",
+            "localURI": "wezhnrss.p2w.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/3/h7478uxi.audio"
+            ],
+            "series": null,
+            "name": "Forever Young",
+            "tag": "音乐",
+            "numberOfLoops": 1,
+            "duration": 0
+          }
+        ],
+        "name": "玩耍"
+      },
+      {
+        "list": [
+          {
+            "id": "27fe950f-d6d0-49b4-8f27-865e73e73181",
+            "localURI": "fgwsvlqb.xfd.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/5/s1tvlx1a.audio"
+            ],
+            "series": null,
+            "name": "You Are My Sunshine",
+            "tag": "儿歌",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "fa156cdd-222d-4d28-9b55-8c483cd4b145",
+            "localURI": "gdqw5a3f.qzt.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/3/vha8rxsu.audio"
+            ],
+            "series": null,
+            "name": "The Nightingale",
+            "tag": "音乐",
+            "numberOfLoops": 1,
+            "duration": 0
+          },
+          {
+            "id": "9e56f7b5-5cc0-476b-80c9-90d4f0306868",
+            "localURI": "otmeddo0.2x4.m4a",
+            "remoteURL": [
+              "http://aoss.appshare.cn/a/4/3wnmxm5a.audio"
+            ],
+            "series": null,
+            "name": "Always With Me",
+            "tag": "音乐",
+            "numberOfLoops": 1,
+            "duration": 0
+          }
+        ],
+        "name": "睡前"
+      }
+    ]

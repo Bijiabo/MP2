@@ -46,6 +46,9 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         _refreshNavigationBar(navigationBar: mainNavigationBar)
         
         initDownloadTipView()
+        
+        //加载完毕，发送通知
+        NSNotificationCenter.defaultCenter().postNotificationName("MainPlayerViewControllerDidLoad", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
