@@ -197,6 +197,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         
         self.presentViewController(mainVC, animated: true, completion: nil)
         */
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "applicationHadActivated")
         
         moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
     }

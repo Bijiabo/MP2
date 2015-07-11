@@ -244,6 +244,11 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         downloadingTipActivityView.stopAnimating()
         downloadingTipView.hidden = true
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle
+    {
+        return UIStatusBarStyle.LightContent
+    }
 }
 
 

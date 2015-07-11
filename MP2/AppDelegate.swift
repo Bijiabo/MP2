@@ -87,7 +87,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //MARK:
         //MARK: 获取主界面view controller
-        self.loadModule("Guide", storyboardIdentifier: "mainVC")
+        if NSUserDefaults.standardUserDefaults().boolForKey("applicationHadActivated") == false
+        {
+            self.loadModule("Guide", storyboardIdentifier: "mainVC")
+        }
+        else
+        {
+            self.loadModule("Main", storyboardIdentifier: "mainVC")
+        }
         
         nowPlayingInfoCenter = NowPlayingInfoCenterController()
         nowPlayingInfoCenter.model = self.model

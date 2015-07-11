@@ -78,6 +78,8 @@ class datePickerViewController: UIViewController , Module
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "applicationHadActivated")
+        
         moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
     }
 }
