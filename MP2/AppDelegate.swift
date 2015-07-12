@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
         
         //拷贝音频资源到cache目录
+        //MARK: 需要修改，应该是应用安装后首次启动执行一遍
         CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
         
         //读取数据
@@ -223,7 +224,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     //MARK:
     //MARK: 播放内容更新
-    
+    //MARK: 2遍播放问题所在，应去除。
     func currentPlayingDataHasChanged() {
         
         if currentMediaFileExist()
