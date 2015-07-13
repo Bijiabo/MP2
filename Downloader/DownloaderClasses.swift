@@ -87,7 +87,7 @@ class Downloader : DownloaderProtocol
     
     func startDownload()
     {
-        
+        //遍历下载列表,下载列表中的所有内容
         for i in 0..<list.count
         {
             if list[i].status == "start"
@@ -108,7 +108,8 @@ class Downloader : DownloaderProtocol
                     }
                 }
                 
-                
+                //_的用法,在这里的意思是忽略掉第三个参数
+                //MARK:待完善->对error出错进行处理
                 request.response { (request, response, _, error) in
                     
                     println("download complete  [\(self.list[i].remoteURL)]\n\n")

@@ -13,7 +13,7 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol , ModuleLader
 {
     //模拟蜂窝网络网络调试，设为`true`时，会识别网络为蜂窝网络。正式上线和测试产品时应为false。
-    let isCellPhoneDebug : Bool = true
+    let isCellPhoneDebug : Bool = false
     
     var mainVC : UIViewController!
 
@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     var downloader : Downloader?
     
+    //缓存到本地的路径
     var cacheRootURL : NSURL!
     
     //MARK:
@@ -57,16 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //初始化路径
+        //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
-        
         //拷贝音频资源到cache目录
         //MARK: 需要修改，应该是应用安装后首次启动执行一遍
         CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
         
         //读取数据
-        let jsonData : JSON = loadJSONData("6.json")
+        let jsonData : JSON = loadJSONData("0.json")
         var data = convertJSONtoArray(jsonData)
         
         //设定model和player
@@ -84,6 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             
             player = Player(source: mediaFileURL)
             player.delegate = self
+        }else{
+            //***待处理***文件不存在,切换到存在的音乐
+            
+            
         }
         
         //MARK:
@@ -227,17 +231,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: 2遍播放问题所在，应去除。
     func currentPlayingDataHasChanged() {
         
+        //判断当前播放文件是否存在
         if currentMediaFileExist()
         {
+            //
             let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
             
             if player != nil
             {
-                player.setSource(mediaFileURL)
+                player.setTheSource(mediaFileURL)
             }
             else
             {
                 player = Player(source: mediaFileURL)
+               
             }
             
             if playing
@@ -245,13 +252,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 play()
             }
             
-            //处理音频无法播放bug，跳至下一首
+            //处理音频无法播放bug，跳至下一首,
+            //MARK:待处理:如果整个场景下的列表都没有歌曲,那么下载,下载的同时调到别的场景先播放,或者提示用户
             if player == nil
             {
                 model.next()
             }
             
-        }
+        }//本地没有数据,开始下载
         else
         {
             let mediaRemoteURLString : String = (model.currentPlayingData["remoteURL"] as! [String])[0]
@@ -287,6 +295,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         //所有数据
         var data : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
         
+        //[{},{},{},{}]
         for (key:String,subJSON:JSON) in jsonData
         {
             var item : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
@@ -297,19 +306,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 
                 if let value = subJSON_1.string//判断场景名,[起床,午后,玩耍,睡前]
                 {
-                    item[key_1] = value//存场景名字
+                    item[key_1] = value//存场景歌单列表
                 }
                 else
                 {
                     //继续遍历:对应场景的音乐
                     var scenelist : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
-                    
+                    //["":"","":[],"":""]
                     for (key_2:String, subJSON_2:JSON) in subJSON_1
                     {
                         scenelist.append(subJSON_2.dictionaryObject!)
                     }
                     
-                    item[key_1] = scenelist//存对应场景的列表???稍微不理解,上面存得是string类型,这里是json类型$$$
+                    item[key_1] = scenelist
                 }
                 
             }
@@ -379,6 +388,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 ])
 
             
+            //
             NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
         }
         
@@ -604,7 +614,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         println("age : \(age)")
         
-        let jsonData : JSON = loadJSONData("6.json")
+        let jsonData : JSON = loadJSONData("2.json")
         var data = convertJSONtoArray(jsonData)
         
         model.updateData(data)

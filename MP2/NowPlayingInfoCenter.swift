@@ -20,6 +20,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     private let _view: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.defaultCenter()
     
+    
     //remoteCommandCenter 控制命令 的 缓存 （用于切换模式时）
     var remoteCommandCenterCache : Dictionary<String , AnyObject> = Dictionary<String , AnyObject>()
     //切换模式时提示显示时间
@@ -36,13 +37,16 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
     }
     
+    //播放数据改变通知
     func CurrentPlayingDataHasChanged(notification : NSNotification)
     {
+        
         updateViewModel()
         
         updateView()
     }
     
+    //播放器状态改变通知
     func playingStatusChanged(notification : NSNotification)
     {
         updateViewModel()
@@ -76,6 +80,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         _view.nowPlayingInfo = viewModel
     }
     
+    //创建NowPlayingInfoCenter的时候被调用
     func setupViewControls ()
     {
         let remoteCommandCenter = MPRemoteCommandCenter.sharedCommandCenter()

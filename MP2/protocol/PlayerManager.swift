@@ -21,7 +21,7 @@ protocol PlayerManager
     func pause()
 
     //播放来源
-    var source : NSURL {get}
+    var playSource : NSURL {get set}
     //设定播放来源
-    func setSource (source : NSURL)
+    func setTheSource (playSource : NSURL)
 }

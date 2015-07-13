@@ -10,8 +10,6 @@
 	<string>MP2</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>https://github.com/Alamofire/Alamofire.git</string>
 		<key>ED91B10C62FE1F8839015F3775B00A6D0F88E755</key>
 		<string>https://github.com/Bijiabo/MP2.git</string>
 	</dict>
@@ -19,8 +17,11 @@
 	<string>MP2.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+<<<<<<< Updated upstream
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
 		<string>../..Alamofire/</string>
+=======
+>>>>>>> Stashed changes
 		<key>ED91B10C62FE1F8839015F3775B00A6D0F88E755</key>
 		<string>../..</string>
 	</dict>
@@ -40,6 +41,7 @@
 			<key>IDESourceControlWCCName</key>
 			<string>Alamofire</string>
 		</dict>
+<<<<<<< Updated upstream
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
@@ -48,6 +50,8 @@
 			<key>IDESourceControlWCCName</key>
 			<string>MP2</string>
 		</dict>
+=======
+>>>>>>> Stashed changes
 	</array>
 </dict>
 </plist>

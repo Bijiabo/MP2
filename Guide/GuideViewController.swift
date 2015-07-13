@@ -25,7 +25,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
 {
 
     var moduleLoader : ModuleLader?
-    
+    let guideImgDirName : String = "Guide-images"
     @IBOutlet var scrollVIew1: UIScrollView!
     
     
@@ -35,7 +35,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
     let devHeight: CGFloat = UIScreen.mainScreen().bounds.height
     
     //定义变量,页码数
-    var pages : Int = 7
+    var pages : Int = 4
     
     var currentPix : CGFloat = 0
     
@@ -44,7 +44,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentDeviceImageSubFix = getCurrentDiveceImageFlag("png")
+        currentDeviceImageSubFix = getCurrentDiveceImageFlag("jpg")
         //设置delegate属性，否则拓展拖动之后事件无法使用
         scrollVIew1.delegate = self
         
@@ -79,7 +79,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         let bundleURL : NSURL = NSBundle.mainBundle().resourceURL!
         println("\(bundleURL)")
         //在基础URL上新增URL路径
-        let imageDirectoryURL : NSURL = bundleURL.URLByAppendingPathComponent("Guide-images")
+        let imageDirectoryURL : NSURL = bundleURL.URLByAppendingPathComponent(guideImgDirName)
 
         
         var error : NSError?
@@ -122,7 +122,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         
         
         //缩放系数
-        let scaleRate: CGFloat = 1.2
+        let scaleRate: CGFloat = 1
         //设置宽高
         scrollVIew1.contentSize = CGSize(width: devWidth*CGFloat(pages), height: devHeight)
         
@@ -149,7 +149,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
             //imageView.backgroundColor = UIColor.blackColor()
             
             //得到图片的URL
-            var imageURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("Guide-images/\(tempI)" + currentDeviceImageSubFix)
+            var imageURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("\(guideImgDirName)/\(tempI)" + currentDeviceImageSubFix)
             
             var isNotDir : ObjCBool = false
             
@@ -162,21 +162,35 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
             //最后一页,生日选择引导页
             if tempI == pages-1{
                 
-                var cancelButton : UIButton = UIButton(frame: CGRectMake(viewFrame.size.width/2 - 120 , (devHeight-100)/1.1, 100, 50) )
-                var confirmButton : UIButton = UIButton( frame: CGRectMake(viewFrame.size.width/2 + 20, (devHeight-100)/1.1, 100, 50))
-                cancelButton.setTitle("稍后填写", forState : UIControlState.Normal)
-                confirmButton.setTitle("立即填写",forState : UIControlState.Normal)
-                cancelButton.backgroundColor = UIColor.redColor()
-                confirmButton.backgroundColor = UIColor.blackColor()
+                //引导文字
+                var uiLabel : UILabel = UILabel(frame: CGRectMake((viewFrame.size.width-200)/2, viewFrame.size.height - viewFrame.size.height * 0.9 , 200, 100))
+                
+                var confirmButton : UIButton = UIButton( frame: CGRectMake((viewFrame.size.width-200)/2 , (devHeight-150)/1.1, 200, 30))
+                var cancelButton : UIButton = UIButton(frame: CGRectMake((viewFrame.size.width-200)/2 , (devHeight-100)/1.1 , 200, 30) )
+                
+                uiLabel.text = "\t为了给您的孩子提供更好的适龄语感启蒙内容，我们希望知道您孩子的具体出生日期。"
+                //uiLabel.backgroundColor = UIColor.grayColor()
+                uiLabel.numberOfLines = 4
+                cancelButton.setTitle("不,谢谢", forState : UIControlState.Normal)
+                //cancelButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+                
+                confirmButton.setTitle("好的",forState : UIControlState.Normal)
+                //confirmButton.setTitleColor(UIColor(red: 0.23, green: 0.68, blue: 0.87, alpha: 1), forState: UIControlState.Normal)
+                
+                cancelButton.backgroundColor = UIColor(red:0.16, green:0.67, blue:0.95, alpha:1)
+                cancelButton.layer.cornerRadius = 8.0
+                confirmButton.layer.cornerRadius = 8.0
+                confirmButton.backgroundColor = UIColor(red:0.16, green:0.67, blue:0.95, alpha:1)
                 
                 //给按钮添加事件
                 
                 cancelButton.addTarget(self, action: Selector("clickCancelButton"), forControlEvents: UIControlEvents.TouchUpInside)
                 confirmButton.addTarget(self, action: Selector("clickConfirmButton"), forControlEvents: UIControlEvents.TouchUpInside)
                 
-                containerView.addSubview(cancelButton)
-                containerView.addSubview(confirmButton)
+                containerView.addSubview(uiLabel)
                 
+                containerView.addSubview(confirmButton)
+                containerView.addSubview(cancelButton)
                 
                 
             }

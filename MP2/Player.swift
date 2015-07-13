@@ -31,7 +31,9 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
     }
     
     //播放来源
-    var source : NSURL {
+    var playSource : NSURL = NSURL()
+    /*
+    {
         get {
             if _player == nil || _player.url == nil
             {
@@ -43,6 +45,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             }
         }
     }
+    */
     
     //player对象，内部使用
     private var _player : AVAudioPlayer!
@@ -52,7 +55,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
     {
         super.init()
         
-        setSource(source)
+        setTheSource(source)
 
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
         AVAudioSession.sharedInstance().setActive(true, error: nil)
@@ -77,17 +80,22 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
     }
     
     //设定播放来源
-    func setSource(source: NSURL) {
+    
+    func setTheSource(playSource: NSURL) {
         var isNotDir : ObjCBool = false
         
         //若与原音频相同，则不做操作
-        if source == self.source {return}
+        if playSource == self.playSource {
+            return
+        }
         
-        if NSFileManager.defaultManager().fileExistsAtPath(source.relativePath!, isDirectory: &isNotDir)
+        if NSFileManager.defaultManager().fileExistsAtPath(playSource.relativePath!, isDirectory: &isNotDir)
         {
             var error : NSError?
             
-            var playerData : NSData = NSData(contentsOfURL: source)!
+            var playerData : NSData = NSData(contentsOfURL: playSource)!
+            
+            self.playSource = playSource
             
             _player = AVAudioPlayer(data: playerData, error: &error)
                 //AVAudioPlayer(contentsOfURL: source, error: &error)

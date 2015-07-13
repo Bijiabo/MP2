@@ -34,13 +34,14 @@ protocol DownloaderProtocol
     
     //建立下载任务，返回下载任务id
     func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
-    
+    //下载的状态
     func start(index : Int)
     func pause(index : Int)
     func cancel(index : Int)
     func resume(index : Int)
 }
 
+//@obj的作用是使得接口中的某些方法可选
 @objc protocol DownloaderObserverProtocol
 {
     //下载完成

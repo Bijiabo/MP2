@@ -16,26 +16,27 @@ protocol ViewOperation {
     
     func wrongPlayerUrl() //过渡设计，应去除
     
-    func switchToScene(scene : String)
+    func switchToScene(scene : String)//切换场景
     
     func playNext() //暂时无用
     
     func updateChildInformation() //暂时无用，已有其他方法代替
     
-    func currentPlayingDataHasChanged()
+    func currentPlayingDataHasChanged()//当前播放数据改变
 }
 
+//播放器功能操作方法接口
 protocol PlayerOperation
 {
     var playing : Bool {get}
     
-    func play()
+    func play()//播放
     
-    func pause()
+    func pause()//暂停
     
-    func togglePlayPause()
+    func togglePlayPause()// 播放/暂停
     
-    func playerDidFinishPlaying()
+    func playerDidFinishPlaying()//结束播放
 }
 
 //过度设计，可去除
@@ -54,4 +55,4 @@ protocol NetWorkOperation
    
 }
 
-typealias Operations = protocol<PlayerOperation , ViewOperation , DownloadOperation , NetWorkOperation>
+typealias Operations = protocol<PlayerOperation , ViewOperation , DownloadOperation , NetWorkOperation> //所有操作的接口集合
