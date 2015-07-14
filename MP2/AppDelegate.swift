@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
         
         //读取数据
-        let jsonData : JSON = loadJSONData("6.json")
+        let jsonData : JSON = loadJSONData("0.json")
         var data = convertJSONtoArray(jsonData)
         
         //设定model和player

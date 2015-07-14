@@ -45,7 +45,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
         //添加一个观察者,如果接收到childNameHasChange消息,就修改孩子名
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateChildNameLabel"), name: "childNameHasChange", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateChildNameLabel"), name: "childDataHasChange", object: nil)
         
         _refreshNavigationBar(navigationBar: mainNavigationBar)
         
@@ -54,20 +54,63 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //加载完毕，发送通知
         NSNotificationCenter.defaultCenter().postNotificationName("MainPlayerViewControllerDidLoad", object: nil)
         
+        //MARK: 播放界面显示宝宝姓名和年龄(待处理问题:用户输入空格...)
         //显示孩子名字,如果存在的话
         if let childName : String = NSUserDefaults.standardUserDefaults().stringForKey("childName")
         {
-            childNameLabel.text = childName
+            
+            if childName != ""
+            {
+                childNameLabel.text = childName
+                
+                //显示孩子的年龄,如果存在的话
+                if let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as? NSDate
+                {
+                    let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
+                    
+                    childNameLabel.text = childNameLabel.text! + "-\(childAge.age)岁"
+                }
+                
+            }else{
+                childNameLabel.text = ""
+            }
+            
+            
         }else{
             childNameLabel.text = ""
         }
+        
+        
     }
     
-    
+    //接收到孩子年龄修改的通知,执行这个方法
     func updateChildNameLabel()
     {
-        childNameLabel.text = NSUserDefaults.standardUserDefaults().stringForKey("childName")
+        
+        if let childName : String = NSUserDefaults.standardUserDefaults().stringForKey("childName")
+        {
+            if childName != ""
+            {
+                childNameLabel.text = childName
+                
+                //如果要显示年龄,那么孩子的名字必须是存在的
+                let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as! NSDate
+                
+                let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
+                
+                childNameLabel.text = childNameLabel.text! + "-\(childAge.age)岁"
+            }else{
+                childNameLabel.text =  ""
+            }
+            
+        }
+        
+        
+        
+        
     }
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

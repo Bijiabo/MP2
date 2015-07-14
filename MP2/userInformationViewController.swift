@@ -108,12 +108,12 @@ class userInformationViewController: UIViewController , Module
         
         //储存用户修改的数据
         NSUserDefaults.standardUserDefaults().setObject(childNameTextField.text, forKey: "childName")
-        //用户数据修改后,发送一个通知,
-        NSNotificationCenter.defaultCenter().postNotificationName("childNameHasChange", object: nil)
+        
         let childSexuality : String =  childSexualitySegmentedControl.titleForSegmentAtIndex(childSexualitySegmentedControl.selectedSegmentIndex)!
         NSUserDefaults.standardUserDefaults().setObject(childSexuality, forKey: "childSexuality")
         NSUserDefaults.standardUserDefaults().setObject(childBirthdayDatePicker.date, forKey: "childBirthday")
-        
+        //用户数据修改后,发送一个通知,
+        NSNotificationCenter.defaultCenter().postNotificationName("childDataHasChange", object: nil)
         
         
         //关闭页面
