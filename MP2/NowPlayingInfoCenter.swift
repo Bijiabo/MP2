@@ -18,7 +18,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     var viewModel: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
     
-    private let _view: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.defaultCenter()
+    private let _view: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.defaultCenter()//锁屏界面
     
     
     //remoteCommandCenter 控制命令 的 缓存 （用于切换模式时）
@@ -31,14 +31,15 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
         super.init()
         
         setupViewControls()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
+        //Selector相当于一个结构体
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("_CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
+    
     }
     
     //播放数据改变通知
-    func CurrentPlayingDataHasChanged(notification : NSNotification)
+    func _CurrentPlayingDataHasChanged(notification : NSNotification)
     {
         
         updateViewModel()
@@ -85,7 +86,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     {
         let remoteCommandCenter = MPRemoteCommandCenter.sharedCommandCenter()
         
-        remoteCommandCenter.playCommand.addTarget(self, action: Selector("playCommand:"))
+        remoteCommandCenter.playCommand.addTarget(self, action: Selector("playCommand:"))//触发事件
         
         remoteCommandCenter.pauseCommand.addTargetWithHandler { (event: MPRemoteCommandEvent!) -> MPRemoteCommandHandlerStatus in
             

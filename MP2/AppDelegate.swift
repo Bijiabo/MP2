@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
         
         //读取数据
-        let jsonData : JSON = loadJSONData("0.json")
+        let jsonData : JSON = loadJSONData("6.json")
         var data = convertJSONtoArray(jsonData)
         
         //设定model和player
@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //MARK:
         //MARK: 获取主界面view controller
-        if NSUserDefaults.standardUserDefaults().boolForKey("applicationHadActivated") == false
+        if NSUserDefaults.standardUserDefaults().boolForKey("applicationHadActivated") == false //判断是否是首次启动App
         {
             self.loadModule("Guide", storyboardIdentifier: "mainVC")
         }
@@ -379,7 +379,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         {
             let remoteURL : String = mediaFilesNeedToDownloadQueue[i]["remoteURL"]!!
             let filename : String? = mediaFilesNeedToDownloadQueue[i]["filename"]!
-            let id : Int? = downloader?.addTask(remoteURL, cacheRootURL: cacheRootURL, filename : filename )
+            downloader?.addTask(remoteURL, cacheRootURL: cacheRootURL, filename : filename )
             
             //更新总体下载队列暂存
             addTaskRecordsToDownloadQueue([
@@ -388,8 +388,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 ])
 
             
-            //
-            NSNotificationCenter.defaultCenter().postNotificationName("NeedsToDownloadMediaFile", object: id)
+
         }
         
         downloader?.startDownload()
@@ -554,7 +553,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         {
             case "Guide":
             //yuan
-                mainVC = UIStoryboard(name: "Guide", bundle: nil).instantiateViewControllerWithIdentifier(storyboardIdentifier) as! UIViewController
+                mainVC = UIStoryboard(name: "Guide", bundle: nil).instantiateViewControllerWithIdentifier(storyboardIdentifier) as! UIViewController //传入一个storyboardIdentifier,初始化一个VC
                 
                 if let vc : Module = mainVC as? Module
                 {
@@ -586,12 +585,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                     }
                 }
             
-            
+            //MARK:待处理:默认情况下,启动哪个ViewController
             default:
+                
                 break
         }
         
-        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: nil)
+        self.window?.rootViewController?.presentViewController(mainVC, animated: true, completion: nil)//设置/跳转/显示指定的VC
         
     }
     
@@ -614,7 +614,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         println("age : \(age)")
         
-        let jsonData : JSON = loadJSONData("2.json")
+        let jsonData : JSON = loadJSONData("\(age).json")
         var data = convertJSONtoArray(jsonData)
         
         model.updateData(data)

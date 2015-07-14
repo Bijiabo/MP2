@@ -39,9 +39,25 @@ class Downloader : DownloaderProtocol
         
     }
     
-    func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
+    func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int?
     {
-        var item : DownloadItemProtocol = DownloadItem(remoteURL: NSURL(string: remoteURL)!, cacheRootURL: cacheRootURL)
+        
+        let RemoteURL : NSURL? = NSURL(string: remoteURL)
+        var item : DownloadItemProtocol!
+        
+        //如果URL格式正确,就不为空,那么可以初始化下载选项
+        if RemoteURL != nil
+        {
+            item = DownloadItem(remoteURL: RemoteURL!, cacheRootURL: cacheRootURL)
+            
+        }
+        else{
+            println("URL格式不正确")
+            
+            return nil
+            
+        }
+        
         
         if filename != nil
         {

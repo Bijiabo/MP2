@@ -33,7 +33,7 @@ protocol DownloaderProtocol
     var delegate : DownloaderObserverProtocol? {get set}
     
     //建立下载任务，返回下载任务id
-    func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int
+    func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int?
     //下载的状态
     func start(index : Int)
     func pause(index : Int)
