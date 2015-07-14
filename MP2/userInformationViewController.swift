@@ -24,7 +24,7 @@ class userInformationViewController: UIViewController , Module
         initView()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
@@ -88,6 +88,9 @@ class userInformationViewController: UIViewController , Module
     }
     
     
+    
+    
+    
     @IBAction func tapSaveButton(sender: AnyObject) {
         if checkChildAgeGroupChanged()
         {
@@ -105,14 +108,19 @@ class userInformationViewController: UIViewController , Module
         
         //储存用户修改的数据
         NSUserDefaults.standardUserDefaults().setObject(childNameTextField.text, forKey: "childName")
-        
+        //用户数据修改后,发送一个通知,
+        NSNotificationCenter.defaultCenter().postNotificationName("childNameHasChange", object: nil)
         let childSexuality : String =  childSexualitySegmentedControl.titleForSegmentAtIndex(childSexualitySegmentedControl.selectedSegmentIndex)!
         NSUserDefaults.standardUserDefaults().setObject(childSexuality, forKey: "childSexuality")
         NSUserDefaults.standardUserDefaults().setObject(childBirthdayDatePicker.date, forKey: "childBirthday")
         
+        
+        
         //关闭页面
         self.dismissViewControllerAnimated(true, completion: nil)
 //        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
+        
+        
         
     }
     

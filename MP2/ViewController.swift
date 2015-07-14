@@ -24,6 +24,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     @IBOutlet var downloadingTipLabel: UILabel!
     @IBOutlet var downloadingTipActivityView: UIActivityIndicatorView!
 
+    @IBOutlet var childNameLabel: UILabel!
+    
     var model : ModelManager?
     
     override func viewDidLoad() {
@@ -42,6 +44,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
+        //添加一个观察者,如果接收到childNameHasChange消息,就修改孩子名
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateChildNameLabel"), name: "childNameHasChange", object: nil)
         
         _refreshNavigationBar(navigationBar: mainNavigationBar)
         
@@ -49,8 +53,21 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         //加载完毕，发送通知
         NSNotificationCenter.defaultCenter().postNotificationName("MainPlayerViewControllerDidLoad", object: nil)
+        
+        //显示孩子名字,如果存在的话
+        if let childName : String = NSUserDefaults.standardUserDefaults().stringForKey("childName")
+        {
+            childNameLabel.text = childName
+        }else{
+            childNameLabel.text = ""
+        }
     }
     
+    
+    func updateChildNameLabel()
+    {
+        childNameLabel.text = NSUserDefaults.standardUserDefaults().stringForKey("childName")
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
