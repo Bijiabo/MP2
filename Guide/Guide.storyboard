@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -29,11 +28,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gEj-2o-uOQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="KS9-ei-7o5"/>
                             <constraint firstAttribute="centerX" secondItem="THc-oC-BAw" secondAttribute="centerX" id="car-Nn-0j8"/>
+                            <constraint firstAttribute="trailing" secondItem="gEj-2o-uOQ" secondAttribute="trailing" id="dr1-Iu-Une"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="THc-oC-BAw" secondAttribute="bottom" constant="10" id="hJ9-1p-6QK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gEj-2o-uOQ" secondAttribute="trailing" constant="-16" id="i5H-fK-BrO"/>
                             <constraint firstItem="gEj-2o-uOQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="k4C-kD-ohF"/>
+                            <constraint firstItem="gEj-2o-uOQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="lBp-dl-zFh"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="gEj-2o-uOQ" secondAttribute="bottom" id="pf0-Sc-wow"/>
                         </constraints>
                     </view>
