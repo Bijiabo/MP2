@@ -23,6 +23,9 @@ protocol ViewOperation {
     func updateChildInformation() //暂时无用，已有其他方法代替
     
     func currentPlayingDataHasChanged()//当前播放数据改变
+    //得到当前场景下的播放列表
+    func getCurrentScenePlayList() -> [Dictionary<String,AnyObject>]
+    
 }
 
 //播放器功能操作方法接口

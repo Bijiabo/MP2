@@ -31,4 +31,8 @@ protocol ModelManager
     
     //更新数据
     func updateData (data : Array<AnyObject>)
+    
+    //得到当前场景下的播放列表
+    func getCurrentScenePlayList() -> [Dictionary<String,AnyObject>]
+    
 }

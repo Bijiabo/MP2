@@ -12,7 +12,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     var moduleLoader : ModuleLader?
     
     var delegate : Operations?
-
+    
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var tabBar: UITabBar!
     @IBOutlet var audioName: UILabel!
@@ -47,7 +47,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //添加一个观察者,如果接收到childNameHasChange消息,就修改孩子名
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateChildNameLabel"), name: "childDataHasChange", object: nil)
         
-        _refreshNavigationBar(navigationBar: mainNavigationBar)
+        
         
         initDownloadTipView()
         
@@ -114,6 +114,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
+        _refreshNavigationBar(navigationBar: mainNavigationBar)
         _refreshPlayButton()
     }
 
@@ -190,7 +192,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         if let currentScene : String = model?.status.currentScene
         {
-            navigationBarTitle.title = "\(currentScene)磨耳朵"
+            self.title = "\(currentScene)磨耳朵"
         }
     }
     
@@ -253,6 +255,14 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func _refreshNavigationBar (#navigationBar : UINavigationBar?) -> Void
     {
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.whiteColor()
+        ]
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        //outlet🈯️定的,一会儿需要删除
         if navigationBar == nil {return}
         
         navigationBar!.translucent = true
@@ -309,6 +319,32 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     {
         return UIStatusBarStyle.LightContent
     }
+    
+    //当前界面跳转到别的界面去的时候被触发
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        
+        
+        
+        
+        //判断是否是跳转到播放列表界面
+        if segue.identifier == "playListVCId"
+        {
+            
+            var playListData =  delegate?.getCurrentScenePlayList()
+            var playingData = model?.currentPlayingData
+            
+            var playListVC : PlayListTableViewController = segue.destinationViewController as! PlayListTableViewController
+            
+            playListVC.currentSceneData = playListData!
+            playListVC.currentPlayingData = playingData!
+            
+        }
+        
+        
+    }
+
 }
 
 

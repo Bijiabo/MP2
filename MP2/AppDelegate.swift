@@ -116,7 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //检测网络变化 test
         reachability.whenReachable = { reachability in
-            if reachability.isReachableViaWiFi() {
+            if reachability.isReachableViaWiFi()
+            {
                 println("Reachable via WiFi")
             } else {
                 println("Reachable via Cellular")
@@ -132,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         return true
     }
+    
 
     func applicationWillResignActive(application: UIApplication) {
     }
@@ -183,6 +185,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func sendPlayingStatusChangeNotification()
     {
         NSNotificationCenter.defaultCenter().postNotificationName("PlayingStatusChanged", object: playing)
+    }
+    
+    func getCurrentScenePlayList() -> [Dictionary<String, AnyObject>]
+    {
+        
+        
+        return model.getCurrentScenePlayList()
     }
     
     //MARK:
@@ -566,19 +575,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             //hu
                 mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(storyboardIdentifier) as! UIViewController
                 
+                var navigationController : UINavigationController = mainVC as! UINavigationController
+                
+                var mainViewController: AnyObject = navigationController.viewControllers[0]
+                
+                
                 //若mainVC符合Module，则传入ModuleLoader
-                if let vc : Module = mainVC as? Module
+                if let vc : Module = mainViewController as? Module
                 {
-                    var VC : Module = mainVC as! Module
+                    var VC : Module = mainViewController as! Module
                     
                     VC.moduleLoader = self
                 }
                 
                 if storyboardIdentifier == "mainVC"
                 {
-                    if let vc : ViewManager = mainVC as? ViewManager
+                    
+                    if let vc : ViewManager = mainViewController as? ViewManager
                     {
-                        var VC : ViewManager = mainVC as! ViewManager
+                        var VC : ViewManager = mainViewController as! ViewManager
                         
                         VC.model = self.model
                         VC.delegate = self
@@ -635,6 +650,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             }
         }
     }
+    
+    
     
 }
 

@@ -71,7 +71,10 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     }
     
-    
+    func getCurrentScenePlayList() -> [Dictionary<String, AnyObject>] {
+        
+        return _getCurrentScenePlaylist ()
+    }
  
     private func _updateScenelist (data : Array<AnyObject>)
     {
@@ -99,6 +102,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                         //取得对应播放列表数据
                         if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
                         {
+                            
                             return list
                         }
                     }

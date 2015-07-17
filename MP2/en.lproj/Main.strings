@@ -1,0 +1,36 @@
+
+/* Class = "UIBarButtonItem"; title = "完成"; ObjectID = "1vx-38-nCj"; */
+"1vx-38-nCj.title" = "完成";
+
+/* Class = "UINavigationItem"; title = "资料设置"; ObjectID = "CCv-kO-Sve"; */
+"CCv-kO-Sve.title" = "资料设置";
+
+/* Class = "UILabel"; text = "孩子性别"; ObjectID = "IkR-Qd-ZK0"; */
+"IkR-Qd-ZK0.text" = "孩子性别";
+
+/* Class = "UILabel"; text = "孩子生日"; ObjectID = "LS4-Zw-vKk"; */
+"LS4-Zw-vKk.text" = "孩子生日";
+
+/* Class = "UILabel"; text = "媒体资源下载中..."; ObjectID = "Qx7-Vf-BKj"; */
+"Qx7-Vf-BKj.text" = "媒体资源下载中...";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "Yre-mV-0vq"; */
+"Yre-mV-0vq.title" = "Root View Controller";
+
+/* Class = "UILabel"; text = "audio name"; ObjectID = "cfk-s2-4hZ"; */
+"cfk-s2-4hZ.text" = "audio name";
+
+/* Class = "UISegmentedControl"; f9J-NU-t0S.segmentTitles[0] = "男孩"; ObjectID = "f9J-NU-t0S"; */
+"f9J-NU-t0S.segmentTitles[0]" = "男孩";
+
+/* Class = "UISegmentedControl"; f9J-NU-t0S.segmentTitles[1] = "女孩"; ObjectID = "f9J-NU-t0S"; */
+"f9J-NU-t0S.segmentTitles[1]" = "女孩";
+
+/* Class = "UILabel"; text = "audio tag"; ObjectID = "g4V-gn-DN2"; */
+"g4V-gn-DN2.text" = "audio tag";
+
+/* Class = "UILabel"; text = "孩子昵称"; ObjectID = "tRn-Rd-Br9"; */
+"tRn-Rd-Br9.text" = "孩子昵称";
+
+/* Class = "UILabel"; text = "childName"; ObjectID = "tmo-lT-DhH"; */
+"tmo-lT-DhH.text" = "childName";
