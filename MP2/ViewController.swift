@@ -117,6 +117,9 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
         _refreshNavigationBar(navigationBar: mainNavigationBar)
         _refreshPlayButton()
+        
+        //test
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -192,7 +195,9 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         if let currentScene : String = model?.status.currentScene
         {
-            self.title = "\(currentScene)磨耳朵"
+            self.title = "主界面"
+            
+            navigationBarTitle.title = "\(currentScene)磨耳朵"
         }
     }
     
@@ -255,12 +260,14 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func _refreshNavigationBar (#navigationBar : UINavigationBar?) -> Void
     {
+        /*
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName : UIColor.whiteColor()
         ]
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        */
         
         //outlet🈯️定的,一会儿需要删除
         if navigationBar == nil {return}
@@ -329,7 +336,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         
         //判断是否是跳转到播放列表界面
-        if segue.identifier == "playListVCId"
+        if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
             
             var playListData =  delegate?.getCurrentScenePlayList()
@@ -339,6 +346,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             
             playListVC.currentSceneData = playListData!
             playListVC.currentPlayingData = playingData!
+            
+            playListVC.title = "\(model!.status.currentScene)情景"
             
         }
         

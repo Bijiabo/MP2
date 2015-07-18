@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -203,14 +202,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="topGradient" translatesAutoresizingMaskIntoConstraints="NO" id="R31-ua-Yli">
-                                        <rect key="frame" x="-205" y="16" width="1242" height="176"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topGradient" translatesAutoresizingMaskIntoConstraints="NO" id="R31-ua-Yli">
+                                        <rect key="frame" x="-527" y="16" width="1243" height="176"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="176" id="ioc-Q3-JYn"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="R31-ua-Yli" secondAttribute="centerX" id="3yT-zU-Qpc"/>
                                     <constraint firstItem="Qx7-Vf-BKj" firstAttribute="leading" secondItem="MbV-Ky-eTT" secondAttribute="trailing" constant="8" id="KpY-L2-qOS"/>
                                     <constraint firstAttribute="height" constant="54" id="Pvg-wD-6iT"/>
                                     <constraint firstItem="Qx7-Vf-BKj" firstAttribute="top" secondItem="f3S-tj-hUN" secondAttribute="top" constant="16" id="XY9-fp-BTS"/>
@@ -225,6 +225,31 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQZ-fU-acp">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="Ky4-yO-942">
+                                        <barButtonItem key="leftBarButtonItem" image="userSetting" id="AwG-FM-olP">
+                                            <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="jaj-xC-Y4q" kind="presentation" id="Qh4-Qe-EHD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="d36-mJ-aj9">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="e5g-jT-u7o" kind="show" identifier="playListVCId" id="D1W-Id-fLX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topGradient" translatesAutoresizingMaskIntoConstraints="NO" id="11R-0x-mf7" userLabel="topGradient">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="cWk-W1-IlH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -233,8 +258,13 @@
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="top" secondItem="cfk-s2-4hZ" secondAttribute="bottom" constant="37" id="2a3-1v-U0n"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="g4V-gn-DN2" secondAttribute="bottom" constant="160" id="4eJ-bN-e5p"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zkd-lm-jaY" secondAttribute="trailingMargin" constant="-16" id="9CG-yp-Bvv"/>
+                            <constraint firstItem="Tiz-L9-K1C" firstAttribute="top" secondItem="R31-ua-Yli" secondAttribute="bottom" constant="-86" id="Do1-gQ-VHy"/>
+                            <constraint firstItem="11R-0x-mf7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="FmO-Ad-Eu7"/>
+                            <constraint firstItem="11R-0x-mf7" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Fwd-qd-mKZ"/>
+                            <constraint firstAttribute="trailing" secondItem="11R-0x-mf7" secondAttribute="trailing" id="GuZ-bG-j06"/>
                             <constraint firstItem="cfk-s2-4hZ" firstAttribute="top" secondItem="g4V-gn-DN2" secondAttribute="bottom" constant="4" id="IJZ-oR-2PD"/>
                             <constraint firstItem="zdI-Vu-XdK" firstAttribute="leading" secondItem="cfk-s2-4hZ" secondAttribute="trailing" id="JGl-6P-rMF"/>
+                            <constraint firstItem="vQZ-fU-acp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="JHA-96-YFg"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="56b-pC-UrY" secondAttribute="bottom" id="NTs-7D-pU8"/>
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="Nn5-1S-uLK"/>
                             <constraint firstAttribute="centerX" secondItem="tmo-lT-DhH" secondAttribute="centerX" constant="4" id="OKv-yG-TXE"/>
@@ -243,9 +273,11 @@
                             <constraint firstItem="56b-pC-UrY" firstAttribute="top" secondItem="f3S-tj-hUN" secondAttribute="bottom" constant="-148" id="UAW-qE-Iyz"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="VOW-Zy-vAo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="56b-pC-UrY" secondAttribute="trailingMargin" constant="-16" id="WwG-FQ-ZWm"/>
+                            <constraint firstItem="vQZ-fU-acp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ZtL-Ae-Kfg"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="a7X-GX-hfX"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="top" secondItem="tmo-lT-DhH" secondAttribute="bottom" constant="-88" id="aFY-m3-PNB"/>
                             <constraint firstAttribute="centerX" secondItem="Tiz-L9-K1C" secondAttribute="centerX" id="bOy-fJ-hvR"/>
+                            <constraint firstAttribute="trailing" secondItem="vQZ-fU-acp" secondAttribute="trailing" id="fsm-xb-GlH"/>
                             <constraint firstItem="RaV-Nu-56K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="kXP-Ql-egb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cfk-s2-4hZ" secondAttribute="trailing" id="kcc-WX-c52"/>
                             <constraint firstItem="Zkd-lm-jaY" firstAttribute="top" secondItem="DZt-NT-gVh" secondAttribute="bottom" constant="15" id="l1Y-RJ-PhQ"/>
@@ -271,20 +303,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="774-na-Gzb">
-                        <barButtonItem key="leftBarButtonItem" image="userSetting" id="AwG-FM-olP">
-                            <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="jaj-xC-Y4q" kind="presentation" id="Qh4-Qe-EHD"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="d36-mJ-aj9">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="e5g-jT-u7o" kind="show" identifier="playListVCId" id="D1W-Id-fLX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="774-na-Gzb"/>
                     <connections>
                         <outlet property="audioName" destination="cfk-s2-4hZ" id="Y0g-du-wd1"/>
                         <outlet property="audioTag" destination="g4V-gn-DN2" id="km1-5x-OVY"/>
@@ -293,6 +312,8 @@
                         <outlet property="downloadingTipActivityView" destination="MbV-Ky-eTT" id="Imk-wa-PXl"/>
                         <outlet property="downloadingTipLabel" destination="Qx7-Vf-BKj" id="jYg-Vf-86b"/>
                         <outlet property="downloadingTipView" destination="f3S-tj-hUN" id="H2M-Gm-8tG"/>
+                        <outlet property="mainNavigationBar" destination="vQZ-fU-acp" id="pQl-qx-VwA"/>
+                        <outlet property="navigationBarTitle" destination="Ky4-yO-942" id="JFB-Gk-Q1L"/>
                         <outlet property="playPauseButton" destination="Tiz-L9-K1C" id="hPc-mZ-Q9F"/>
                         <outlet property="tabBar" destination="Zkd-lm-jaY" id="2Ys-4a-9R0"/>
                     </connections>
@@ -326,33 +347,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playListItem" rowHeight="64" id="fco-3W-KCr">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playListItem" rowHeight="64" id="fco-3W-KCr" customClass="playlistTableViewCell" customModule="MP2" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fco-3W-KCr" id="i3m-jB-M2t">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyO-Gk-HO6">
-                                            <rect key="frame" x="48" y="8" width="504" height="21"/>
+                                            <rect key="frame" x="14" y="8" width="538" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB2-QV-ZKf">
-                                            <rect key="frame" x="48" y="34" width="504" height="16"/>
+                                            <rect key="frame" x="14" y="34" width="538" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.44880445075757569" green="0.44880445075757569" blue="0.44880445075757569" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="MyO-Gk-HO6" firstAttribute="top" secondItem="i3m-jB-M2t" secondAttribute="topMargin" id="4cx-5q-5nq"/>
-                                        <constraint firstItem="MyO-Gk-HO6" firstAttribute="leading" secondItem="i3m-jB-M2t" secondAttribute="leadingMargin" constant="40" id="A7B-2g-wbw"/>
+                                        <constraint firstItem="MyO-Gk-HO6" firstAttribute="leading" secondItem="i3m-jB-M2t" secondAttribute="leadingMargin" constant="6" id="A7B-2g-wbw"/>
                                         <constraint firstItem="dB2-QV-ZKf" firstAttribute="top" secondItem="MyO-Gk-HO6" secondAttribute="bottom" constant="5" id="IpH-YS-G9c"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="MyO-Gk-HO6" secondAttribute="trailing" constant="40" id="Uog-0U-CAR"/>
-                                        <constraint firstItem="dB2-QV-ZKf" firstAttribute="leading" secondItem="i3m-jB-M2t" secondAttribute="leadingMargin" constant="40" id="Vlb-sd-Xnm"/>
+                                        <constraint firstItem="dB2-QV-ZKf" firstAttribute="leading" secondItem="i3m-jB-M2t" secondAttribute="leadingMargin" constant="6" id="Vlb-sd-Xnm"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="dB2-QV-ZKf" secondAttribute="trailing" constant="40" id="n8S-lg-Tn9"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="audioNameLabel" destination="MyO-Gk-HO6" id="9Ds-cs-q9E"/>
+                                    <outlet property="audioTagLabel" destination="dB2-QV-ZKf" id="cqv-HP-UJw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

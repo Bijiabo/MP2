@@ -11,6 +11,7 @@
 		3328D61B1B46A99E00704F48 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
 		3328D61E1B46AA2F00704F48 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A126FAEB1B43AC7F009BE576 /* Alamofire.framework */; };
 		3328D6201B46AA3B00704F48 /* Alamofire.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A126FAED1B43AC7F009BE576 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		334001D21B593F9600153524 /* playlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334001D11B593F9600153524 /* playlistTableViewCell.swift */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
@@ -128,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		3328D6161B46A7BA00704F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		334001D11B593F9600153524 /* playlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = playlistTableViewCell.swift; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				A1B583E81B33034900AD41D9 /* AppDelegate.swift */,
 				A1B583EA1B33034900AD41D9 /* ViewController.swift */,
 				339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */,
+				334001D11B593F9600153524 /* playlistTableViewCell.swift */,
 				A1B583EC1B33034900AD41D9 /* Main.storyboard */,
 				A1B583EF1B33034900AD41D9 /* Images.xcassets */,
 				A1B583F11B33034900AD41D9 /* LaunchScreen.xib */,
@@ -471,6 +474,7 @@
 				A1A7654E1B46C0EA00C3B6F1 /* AgeCalculator.swift in Sources */,
 				A1B584111B33045400AD41D9 /* StatusManager.swift in Sources */,
 				A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */,
+				334001D21B593F9600153524 /* playlistTableViewCell.swift in Sources */,
 				A1B584171B3307A200AD41D9 /* Status.swift in Sources */,
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
@@ -563,8 +567,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -583,7 +587,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos8.3;
@@ -608,8 +612,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -622,7 +626,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos8.3;
 				VALIDATE_PRODUCT = YES;
@@ -633,10 +637,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
 				INFOPLIST_FILE = MP2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -648,9 +652,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
 				INFOPLIST_FILE = MP2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -15,6 +15,7 @@ class PlayListTableViewController: UITableViewController {
     //播放列表
     var currentSceneData : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+    
     var cellHeight : CGFloat = 0
     
     override func viewDidLoad() {
@@ -34,6 +35,8 @@ class PlayListTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         let navigationbarBackgroundImage : UIImage = createImageWithColor( UIColor.whiteColor() )
         
@@ -91,40 +94,31 @@ class PlayListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cellId = "playListItem"
         
+        var cell : playlistTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId) as! playlistTableViewCell
 
         let name = currentSceneData[indexPath.row]["name"] as? String
         
-        var cellId = "playListItem"
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellId) as? UITableViewCell
-        if(cell == nil){
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
-        }
+        cell.audioNameLabel.text = name
+        cell.audioTagLabel.text = currentSceneData[indexPath.row ]["tag"] as? String
         
-        var nameLabel = cell?.viewWithTag(1) as! UILabel
-        var tagLabel = cell?.viewWithTag(2) as! UILabel
-        
-        cellHeight = nameLabel.bounds.height + tagLabel.bounds.height + 10
-        
-        nameLabel.text = name
-        tagLabel.text = currentSceneData[indexPath.row ]["tag"] as? String
-        println(currentPlayingData["name"] as! String)
         //判断当前播放歌曲
         if  currentPlayingData["name"] as? String == name
         {
-            cell?.backgroundColor = UIColor(red:0.54, green:0.76, blue:1, alpha:1)
+            cell.active = true
         }else{
-            
+            cell.active = false
         }
-        return cell!
+        return cell
     }
     
     
-    /*
+
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return cellHeight
-    }*/
+        return 64
+    }
 
     /*
     // Override to support conditional editing of the table view.
