@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="xz0-Mp-UKj">
+            <objects>
+                <viewController storyboardIdentifier="mainVC" id="iM1-08-a9d" customClass="UGCViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rlj-G7-nwL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sr4-z5-JDp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MWv-bv-RlB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD3-UX-eVp">
+                                <rect key="frame" x="263" y="177" width="75" height="30"/>
+                                <state key="normal" title="已上传内容">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Am2-RL-SGX" kind="show" identifier="addLocalDataVC" id="Hjf-ON-c0U"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVZ-A9-nhE">
+                                <rect key="frame" x="286" y="257" width="30" height="30"/>
+                                <state key="normal" title="上传">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-1Z-HUc">
+                                <rect key="frame" x="255" y="337" width="90" height="30"/>
+                                <state key="normal" title="浏览在线资源">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="UtV-1Z-HUc" secondAttribute="centerX" id="MAQ-N2-37n"/>
+                            <constraint firstAttribute="centerX" secondItem="tVZ-A9-nhE" secondAttribute="centerX" constant="-1" id="PxS-ZO-Z5A"/>
+                            <constraint firstItem="tVZ-A9-nhE" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="50" id="g2N-Pl-gcD"/>
+                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="113" id="gvT-DD-MWM"/>
+                            <constraint firstAttribute="centerX" secondItem="PD3-UX-eVp" secondAttribute="centerX" id="nJb-UK-tlY"/>
+                            <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="tVZ-A9-nhE" secondAttribute="bottom" constant="50" id="y3v-9E-Eu1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eh7-ni-FvX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e2Y-03-iey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1302" y="407"/>
+        </scene>
+        <!--Temp List Table View Controller-->
+        <scene sceneID="vl4-wZ-qOj">
+            <objects>
+                <tableViewController id="Am2-RL-SGX" customClass="TempListTableViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" id="MmP-7y-u1C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="listItem" selectionStyle="default" indentationWidth="10" reuseIdentifier="listItem" rowHeight="57" id="5G7-Jm-Z87">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5G7-Jm-Z87" id="IZl-IA-ypy">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Am2-RL-SGX" id="e3d-8o-oeS"/>
+                            <outlet property="delegate" destination="Am2-RL-SGX" id="l6w-Ry-khS"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gH7-uI-DmK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2068" y="407"/>
+        </scene>
+    </scenes>
+</document>

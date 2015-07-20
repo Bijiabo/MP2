@@ -8,8 +8,9 @@
 
 import UIKit
 
-class PlayListTableViewController: UITableViewController {
+class PlayListTableViewController: UITableViewController ,Module{
 
+    var moduleLoader : ModuleLader?
     @IBOutlet var uiView1: UITableView!
     
     //播放列表
@@ -17,7 +18,7 @@ class PlayListTableViewController: UITableViewController {
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
     
     var cellHeight : CGFloat = 0
-    
+    var delegata : Operations?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -120,6 +121,32 @@ class PlayListTableViewController: UITableViewController {
         return 64
     }
 
+    //
+    @IBAction func clickAddResourceButton(sender: UIBarButtonItem) {
+        
+        //获取要跳转的界面
+        var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
+        
+        UGCHomeVC.currentSceneData = self.currentSceneData
+        UGCHomeVC.delegate = self.delegata
+        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+        
+        println("切换到UGC界面")
+    }
+    
+    
+    /*
+    //界面跳转传值,navigation跳转不行
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "mainVC"
+        {
+            var addMusicVC = segue.destinationViewController as! UGCViewController
+            
+            addMusicVC.currentSceneData = self.currentSceneData
+        }
+    }
+    */
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

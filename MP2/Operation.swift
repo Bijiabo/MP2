@@ -23,9 +23,14 @@ protocol ViewOperation {
     func updateChildInformation() //暂时无用，已有其他方法代替
     
     func currentPlayingDataHasChanged()//当前播放数据改变
+    
     //得到当前场景下的播放列表
     func getCurrentScenePlayList() -> [Dictionary<String,AnyObject>]
     
+    //ugcData:传入要修改的数据,isAdd:是否是新增数据
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    //得到当前年龄段的Json数据
+    func getCurentAgeGroupData() ->Array<AnyObject>
 }
 
 //播放器功能操作方法接口

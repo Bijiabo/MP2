@@ -76,16 +76,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         //初始化downloader
         downloader = Downloader()
         downloader?.delegate = self
-        
+
         //检查音频文件是否存在
-        if currentMediaFileExist()
+            let mediaFileURL : NSURL? = getLocalMediaFilePath()! // cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
+        
+        if mediaFileURL != nil
         {
-            let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
-            
-            player = Player(source: mediaFileURL)
+            player = Player(source: mediaFileURL!)
             player.delegate = self
-        }else{
-            //***待处理***文件不存在,切换到存在的音乐
+            
+        }
+        else{
+            // 待处理 文件不存在,切换到存在的音乐
             
             
         }
@@ -240,19 +242,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: 2遍播放问题所在，应去除。
     func currentPlayingDataHasChanged() {
         
+        println(model?.currentPlayingData["localURI"] )
+        
+        var mediaFileURL = getLocalMediaFilePath()
+        
         //判断当前播放文件是否存在
-        if currentMediaFileExist()
+        if mediaFileURL != nil
         {
-            //
-            let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
-            
             if player != nil
             {
-                player.setTheSource(mediaFileURL)
+                player.setTheSource(mediaFileURL!)
             }
             else
             {
-                player = Player(source: mediaFileURL)
+                player = Player(source: mediaFileURL!)
                
             }
             
@@ -290,7 +293,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     {
         //读取文件内容
         let dataRootURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data")
-
+        
         let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent( dataFilename ))!
 
         let dataFileJSON : JSON = JSON(data:dataFileData)
@@ -320,7 +323,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 else
                 {
                     //继续遍历:对应场景的音乐
-                    var scenelist : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
+                    var scenelist : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]() 
                     //["":"","":[],"":""]
                     for (key_2:String, subJSON_2:JSON) in subJSON_1
                     {
@@ -339,18 +342,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     }
     
     //检测文件是否存在
-    func currentMediaFileExist () -> Bool
+    func getLocalMediaFilePath () -> NSURL?
     {
         var isNotDir : ObjCBool = false
-        let mediaFileURL : NSURL = cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
+        
+        var localURI : String = model?.currentPlayingData["localURI"] as! String
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(localURI, isDirectory: &isNotDir)
+        {
+            return NSURL(fileURLWithPath:  localURI)
+        }
+
+        
+       var mediaFileURL : NSURL  =  cacheRootURL.URLByAppendingPathComponent("\(localURI)")
         
         if NSFileManager.defaultManager().fileExistsAtPath(mediaFileURL.relativePath!, isDirectory: &isNotDir)
         {
-            return true
+            return mediaFileURL
         }
         else
         {
-            return false
+            return nil
         }
     }
     
@@ -650,8 +662,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             }
         }
     }
-    
-    
-    
+    //用户上传内容添加到列表操作方法
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    {
+        
+        model.updateCurrentScenePlayList(ugcData, isAdd: isAdd)
+        
+        
+    }
+    //得到当前年龄段的Json数据
+    func getCurentAgeGroupData() ->Array<AnyObject>
+    {
+        
+        return model.getCurentAgeGroupData()
+        
+    }
 }
 

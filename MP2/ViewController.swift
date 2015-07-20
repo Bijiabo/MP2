@@ -332,9 +332,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         
-        
-        
-        
         //判断是否是跳转到播放列表界面
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
@@ -346,7 +343,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             
             playListVC.currentSceneData = playListData!
             playListVC.currentPlayingData = playingData!
-            
+            playListVC.moduleLoader = self.moduleLoader
+            playListVC.delegata = self.delegate
             playListVC.title = "\(model!.status.currentScene)情景"
             
         }

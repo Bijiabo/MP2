@@ -22,8 +22,11 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+    //当前json文件路径
+   // var currentJsonPath : NSURL?
     
     private var _data : Array<AnyObject> = Array<AnyObject>()
+    private var updateData : Array<AnyObject> = Array<AnyObject>()
     private var currentSceneIndex : Int = 0
     
     override init()
@@ -70,7 +73,7 @@ class Server : NSObject , ModelManager ,StatusObserver
         _updateCurrentPlayingData()
     
     }
-    
+    //得到当前场景下的播放列表
     func getCurrentScenePlayList() -> [Dictionary<String, AnyObject>] {
         
         return _getCurrentScenePlaylist ()
@@ -91,6 +94,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     private func _getCurrentScenePlaylist () -> [Dictionary<String,AnyObject>]
     {
+        
         for var i=0; i<_data.count; i++
         {
             if let dataItem = _data[i] as? Dictionary<String,AnyObject>
@@ -238,6 +242,197 @@ class Server : NSObject , ModelManager ,StatusObserver
         _updateCurrentPlayingData()
         
         delegate?.currentPlayingDataHasChanged()
+    }
+    
+    
+    
+    //ugcData:传入要修改的数据,isAdd:是否是新增数据
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    {
+        var currentScienceList = getCurrentScenePlayList()
+        //判断是否是新增数据
+        if isAdd
+        {
+            
+            for sceneItemIndex in 0..<_data.count
+            {
+                var completed : Bool?
+                
+                if _data[sceneItemIndex]["name"]as! String == status.currentScene
+                {
+                   
+                    
+                    var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
+                    var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
+                    
+                    for index in 0..<mutableArrayList.count
+                    {
+                        if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                        {
+                            mutableArrayList.addObject(ugcData)
+                            //sceneMusicList = mutableArrayList .copy() as! NSArray
+                            var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                            
+                            d["list"] = mutableArrayList
+                            d["name"] = status.currentScene
+                    
+                            _data[sceneItemIndex] = d
+                            
+                            completed = true
+                            
+                            break
+
+                            
+                        }
+                        
+                    }
+                    
+                }
+            }
+            
+        }else{
+            
+            var completed : Bool?
+            
+            for sceneItemIndex in 0..<_data.count
+            {
+                if _data[sceneItemIndex]["name"]as! String == status.currentScene
+                {
+                    var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
+                    //Remove(ugcData, from: sceneMusicList)
+                    
+                    var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
+                    
+                    for index in 0..<mutableArrayList.count
+                    {
+                        if mutableArrayList[index]["localURI"]as! String == ugcData["localURI"]as! String
+                        {
+                            mutableArrayList.removeObjectAtIndex(index)
+                            //sceneMusicList = mutableArrayList .copy() as! NSArray
+                            var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                            
+                            d["list"] = mutableArrayList
+                            d["name"] = status.currentScene
+                            
+                            _data[sceneItemIndex] = d
+                            
+                            completed = true
+                            
+                            break
+                        }
+                        
+                    }
+
+                }
+                
+                if completed != false
+                {
+                    break
+                }
+            }
+        
+            
+            
+        }
+       // println(_data)
+        
+        
+        var error : NSError?
+        if let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as? NSDate
+        {
+            let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
+            
+            let filePath = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data/\(childAge.age).json").relativePath!
+            println(filePath)
+            
+            //"\(_data)".writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
+            
+            if error != nil
+            {
+                println(error)
+            }
+            save(_data, toFile: filePath)
+
+            
+        }
+        
+        
+    }
+    
+    func Remove(   data : Dictionary<String,AnyObject>, from:NSArray)
+    {
+    
+
+        
+    }
+    
+    func getCurrentJsonPath()->NSURL
+    {
+        var jsonPath : NSURL?
+        
+        //判断年龄,得到当前年龄段
+        if let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as? NSDate
+        {
+            let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
+            
+            jsonPath  = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data/\(childAge.age).json")
+            
+        }
+        
+        return jsonPath!
+    }
+    
+    
+    func updateJsonData ()
+    {
+        for sceneItem in _data
+        {
+            if sceneItem["name"]as! String == status.currentScene
+            {
+                
+                let listarray = sceneItem["list"]as!NSArray
+                
+                for listDictionary in listarray
+                {
+                    let jsonData = listDictionary as! Dictionary<String,AnyObject>
+                    
+                    println(jsonData["localURI"])
+                }
+                
+            }
+        }
+        
+    }
+    
+    //数组转换成Json
+    func toJSONString(dict:AnyObject)->NSString{
+        
+        var data = NSJSONSerialization.dataWithJSONObject(dict, options:NSJSONWritingOptions.PrettyPrinted , error: nil)
+        var strJson=NSString(data: data!, encoding: NSUTF8StringEncoding)
+        return strJson!
+        
+    }
+    
+    //存储到Json文件中
+    func save(jsonData :AnyObject, toFile : String)
+    {
+        var error:NSError?
+        
+        let str = toJSONString(jsonData)
+        str.writeToFile(toFile, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
+        
+        if error != nil
+        {
+            println("保存错啦:\(error)")
+        }
+        println(toFile)
+    }
+    
+    //得到当前年龄段Json
+    func getCurentAgeGroupData()->Array<AnyObject>
+    {
+        
+        return _data
     }
     
 }

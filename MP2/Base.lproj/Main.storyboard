@@ -116,6 +116,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="56b-pC-UrY" userLabel="background">
                                 <rect key="frame" x="-16" y="0.0" width="624" height="600"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topGradient" translatesAutoresizingMaskIntoConstraints="NO" id="11R-0x-mf7" userLabel="topGradient">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="cWk-W1-IlH"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomGradient" translatesAutoresizingMaskIntoConstraints="NO" id="RaV-Nu-56K" userLabel="bottomGradient">
                                 <rect key="frame" x="-16" y="251" width="624" height="300"/>
                                 <constraints>
@@ -244,12 +250,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topGradient" translatesAutoresizingMaskIntoConstraints="NO" id="11R-0x-mf7" userLabel="topGradient">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="cWk-W1-IlH"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -386,7 +386,13 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Yre-mV-0vq"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Yre-mV-0vq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ILg-td-RUD">
+                            <connections>
+                                <action selector="clickAddResourceButton:" destination="e5g-jT-u7o" id="Poy-ho-i9s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="uiView1" destination="9IH-Y3-ArZ" id="Dq3-I3-H01"/>
                     </connections>

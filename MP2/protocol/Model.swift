@@ -35,4 +35,9 @@ protocol ModelManager
     //得到当前场景下的播放列表
     func getCurrentScenePlayList() -> [Dictionary<String,AnyObject>]
     
+    //ugcData:传入要修改的数据,isAdd:是否是新增数据
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    //得到当前年龄段的Json数据
+    func getCurentAgeGroupData() ->Array<AnyObject>
+    
 }
