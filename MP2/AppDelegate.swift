@@ -63,7 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
         //拷贝音频资源到cache目录
         //MARK: 需要修改，应该是应用安装后首次启动执行一遍
-        CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy()
+        CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy(dirPathInBundle: "resource/media") //拷贝媒体文件
+        CopyBundleFilesToCache(targetDirectoryInCache: "data").doCopy(dirPathInBundle: "resource/data") //拷贝数据
         
         //读取数据
         let jsonData : JSON = loadJSONData("0.json")
@@ -291,10 +292,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: 读取数据，并将其他格式数据转换为原生数组
     func loadJSONData(dataFilename : String) -> JSON
     {
-        //读取文件内容
-        let dataRootURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data")
+        let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
         
-        let dataFileData : NSData = NSData(contentsOfURL: dataRootURL.URLByAppendingPathComponent( dataFilename ))!
+        let DataFilePath : String = cachePath + "/data/\(dataFilename)"
+        
+        let DataFileURL : NSURL = NSURL(fileURLWithPath: DataFilePath)!
+        
+        //读取文件内容
+        //let dataRootURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data")
+        
+        let dataFileData : NSData = NSData(contentsOfURL: DataFileURL )!
 
         let dataFileJSON : JSON = JSON(data:dataFileData)
         

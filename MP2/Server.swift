@@ -342,8 +342,13 @@ class Server : NSObject , ModelManager ,StatusObserver
         {
             let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
             
-            let filePath = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data/\(childAge.age).json").relativePath!
-            println(filePath)
+            //let filePath = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data/\(childAge.age).json").relativePath!
+            
+            let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
+            
+            let DataFilePath : String = cachePath + "/data/\(childAge.age).json"
+            
+            println(DataFilePath)
             
             //"\(_data)".writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
             
@@ -351,7 +356,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             {
                 println(error)
             }
-            save(_data, toFile: filePath)
+            save(_data, toFile: DataFilePath)
 
             
         }
@@ -423,7 +428,11 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         if error != nil
         {
-            println("保存错啦:\(error)")
+            println(error)
+        }
+        else
+        {
+            println("他喵的保存文件成功了好么!!!")
         }
         println(toFile)
     }

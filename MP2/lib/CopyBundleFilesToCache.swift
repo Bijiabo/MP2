@@ -41,7 +41,7 @@ class CopyBundleFilesToCache {
         
     }
     
-    func doCopy() -> Void
+    func doCopy(dirPathInBundle : String = "resource/media") -> Void
     {
         let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
         
@@ -55,7 +55,7 @@ class CopyBundleFilesToCache {
             NSFileManager.defaultManager().createDirectoryAtPath(targetPath, withIntermediateDirectories: true, attributes: [NSFileProtectionKey : NSFileProtectionNone], error: nil)
         }
         
-        let bundleResourceDirectoryURL : NSURL! = NSBundle.mainBundle().resourceURL?.URLByAppendingPathComponent("resource/media")
+        let bundleResourceDirectoryURL : NSURL! = NSBundle.mainBundle().resourceURL?.URLByAppendingPathComponent( dirPathInBundle )
         
         copyBundleFilesToCache(fromeURL: bundleResourceDirectoryURL, targetPath: targetPath)
         
