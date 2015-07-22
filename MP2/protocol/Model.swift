@@ -40,4 +40,6 @@ protocol ModelManager
     //得到当前年龄段的Json数据
     func getCurentAgeGroupData() ->Array<AnyObject>
     
+    func getCurrentSceneName( ) ->String
+    
 }

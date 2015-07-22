@@ -243,7 +243,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: 2遍播放问题所在，应去除。
     func currentPlayingDataHasChanged() {
         
-        println(model?.currentPlayingData["localURI"] )
+        //println(model?.currentPlayingData["localURI"] )
         
         var mediaFileURL = getLocalMediaFilePath()
         
@@ -644,7 +644,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         var age : Int = ageObject["age"]!
         
         //MARK: 调试，超过三岁的暂用6岁数据
-        if age>3 {age = 6}
+        if age>3 {age = 3}
         
         println("age : \(age)")
         
@@ -683,6 +683,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         return model.getCurentAgeGroupData()
         
+    }
+    //得到当前场景名
+    func getCurrentSceneName( ) ->String
+    {
+        return model.getCurrentSceneName()
     }
 }
 

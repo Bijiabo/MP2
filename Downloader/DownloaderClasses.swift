@@ -128,7 +128,7 @@ class Downloader : DownloaderProtocol
                 //MARK:待完善->对error出错进行处理
                 request.response { (request, response, _, error) in
                     
-                    println("download complete  [\(self.list[i].remoteURL)]\n\n")
+                    //println("download complete  [\(self.list[i].remoteURL)]\n\n")
                     
                     self.list[i].status = "complete"
                     
@@ -194,7 +194,7 @@ class Downloader : DownloaderProtocol
             
             request.response { (request, response, _, error) in
                 
-                println("download complete 111  [\(item.remoteURL)]\n\n")
+               // println("download complete 111  [\(item.remoteURL)]\n\n")
                 
                 self.list[index].downloadComplete = true
                 

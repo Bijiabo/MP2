@@ -10,6 +10,8 @@ import UIKit
 
 class UGCViewController: UIViewController,Module{
 
+    @IBOutlet var upLoadButton: UIButton!
+    
     var moduleLoader : ModuleLader?
     var currentSceneData : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
     
@@ -18,6 +20,10 @@ class UGCViewController: UIViewController,Module{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //println("UGCVIEW:\(currentSceneData)")
+        self.title = "添加内容"
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

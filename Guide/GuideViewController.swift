@@ -77,7 +77,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         
         //返回当前项目根目录NSURL对象
         let bundleURL : NSURL = NSBundle.mainBundle().resourceURL!
-        println("\(bundleURL)")
+        //println("\(bundleURL)")
         //在基础URL上新增URL路径
         let imageDirectoryURL : NSURL = bundleURL.URLByAppendingPathComponent(guideImgDirName)
 

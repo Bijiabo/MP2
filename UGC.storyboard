@@ -30,6 +30,9 @@
                                 <state key="normal" title="上传">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="WeU-xF-Qbt" kind="show" id="uvz-0P-zEP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-1Z-HUc">
                                 <rect key="frame" x="255" y="337" width="90" height="30"/>
@@ -43,7 +46,7 @@
                             <constraint firstAttribute="centerX" secondItem="UtV-1Z-HUc" secondAttribute="centerX" id="MAQ-N2-37n"/>
                             <constraint firstAttribute="centerX" secondItem="tVZ-A9-nhE" secondAttribute="centerX" constant="-1" id="PxS-ZO-Z5A"/>
                             <constraint firstItem="tVZ-A9-nhE" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="50" id="g2N-Pl-gcD"/>
-                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="113" id="gvT-DD-MWM"/>
+                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="157" id="gvT-DD-MWM"/>
                             <constraint firstAttribute="centerX" secondItem="PD3-UX-eVp" secondAttribute="centerX" id="nJb-UK-tlY"/>
                             <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="tVZ-A9-nhE" secondAttribute="bottom" constant="50" id="y3v-9E-Eu1"/>
                         </constraints>
@@ -78,7 +81,50 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH7-uI-DmK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="407"/>
+            <point key="canvasLocation" x="2171" y="-383"/>
+        </scene>
+        <!--Itunes Guider View Controller-->
+        <scene sceneID="EFH-rJ-Pel">
+            <objects>
+                <viewController id="WeU-xF-Qbt" customClass="ItunesGuiderViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="akc-Qc-plM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uhb-A1-AIa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WRp-eM-0fz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCY-99-aTN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="bsJ-wJ-bzO">
+                                <rect key="frame" x="281" y="555" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Uhb-A1-AIa" firstAttribute="top" secondItem="RCY-99-aTN" secondAttribute="bottom" id="BMP-N8-XIl"/>
+                            <constraint firstAttribute="trailing" secondItem="RCY-99-aTN" secondAttribute="trailing" id="CtZ-5v-rWR"/>
+                            <constraint firstItem="RCY-99-aTN" firstAttribute="top" secondItem="WRp-eM-0fz" secondAttribute="top" id="Pjq-OC-swh"/>
+                            <constraint firstItem="RCY-99-aTN" firstAttribute="leading" secondItem="WRp-eM-0fz" secondAttribute="leading" id="bGw-TJ-0AG"/>
+                            <constraint firstAttribute="centerY" secondItem="RCY-99-aTN" secondAttribute="centerY" id="bL2-eX-QC9"/>
+                            <constraint firstAttribute="centerX" secondItem="bsJ-wJ-bzO" secondAttribute="centerX" id="hFd-lN-eJM"/>
+                            <constraint firstAttribute="centerX" secondItem="RCY-99-aTN" secondAttribute="centerX" id="j8d-Dh-j5y"/>
+                            <constraint firstItem="bsJ-wJ-bzO" firstAttribute="top" secondItem="RCY-99-aTN" secondAttribute="bottom" constant="-45" id="q8g-Dg-qqe"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="pageControl" destination="bsJ-wJ-bzO" id="5Ij-CV-45D"/>
+                        <outlet property="scrollView1" destination="RCY-99-aTN" id="t3L-w2-PUE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RxA-YG-YdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2171" y="407"/>
         </scene>
     </scenes>
 </document>

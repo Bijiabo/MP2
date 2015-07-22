@@ -256,7 +256,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             
             for sceneItemIndex in 0..<_data.count
             {
-                var completed : Bool?
+                var completed : Bool = false
                 
                 if _data[sceneItemIndex]["name"]as! String == status.currentScene
                 {
@@ -288,14 +288,21 @@ class Server : NSObject , ModelManager ,StatusObserver
                     }
                     
                 }
+                if completed
+                {
+                    break
+                }
             }
             
         }else{
             
-            var completed : Bool?
+            var completed : Bool = false
             
             for sceneItemIndex in 0..<_data.count
             {
+                println("当前场景")
+                println(_data[sceneItemIndex]["name"])
+                println(status.currentScene)
                 if _data[sceneItemIndex]["name"]as! String == status.currentScene
                 {
                     var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
@@ -307,7 +314,10 @@ class Server : NSObject , ModelManager ,StatusObserver
                     {
                         if mutableArrayList[index]["localURI"]as! String == ugcData["localURI"]as! String
                         {
+                            println("remoindex\(index)")
+                            println("\(mutableArrayList.count)")
                             mutableArrayList.removeObjectAtIndex(index)
+                            
                             //sceneMusicList = mutableArrayList .copy() as! NSArray
                             var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
                             
@@ -325,7 +335,7 @@ class Server : NSObject , ModelManager ,StatusObserver
 
                 }
                 
-                if completed != false
+                if completed
                 {
                     break
                 }
@@ -364,12 +374,6 @@ class Server : NSObject , ModelManager ,StatusObserver
         
     }
     
-    func Remove(   data : Dictionary<String,AnyObject>, from:NSArray)
-    {
-    
-
-        
-    }
     
     func getCurrentJsonPath()->NSURL
     {
@@ -406,7 +410,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                 
             }
         }
-        
+
     }
     
     //数组转换成Json
@@ -434,7 +438,7 @@ class Server : NSObject , ModelManager ,StatusObserver
         {
             println("他喵的保存文件成功了好么!!!")
         }
-        println(toFile)
+        
     }
     
     //得到当前年龄段Json
@@ -443,5 +447,8 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         return _data
     }
-    
+    func getCurrentSceneName( ) ->String
+    {
+        return status.currentScene
+    }
 }

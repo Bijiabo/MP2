@@ -19,6 +19,7 @@ class PlayListTableViewController: UITableViewController ,Module{
     
     var cellHeight : CGFloat = 0
     var delegata : Operations?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,13 +30,16 @@ class PlayListTableViewController: UITableViewController ,Module{
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         //self.title = "播放列表"
-        println(currentSceneData[0]["name"] as! String)
+        //println(currentSceneData[0]["name"] as! String)
         
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //准备加载该界面,获取最新场景列表
+        currentSceneData = delegata!.getCurrentScenePlayList()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
@@ -49,6 +53,10 @@ class PlayListTableViewController: UITableViewController ,Module{
         
         var uiView1 = UIView(frame: CGRect(x: 0, y: statusBarBackgroundViewPositionY , width: self.view.frame.size.width, height: 20))
         uiView1.backgroundColor = UIColor.redColor()
+
+        //刷新当前界面
+        self.tableView.reloadData()
+        
 //        self.view.addSubview(uiView1)
 //        self.view.sendSubviewToBack(uiView1)
     }

@@ -16,6 +16,8 @@
 		3341561A1B5B6CB900DA051D /* TempListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156161B5B6CB900DA051D /* TempListTableViewController.swift */; };
 		3341561C1B5B6CB900DA051D /* UGCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156181B5B6CB900DA051D /* UGCViewController.swift */; };
 		334156221B5B6D1300DA051D /* UGC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334156211B5B6D1300DA051D /* UGC.storyboard */; };
+		336A1F271B5E607200360293 /* ItunesGuiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */; };
+		336A1F291B5E635B00360293 /* iTunesGuide-images in Resources */ = {isa = PBXBuildFile; fileRef = 336A1F281B5E635B00360293 /* iTunesGuide-images */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
@@ -138,6 +140,8 @@
 		334156161B5B6CB900DA051D /* TempListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewController.swift; sourceTree = "<group>"; };
 		334156181B5B6CB900DA051D /* UGCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGCViewController.swift; sourceTree = "<group>"; };
 		334156211B5B6D1300DA051D /* UGC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UGC.storyboard; sourceTree = "<group>"; };
+		336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesGuiderViewController.swift; sourceTree = "<group>"; };
+		336A1F281B5E635B00360293 /* iTunesGuide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iTunesGuide-images"; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
@@ -199,7 +203,9 @@
 		334156201B5B6CD000DA051D /* UGC */ = {
 			isa = PBXGroup;
 			children = (
+				336A1F281B5E635B00360293 /* iTunesGuide-images */,
 				334156211B5B6D1300DA051D /* UGC.storyboard */,
+				336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */,
 				334156151B5B6CB900DA051D /* TempListTableViewCell.swift */,
 				334156161B5B6CB900DA051D /* TempListTableViewController.swift */,
 				334156181B5B6CB900DA051D /* UGCViewController.swift */,
@@ -460,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336A1F291B5E635B00360293 /* iTunesGuide-images in Resources */,
 				334156221B5B6D1300DA051D /* UGC.storyboard in Resources */,
 				33A76B751B50E7640010DF0F /* Guide-images in Resources */,
 				A1E321DE1B4FD44F0008D265 /* Guide.storyboard in Resources */,
@@ -508,6 +515,7 @@
 				A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */,
 				A1B5840D1B33041700AD41D9 /* Model.swift in Sources */,
 				A126FB0D1B468EBE009BE576 /* IJReachability.swift in Sources */,
+				336A1F271B5E607200360293 /* ItunesGuiderViewController.swift in Sources */,
 				A1B5842F1B3480EC00AD41D9 /* Operation.swift in Sources */,
 				A1A765511B46F33E00C3B6F1 /* CopyBundleFilesToCache.swift in Sources */,
 				A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */,
@@ -611,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos8.3;
@@ -650,7 +658,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos8.3;
 				VALIDATE_PRODUCT = YES;
@@ -664,7 +672,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: QINGLING SUN (9VSGRP93ZF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: QINGLING SUN (9VSGRP93ZF)";
 				INFOPLIST_FILE = MP2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -678,7 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: QINGLING SUN (SK8W4L32D6)";
 				INFOPLIST_FILE = MP2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

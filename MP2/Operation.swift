@@ -31,6 +31,9 @@ protocol ViewOperation {
     func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
     //得到当前年龄段的Json数据
     func getCurentAgeGroupData() ->Array<AnyObject>
+    
+    //得到当前场景名
+    func getCurrentSceneName() ->String
 }
 
 //播放器功能操作方法接口
