@@ -16,7 +16,7 @@ class userInformationViewController: UIViewController , Module
     @IBOutlet var childSexualitySegmentedControl: UISegmentedControl!
     @IBOutlet var childBirthdayDatePicker: UIDatePicker!
     
-    let ageMax : Int = 5
+    let ageMax : Int = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +55,9 @@ class userInformationViewController: UIViewController , Module
     
     func initDatePicker () -> Void
     {
-        
-        let minimumDate : NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval( -3600*24*365*(ageMax+1) + 3600*24*1 ))
+        //最大年龄计算不准,update by SlimAdam on 15/7/23
+        //let minimumDate : NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval( -3600*24*365*(ageMax) + 3600*24*1 ))
+        let minimumDate : NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval( -3600*24*365*(ageMax) - 3600*24*1 ))
         childBirthdayDatePicker.minimumDate = minimumDate
         childBirthdayDatePicker.maximumDate = NSDate()
         

@@ -33,7 +33,7 @@ class AgeCalculator: NSObject {
         
         // 计算年龄
         var iAge = currentDateYear - brithDateYear - 1;
-        var mongth = currentDateMonth - brithDateMonth
+        var mongth = currentDateMonth - brithDateMonth 
         if ((currentDateMonth > brithDateMonth) || (currentDateMonth == brithDateMonth && currentDateDay >= brithDateDay)) {
             iAge++;
         }
