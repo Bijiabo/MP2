@@ -17,7 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD3-UX-eVp">
-                                <rect key="frame" x="263" y="177" width="75" height="30"/>
+                                <rect key="frame" x="200" y="120" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="8ib-vD-Osw"/>
+                                    <constraint firstAttribute="height" constant="50" id="9Yx-Bv-NMR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="已上传内容">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -26,7 +31,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVZ-A9-nhE">
-                                <rect key="frame" x="286" y="257" width="30" height="30"/>
+                                <rect key="frame" x="200" y="220" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6UL-hD-Gjc"/>
+                                    <constraint firstAttribute="width" constant="200" id="8tP-nV-xUd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="上传">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -34,8 +44,13 @@
                                     <segue destination="WeU-xF-Qbt" kind="show" id="uvz-0P-zEP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-1Z-HUc">
-                                <rect key="frame" x="255" y="337" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-1Z-HUc">
+                                <rect key="frame" x="200" y="320" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="b5G-TG-q0o"/>
+                                    <constraint firstAttribute="height" constant="50" id="pRi-0s-xku"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="浏览在线资源">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -44,9 +59,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="UtV-1Z-HUc" secondAttribute="centerX" id="MAQ-N2-37n"/>
-                            <constraint firstAttribute="centerX" secondItem="tVZ-A9-nhE" secondAttribute="centerX" constant="-1" id="PxS-ZO-Z5A"/>
+                            <constraint firstAttribute="centerX" secondItem="tVZ-A9-nhE" secondAttribute="centerX" id="PxS-ZO-Z5A"/>
                             <constraint firstItem="tVZ-A9-nhE" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="50" id="g2N-Pl-gcD"/>
-                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="157" id="gvT-DD-MWM"/>
+                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="100" id="gvT-DD-MWM"/>
                             <constraint firstAttribute="centerX" secondItem="PD3-UX-eVp" secondAttribute="centerX" id="nJb-UK-tlY"/>
                             <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="tVZ-A9-nhE" secondAttribute="bottom" constant="50" id="y3v-9E-Eu1"/>
                         </constraints>
