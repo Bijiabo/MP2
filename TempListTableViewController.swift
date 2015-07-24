@@ -247,7 +247,7 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
             selectedItem?.accessoryType = UITableViewCellAccessoryType.Checkmark
             delegate?.updateCurrentScenePlayList(ugcData, isAdd: true)
             println("添加内容")
-            println(ugcData)
+            
         }
         
         //addSelectedItemToArray(indexPath.row)
@@ -271,7 +271,7 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         }
         for selectedItem in selectedArray {
             
-            println("数组内容:\(selectedItem)")
+            //println("数组内容:\(selectedItem)")
             
         }
         
@@ -285,7 +285,7 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         
         var name = fileURL.lastPathComponent!
         var localURI : String
-        var isUGC = true
+        var isUGC = "true"
         
         let nameCount = count(name)
         localURI = fileURL.relativePath!

@@ -300,9 +300,9 @@ class Server : NSObject , ModelManager ,StatusObserver
             
             for sceneItemIndex in 0..<_data.count
             {
-                println("当前场景")
-                println(_data[sceneItemIndex]["name"])
-                println(status.currentScene)
+                //println("当前场景")
+                //println(_data[sceneItemIndex]["name"])
+                //println(status.currentScene)
                 if _data[sceneItemIndex]["name"]as! String == status.currentScene
                 {
                     var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
@@ -314,8 +314,8 @@ class Server : NSObject , ModelManager ,StatusObserver
                     {
                         if mutableArrayList[index]["localURI"]as! String == ugcData["localURI"]as! String
                         {
-                            println("remoindex\(index)")
-                            println("\(mutableArrayList.count)")
+                            //println("remoindex\(index)")
+                            //println("\(mutableArrayList.count)")
                             mutableArrayList.removeObjectAtIndex(index)
                             
                             //sceneMusicList = mutableArrayList .copy() as! NSArray
@@ -358,7 +358,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             
             let DataFilePath : String = cachePath + "/data/\(childAge.age).json"
             
-            println(DataFilePath)
+            //println(DataFilePath)
             
             //"\(_data)".writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
             
@@ -405,7 +405,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                 {
                     let jsonData = listDictionary as! Dictionary<String,AnyObject>
                     
-                    println(jsonData["localURI"])
+                    //println(jsonData["localURI"])
                 }
                 
             }

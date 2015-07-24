@@ -102,7 +102,7 @@ class PlayListTableViewController: UITableViewController ,Module{
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+        let tempDataDictionary = currentSceneData[indexPath.row]
         let cellId = "playListItem"
         
         var cell : playlistTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId) as! playlistTableViewCell
@@ -111,6 +111,17 @@ class PlayListTableViewController: UITableViewController ,Module{
         
         cell.audioNameLabel.text = name
         cell.audioTagLabel.text = currentSceneData[indexPath.row ]["tag"] as? String
+        //let isUGC = currentSceneData[indexPath.row ]["isGUC"]
+        //println(currentSceneData[indexPath.row]["isGUC"])
+        
+        
+        if tempDataDictionary["isUGC"] != nil
+        {
+            cell.audioFromLabel.text = "来自用户上传"
+        }else{
+            cell.audioFromLabel.text = "来自系统推送"
+        }
+        
         
         //判断当前播放歌曲
         if  currentPlayingData["name"] as? String == name

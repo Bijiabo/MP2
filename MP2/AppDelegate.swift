@@ -646,7 +646,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         //MARK: 调试，超过三岁的暂用6岁数据
         if age>3 {age = 3}
         
-        println("age : \(age)")
+        //println("age : \(age)")
         
         let jsonData : JSON = loadJSONData("\(age).json")
         var data = convertJSONtoArray(jsonData)

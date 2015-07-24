@@ -12,6 +12,7 @@ class playlistTableViewCell: UITableViewCell {
 
     @IBOutlet var audioNameLabel: UILabel!
     @IBOutlet var audioTagLabel: UILabel!
+    @IBOutlet var audioFromLabel: UILabel!
     
     var active : Bool = false {
         didSet {
