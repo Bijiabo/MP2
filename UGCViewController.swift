@@ -10,7 +10,7 @@ import UIKit
 
 class UGCViewController: UIViewController,Module{
 
-    @IBOutlet var upLoadButton: UIButton!
+   
     
     var moduleLoader : ModuleLader?
     var currentSceneData : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
@@ -22,6 +22,9 @@ class UGCViewController: UIViewController,Module{
         //println("UGCVIEW:\(currentSceneData)")
         self.title = "添加内容"
         
+        var iTunesBtn : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: self, action:Selector("clickITunesBtn") )
+        
+        self.navigationItem.rightBarButtonItem = iTunesBtn
         
         
         
@@ -46,6 +49,14 @@ class UGCViewController: UIViewController,Module{
             addMusicVC.currentSceneData = self.currentSceneData
             addMusicVC.delegate = self.delegate
         }
+    }
+    
+    func clickITunesBtn(){
+        
+        //获取要跳转的界面
+        var UGCHomeVC : ItunesGuiderViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("iTnuesHelpVC") as! ItunesGuiderViewController
+        
+        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
     }
 
 

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD3-UX-eVp">
-                                <rect key="frame" x="200" y="120" width="200" height="50"/>
+                                <rect key="frame" x="200" y="170" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="8ib-vD-Osw"/>
                                     <constraint firstAttribute="height" constant="50" id="9Yx-Bv-NMR"/>
@@ -30,22 +30,8 @@
                                     <segue destination="Am2-RL-SGX" kind="show" identifier="addLocalDataVC" id="Hjf-ON-c0U"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVZ-A9-nhE">
-                                <rect key="frame" x="200" y="220" width="200" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6UL-hD-Gjc"/>
-                                    <constraint firstAttribute="width" constant="200" id="8tP-nV-xUd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="上传">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="WeU-xF-Qbt" kind="show" id="uvz-0P-zEP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-1Z-HUc">
-                                <rect key="frame" x="200" y="320" width="200" height="50"/>
+                                <rect key="frame" x="200" y="270" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="b5G-TG-q0o"/>
                                     <constraint firstAttribute="height" constant="50" id="pRi-0s-xku"/>
@@ -59,11 +45,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="UtV-1Z-HUc" secondAttribute="centerX" id="MAQ-N2-37n"/>
-                            <constraint firstAttribute="centerX" secondItem="tVZ-A9-nhE" secondAttribute="centerX" id="PxS-ZO-Z5A"/>
-                            <constraint firstItem="tVZ-A9-nhE" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="50" id="g2N-Pl-gcD"/>
-                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="100" id="gvT-DD-MWM"/>
+                            <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="50" id="SPd-4S-zhc"/>
+                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="150" id="gvT-DD-MWM"/>
                             <constraint firstAttribute="centerX" secondItem="PD3-UX-eVp" secondAttribute="centerX" id="nJb-UK-tlY"/>
-                            <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="tVZ-A9-nhE" secondAttribute="bottom" constant="50" id="y3v-9E-Eu1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eh7-ni-FvX"/>
@@ -101,7 +85,7 @@
         <!--Itunes Guider View Controller-->
         <scene sceneID="EFH-rJ-Pel">
             <objects>
-                <viewController id="WeU-xF-Qbt" customClass="ItunesGuiderViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="iTnuesHelpVC" id="WeU-xF-Qbt" customClass="ItunesGuiderViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="akc-Qc-plM"/>
                         <viewControllerLayoutGuide type="bottom" id="Uhb-A1-AIa"/>
@@ -115,7 +99,7 @@
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="bsJ-wJ-bzO">
                                 <rect key="frame" x="281" y="555" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                         </subviews>

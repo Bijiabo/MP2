@@ -31,7 +31,7 @@ class ItunesGuiderViewController: UIViewController,UIScrollViewDelegate {
         initImagesResouce()
         
         scrollView1.contentSize = CGSize(width: devWidth * CGFloat(pages) , height: scrollViewHeight)
-        scrollView1.backgroundColor = UIColor.grayColor()
+        //scrollView1.backgroundColor = UIColor.grayColor()
         pageControl.numberOfPages = pages
         //添加图片
         for pageIndex in 0..<pages
