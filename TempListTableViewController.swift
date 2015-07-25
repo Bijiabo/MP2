@@ -22,16 +22,6 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
     var currentSceneName :String?
     //表格显示数据
     
-    
-    // for item in  fileList
-    // currentAgeGroupData is current scene
-    // item.isAdded = true
-    
-    
-    // for item in  fileList
-    // currentAgeGroupData is not current scene
-    // if equal item.Remove()
-    
     //当界面被加载
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,57 +49,10 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         currentAgeGroupData = delegate!.getCurentAgeGroupData()
         //println(currentAgeGroupData)
         
-//        for item in fileList
-//        {
-//            //判断后缀
-//            if item.lastPathComponent!.lowercaseString.hasSuffix("mp3") || item.lastPathComponent!.lowercaseString.hasSuffix("m4a")
-//            {
-//                //println(item.lastPathComponent!)
-//                
-//                //给所有数据一个唯一标识
-//                selectedArray.append(-1)
-//                
-//                // if in
-//                //    if 
-//                // else add
-//                
-//                //处理不同场景下,本地歌曲添加状态
-//                
-//                var loopReturnValue:(isIn:Bool,sceneName:String) = isInCurrentAgeList(item.relativePath!)
-//                if loopReturnValue.isIn
-//                {
-//                    if loopReturnValue.sceneName == currentSceneName
-//                    {
-//                        localList["\(listCount)"] = item
-//                        
-//                        listCount++
-//                    }
-//                    
-//                }else {
-//                    
-//                    localList["\(listCount)"] = item
-//                    
-//                    listCount++
-//                }
-//                
-//    
-//                //println(localList)
-//                
-//                
-//            }else{
-//                println("不是")
-//            }
-//        
-//            
-//        }
+
         
         //println(NSHomeDirectory())
         //println("TempListTableVC\(currentSceneData)")
-        //完成按钮:
-        var multiSelectButton : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action:Selector("clickMultiSelectButton") )
-        
-        //self.navigationItem.rightBarButtonItem = multiSelectButton
-        
         //初始化用户操作临时记录
         
         //添加iTunes上传帮助教程
@@ -178,56 +121,7 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         return cell
     }
     
-    //判断是否在被添加
-    func isInCurrentAgeList(localPath:String) ->(isIn:Bool,sceneName:String)
-    {
-        var flag = 0
-        var isIn = false
-        var sceneName = ""
-        
-        for sceneListItem in currentAgeGroupData
-        {
-            var isNot = false
-            let listArray = sceneListItem["list"]as! NSArray
-            
-            for listArrayIndex in 0..<listArray.count
-            {
-                if listArray[listArrayIndex]["localURI"] as? String == localPath
-                {
-                    isIn = true
-                    sceneName = sceneListItem["name"]as! String
-                    
-                    return (isIn,sceneName)
-   
-                    
-                }
-                
-                flag++
-            }
-            
-            
-         }
-        
-        return (isIn,sceneName)
-    }
     
-    
-    //提交按钮触发事件
-    func clickMultiSelectButton ()
-    {
-        for item in selectedArray
-        {
-            if item != -1
-            {
-                //println(localList["\(item)"]?.absoluteURL!)
-                
-            }else{
-                
-            }
-        }
-        
-        self.navigationController?.popViewControllerAnimated(true)
-    }
 
 
     //用户点击列表项触发
@@ -263,26 +157,6 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         
         
         
-        
-    }
-    
-    //用户确认添加的数据
-    func addSelectedItemToArray( index : Int)
-    {
-        
-        
-        
-        if selectedArray[index] == index
-        {
-            selectedArray[index] = -1
-        }else{
-            selectedArray[index] = index
-        }
-        for selectedItem in selectedArray {
-            
-            //println("数组内容:\(selectedItem)")
-            
-        }
         
     }
     
