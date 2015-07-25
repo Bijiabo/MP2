@@ -13,7 +13,7 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol , ModuleLader
 {
     //模拟蜂窝网络网络调试，设为`true`时，会识别网络为蜂窝网络。正式上线和测试产品时应为false。
-    let isCellPhoneDebug : Bool = false
+    let isCellPhoneDebug : Bool = true
     
     var mainVC : UIViewController!
 
@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK:
     //MARK: application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        println(NSHomeDirectory())
         
         //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
@@ -79,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         downloader?.delegate = self
 
         //检查音频文件是否存在
-            let mediaFileURL : NSURL? = getLocalMediaFilePath()! // cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
+        let mediaFileURL : NSURL? = getLocalMediaFilePath()! // cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
         
         if mediaFileURL != nil
         {
@@ -429,10 +430,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     {
         var aleardyHasTask : Bool = false
         
-        for item in downloadQueue
+        for item1 in downloadQueue
         {
-            let sameRemoteURL : Bool = item["remoteURL"]! == item["remoteURL"]!
-            let sameFilename : Bool = item["filename"]! == item["filename"]!
+            let sameRemoteURL : Bool = item1["remoteURL"]! == item["remoteURL"]!
+            let sameFilename : Bool = item1["filename"]! == item["filename"]!
             
             if sameRemoteURL && sameFilename
             {
@@ -561,6 +562,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         println("downloadItemIdQueue.count \(downloadQueue.count)")
         
+        //所有下载任务完成触发
         if downloadQueue.count == 0
         {
             NSNotificationCenter.defaultCenter().postNotificationName("DownloadStoped", object: nil)
@@ -576,6 +578,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //Module Loader Protocol
     
     func loadModule(storyboardName: String, storyboardIdentifier: String) {
+        
         
         switch storyboardName
         {
@@ -688,6 +691,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func getCurrentSceneName( ) ->String
     {
         return model.getCurrentSceneName()
+    }
+    
+    //得到iTunes上传文件夹列表
+    func getUploadList() ->Dictionary<String,NSURL>
+    {
+        return model.getUploadList()
     }
 }
 

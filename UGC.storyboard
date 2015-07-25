@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD3-UX-eVp">
-                                <rect key="frame" x="200" y="170" width="200" height="50"/>
+                                <rect key="frame" x="200" y="175" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="8ib-vD-Osw"/>
                                     <constraint firstAttribute="height" constant="50" id="9Yx-Bv-NMR"/>
@@ -27,11 +27,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Am2-RL-SGX" kind="show" identifier="addLocalDataVC" id="Hjf-ON-c0U"/>
+                                    <action selector="clickUploadDataButton:" destination="iM1-08-a9d" eventType="touchUpInside" id="LYT-z7-zoJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-1Z-HUc">
-                                <rect key="frame" x="200" y="270" width="200" height="50"/>
+                                <rect key="frame" x="200" y="255" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="b5G-TG-q0o"/>
                                     <constraint firstAttribute="height" constant="50" id="pRi-0s-xku"/>
@@ -44,9 +44,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="PD3-UX-eVp" secondAttribute="centerY" constant="100" id="EME-Y3-00W"/>
                             <constraint firstAttribute="centerX" secondItem="UtV-1Z-HUc" secondAttribute="centerX" id="MAQ-N2-37n"/>
-                            <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="50" id="SPd-4S-zhc"/>
-                            <constraint firstItem="PD3-UX-eVp" firstAttribute="top" secondItem="Rlj-G7-nwL" secondAttribute="bottom" constant="150" id="gvT-DD-MWM"/>
+                            <constraint firstItem="UtV-1Z-HUc" firstAttribute="top" secondItem="PD3-UX-eVp" secondAttribute="bottom" constant="30" id="SPd-4S-zhc"/>
                             <constraint firstAttribute="centerX" secondItem="PD3-UX-eVp" secondAttribute="centerX" id="nJb-UK-tlY"/>
                         </constraints>
                     </view>
@@ -54,12 +54,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2Y-03-iey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1302" y="407"/>
+            <point key="canvasLocation" x="1306" y="-46"/>
         </scene>
         <!--Temp List Table View Controller-->
         <scene sceneID="vl4-wZ-qOj">
             <objects>
-                <tableViewController id="Am2-RL-SGX" customClass="TempListTableViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="tempListTableVC" id="Am2-RL-SGX" customClass="TempListTableViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" id="MmP-7y-u1C">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,6 +81,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH7-uI-DmK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2171" y="-383"/>
+        </scene>
+        <!--Upload Message View Controller-->
+        <scene sceneID="K2P-xk-yio">
+            <objects>
+                <viewController storyboardIdentifier="uploadMessageVC" id="VtE-40-DIU" customClass="UploadMessageViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v4I-zj-jUl"/>
+                        <viewControllerLayoutGuide type="bottom" id="0WE-zL-6sR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s6Y-34-6yh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="没有发现本地上传内容,请连接电脑上传." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51A-0d-mRs">
+                                <rect key="frame" x="200" y="178" width="200" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="BuQ-nN-77n"/>
+                                    <constraint firstAttribute="height" constant="45" id="K2G-hC-JFU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.44880445079999998" green="0.44880445079999998" blue="0.44880445079999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keC-ED-I89">
+                                <rect key="frame" x="200" y="233" width="90" height="30"/>
+                                <state key="normal" title="查看上传教程">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickUploadGuideButton:" destination="VtE-40-DIU" eventType="touchUpInside" id="KZk-VJ-ahH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="51A-0d-mRs" secondAttribute="centerY" constant="100" id="6ug-ZW-wNc"/>
+                            <constraint firstAttribute="centerX" secondItem="51A-0d-mRs" secondAttribute="centerX" id="8hq-nd-Irq"/>
+                            <constraint firstItem="keC-ED-I89" firstAttribute="leading" secondItem="51A-0d-mRs" secondAttribute="leading" id="DnS-SE-ba9"/>
+                            <constraint firstItem="keC-ED-I89" firstAttribute="top" secondItem="51A-0d-mRs" secondAttribute="bottom" constant="10" id="Ree-Qu-tCg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oeL-Kc-Gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2171" y="312"/>
         </scene>
         <!--Itunes Guider View Controller-->
         <scene sceneID="EFH-rJ-Pel">
@@ -123,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RxA-YG-YdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="407"/>
+            <point key="canvasLocation" x="2815" y="-383"/>
         </scene>
     </scenes>
 </document>

@@ -22,11 +22,6 @@ class UGCViewController: UIViewController,Module{
         //println("UGCVIEW:\(currentSceneData)")
         self.title = "添加内容"
         
-        var iTunesBtn : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: self, action:Selector("clickITunesBtn") )
-        
-        self.navigationItem.rightBarButtonItem = iTunesBtn
-        
-        
         
     }
 
@@ -51,12 +46,30 @@ class UGCViewController: UIViewController,Module{
         }
     }
     
-    func clickITunesBtn(){
+    
+    @IBAction func clickUploadDataButton(sender: UIButton) {
         
+        //如果上传列表不为空,跳转到上传列表界面
+        let tempListCount = delegate!.getUploadList().count
+        println(tempListCount)
+        if tempListCount != 0
+        {
+            var tempListTableVC : TempListTableViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("tempListTableVC") as! TempListTableViewController
+            tempListTableVC.currentSceneData = self.currentSceneData
+            tempListTableVC.delegate = self.delegate
+            
+            self.navigationController?.pushViewController(tempListTableVC, animated: true)
+        }else{
+            gotoUploadMessageVC()
+        }
+    }
+
+    func gotoUploadMessageVC()
+    {
         //获取要跳转的界面
-        var UGCHomeVC : ItunesGuiderViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("iTnuesHelpVC") as! ItunesGuiderViewController
+        var uploadMessageVC : UploadMessageViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("uploadMessageVC") as! UploadMessageViewController
         
-        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+        self.navigationController?.pushViewController(uploadMessageVC, animated: true)
     }
 
 

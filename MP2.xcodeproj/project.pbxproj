@@ -15,9 +15,10 @@
 		334156191B5B6CB900DA051D /* TempListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156151B5B6CB900DA051D /* TempListTableViewCell.swift */; };
 		3341561A1B5B6CB900DA051D /* TempListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156161B5B6CB900DA051D /* TempListTableViewController.swift */; };
 		3341561C1B5B6CB900DA051D /* UGCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156181B5B6CB900DA051D /* UGCViewController.swift */; };
-		334156221B5B6D1300DA051D /* UGC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334156211B5B6D1300DA051D /* UGC.storyboard */; };
 		336A1F271B5E607200360293 /* ItunesGuiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */; };
 		336A1F291B5E635B00360293 /* iTunesGuide-images in Resources */ = {isa = PBXBuildFile; fileRef = 336A1F281B5E635B00360293 /* iTunesGuide-images */; };
+		336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */; };
+		336A1F351B63E96D00360293 /* UGC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336A1F341B63E96D00360293 /* UGC.storyboard */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
@@ -139,9 +140,10 @@
 		334156151B5B6CB900DA051D /* TempListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewCell.swift; sourceTree = "<group>"; };
 		334156161B5B6CB900DA051D /* TempListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewController.swift; sourceTree = "<group>"; };
 		334156181B5B6CB900DA051D /* UGCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGCViewController.swift; sourceTree = "<group>"; };
-		334156211B5B6D1300DA051D /* UGC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UGC.storyboard; sourceTree = "<group>"; };
 		336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesGuiderViewController.swift; sourceTree = "<group>"; };
 		336A1F281B5E635B00360293 /* iTunesGuide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iTunesGuide-images"; sourceTree = "<group>"; };
+		336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMessageViewController.swift; sourceTree = "<group>"; };
+		336A1F341B63E96D00360293 /* UGC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UGC.storyboard; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
@@ -204,10 +206,11 @@
 			isa = PBXGroup;
 			children = (
 				336A1F281B5E635B00360293 /* iTunesGuide-images */,
-				334156211B5B6D1300DA051D /* UGC.storyboard */,
+				336A1F341B63E96D00360293 /* UGC.storyboard */,
 				336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */,
 				334156151B5B6CB900DA051D /* TempListTableViewCell.swift */,
 				334156161B5B6CB900DA051D /* TempListTableViewController.swift */,
+				336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */,
 				334156181B5B6CB900DA051D /* UGCViewController.swift */,
 			);
 			name = UGC;
@@ -466,8 +469,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336A1F351B63E96D00360293 /* UGC.storyboard in Resources */,
 				336A1F291B5E635B00360293 /* iTunesGuide-images in Resources */,
-				334156221B5B6D1300DA051D /* UGC.storyboard in Resources */,
 				33A76B751B50E7640010DF0F /* Guide-images in Resources */,
 				A1E321DE1B4FD44F0008D265 /* Guide.storyboard in Resources */,
 				3328D61B1B46A99E00704F48 /* resource in Resources */,
@@ -508,6 +511,7 @@
 				334001D21B593F9600153524 /* playlistTableViewCell.swift in Sources */,
 				A1B584171B3307A200AD41D9 /* Status.swift in Sources */,
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
+				336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
 				A1B584141B3305B800AD41D9 /* Server.swift in Sources */,
 				A1B5987A1B4FD92300257DDB /* module.swift in Sources */,

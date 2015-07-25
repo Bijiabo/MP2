@@ -34,6 +34,9 @@ protocol ViewOperation {
     
     //得到当前场景名
     func getCurrentSceneName() ->String
+    
+    //得到iTunes上传文件夹列表
+    func getUploadList() ->Dictionary<String,NSURL>
 }
 
 //播放器功能操作方法接口

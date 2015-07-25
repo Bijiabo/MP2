@@ -39,7 +39,9 @@ protocol ModelManager
     func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
     //得到当前年龄段的Json数据
     func getCurentAgeGroupData() ->Array<AnyObject>
-    
+    //得到当前场景名字
     func getCurrentSceneName( ) ->String
     
+    //得到iTunes上传文件夹列表
+    func getUploadList() ->Dictionary<String,NSURL>
 }

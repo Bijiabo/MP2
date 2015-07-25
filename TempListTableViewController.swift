@@ -36,6 +36,9 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //
+        localList = delegate!.getUploadList()
+        
         currentSceneName = getCurrentSceneName()
         //println(currentSceneName)
         // Uncomment the following line to preserve selection between presentations
@@ -45,6 +48,7 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.title = "已上传内容"
+        
         //遍历document下的所有文件
         let homeDir = NSHomeDirectory().stringByAppendingPathComponent("Documents")
         var fileManager = NSFileManager.defaultManager()
@@ -55,49 +59,49 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         currentAgeGroupData = delegate!.getCurentAgeGroupData()
         //println(currentAgeGroupData)
         
-        for item in fileList
-        {
-            //判断后缀
-            if item.lastPathComponent!.lowercaseString.hasSuffix("mp3") || item.lastPathComponent!.lowercaseString.hasSuffix("m4a")
-            {
-                //println(item.lastPathComponent!)
-                
-                //给所有数据一个唯一标识
-                selectedArray.append(-1)
-                
-                // if in
-                //    if 
-                // else add
-                
-                //处理不同场景下,本地歌曲添加状态
-                
-                var loopReturnValue:(isIn:Bool,sceneName:String) = isInCurrentAgeList(item.relativePath!)
-                if loopReturnValue.isIn
-                {
-                    if loopReturnValue.sceneName == currentSceneName
-                    {
-                        localList["\(listCount)"] = item
-                        
-                        listCount++
-                    }
-                    
-                }else {
-                    
-                    localList["\(listCount)"] = item
-                    
-                    listCount++
-                }
-                
-    
-                //println(localList)
-                
-                
-            }else{
-                println("不是")
-            }
-            
-            
-        }
+//        for item in fileList
+//        {
+//            //判断后缀
+//            if item.lastPathComponent!.lowercaseString.hasSuffix("mp3") || item.lastPathComponent!.lowercaseString.hasSuffix("m4a")
+//            {
+//                //println(item.lastPathComponent!)
+//                
+//                //给所有数据一个唯一标识
+//                selectedArray.append(-1)
+//                
+//                // if in
+//                //    if 
+//                // else add
+//                
+//                //处理不同场景下,本地歌曲添加状态
+//                
+//                var loopReturnValue:(isIn:Bool,sceneName:String) = isInCurrentAgeList(item.relativePath!)
+//                if loopReturnValue.isIn
+//                {
+//                    if loopReturnValue.sceneName == currentSceneName
+//                    {
+//                        localList["\(listCount)"] = item
+//                        
+//                        listCount++
+//                    }
+//                    
+//                }else {
+//                    
+//                    localList["\(listCount)"] = item
+//                    
+//                    listCount++
+//                }
+//                
+//    
+//                //println(localList)
+//                
+//                
+//            }else{
+//                println("不是")
+//            }
+//        
+//            
+//        }
         
         //println(NSHomeDirectory())
         //println("TempListTableVC\(currentSceneData)")
@@ -108,10 +112,15 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         
         //初始化用户操作临时记录
         
+        //添加iTunes上传帮助教程
+        var iTunesBtn : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: self, action:Selector("clickITunesBtn") )
         
+        self.navigationItem.rightBarButtonItem = iTunesBtn
         
         
         //println("LOCALLIST:\(localList)")
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -310,6 +319,15 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         return delegate!.getCurrentSceneName()
     }
 
+    func clickITunesBtn(){
+        
+        //获取要跳转的界面
+        var UGCHomeVC : ItunesGuiderViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("iTnuesHelpVC") as! ItunesGuiderViewController
+        
+        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

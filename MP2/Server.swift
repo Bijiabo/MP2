@@ -451,4 +451,93 @@ class Server : NSObject , ModelManager ,StatusObserver
     {
         return status.currentScene
     }
+    
+    //得到iTunes上传列表
+    func getUploadList() -> Dictionary<String, NSURL> {
+        //遍历document下的所有文件
+        let homeDir = NSHomeDirectory().stringByAppendingPathComponent("Documents")
+        var fileManager = NSFileManager.defaultManager()
+        var listCount = 0
+        let fileList = fileManager.contentsOfDirectoryAtURL(NSURL(fileURLWithPath: homeDir)!, includingPropertiesForKeys: nil, options: nil, error: nil) as! [NSURL]
+        var localList : Dictionary<String,NSURL> = Dictionary<String,NSURL>()
+        
+        for item in fileList
+        {
+            //判断后缀
+            if item.lastPathComponent!.lowercaseString.hasSuffix("mp3") || item.lastPathComponent!.lowercaseString.hasSuffix("m4a")
+            {
+                //println(item.lastPathComponent!)
+                
+                // if in
+                //    if
+                // else add
+                
+                //处理不同场景下,本地歌曲添加状态
+                
+                var loopReturnValue:(isIn:Bool,sceneName:String) = isInCurrentAgeList(item.relativePath!)
+                if loopReturnValue.isIn
+                {
+                    if loopReturnValue.sceneName == status.currentScene
+                    {
+                        localList["\(listCount)"] = item
+                        
+                        listCount++
+                    }
+                    
+                }else {
+                    
+                    localList["\(listCount)"] = item
+                    
+                    listCount++
+                }
+                
+                
+                //println(localList)
+                
+                
+            }else{
+                println("不是")
+            }
+            
+            
+        }
+        
+        
+        return localList
+    }
+    
+    //MARK:本类方法------
+    
+    //判断是否在被添加
+    func isInCurrentAgeList(localPath:String) ->(isIn:Bool,sceneName:String)
+    {
+        var flag = 0
+        var isIn = false
+        var sceneName = ""
+        
+        for sceneListItem in _data
+        {
+            var isNot = false
+            let listArray = sceneListItem["list"]as! NSArray
+            
+            for listArrayIndex in 0..<listArray.count
+            {
+                if listArray[listArrayIndex]["localURI"] as? String == localPath
+                {
+                    isIn = true
+                    sceneName = sceneListItem["name"]as! String
+                    
+                    return (isIn,sceneName)
+                    
+                    
+                }
+                
+                flag++
+            }
+            
+            
+        }
+        
+        return (isIn,sceneName)
+    }
 }

@@ -104,5 +104,13 @@ class ItunesGuiderViewController: UIViewController,UIScrollViewDelegate {
         }
         
     }
+    
+    func clickITunesBtn(){
+        
+        //获取要跳转的界面
+        var UGCHomeVC : ItunesGuiderViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("iTnuesHelpVC") as! ItunesGuiderViewController
+        
+        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+    }
 
 }

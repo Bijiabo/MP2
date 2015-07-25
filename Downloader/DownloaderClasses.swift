@@ -25,7 +25,7 @@ class DownloadItem : DownloadItemProtocol
         self.cacheRootURL = cacheRootURL
     }
 }
-
+//下载器
 class Downloader : DownloaderProtocol
 {
     var delegate : DownloaderObserverProtocol?
@@ -141,6 +141,8 @@ class Downloader : DownloaderProtocol
             }
             
         }
+        //发送通知
+        NSNotificationCenter.defaultCenter().postNotificationName("DownloadStarted", object: nil)
     }
     
     
@@ -204,8 +206,7 @@ class Downloader : DownloaderProtocol
             requestlist.append(request)
         }
         
-        //发送通知
-        NSNotificationCenter.defaultCenter().postNotificationName("DownloadStarted", object: nil)
+        
         
     }
     

@@ -41,6 +41,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         _refreshBackgroundImageView(view: backgroundImageView)
         
+        //添加一个观察者,观察通知名字为CurrentPlayingDataHasChanged的通知,得到通知后执行CurrentPlayingDataHasChanged方法
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playingStatusChanged:"), name: "PlayingStatusChanged", object: nil)
@@ -49,6 +50,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         
         
+        //初始化下载提示页面
         initDownloadTipView()
         
         //加载完毕，发送通知
@@ -66,7 +68,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
                 //显示孩子的年龄,如果存在的话
                 if let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as? NSDate
                 {
-                    let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
+                    let childAge : (age : Int , month: Int) = AgeCalculator(birth: childBirthday).age
                     
                     childNameLabel.text = childNameLabel.text! + "-\(childAge.age)岁"
                 }
