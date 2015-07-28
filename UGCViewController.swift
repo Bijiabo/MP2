@@ -16,12 +16,16 @@ class UGCViewController: UIViewController,Module{
     var currentSceneData : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
     
     var delegate : Operations?
+    
+    var downloader : Downloader!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //println("UGCVIEW:\(currentSceneData)")
         self.title = "添加内容"
         
+        self.downloader = delegate?.getAppDownloader()
         
     }
 
@@ -37,12 +41,13 @@ class UGCViewController: UIViewController,Module{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         //println("identifieer-------\(segue.identifier)")
-        if segue.identifier == "addLocalDataVC"
+        if segue.identifier == "browserVC"
         {
-            var addMusicVC = segue.destinationViewController as! TempListTableViewController
+            var browserVC = segue.destinationViewController as! BrowserViewController
             
-            addMusicVC.currentSceneData = self.currentSceneData
-            addMusicVC.delegate = self.delegate
+            browserVC.delegate = self.delegate
+            browserVC.downloader = self.downloader
+            
         }
     }
     
@@ -51,7 +56,7 @@ class UGCViewController: UIViewController,Module{
         
         //如果上传列表不为空,跳转到上传列表界面
         let tempListCount = delegate!.getUploadList().count
-        println(tempListCount)
+        //println(tempListCount)
         if tempListCount != 0
         {
             var tempListTableVC : TempListTableViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("tempListTableVC") as! TempListTableViewController

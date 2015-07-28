@@ -19,6 +19,7 @@ class PlayListTableViewController: UITableViewController ,Module{
     
     var cellHeight : CGFloat = 0
     var delegata : Operations?
+    var downloader : Downloader!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,6 @@ class PlayListTableViewController: UITableViewController ,Module{
         
         //self.title = "播放列表"
         //println(currentSceneData[0]["name"] as! String)
-        
         
     }
     

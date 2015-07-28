@@ -88,7 +88,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         if playSource == self.playSource {
             return
         }
-        
+        //update by slimadam on 15/07/28
         if NSFileManager.defaultManager().fileExistsAtPath(playSource.relativePath!, isDirectory: &isNotDir)
         {
             var error : NSError?
@@ -97,8 +97,8 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             
             self.playSource = playSource
             
-            _player = AVAudioPlayer(data: playerData, error: &error)
-                //AVAudioPlayer(contentsOfURL: source, error: &error)
+             //AVAudioPlayer(data: playerData, error: &error)
+            _player = AVAudioPlayer(contentsOfURL: playSource, error: &error)
             if _player != nil
             {
                 _player.delegate = self

@@ -247,7 +247,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     
     //ugcData:传入要修改的数据,isAdd:是否是新增数据
-    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
     {
         var currentScienceList = getCurrentScenePlayList()
         //判断是否是新增数据
@@ -258,40 +258,79 @@ class Server : NSObject , ModelManager ,StatusObserver
             {
                 var completed : Bool = false
                 
-                if _data[sceneItemIndex]["name"]as! String == status.currentScene
-                {
-                   
-                    
-                    var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
-                    var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
-                    
-                    for index in 0..<mutableArrayList.count
+                if sceneName != nil{
+                    println(_data[sceneItemIndex]["name"])
+                    if _data[sceneItemIndex]["name"]as! String == sceneName!
                     {
-                        if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                        
+                        
+                        var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
+                        var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
+                        
+                        for index in 0..<mutableArrayList.count
                         {
-                            mutableArrayList.addObject(ugcData)
-                            //sceneMusicList = mutableArrayList .copy() as! NSArray
-                            var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-                            
-                            d["list"] = mutableArrayList
-                            d["name"] = status.currentScene
-                    
-                            _data[sceneItemIndex] = d
-                            
-                            completed = true
-                            
-                            break
-
+                            if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                            {
+                                mutableArrayList.addObject(ugcData)
+                                //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                                
+                                d["list"] = mutableArrayList
+                                d["name"] = sceneName
+                                
+                                _data[sceneItemIndex] = d
+                                
+                                completed = true
+                                
+                                break
+                                
+                                
+                            }
                             
                         }
                         
                     }
-                    
+                    if completed
+                    {
+                        break
+                    }
+                }else{
+                    if _data[sceneItemIndex]["name"]as! String == status.currentScene
+                    {
+                        
+                        
+                        var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
+                        var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
+                        
+                        for index in 0..<mutableArrayList.count
+                        {
+                            if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                            {
+                                mutableArrayList.addObject(ugcData)
+                                //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                                
+                                d["list"] = mutableArrayList
+                                d["name"] = status.currentScene
+                                
+                                _data[sceneItemIndex] = d
+                                
+                                completed = true
+                                
+                                break
+                                
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    if completed
+                    {
+                        break
+                    }
                 }
-                if completed
-                {
-                    break
-                }
+                
             }
             
         }else{

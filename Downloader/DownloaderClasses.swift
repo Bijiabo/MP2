@@ -29,7 +29,7 @@ class DownloadItem : DownloadItemProtocol
 class Downloader : DownloaderProtocol
 {
     var delegate : DownloaderObserverProtocol?
-    
+    //预下载列表
     var list : Array<DownloadItemProtocol> = Array<DownloadItemProtocol>()
     
     var requestlist : [Request] = [Request]()
@@ -38,7 +38,7 @@ class Downloader : DownloaderProtocol
     {
         
     }
-    
+    //添加下载项到预下载列表中
     func addTask(remoteURL: String , cacheRootURL : NSURL , filename : String?) -> Int?
     {
         
@@ -103,9 +103,11 @@ class Downloader : DownloaderProtocol
     
     func startDownload()
     {
+        
         //遍历下载列表,下载列表中的所有内容
         for i in 0..<list.count
         {
+            
             if list[i].status == "start"
             {
                 let destination : (NSURL, NSHTTPURLResponse) -> NSURL = _getDestination(remoteURL : list[i].remoteURL, cacheRootURL : list[i].cacheRootURL, filename : list[i].filename)
@@ -165,7 +167,7 @@ class Downloader : DownloaderProtocol
         return destination
     }
     
-    
+    //交互,用户暂停/下载
     func start(index: Int) {
         
         let item = list[index]

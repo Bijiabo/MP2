@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         println(NSHomeDirectory())
         
+        
         //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
@@ -444,7 +445,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         if aleardyHasTask == false
         {
-            println("aleardyHasTask == false")
+            //println("aleardyHasTask == false")
             downloadQueue.append(item)
         }
     }
@@ -563,10 +564,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         println("downloadItemIdQueue.count \(downloadQueue.count)")
         
         //所有下载任务完成触发
-        if downloadQueue.count == 0
+        if downloadQueue.count == 2
         {
             NSNotificationCenter.defaultCenter().postNotificationName("DownloadStoped", object: nil)
         }
+        
     }
     
     //下载出错
@@ -673,10 +675,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
     }
     //用户上传内容添加到列表操作方法
-    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
     {
         
-        model.updateCurrentScenePlayList(ugcData, isAdd: isAdd)
+        model.updateCurrentScenePlayList(ugcData, isAdd: isAdd,sceneName:sceneName)
         
         
     }
@@ -697,6 +699,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func getUploadList() ->Dictionary<String,NSURL>
     {
         return model.getUploadList()
+    }
+    
+    func getAppDownloader() -> Downloader
+    {
+        return self.downloader!
     }
 }
 

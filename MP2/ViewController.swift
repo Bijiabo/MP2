@@ -53,6 +53,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //初始化下载提示页面
         initDownloadTipView()
         
+        
+        
         //加载完毕，发送通知
         NSNotificationCenter.defaultCenter().postNotificationName("MainPlayerViewControllerDidLoad", object: nil)
         

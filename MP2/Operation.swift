@@ -28,7 +28,7 @@ protocol ViewOperation {
     func getCurrentScenePlayList() -> [Dictionary<String,AnyObject>]
     
     //ugcData:传入要修改的数据,isAdd:是否是新增数据
-    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool)
+    func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
     //得到当前年龄段的Json数据
     func getCurentAgeGroupData() ->Array<AnyObject>
     
@@ -37,6 +37,8 @@ protocol ViewOperation {
     
     //得到iTunes上传文件夹列表
     func getUploadList() ->Dictionary<String,NSURL>
+    //得到整个App的下载器对象
+    func getAppDownloader() -> Downloader
 }
 
 //播放器功能操作方法接口

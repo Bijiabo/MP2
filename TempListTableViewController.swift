@@ -143,12 +143,13 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         if selectedItem?.accessoryType == UITableViewCellAccessoryType.Checkmark
         {
             selectedItem?.accessoryType = UITableViewCellAccessoryType.None
-            delegate?.updateCurrentScenePlayList(ugcData, isAdd: false)
+            
+            delegate?.updateCurrentScenePlayList(ugcData, isAdd: false, sceneName: nil)
             println("删除内容")
         }else{
             
             selectedItem?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            delegate?.updateCurrentScenePlayList(ugcData, isAdd: true)
+            delegate?.updateCurrentScenePlayList(ugcData, isAdd: true, sceneName: nil)
             println("添加内容")
             
         }

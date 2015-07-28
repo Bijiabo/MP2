@@ -19,6 +19,9 @@
 		336A1F291B5E635B00360293 /* iTunesGuide-images in Resources */ = {isa = PBXBuildFile; fileRef = 336A1F281B5E635B00360293 /* iTunesGuide-images */; };
 		336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */; };
 		336A1F351B63E96D00360293 /* UGC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336A1F341B63E96D00360293 /* UGC.storyboard */; };
+		336A1F391B64BB1800360293 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F381B64BB1800360293 /* BrowserViewController.swift */; };
+		336A1F3C1B655AEC00360293 /* DownLoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */; };
+		336A1F3E1B66668E00360293 /* DownLoadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
@@ -144,6 +147,9 @@
 		336A1F281B5E635B00360293 /* iTunesGuide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iTunesGuide-images"; sourceTree = "<group>"; };
 		336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMessageViewController.swift; sourceTree = "<group>"; };
 		336A1F341B63E96D00360293 /* UGC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UGC.storyboard; sourceTree = "<group>"; };
+		336A1F381B64BB1800360293 /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadTableViewController.swift; sourceTree = "<group>"; };
+		336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadTableViewCell.swift; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
@@ -207,6 +213,9 @@
 			children = (
 				336A1F281B5E635B00360293 /* iTunesGuide-images */,
 				336A1F341B63E96D00360293 /* UGC.storyboard */,
+				336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */,
+				336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */,
+				336A1F381B64BB1800360293 /* BrowserViewController.swift */,
 				336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */,
 				334156151B5B6CB900DA051D /* TempListTableViewCell.swift */,
 				334156161B5B6CB900DA051D /* TempListTableViewController.swift */,
@@ -501,6 +510,7 @@
 				A1E321DC1B4FD4360008D265 /* GuideViewController.swift in Sources */,
 				A1B5842C1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */,
 				A126FB071B43C21F009BE576 /* DownloaderClasses.swift in Sources */,
+				336A1F391B64BB1800360293 /* BrowserViewController.swift in Sources */,
 				339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */,
 				A1C99B8B1B481E3400BA3881 /* Reachability.swift in Sources */,
 				A1A7654B1B46BA1A00C3B6F1 /* userInformationViewController.swift in Sources */,
@@ -510,6 +520,7 @@
 				A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */,
 				334001D21B593F9600153524 /* playlistTableViewCell.swift in Sources */,
 				A1B584171B3307A200AD41D9 /* Status.swift in Sources */,
+				336A1F3E1B66668E00360293 /* DownLoadTableViewCell.swift in Sources */,
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
@@ -518,6 +529,7 @@
 				A1B5841A1B332A1400AD41D9 /* PlayerManager.swift in Sources */,
 				A1B5841D1B332E9900AD41D9 /* Player.swift in Sources */,
 				A1B5840D1B33041700AD41D9 /* Model.swift in Sources */,
+				336A1F3C1B655AEC00360293 /* DownLoadTableViewController.swift in Sources */,
 				A126FB0D1B468EBE009BE576 /* IJReachability.swift in Sources */,
 				336A1F271B5E607200360293 /* ItunesGuiderViewController.swift in Sources */,
 				A1B5842F1B3480EC00AD41D9 /* Operation.swift in Sources */,
