@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol ModuleLader
+protocol ModuleLoader
 {
     func loadModule(storyboardName : String , storyboardIdentifier : String)
 }
 
 protocol Module
 {
-    var moduleLoader : ModuleLader? {get set}
+    var moduleLoader : ModuleLoader? {get set}
 }

@@ -22,6 +22,7 @@
 		336A1F391B64BB1800360293 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F381B64BB1800360293 /* BrowserViewController.swift */; };
 		336A1F3C1B655AEC00360293 /* DownLoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */; };
 		336A1F3E1B66668E00360293 /* DownLoadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */; };
+		3371A4231B6A090600C842E0 /* MainScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371A4221B6A090600C842E0 /* MainScrollViewController.swift */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
@@ -150,6 +151,7 @@
 		336A1F381B64BB1800360293 /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadTableViewController.swift; sourceTree = "<group>"; };
 		336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadTableViewCell.swift; sourceTree = "<group>"; };
+		3371A4221B6A090600C842E0 /* MainScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScrollViewController.swift; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				A1B583EA1B33034900AD41D9 /* ViewController.swift */,
 				339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */,
 				334001D11B593F9600153524 /* playlistTableViewCell.swift */,
+				3371A4221B6A090600C842E0 /* MainScrollViewController.swift */,
 				A1B583EC1B33034900AD41D9 /* Main.storyboard */,
 				A1B583EF1B33034900AD41D9 /* Images.xcassets */,
 				A1B583F11B33034900AD41D9 /* LaunchScreen.xib */,
@@ -533,6 +536,7 @@
 				A126FB0D1B468EBE009BE576 /* IJReachability.swift in Sources */,
 				336A1F271B5E607200360293 /* ItunesGuiderViewController.swift in Sources */,
 				A1B5842F1B3480EC00AD41D9 /* Operation.swift in Sources */,
+				3371A4231B6A090600C842E0 /* MainScrollViewController.swift in Sources */,
 				A1A765511B46F33E00C3B6F1 /* CopyBundleFilesToCache.swift in Sources */,
 				A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */,
 			);

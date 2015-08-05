@@ -12,7 +12,7 @@ class UGCViewController: UIViewController,Module{
 
    
     
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     var currentSceneData : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
     
     var delegate : Operations?

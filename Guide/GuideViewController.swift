@@ -24,7 +24,7 @@ enum VJDeviceEnum{
 class GuideViewController: UIViewController , UIScrollViewDelegate , Module
 {
 
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     let guideImgDirName : String = "Guide-images"
     @IBOutlet var scrollVIew1: UIScrollView!
     

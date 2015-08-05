@@ -19,7 +19,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     var viewModel: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
     
     private let _view: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.defaultCenter()//锁屏界面
-    
+    var lastTitle : String = ""
     
     //remoteCommandCenter 控制命令 的 缓存 （用于切换模式时）
     var remoteCommandCenterCache : Dictionary<String , AnyObject> = Dictionary<String , AnyObject>()
@@ -41,6 +41,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     //播放数据改变通知
     func _CurrentPlayingDataHasChanged(notification : NSNotification)
     {
+        println("_CurrentPlayingDataHasChanged:\(notification)")
         
         updateViewModel()
         
@@ -57,27 +58,40 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     func updateViewModel ()
     {
+        println("NowPlayingInfoCenter-->updateViewModel()")
         let title : String = model?.currentPlayingData["name"] as! String
-        let description : String = model!.status.currentScene + "磨耳朵"
         
-        let artworkImage : UIImage = _generateImage(view: _generateView(imageName: "lockScreen", title: title, description: description))
+        if lastTitle != title
+        {
+            let description : String = model!.status.currentScene + "磨耳朵"
+            
+            let artworkImage : UIImage = _generateImage(view: _generateView(imageName: "lockScreen", title: title, description: description))
+            
+            let artwork : MPMediaItemArtwork = MPMediaItemArtwork(image:  artworkImage)
+            
+            viewModel = [
+                MPMediaItemPropertyAlbumArtist: "MPMediaItemPropertyAlbumArtist", // not displayed
+                MPMediaItemPropertyAlbumTitle: "磨耳朵",
+                MPMediaItemPropertyTitle: model?.currentPlayingData["name"] as! String,
+                MPMediaItemPropertyArtist:  model!.status.currentScene,
+                MPMediaItemPropertyArtwork: artwork,
+                //            MPNowPlayingInfoPropertyElapsedPlaybackTime : player.currentTime,
+                //            MPNowPlayingInfoPropertyPlaybackRate : 1.0,
+                //            MPMediaItemPropertyPlaybackDuration : player.duration
+            ]
+            lastTitle = title
+        }
+        else{
+            return 
+        }
         
-        let artwork : MPMediaItemArtwork = MPMediaItemArtwork(image:  artworkImage)
         
-        viewModel = [
-            MPMediaItemPropertyAlbumArtist: "MPMediaItemPropertyAlbumArtist", // not displayed
-            MPMediaItemPropertyAlbumTitle: "磨耳朵",
-            MPMediaItemPropertyTitle: model?.currentPlayingData["name"] as! String,
-            MPMediaItemPropertyArtist:  model!.status.currentScene,
-            MPMediaItemPropertyArtwork: artwork,
-            //            MPNowPlayingInfoPropertyElapsedPlaybackTime : player.currentTime,
-            //            MPNowPlayingInfoPropertyPlaybackRate : 1.0,
-            //            MPMediaItemPropertyPlaybackDuration : player.duration
-        ]
+        //
     }
     
     func updateView ()
     {
+        println("NowPlayingInfoCenter-->updataView()")
         _view.nowPlayingInfo = viewModel
     }
     

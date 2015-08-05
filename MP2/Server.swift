@@ -74,7 +74,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     }
     //得到当前场景下的播放列表
-    func getCurrentScenePlayList() -> [Dictionary<String, AnyObject>] {
+    func getCurrentScenePlayList(sceneName:String?) -> [Dictionary<String, AnyObject>] {
         
         return _getCurrentScenePlaylist ()
     }
@@ -94,7 +94,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     private func _getCurrentScenePlaylist () -> [Dictionary<String,AnyObject>]
     {
-        
+        println("Server-->_getCurrentScenePlaylist ()")
         for var i=0; i<_data.count; i++
         {
             if let dataItem = _data[i] as? Dictionary<String,AnyObject>
@@ -114,17 +114,18 @@ class Server : NSObject , ModelManager ,StatusObserver
             }
         }
         
-        //若取不到对应列表数据
-        if _data.count>0
-        {
-            if let dataItem = _data[0] as? Dictionary<String,AnyObject>
-            {
-                if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
-                {
-                    return list
-                }
-            }
-        }
+        //update by SlimAdam on 15/07/29
+        //_data为当前年龄数据
+//        if _data.count>0
+//        {
+//            if let dataItem = _data[0] as? Dictionary<String,AnyObject>
+//            {
+//                if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
+//                {
+//                    return list
+//                }
+//            }
+//        }
         
         return [Dictionary<String,AnyObject>]()
     }
@@ -133,10 +134,11 @@ class Server : NSObject , ModelManager ,StatusObserver
     {
         let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
         
+        //如果要播放的歌曲索引小于播放列表索引,那么久播放这首歌
         if currentScenePlaylist.count > status.currentSceneIndex
         {
             return currentScenePlaylist[status.currentSceneIndex]
-        }
+        }//如果有歌曲,直接播放第一首歌曲
         else if currentScenePlaylist.count > 0
         {
             return currentScenePlaylist[0]
@@ -150,12 +152,13 @@ class Server : NSObject , ModelManager ,StatusObserver
     private func _updateCurrentPlayingData ()
     {
         let playingData : Dictionary<String, AnyObject> = _getCurrentPlayingData()
-        
-        for (key , value) in playingData
-        {
-            currentPlayingData[key] = value
-        }
-        
+        //MARK: fuck!!!
+//        for (key , value) in playingData
+//        {
+//            currentPlayingData[key] = value
+//        }
+        currentPlayingData = playingData
+        //println(currentPlayingData)
     }
     
     //切换为下一首音频
@@ -189,9 +192,18 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //状态已改变
     func statusHasChanged(keyPath: String) {
-        _updateCurrentPlayingData()
         
-        delegate?.currentPlayingDataHasChanged()
+        println("whatfuck---\(keyPath)")
+        
+        //场景切换伴随着歌曲切换,所以只要判断歌曲切换了再更新界面就好了
+        if keyPath == "currentSceneIndex"
+        {
+            _updateCurrentPlayingData()
+            
+            delegate?.currentPlayingDataHasChanged()
+        }
+        
+        
     }
     
     //获取下载列表
@@ -249,7 +261,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     //ugcData:传入要修改的数据,isAdd:是否是新增数据
     func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
     {
-        var currentScienceList = getCurrentScenePlayList()
+        var currentScienceList = getCurrentScenePlayList(nil)
         //判断是否是新增数据
         if isAdd
         {

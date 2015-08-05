@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate , Module
 {
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     
     var delegate : Operations?
     
@@ -35,6 +35,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         initTabBar()
         
+        //初始化播放暂停按钮
         initPlayPauseButton()
         
         initAudioInfoView()
@@ -131,6 +132,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         // Dispose of any resources that can be recreated.
     }
 
+    //播放暂停按钮被点击
     @IBAction func togglePlayPause(sender: AnyObject) {
         
         if delegate?.playing == true
@@ -207,16 +209,17 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func CurrentPlayingDataHasChanged(notification : NSNotification)
     {
+        println("CurrentPlayingDataHasChanged")
         refreshAudioInfoView()
         
         _refreshBackgroundImageView(view: backgroundImageView)
     }
-    
+    //用户点击触发
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!)
     {
         let selectedIndex : Int = item.tag
+        println("tabTag:\(item.tag)")
         let targetScene : String = model!.scenelist[selectedIndex]
-        
         delegate?.switchToScene(targetScene)
     }
     
@@ -340,7 +343,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
             
-            var playListData =  delegate?.getCurrentScenePlayList()
+            var playListData =  delegate?.getCurrentScenePlayList(nil)
             var playingData = model?.currentPlayingData
             
             var playListVC : PlayListTableViewController = segue.destinationViewController as! PlayListTableViewController

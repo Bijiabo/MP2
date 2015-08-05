@@ -33,7 +33,7 @@ protocol ModelManager
     func updateData (data : Array<AnyObject>)
     
     //得到当前场景下的播放列表
-    func getCurrentScenePlayList() -> [Dictionary<String,AnyObject>]
+    func getCurrentScenePlayList(sceneName:String?) -> [Dictionary<String,AnyObject>]
     
     //ugcData:传入要修改的数据,isAdd:是否是新增数据
     func updateCurrentScenePlayList(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)

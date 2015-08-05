@@ -10,7 +10,7 @@ import UIKit
 
 class TempListTableViewController: UITableViewController ,UITableViewDelegate,UITableViewDataSource,Module{
 
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     var currentSceneData : [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
         
     var listCount = 0

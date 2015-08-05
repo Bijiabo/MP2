@@ -10,7 +10,7 @@ import UIKit
 
 class PlayListTableViewController: UITableViewController ,Module{
 
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     @IBOutlet var uiView1: UITableView!
     
     //播放列表
@@ -39,7 +39,7 @@ class PlayListTableViewController: UITableViewController ,Module{
         super.viewWillAppear(animated)
         
         //准备加载该界面,获取最新场景列表
-        currentSceneData = delegata!.getCurrentScenePlayList()
+        currentSceneData = delegata!.getCurrentScenePlayList(nil)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         

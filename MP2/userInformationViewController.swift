@@ -10,7 +10,7 @@ import UIKit
 
 class userInformationViewController: UIViewController , Module
 {
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     
     @IBOutlet var childNameTextField: UITextField!
     @IBOutlet var childSexualitySegmentedControl: UISegmentedControl!

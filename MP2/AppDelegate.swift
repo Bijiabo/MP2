@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol , ModuleLader
+class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol , ModuleLoader
 {
     //模拟蜂窝网络网络调试，设为`true`时，会识别网络为蜂窝网络。正式上线和测试产品时应为false。
     let isCellPhoneDebug : Bool = true
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         println(NSHomeDirectory())
-        
+        println(UIScreen.mainScreen().bounds.width)
         
         //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         let jsonData : JSON = loadJSONData("0.json")
         var data = convertJSONtoArray(jsonData)
         
-        //设定model和player
+        //设定model和player      
         model = Server(data: data, statusManager: Status())//初始化当前场景和场景需要数据
         model.delegate = self
         
@@ -192,11 +192,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         NSNotificationCenter.defaultCenter().postNotificationName("PlayingStatusChanged", object: playing)
     }
     
-    func getCurrentScenePlayList() -> [Dictionary<String, AnyObject>]
+    func getCurrentScenePlayList(sceneName:String?) -> [Dictionary<String, AnyObject>]
     {
         
         
-        return model.getCurrentScenePlayList()
+        return model.getCurrentScenePlayList(nil)
     }
     
     //MARK:
@@ -658,7 +658,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         model.updateData(data)
     }
-    
+     
     func mainPlayerViewControllerDidLoad (notification : NSNotification)
     {
         //若之前没有下载过内容，则自动下载

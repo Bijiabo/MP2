@@ -18,16 +18,19 @@ class Status : StatusManager {
     dynamic var currentScene : String = "" {
         
         didSet {
+            
             observer.statusHasChanged("currentScene")
             
             NSUserDefaults.standardUserDefaults().setObject(currentScene, forKey: "currentScene")
         }
     }
     
-    //当前情景播放序数
+    //update by SlimAdam on 15/07/30
+    //当前场景歌曲索引
     dynamic var currentSceneIndex : Int = 0 {
         
         didSet {
+            
             observer.statusHasChanged("currentSceneIndex")
         }
     }
@@ -56,14 +59,17 @@ class Status : StatusManager {
     
     //设置当前情景
     func set_CurrentScene(scene: String) {
+        
         currentScene = scene
         
         if _sceneIndexStatusCache[scene] == nil
         {
            _sceneIndexStatusCache[scene] = 0
+            
         }
         
         currentSceneIndex = _sceneIndexStatusCache[scene]!
+        
     }
     
     //设置当前情景播放序数

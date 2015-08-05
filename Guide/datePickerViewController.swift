@@ -10,7 +10,7 @@ import UIKit
 
 class datePickerViewController: UIViewController , Module
 {
-    var moduleLoader : ModuleLader?
+    var moduleLoader : ModuleLoader?
     
     let ageMax : Int = 5
 
