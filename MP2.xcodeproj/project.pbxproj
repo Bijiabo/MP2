@@ -402,6 +402,7 @@
 		A1B583DB1B33034900AD41D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = JYLabs;
 				TargetAttributes = {

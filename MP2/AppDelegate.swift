@@ -13,7 +13,7 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertViewDelegate , DownloaderObserverProtocol , ModuleLoader
 {
     //模拟蜂窝网络网络调试，设为`true`时，会识别网络为蜂窝网络。正式上线和测试产品时应为false。
-    let isCellPhoneDebug : Bool = true
+    let isCellPhoneDebug : Bool = false
     
     var mainVC : UIViewController!
 
