@@ -43,7 +43,7 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor.grayColor()
         /*初始化*/
         mainScrollView.delegate = self
         

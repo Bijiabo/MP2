@@ -14,7 +14,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     var delegate : Operations?
     
     @IBOutlet var playPauseButton: UIButton!
-    @IBOutlet var tabBar: UITabBar!
     @IBOutlet var audioName: UILabel!
     @IBOutlet var audioTag: UILabel!
     @IBOutlet var backgroundImageView: UIImageView!
@@ -35,7 +34,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.delegate = self
+        
         isFirst = NSUserDefaults.standardUserDefaults().boolForKey("isFirstLoad")
         
         if isFirst
@@ -51,7 +50,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             initAudioInfoView()
             _refreshBackgroundImageView(view: backgroundImageView,sceneName: nil)
         }
-        initTabBar()
+        
         
         //初始化播放暂停按钮
         initPlayPauseButton()
@@ -201,32 +200,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
     }
     
-    func initTabBar()
-    {
-        //设定tabbar items
-        var tabBarItems : [UITabBarItem] = []
-        for var i=0; i<model?.scenelist.count ; i++
-        {
-            let barItem : UITabBarItem = UITabBarItem(title: model?.scenelist[i], image: UIImage(named: "Mode-\(model!.scenelist[i])"), tag: i)
-            tabBarItems.append( barItem )
-        }
-        
-        tabBar.setItems(tabBarItems, animated: false)
-        
-        //设定tabbar默认选中项目
-        if let selectedIndex : Int = find(model!.scenelist, model!.status.currentScene)
-        {
-            for tabbarItem in tabBar.items as! [UITabBarItem]
-            {
-                if tabbarItem.tag == selectedIndex
-                {
-                    tabBar.selectedItem = tabbarItem
-                    break
-                }
-            }
-        }
-        
-    }
+    
     
     func initPlayPauseButton()
     {
