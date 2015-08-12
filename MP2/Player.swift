@@ -54,7 +54,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
     init(source : NSURL)
     {
         super.init()
-        
+        //初始化播放内容
         setTheSource(source)
 
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
@@ -93,7 +93,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         {
             var error : NSError?
             
-            var playerData : NSData = NSData(contentsOfURL: playSource)!
+            //var playerData : NSData = NSData(contentsOfURL: playSource)!
             
             self.playSource = playSource
             
@@ -103,6 +103,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             {
                 _player.delegate = self
             
+                //准备播放
                 _player.prepareToPlay()
             }
             

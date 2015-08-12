@@ -26,21 +26,39 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
 
     @IBOutlet var childNameLabel: UILabel!
     
-    var model : ModelManager?
+    var scrollViewController : MainScrollViewController!
     
+    var model : ModelManager?
+    var isFirst : Bool = false
+    //首次载入,界面要显示的数据
+    var sceneDataCache : Dictionary<String,AnyObject>?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBar.delegate = self
+        isFirst = NSUserDefaults.standardUserDefaults().boolForKey("isFirstLoad")
         
+        if isFirst
+        {
+            initSceneView()
+            
+            if let _sceneName : Dictionary<String,AnyObject> = sceneDataCache
+            {
+                _refreshBackgroundImageView(view: backgroundImageView,sceneName: _sceneName["sceneName"] as? String)
+            }
+            
+        }else{
+            initAudioInfoView()
+            _refreshBackgroundImageView(view: backgroundImageView,sceneName: nil)
+        }
         initTabBar()
         
         //初始化播放暂停按钮
         initPlayPauseButton()
         
-        initAudioInfoView()
+        //initAudioInfoView()
         
-        _refreshBackgroundImageView(view: backgroundImageView)
+        //_refreshBackgroundImageView(view: backgroundImageView)
         
         //添加一个观察者,观察通知名字为CurrentPlayingDataHasChanged的通知,得到通知后执行CurrentPlayingDataHasChanged方法
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("CurrentPlayingDataHasChanged:"), name: "CurrentPlayingDataHasChanged", object: nil)
@@ -85,6 +103,19 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             childNameLabel.text = ""
         }
         
+        
+    }
+    //初始化各个界面
+    func initSceneView()
+    {
+        //获取场景显示显示数据
+        if let sceneDataItem = sceneDataCache
+        {
+            self.audioName.text = sceneDataItem["playingName"] as? String
+            self.audioTag.text = sceneDataItem["playingTag"] as? String
+            let sceneName = sceneDataItem["sceneName"] as! String
+            self.navigationBarTitle.title = "\(sceneName)磨耳朵"
+        }
         
     }
     
@@ -135,6 +166,17 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //播放暂停按钮被点击
     @IBAction func togglePlayPause(sender: AnyObject) {
         
+        self.scrollViewController.switchSceneToIndex(self.view.tag)
+        
+        //currentPlayingViewCode
+        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+        
+        let selectedIndex : Int = self.view.tag
+        println("tabTag:\(selectedIndex)")
+        let targetScene : String = model!.scenelist[selectedIndex]
+        delegate?.switchToScene(targetScene)
+        
+        /*
         if delegate?.playing == true
         {
             delegate?.pause()
@@ -143,6 +185,20 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         {
             delegate?.play()
         }
+        */
+
+        
+        if playPauseButton.tag == 1 {
+            //play
+            delegate?.pause()
+            
+            playPauseButton.tag = 0
+        } else {
+            delegate?.play()
+            
+            playPauseButton.tag = 1
+        }
+        
     }
     
     func initTabBar()
@@ -196,15 +252,22 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func refreshAudioInfoView ()
     {
-        audioName.text = model?.currentPlayingData["name"] as? String
-        audioTag.text = model?.currentPlayingData["tag"] as? String
+        let currentPlayingViewCode = NSUserDefaults.standardUserDefaults().integerForKey("currentPlayingViewCode")
         
-        if let currentScene : String = model?.status.currentScene
+        if currentPlayingViewCode == self.view.tag
         {
-            self.title = "主界面"
+            audioName.text = model?.currentPlayingData["name"] as? String
+            audioTag.text = model?.currentPlayingData["tag"] as? String
             
-            navigationBarTitle.title = "\(currentScene)磨耳朵"
+            if let currentScene : String = model?.status.currentScene
+            {
+                self.title = "主界面"
+                
+                navigationBarTitle.title = "\(currentScene)磨耳朵"
+            }
         }
+        
+        
     }
     
     func CurrentPlayingDataHasChanged(notification : NSNotification)
@@ -212,7 +275,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         println("CurrentPlayingDataHasChanged")
         refreshAudioInfoView()
         
-        _refreshBackgroundImageView(view: backgroundImageView)
+        _refreshBackgroundImageView(view: backgroundImageView,sceneName: nil)
     }
     //用户点击触发
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!)
@@ -226,44 +289,80 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //喜欢按钮触发事件
     @IBAction func tapLikeButton(sender: AnyObject)
     {
+        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doLike()
     }
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
+        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doDislike()
     }
-    
+    //改变播放按钮状态
     func playingStatusChanged(notification : NSNotification)
     {
-        _refreshPlayButton()
+        //_refreshPlayButton()
     }
     
     private func _refreshPlayButton()
     {
-        if delegate?.playing == true
+        let currentPlayingViewCode = NSUserDefaults.standardUserDefaults().integerForKey("currentPlayingViewCode")
+//        let scenesVCCollection : [ViewController] = NSUserDefaults.standardUserDefaults().objectForKey("scenesVCCollection") as! [ViewController]
+//        for i in 0..<scenesVCCollection.count
+//        {
+//            let _view = scenesVCCollection[i]
+//            
+//            _view.playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
+//        }
+        if currentPlayingViewCode == self.view.tag
         {
-            playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
-        }
-        else
-        {
-            playPauseButton.setBackgroundImage(UIImage(named: "playButton") , forState: UIControlState.Normal)
+            if delegate?.playing == true
+            {
+                
+                playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
+                
+            }
+            else
+            {
+                playPauseButton.setBackgroundImage(UIImage(named: "playButton") , forState: UIControlState.Normal)
+            }
+
         }
     }
     
-    private func _refreshBackgroundImageView (#view : UIImageView?) -> Void
+    private func _refreshBackgroundImageView (#view : UIImageView?,sceneName:String?) -> Void
     {
-        
+        let currentPlayingViewCode = NSUserDefaults.standardUserDefaults().integerForKey("currentPlayingViewCode")
+        //update by slimadam on 15/08/12
         if view == nil {return}
         
         let resourceURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/image", isDirectory: true)
+        var sceneKey : String = model!.status.currentScene
         
-        let sceneKey : String = model!.status.currentScene
+        //如果是刚加载的话
+        if sceneName != nil
+        {
+
+            sceneKey  = sceneName!
+            let imagePath : NSURL = resourceURL.URLByAppendingPathComponent("\(sceneKey).jpg")
+            
+            view!.image = UIImage(contentsOfFile: imagePath.relativePath!)
         
-        let imagePath : NSURL = resourceURL.URLByAppendingPathComponent("\(sceneKey).jpg")
+        }else{//修改数据的时候走else
+            
+            if currentPlayingViewCode == self.view.tag
+            {
+
+                let imagePath : NSURL = resourceURL.URLByAppendingPathComponent("\(sceneKey).jpg")
+                
+                view!.image = UIImage(contentsOfFile: imagePath.relativePath!)
+            }
+        }
         
-        view!.image = UIImage(contentsOfFile: imagePath.relativePath!)
+        
+        
     }
+    
     
     func _refreshNavigationBar (#navigationBar : UINavigationBar?) -> Void
     {

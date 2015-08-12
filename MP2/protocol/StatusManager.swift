@@ -26,7 +26,8 @@ protocol StatusManager
     
     //设定指定情景播放序数
     func set_IndexForScene(scene : String , index : Int)
-    
+    //获取所有场景最后播放的索引
+    func getSceneIndexStatusCache ()-> Dictionary<String,Int>
     //状态观察者
     var observer : StatusObserver { get set }
 }

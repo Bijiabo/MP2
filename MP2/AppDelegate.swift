@@ -85,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         if mediaFileURL != nil
         {
+            
             player = Player(source: mediaFileURL!)
             player.delegate = self
             
@@ -115,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         self.window!.rootViewController = mainVC
         self.window!.makeKeyAndVisible()//调用这个方法,显示界面
         
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()//开始监听事件
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()//后台网络请求
         
         self.becomeFirstResponder()
         
@@ -287,6 +288,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
         
         NSNotificationCenter.defaultCenter().postNotificationName("CurrentPlayingDataHasChanged", object: nil)
+
     }
     
     

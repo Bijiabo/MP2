@@ -44,6 +44,11 @@ class Status : StatusManager {
         }
     }
     
+    func getSceneIndexStatusCache ()-> Dictionary<String,Int>
+    {
+        println("sceneName:index:\(_sceneIndexStatusCache)")
+        return _sceneIndexStatusCache
+    }
     init()
     {
         
@@ -51,9 +56,11 @@ class Status : StatusManager {
         if let sceneCache :Dictionary<String,Int> = NSUserDefaults.standardUserDefaults().objectForKey("_sceneIndexStatusCache") as? Dictionary<String,Int>
         {
             _sceneIndexStatusCache = sceneCache
+            
         }
         
         let savedCurrentScene: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("currentScene")
+        
         currentScene = savedCurrentScene == nil ? "" : savedCurrentScene as! String
     }
     

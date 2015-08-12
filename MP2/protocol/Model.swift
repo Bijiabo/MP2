@@ -16,6 +16,8 @@ protocol ModelManager
     var scenelist : Array<String> {get}
     //状态管理
     var status : StatusManager {get set}
+    //所有场景数据缓存
+    var scenesDataCache : [Dictionary<String,AnyObject>]? {get set}
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> {get}

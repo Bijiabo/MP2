@@ -16,7 +16,8 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //情景(名称)列表，保存所有场景，如：["起床","玩耍","午后","睡前"]
     var scenelist : Array<String> = Array<String>()
-
+    //所有场景缓存
+    var scenesDataCache : [Dictionary<String,AnyObject>]?
     //状态管理
     var status : StatusManager = Status()
     
@@ -44,7 +45,7 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         _updateCurrentPlayingData()
         
-        
+        _setScenesDataCache()
     }
     
     init (data : Array<AnyObject> , statusManager : StatusManager)
@@ -72,11 +73,18 @@ class Server : NSObject , ModelManager ,StatusObserver
         //修改当前场景播放数据
         _updateCurrentPlayingData()
     
+        _setScenesDataCache()
     }
     //得到当前场景下的播放列表
     func getCurrentScenePlayList(sceneName:String?) -> [Dictionary<String, AnyObject>] {
         
-        return _getCurrentScenePlaylist ()
+        if sceneName != nil
+        {
+            return _getCurrentScenePlaylist (sceneName)
+        }else{
+            return _getCurrentScenePlaylist (nil)
+        }
+        
     }
  
     private func _updateScenelist (data : Array<AnyObject>)
@@ -92,27 +100,94 @@ class Server : NSObject , ModelManager ,StatusObserver
         }
     }
     
-    private func _getCurrentScenePlaylist () -> [Dictionary<String,AnyObject>]
+    //设置scenesDataCache值
+    private func _setScenesDataCache()
     {
-        println("Server-->_getCurrentScenePlaylist ()")
-        for var i=0; i<_data.count; i++
+        //实例化scenesDataCache
+        scenesDataCache = [Dictionary<String,AnyObject>]()
+        
+        
+        for i in 0..<scenelist.count
         {
-            if let dataItem = _data[i] as? Dictionary<String,AnyObject>
+            var sceneDataCache = Dictionary<String,AnyObject>()
+            let _sceneName : String = scenelist[i]
+            sceneDataCache["sceneName"] = _sceneName
+            println("_SceneName\(_sceneName)")
+            let _scenePlayList = getCurrentScenePlayList(_sceneName) as [Dictionary<String, AnyObject>]
+            println("_scenePlayList:\(_scenePlayList)")
+            let _index = status.getSceneIndexStatusCache()
+            println("index:\(_index[_sceneName])")
+            
+            var _scenePlayingIndex = _index[_sceneName]
+            
+            if _scenePlayingIndex != nil
             {
-                if let sceneName : String = dataItem["name"] as? String
+                _scenePlayingIndex = _index[_sceneName]!
+                
+            }else{
+                
+                status.set_IndexForScene(_sceneName, index: 0)
+                _scenePlayingIndex = status.getSceneIndexStatusCache()[_sceneName]!
+            }
+            
+            for j in 0..<_scenePlayList.count
+            {
+                if j == _scenePlayingIndex
                 {
-                    if sceneName == status.currentScene
+                    sceneDataCache["playingName"] = _scenePlayList[j]["name"]
+                    sceneDataCache["playingTag"] = _scenePlayList[j]["tag"]
+                }
+            }
+            //继续读取
+            scenesDataCache?.append(sceneDataCache)
+        }
+        println("scenesDataCache:\(scenesDataCache)")
+    }
+    private func _getCurrentScenePlaylist (sceneName:String?) -> [Dictionary<String,AnyObject>]
+    {
+        
+        println("Server-->_getCurrentScenePlaylist ()")
+        if sceneName != nil
+        {
+            for var i=0; i<_data.count; i++
+            {
+                if let dataItem = _data[i] as? Dictionary<String,AnyObject>
+                {
+                    if let sceneName1 : String = dataItem["name"] as? String
                     {
-                        //取得对应播放列表数据
-                        if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
+                        if sceneName1 == sceneName
                         {
-                            
-                            return list
+                            //取得对应播放列表数据
+                            if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
+                            {
+                                
+                                return list
+                            }
+                        }
+                    }
+                }
+            }
+        }else{
+            for var i=0; i<_data.count; i++
+            {
+                if let dataItem = _data[i] as? Dictionary<String,AnyObject>
+                {
+                    if let sceneName : String = dataItem["name"] as? String
+                    {
+                        if sceneName == status.currentScene
+                        {
+                            //取得对应播放列表数据
+                            if let list : [Dictionary<String,AnyObject>] = dataItem["list"] as? [Dictionary<String,AnyObject>]
+                            {
+                                
+                                return list
+                            }
                         }
                     }
                 }
             }
         }
+        
         
         //update by SlimAdam on 15/07/29
         //_data为当前年龄数据
@@ -132,7 +207,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     private func _getCurrentPlayingData () -> Dictionary<String,AnyObject>
     {
-        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
+        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist(nil)
         
         //如果要播放的歌曲索引小于播放列表索引,那么久播放这首歌
         if currentScenePlaylist.count > status.currentSceneIndex
@@ -164,7 +239,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     //切换为下一首音频
     func next() {
         
-        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
+        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist(nil)
         
         if currentScenePlaylist.count > ( status.currentSceneIndex + 1 )
         {
@@ -178,7 +253,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //切换上一个音频
     func previous() {
-        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist()
+        let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist(nil)
         
         if status.currentSceneIndex > 0
         {

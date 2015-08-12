@@ -16,6 +16,9 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     
     var model : ModelManager?
     
+    //所有场景缓存
+    var scenesDataCache : [Dictionary<String,AnyObject>]?
+    
     //主播放界面对象
     var mainVC : ViewController!
     //设备宽高
@@ -44,30 +47,57 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
         /*初始化*/
         mainScrollView.delegate = self
         
-//        deviceWidth = UIScreen.mainScreen().bounds.width
-//        deviceWidth = UIScreen.mainScreen().bounds.height
+        scenesDataCache = model!.scenesDataCache
         
         deviceWidth = self.view.frame.width
         deviceHeight = self.view.frame.height
         
         pageCount = model!.scenelist.count
         currentPage = model!.status.currentSceneIndex
+        
+        
+        
+        _initScrollView()
+    }
+
+    private func _initScrollView()
+    {
         //初始化scrollView大小
         mainScrollView.contentSize = CGSize(width: deviceWidth * CGFloat(pageCount), height: deviceHeight)
         println(deviceWidth)
-        
-        var frame = CGRect(x: 0, y: 0, width: deviceWidth, height: deviceHeight)
-        mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC_0") as! ViewController
-        mainVC.model = self.model
-        mainVC.delegate = self.delegate
-        mainVC.moduleLoader = self.moduleLoader
-        
-        self.addChildViewController(mainVC)
-        mainScrollView.addSubview(mainVC.view)
-        initSubVC()
-        
+        //标示首次加载
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isFirstLoad")
+        var scenesVCCollection : [ViewController] = []
+        for i in 0..<model!.scenesDataCache!.count
+        {
+            
+            var frame = CGRect(x: deviceWidth * CGFloat(i), y: 0, width: deviceWidth, height: deviceHeight)
+            var mainVC1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC_0") as! ViewController
+            
+            if let sceneArray : [Dictionary<String,AnyObject>] = scenesDataCache
+            {
+                mainVC1.sceneDataCache = sceneArray[i]
+            }
+            
+            mainVC1.model = self.model
+            mainVC1.delegate = self.delegate
+            mainVC1.moduleLoader = self.moduleLoader
+            mainVC1.view.frame = frame
+            mainVC1.view.tag = i
+            
+            mainVC1.scrollViewController = self
+            
+            self.addChildViewController(mainVC1)
+            
+            mainScrollView.addSubview(mainVC1.view)
+            
+            scenesVCCollection.append(mainVC1)
+            
+        }
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isFirstLoad")
+        //保存VC数组
+        //NSUserDefaults.standardUserDefaults().setObject(scenesVCCollection, forKey: "scenesVCCollection")
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,7 +123,6 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
         }else{
             
         }
-        addNextSubView()
     }
     
     
@@ -112,62 +141,31 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
         }else{
             currentPage--
         }
-        initSubVC()
-    }
-    
-    //添加子界面
-    func addNextSubView()
-    {
-        if isToRight
-        {
-            
-            self.addChildViewController(rightSubVC)
-            mainScrollView.addSubview(rightSubVC.view)
-            
-        }else{
-            self.addChildViewController(leftSubVC)
-            mainScrollView.addSubview(leftSubVC.view)
-            
-        }
-    }
-    
-    
-    //初始化左右界面
-    
-    func initSubVC(){
         
-        //如果当前场景不在第一页或者最后一页
-        if currentPage > 0 && currentPage < pageCount - 1
-        {
-            leftSubVC  = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC_0") as! ViewController
-            leftSubVC.delegate = self.delegate
-            leftSubVC.model = self.model
-            leftSubVC.moduleLoader = self.moduleLoader
-            leftSubVC.view.frame = CGRect(x: CGFloat((currentPage-1)) * deviceWidth, y: 0, width: deviceWidth, height: deviceHeight)
+    }
+    
+    func switchSceneToIndex(index : Int) {
+        println("切换到场景序数\(index)")
+        
+        for childVC in self.childViewControllers {
+            let childPlayViewController : ViewController = childVC as! ViewController
             
-            rightSubVC  = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC_0") as! ViewController
-            rightSubVC.delegate = self.delegate
-            rightSubVC.model = self.model
-            rightSubVC.moduleLoader = self.moduleLoader
-            rightSubVC.view.frame = CGRect(x: CGFloat((currentPage+1)) * deviceWidth, y: 0, width: deviceWidth, height: deviceHeight)
-            
-        }else if currentPage == 0{
-            rightSubVC  = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC_0") as! ViewController
-            rightSubVC.delegate = self.delegate
-            rightSubVC.model = self.model
-            rightSubVC.moduleLoader = self.moduleLoader
-            rightSubVC.view.frame = CGRect(x: CGFloat((currentPage+1)) * deviceWidth, y: 0, width: deviceWidth, height: deviceHeight)
-        }else if currentPage == pageCount-1{
-            
-            leftSubVC  = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("mainVC_0") as! ViewController
-            leftSubVC.delegate = self.delegate
-            leftSubVC.model = self.model
-            leftSubVC.moduleLoader = self.moduleLoader
-            leftSubVC.view.frame = CGRect(x: CGFloat((currentPage-1)) * deviceWidth, y: 0, width: deviceWidth, height: deviceHeight)
+            if childPlayViewController.view.tag == index {
+                
+                if childPlayViewController.playPauseButton.tag == 0 {
+                    childPlayViewController.playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
+                } else {
+                    childPlayViewController.playPauseButton.setBackgroundImage(UIImage(named: "playButton")!, forState: UIControlState.Normal)
+                }
+            } else {
+                childPlayViewController.playPauseButton.setBackgroundImage(UIImage(named: "playButton")!, forState: UIControlState.Normal)
+                
+                //childPlayViewController.playPauseButton.tag = 0
+                
+            }
         }
         
     }
-
     
 
     /*

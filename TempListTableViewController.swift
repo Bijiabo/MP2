@@ -25,7 +25,6 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
     //当界面被加载
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //
         localList = delegate!.getUploadList()
         
