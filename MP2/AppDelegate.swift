@@ -180,6 +180,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func playNext()
     {
         model.next()
+        
     }
     
     func updateChildInformation()

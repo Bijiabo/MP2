@@ -105,13 +105,13 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     
     //开始拖动的时候触发事件
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        println(scrollView.contentOffset)
+        //println(scrollView.contentOffset)
         
     }
     
     //
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println(scrollView.contentOffset)
+        //println(scrollView.contentOffset)
         
         let rightFlag : Bool = (scrollView.contentOffset.x - lastOffset) > 0
         

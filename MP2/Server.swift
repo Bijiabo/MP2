@@ -23,6 +23,8 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+    //不喜欢的歌曲
+    var disLikePlayingData :Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
     //当前json文件路径
    // var currentJsonPath : NSURL?
     
@@ -240,15 +242,32 @@ class Server : NSObject , ModelManager ,StatusObserver
     func next() {
         
         let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist(nil)
+        let isDisLike = NSUserDefaults.standardUserDefaults().boolForKey("clickDisLike")
         
-        if currentScenePlaylist.count > ( status.currentSceneIndex + 1 )
+        if isDisLike
         {
-            status.set_CurrentSceneIndex(status.currentSceneIndex + 1)
+            if currentScenePlaylist.count > ( status.currentSceneIndex  )
+            {
+                status.set_CurrentSceneIndex(status.currentSceneIndex )
+            }
+            else
+            {
+                status.set_CurrentSceneIndex(0)
+            }
+            
+        }else{
+            
+            if currentScenePlaylist.count > ( status.currentSceneIndex + 1 )
+            {
+                status.set_CurrentSceneIndex(status.currentSceneIndex + 1)
+            }
+            else
+            {
+                status.set_CurrentSceneIndex(0)
+            }
         }
-        else
-        {
-            status.set_CurrentSceneIndex(0)
-        }
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "clickDisLike")
+        
     }
     
     //切换上一个音频
@@ -440,10 +459,11 @@ class Server : NSObject , ModelManager ,StatusObserver
                     {
                         if mutableArrayList[index]["localURI"]as! String == ugcData["localURI"]as! String
                         {
-                            //println("remoindex\(index)")
-                            //println("\(mutableArrayList.count)")
-                            mutableArrayList.removeObjectAtIndex(index)
-                            
+                            //如果数组总量大于索引,可以删除
+                            if mutableArrayList.count >= index
+                            {
+                                mutableArrayList.removeObjectAtIndex(index)
+                            }
                             //sceneMusicList = mutableArrayList .copy() as! NSArray
                             var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
                             
@@ -474,11 +494,10 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         
         var error : NSError?
+        println(NSUserDefaults.standardUserDefaults().objectForKey("childBirthday"))
         if let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as? NSDate
         {
             let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
-            
-            //let filePath = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data/\(childAge.age).json").relativePath!
             
             let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
             
@@ -486,7 +505,6 @@ class Server : NSObject , ModelManager ,StatusObserver
             
             //println(DataFilePath)
             
-            //"\(_data)".writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
             
             if error != nil
             {

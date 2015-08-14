@@ -175,17 +175,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         let targetScene : String = model!.scenelist[selectedIndex]
         delegate?.switchToScene(targetScene)
         
-        /*
-        if delegate?.playing == true
-        {
-            delegate?.pause()
-        }
-        else
-        {
-            delegate?.play()
-        }
-        */
-
         
         if playPauseButton.tag == 1 {
             //play
@@ -239,6 +228,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
                 
                 navigationBarTitle.title = "\(currentScene)磨耳朵"
             }
+            
+            
         }
         
         
@@ -270,7 +261,15 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+        model?.disLikePlayingData = model!.currentPlayingData
+        let thisSceneName = model?.scenelist[self.view.tag]
+        //点击不喜欢切歌
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "clickDisLike")
+        
+        //删除不喜欢的数据
+        delegate?.updateCurrentScenePlayList(model!.disLikePlayingData, isAdd: false, sceneName: thisSceneName)
         delegate?.doDislike()
+        
     }
     //改变播放按钮状态
     func playingStatusChanged(notification : NSNotification)
@@ -281,13 +280,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     private func _refreshPlayButton()
     {
         let currentPlayingViewCode = NSUserDefaults.standardUserDefaults().integerForKey("currentPlayingViewCode")
-//        let scenesVCCollection : [ViewController] = NSUserDefaults.standardUserDefaults().objectForKey("scenesVCCollection") as! [ViewController]
-//        for i in 0..<scenesVCCollection.count
-//        {
-//            let _view = scenesVCCollection[i]
-//            
-//            _view.playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
-//        }
         if currentPlayingViewCode == self.view.tag
         {
             if delegate?.playing == true
@@ -340,14 +332,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func _refreshNavigationBar (#navigationBar : UINavigationBar?) -> Void
     {
-        /*
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.whiteColor()
-        ]
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        */
+
         
         //outlet🈯️定的,一会儿需要删除
         if navigationBar == nil {return}

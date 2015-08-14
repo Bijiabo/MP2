@@ -21,7 +21,8 @@ protocol ModelManager
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> {get}
-    
+    //不喜欢的歌曲
+    var disLikePlayingData :Dictionary<String,AnyObject>{get set}
     //切换为下一首音频
     func next()
     

@@ -5,7 +5,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/c5m9hre2.audio"
         ],
-        "id": "e8ff7356-a556-431b-a69e-955b3cdb185a",
+        "id": "d6726ee5-50c6-494d-b050-0e7c99a9e53c",
         "name": "Baby's First Improvisation",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -17,7 +17,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/d9u8wzll.audio"
         ],
-        "id": "b2bd5772-0f30-4735-8774-f8bed5153b59",
+        "id": "59f8d787-63cb-448e-a789-e236d05f8f91",
         "name": "Baby's Smiling Face",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -29,7 +29,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/0/x80w9i30.audio"
         ],
-        "id": "66b874fa-602d-41c1-9b68-cd867b7bf62c",
+        "id": "dca8a7fe-f95a-47b1-b6ff-f6f740f77895",
         "name": "Good Morning Sunshine",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -41,7 +41,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/xko3144k.audio"
         ],
-        "id": "a925b31f-6bca-4f04-bb72-ad3479f692df",
+        "id": "9293a19b-c7a8-4ef4-9708-eea9f6f7e77d",
         "name": "Baby's First Own Melody",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -53,7 +53,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/3/277vrpwx.audio"
         ],
-        "id": "b9127da7-403e-4da5-af7b-352a8423ad6c",
+        "id": "c49a6cd4-6bb5-4b10-9237-26895c0fae02",
         "name": "Summer Waltz",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -65,7 +65,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/8csig7s2.audio"
         ],
-        "id": "ed6ea52a-c3b9-441c-a67a-3da37d5843e0",
+        "id": "f57a7f50-ae8d-4893-b879-abdf5b2054a1",
         "name": "Vltava River",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -77,7 +77,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/0/4kban0b3.audio"
         ],
-        "id": "5671a227-431f-4371-98d9-33d6e71e7098",
+        "id": "09dc1ec4-e17e-461a-ba78-256fd2184d06",
         "name": "Stray Dogs",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -89,7 +89,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/vvblj1eg.audio"
         ],
-        "id": "1e9bfa3f-1321-4a59-bdfa-fc2e78ed3ab2",
+        "id": "0d49b8e7-0be2-40c6-b62a-5cfd0efebb24",
         "name": "First Time I Hear the Sea",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -101,7 +101,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/1/t0ubo8oy.audio"
         ],
-        "id": "04118a81-5d17-4cac-87a7-0138ded258ef",
+        "id": "254ed72a-4799-4f8f-a3e3-98bdd100d380",
         "name": "Fragrance in the Morning",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -113,13 +113,217 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/0/twj6z0e1.audio"
         ],
-        "id": "89c72c3e-cd8e-44d4-a363-27943d441d81",
+        "id": "982d895c-8ae1-44d6-8726-fb68925b1a5d",
         "name": "With Songs of Joy",
         "tag": "音乐",
         "numberOfLoops": 0,
         "duration": 236,
         "localURI": "un4tyori.bzt.mp3",
         "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/rgx8fa8x.audio"
+        ],
+        "id": "faf3bdc0-9789-4e57-a7f4-f2a1bab81613",
+        "name": "Sunshine on Oxcart",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 241,
+        "localURI": "plqsiiky.fbe.mp3",
+        "series": "牛车上的阳光"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/ggc1tot4.audio"
+        ],
+        "id": "c5a054b0-125c-40f1-b4ce-07c0da48a795",
+        "name": "Christmas Eve Rhapsody",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 298,
+        "localURI": "sjja3jes.3op.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/p9qm39uu.audio"
+        ],
+        "id": "d1e52ece-6cee-4e45-93fd-8978281a7a39",
+        "name": "Go for a Walk",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 200,
+        "localURI": "hvszlrfy.v0f.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/cu2wj64w.audio"
+        ],
+        "id": "d0b48309-c8f8-4419-b2a7-112b21fde94c",
+        "name": "Baby Toys Meet Melody",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 349,
+        "localURI": "0piiemt3.eq4.mp3",
+        "series": "创意狂想曲·宝宝的异想世界"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/wshmxr7w.audio"
+        ],
+        "id": "f6479274-7270-4045-8d70-8d5a4bf2f560",
+        "name": "Naissance",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 209,
+        "localURI": "vg5r1g2k.po2.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/yhz8tc4j.audio"
+        ],
+        "id": "b8ca471f-2cfd-491b-9e86-58b66bb7910d",
+        "name": "Kulo Legend",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 237,
+        "localURI": "s3vwgo35.m5x.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/hnncspfx.audio"
+        ],
+        "id": "4a14a87e-3fca-4829-891c-a79fef1771db",
+        "name": "Herd Boy",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 271,
+        "localURI": "rrnpt3s0.kqb.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/7hsyo09r.audio"
+        ],
+        "id": "f09645f4-7d13-4b9b-b22f-f85468f595f0",
+        "name": "Funny Buck",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 271,
+        "localURI": "abb5yoir.2ye.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/vyt9cbd2.audio"
+        ],
+        "id": "bd15c6b9-5105-46c7-a819-8563a0af9807",
+        "name": "Baby Duoduo",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 286,
+        "localURI": "gbafonao.xw5.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/i5h8ke0w.audio"
+        ],
+        "id": "cecd0661-381d-4c11-bc7a-0ac4dc8724a7",
+        "name": "We all Love Miks",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 235,
+        "localURI": "gp2iozmr.iam.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/hedwe4ev.audio"
+        ],
+        "id": "0fd79281-032d-4e23-8b29-2aa48f2a1ff4",
+        "name": "Sleep my Love",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 222,
+        "localURI": "howskyey.rlw.mp3",
+        "series": "小狗合唱团"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/i9r65mrf.audio"
+        ],
+        "id": "18d227d7-a430-487c-83bb-20cbf2577f34",
+        "name": "Schnuffels Weihnachtslied",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 170,
+        "localURI": "rtqnjw0x.jp3.mp3",
+        "series": "德语圣诞歌 - Schnuffels Weihnachtslied"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/7/ws6pdcyw.audio"
+        ],
+        "id": "62c4fb83-57fd-48fd-a7c0-d80bb941546a",
+        "name": "Penguin's Game",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 239,
+        "localURI": "m054clta.bbz.mp3",
+        "series": "Penguin's Game（兔子舞）"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/bhycj0hx.audio"
+        ],
+        "id": "e2fd893f-76f8-45fe-bfd5-a54cee20d553",
+        "name": "Song of Joy",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 183,
+        "localURI": "5nlbt2jq.0fx.mp3",
+        "series": "贝多芬-欢乐颂"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/cxlf7yw5.audio"
+        ],
+        "id": "12e4f60d-fcf9-406a-8a68-ce07363affb7",
+        "name": "四季",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 205,
+        "localURI": "ppihsd4w.ebv.mp3",
+        "series": "四季"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/33sg5qha.audio"
+        ],
+        "id": "7a806cab-73c7-4285-a02c-123822ec7816",
+        "name": "Imagine",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 243,
+        "localURI": "tg3z2cgf.rtx.mp3",
+        "series": "想象"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/6f6cyzhk.audio"
+        ],
+        "id": "71f7b56e-55ed-4f8f-afdd-da77c7c9c080",
+        "name": "Sunrise",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 230,
+        "localURI": "urfgefwy.z13.mp3",
+        "series": "黎明"
       }
     ],
     "name": "起床"
@@ -130,7 +334,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/xeshj1ug.audio"
         ],
-        "id": "3f445414-830e-4a2c-9ea3-eb881114634c",
+        "id": "e221038a-8fdc-4032-8596-d083492e06fb",
         "name": "Pop Goes the Weasel",
         "tag": "童谣",
         "numberOfLoops": 0,
@@ -142,7 +346,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/0/5v117utt.audio"
         ],
-        "id": "dde70788-76a4-44b8-9efb-10f53f6df1d9",
+        "id": "bc59ff54-6c87-4607-aa68-99d197d6150b",
         "name": "Colour Song",
         "tag": "英文启蒙",
         "numberOfLoops": 0,
@@ -154,7 +358,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/ws6pdcyw.audio"
         ],
-        "id": "fe8bd58a-02ed-4174-9352-96c54c3b3303",
+        "id": "4a215665-a8df-4102-85d0-ad552e3cff01",
         "name": "Penguin's Game",
         "tag": "童谣",
         "numberOfLoops": 0,
@@ -166,7 +370,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/90brewwk.audio"
         ],
-        "id": "20a0fcae-a4e0-4439-8317-515d8cd397fe",
+        "id": "3ad2973d-0a6e-4db3-9e91-f0bc7b7321e7",
         "name": "Babies Dacing Around",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -178,7 +382,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/3/dhr44zfq.audio"
         ],
-        "id": "0655e49a-752c-4929-bf8c-9f74115eb49a",
+        "id": "41099289-413c-424f-86e2-35cd76c6005c",
         "name": "To Babyland",
         "tag": "儿歌",
         "numberOfLoops": 0,
@@ -190,7 +394,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/1luv6xsm.audio"
         ],
-        "id": "6f32da39-b608-462a-8bd2-53c527a2eb05",
+        "id": "09873bfa-9fcc-4fe2-ba9a-f2680a5ce80e",
         "name": "Johann Sebastian Bach",
         "tag": "小提琴曲",
         "numberOfLoops": 0,
@@ -202,7 +406,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/hd21t89n.audio"
         ],
-        "id": "00d9cc7e-573a-4fe7-88a7-3b5f885dcadc",
+        "id": "b517f152-c63f-4bc1-af9b-689b7b087315",
         "name": "Birds, Forest, Baby",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -214,7 +418,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/2/ek64i7z3.audio"
         ],
-        "id": "25fa7678-7e82-47ac-b374-bbb3d2e748bd",
+        "id": "423c779c-89e7-404a-987d-962b0f0312ae",
         "name": "Catch The Loach",
         "tag": "儿歌",
         "numberOfLoops": 0,
@@ -226,7 +430,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/60eab549.audio"
         ],
-        "id": "47fbcbd5-41cf-4e3a-9f32-fb681f91f5f7",
+        "id": "3ffd5523-ef1e-412e-8320-413287197bf1",
         "name": "Funny but Funny",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -238,13 +442,241 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/8fgtmqc2.audio"
         ],
-        "id": "1ce94a86-6ec6-4338-a7ae-09974f8669a8",
+        "id": "8481b22d-28a8-4901-95ba-0f0f49846af7",
         "name": "The Mail must go through",
         "tag": "儿歌",
         "numberOfLoops": 0,
         "duration": 104,
         "localURI": "ywaxg51a.g3n.mp3",
         "series": "The mail must go through"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/3d6eq0nd.audio"
+        ],
+        "id": "0d4bcaeb-7cc5-45a0-9448-0116698752c0",
+        "name": "Take Me out to the Ball Game",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 100,
+        "localURI": "wzlcyatv.q4f.mp3",
+        "series": "Take me out to the ball game"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/8/lna1g8y.audio"
+        ],
+        "id": "05d7750e-bad0-4451-b0c5-4289b0c33b81",
+        "name": "Pop! Goes the Weasel",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 68,
+        "localURI": "tmmhq5aq.u2y.mp3",
+        "series": "Pop! Goes the weasel"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/afxx8lj5.audio"
+        ],
+        "id": "4efd44dc-6702-46ff-bf3e-7213e90e1601",
+        "name": "第2集",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 1364,
+        "localURI": "rvwizrnd.2at.mp3",
+        "series": "我会说ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/vjkqpleg.audio"
+        ],
+        "id": "2018e36c-12c1-4033-9c6d-62c62ec1fa76",
+        "name": "第3集",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 714,
+        "localURI": "usdzkzkp.d0e.mp3",
+        "series": "我会说ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/eu9bycvh.audio"
+        ],
+        "id": "703c502e-85b0-49c8-881b-1c6f35870e4a",
+        "name": "第4集",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 717,
+        "localURI": "0uwe4oq0.wtb.mp3",
+        "series": "我会说ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/6/kxudf4kk.audio"
+        ],
+        "id": "693ad7da-0ffa-42a9-86f8-c5bd1e2b09f2",
+        "name": "Haydn Serenade",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 194,
+        "localURI": "swfxgoff.ud1.mp3",
+        "series": "海顿小夜曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/3f6zyds4.audio"
+        ],
+        "id": "5f69fee1-7c0b-4567-86ec-730c5d0fbf14",
+        "name": "Peter Ilyich Tchaikovsky",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 141,
+        "localURI": "tuvweaiv.wvd.mp3",
+        "series": "天鹅湖"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/5zwlrfdt.audio"
+        ],
+        "id": "bc13e008-0e78-4697-82f4-fb8b1cc01a53",
+        "name": "Lotus Pond",
+        "tag": "民族音乐",
+        "numberOfLoops": 0,
+        "duration": 182,
+        "localURI": "xzeiaazg.ndt.mp3",
+        "series": "荷塘月色"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/csss26e0.audio"
+        ],
+        "id": "891a820a-c83a-4ec4-b5e2-016834122fe3",
+        "name": "朱迪娜娜",
+        "tag": "民族音乐",
+        "numberOfLoops": 0,
+        "duration": 162,
+        "localURI": "tijtqy51.oqb.mp3",
+        "series": "朱迪娜娜"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/xw37d6gz.audio"
+        ],
+        "id": "6e808312-7593-4966-bad7-5c6587cfaf70",
+        "name": "1.胡桃夹子",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 93,
+        "localURI": "ogi0vjod.0jv.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/30zmuhwt.audio"
+        ],
+        "id": "6855153a-9071-43e4-9846-eb16408d919b",
+        "name": "2.糖果仙子舞曲",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 130,
+        "localURI": "mqp0srpp.21n.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/2iht571.audio"
+        ],
+        "id": "6102d4bd-3667-481b-9764-0eee0bf398df",
+        "name": "3.中国舞曲",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 97,
+        "localURI": "ggv5qzkd.221.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/xq8wjtkk.audio"
+        ],
+        "id": "24d60890-fd03-43ee-b83d-2fe17488a4aa",
+        "name": "4.芦笛舞曲",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 154,
+        "localURI": "5nzxetqc.cpy.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/tq6fnxly.audio"
+        ],
+        "id": "949e93c2-5ae7-4ff9-9f66-89ec0ccf9872",
+        "name": "The Blue-tail fly",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 70,
+        "localURI": "jofqoiho.her.mp3",
+        "series": "The Blue-tail fly"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/7/c8jdrvij.audio"
+        ],
+        "id": "c7ec5bd8-5569-4693-b67a-eb7b0bd5f320",
+        "name": "Oh, Susanna",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 80,
+        "localURI": "3yp5njnl.3bo.mp3",
+        "series": "Oh, Susanna"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/ini6a1bl.audio"
+        ],
+        "id": "66f0b8ff-6275-47ba-b9e4-71ada871057f",
+        "name": "Friends lullaby",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 81,
+        "localURI": "xe02wwym.anx.mp3",
+        "series": "Friends lullaby"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/5zp72rde.audio"
+        ],
+        "id": "35781462-a5a5-4ef5-bbcf-12ceed7d6562",
+        "name": "My Mother's Kiss",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 60,
+        "localURI": "mkdf1b4s.nh1.mp3",
+        "series": "My Mother's Kiss（妈妈的吻）"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/olevq0wn.audio"
+        ],
+        "id": "59a47f46-6dcd-4d08-b2c5-c0bd89ebfd9f",
+        "name": "Dr. Seuss's ABC",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 308,
+        "localURI": "b1oujyrx.l54.mp3",
+        "series": "Dr. Seuss’s ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/y9mteuok.audio"
+        ],
+        "id": "5c2889e1-abda-45eb-b623-ff913c65268d",
+        "name": "Violin Concerto in G Major",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 259,
+        "localURI": "dtcmf4up.1kh.mp3",
+        "series": "小提琴协奏曲G大调"
       }
     ],
     "name": "午后"
@@ -255,7 +687,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/g4wd4e6h.audio"
         ],
-        "id": "d0f7cc80-f916-48a1-838f-b73c1342fd6e",
+        "id": "88db813b-0cd4-408e-bf7b-c9f90e0fb5ba",
         "name": "A Soft,Wet Frog",
         "tag": "故事",
         "numberOfLoops": 0,
@@ -267,7 +699,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/n7buog5x.audio"
         ],
-        "id": "22bbef68-472c-4dd2-93da-4ae420e64af2",
+        "id": "ac1dbee7-ab23-4c65-90b2-e71a1044108f",
         "name": "Babies and Blues",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -279,7 +711,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/6/16p0p92g.audio"
         ],
-        "id": "868358be-a5f8-47f6-af47-a05f4f7a1547",
+        "id": "fa7bbc72-d425-415e-9ad7-226f0f93a72a",
         "name": "A Soccer Goalie",
         "tag": "故事",
         "numberOfLoops": 0,
@@ -291,7 +723,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/11vex5vx.audio"
         ],
-        "id": "e48d6e7c-927a-4787-8fa1-25ce6e01dd3f",
+        "id": "31a3af81-965d-4b76-8f6e-d11dfd2d03a1",
         "name": "1, 2 Buckle My Shoe",
         "tag": "童谣",
         "numberOfLoops": 0,
@@ -303,7 +735,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/5v8wgmn2.audio"
         ],
-        "id": "647b7648-5955-4944-a5bd-146a8d895dd1",
+        "id": "f834d9fc-2b33-4a88-a89f-f5595c675002",
         "name": "A Fork, Spoon, Plate and Carrot",
         "tag": "故事",
         "numberOfLoops": 0,
@@ -315,7 +747,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/mkaasdxx.audio"
         ],
-        "id": "7f8294ee-a091-4209-a099-afb5aae3a22a",
+        "id": "16bc4c09-6e2f-4233-a348-db5fdfd76a95",
         "name": "Sing, Sing, Singing Along",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -327,7 +759,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/6/5zxmcunc.audio"
         ],
-        "id": "c385bd51-edef-42e5-84c6-fa1f99145254",
+        "id": "97c51948-a8be-4dd4-85b6-9fa707c0cdfc",
         "name": "This old Man",
         "tag": "儿歌",
         "numberOfLoops": 0,
@@ -339,7 +771,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/x3mneic3.audio"
         ],
-        "id": "c31d1054-1133-4606-85ec-bb2ce243a05a",
+        "id": "e4708b10-8429-4f14-8e92-a91b6eb8d6b0",
         "name": "A Penny Collector",
         "tag": "故事",
         "numberOfLoops": 0,
@@ -351,7 +783,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/9/3jricpz7.audio"
         ],
-        "id": "25461245-b889-4eac-a387-075abdc7b9ba",
+        "id": "4c5f1835-864c-4684-9a5a-ac5ad6f25164",
         "name": "Violin Concerto No. second",
         "tag": "小提琴曲",
         "numberOfLoops": 0,
@@ -363,13 +795,433 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/5/i4sfjphi.audio"
         ],
-        "id": "3dae7b4d-cbac-451d-a29d-51ab184eef3f",
+        "id": "1514e59c-535d-4a4f-be1d-953a2dabaa2c",
         "name": "A Popsicle House",
         "tag": "故事",
         "numberOfLoops": 0,
         "duration": 27,
         "localURI": "mljx1xhf.pts.mp3",
         "series": "A Popsicle House"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/5/xaafa63k.audio"
+        ],
+        "id": "6485cf9e-4d72-4a19-93e6-dec823e963f9",
+        "name": "Star Light, Star Bright",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 59,
+        "localURI": "ocwir52z.kra.mp3",
+        "series": "Star light, star bright"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/90brewwk.audio"
+        ],
+        "id": "6484a06c-bb06-44fe-ad8b-380982eed16a",
+        "name": "Babies Dacing Around",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 152,
+        "localURI": "ivaso21l.qmn.mp3",
+        "series": "大自然合唱曲·宝宝的异想世界"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/7/vho84bz8.audio"
+        ],
+        "id": "6154d67f-1a92-4357-96cd-9a0f4c7738e7",
+        "name": "Simple Simon Met a Pieman",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 101,
+        "localURI": "nkpv5k0d.yan.mp3",
+        "series": "Simple Simon met a pieman"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/5v117utt.audio"
+        ],
+        "id": "7f00cc44-034b-4e76-895b-91f722f20274",
+        "name": "Colour Song",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 90,
+        "localURI": "e3yyhhs0.ndp.mp3",
+        "series": "Colour Song"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/igpoteem.audio"
+        ],
+        "id": "3813cff5-24e4-4708-a478-af86f1e33add",
+        "name": "Lofty Mountains and Flowing Water",
+        "tag": "民族音乐",
+        "numberOfLoops": 0,
+        "duration": 308,
+        "localURI": "kaxy1mxx.fne.mp3",
+        "series": "高山流水"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/xeshj1ug.audio"
+        ],
+        "id": "73d639cd-3c98-4cf6-a1f7-345e7bd5ae55",
+        "name": "Pop Goes the Weasel",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 45,
+        "localURI": "o54lgqeu.eau.mp3",
+        "series": "Pop Goes the Weasel"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/vtdjv18w.audio"
+        ],
+        "id": "0bb5bcdc-fa15-4ca7-9495-c0c10dd37b77",
+        "name": "Who Stole the Cookies from the Cookie Jar",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 45,
+        "localURI": "2yacsqda.0io.mp3",
+        "series": "Who Stole the Cookies from the Cookie Jar"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/3sq15m4o.audio"
+        ],
+        "id": "7d01dacc-9ade-4b2c-864e-7a8991825ccb",
+        "name": "The Baby's Dance",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 40,
+        "localURI": "q1lbhtl0.kui.mp3",
+        "series": "The Baby's Dance"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/dhr44zfq.audio"
+        ],
+        "id": "6d3f0cff-ea4e-44f8-915e-31fe12d49dcd",
+        "name": "To Babyland",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 103,
+        "localURI": "5ii1hllq.wd5.mp3",
+        "series": "To Babyland"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/hd21t89n.audio"
+        ],
+        "id": "b74be638-0d8e-4a17-9f52-c592b67c88e9",
+        "name": "Birds, Forest, Baby",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 305,
+        "localURI": "ake4z3rl.prm.mp3",
+        "series": "大自然合唱曲·宝宝的异想世界"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/60eab549.audio"
+        ],
+        "id": "8d16f3d9-e6cb-4743-942b-39c0e082f06f",
+        "name": "Funny but Funny",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 114,
+        "localURI": "lmex4hoj.oxu.mp3",
+        "series": "大自然合唱曲·宝宝的异想世界"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/duztgh1c.audio"
+        ],
+        "id": "04cacb36-dd43-457c-8541-9c41061e48a3",
+        "name": "喜洋洋",
+        "tag": "民族音乐",
+        "numberOfLoops": 0,
+        "duration": 160,
+        "localURI": "rizrzdso.3j2.mp3",
+        "series": "喜洋洋"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/8fgtmqc2.audio"
+        ],
+        "id": "8ae0f06f-84b5-4bf4-97b1-f78a9b37cc15",
+        "name": "The Mail must go through",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 104,
+        "localURI": "ywaxg51a.g3n.mp3",
+        "series": "The mail must go through"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/3d6eq0nd.audio"
+        ],
+        "id": "76115f81-d803-4d78-9afc-4af3c7970d5b",
+        "name": "Take Me out to the Ball Game",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 100,
+        "localURI": "wzlcyatv.q4f.mp3",
+        "series": "Take me out to the ball game"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/8/lna1g8y.audio"
+        ],
+        "id": "7172586b-aea0-4c1c-a064-d6b098d74d80",
+        "name": "Pop! Goes the Weasel",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 68,
+        "localURI": "tmmhq5aq.u2y.mp3",
+        "series": "Pop! Goes the weasel"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/ek64i7z3.audio"
+        ],
+        "id": "be661fb8-f208-4fff-8af6-63c85a311223",
+        "name": "Catch The Loach",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 172,
+        "localURI": "2kuvju5u.vth.mp3",
+        "series": "Catch The Loach"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/7/ws6pdcyw.audio"
+        ],
+        "id": "147f1c7a-a23d-4d78-9fd3-62677b69027c",
+        "name": "Penguin's Game",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 239,
+        "localURI": "m054clta.bbz.mp3",
+        "series": "Penguin's Game（兔子舞）"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/afxx8lj5.audio"
+        ],
+        "id": "d9bc5bb8-e606-49eb-bb12-d82a551fa94d",
+        "name": "第2集",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 1364,
+        "localURI": "rvwizrnd.2at.mp3",
+        "series": "我会说ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/vjkqpleg.audio"
+        ],
+        "id": "a89c82e1-517e-4c7d-a025-b0e0b357c556",
+        "name": "第3集",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 714,
+        "localURI": "usdzkzkp.d0e.mp3",
+        "series": "我会说ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/eu9bycvh.audio"
+        ],
+        "id": "9518ad6e-27a8-43ff-9d45-e4b76502e87f",
+        "name": "第4集",
+        "tag": "英文启蒙",
+        "numberOfLoops": 0,
+        "duration": 717,
+        "localURI": "0uwe4oq0.wtb.mp3",
+        "series": "我会说ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/6/kxudf4kk.audio"
+        ],
+        "id": "6b727ab7-d852-40ae-b0f0-aca72c67b682",
+        "name": "Haydn Serenade",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 194,
+        "localURI": "swfxgoff.ud1.mp3",
+        "series": "海顿小夜曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/3f6zyds4.audio"
+        ],
+        "id": "7a594ad9-b2be-44cc-8282-388bc89dc34a",
+        "name": "Peter Ilyich Tchaikovsky",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 141,
+        "localURI": "tuvweaiv.wvd.mp3",
+        "series": "天鹅湖"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/7/1luv6xsm.audio"
+        ],
+        "id": "7a33cef5-9283-47e5-8b51-6f256a7f5e15",
+        "name": "Johann Sebastian Bach",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 328,
+        "localURI": "d02qmbmb.kqr.mp3",
+        "series": "布蓝登堡舞曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/5zwlrfdt.audio"
+        ],
+        "id": "aa61480e-866e-4b39-ac09-079fc4ad1f2d",
+        "name": "Lotus Pond",
+        "tag": "民族音乐",
+        "numberOfLoops": 0,
+        "duration": 182,
+        "localURI": "xzeiaazg.ndt.mp3",
+        "series": "荷塘月色"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/csss26e0.audio"
+        ],
+        "id": "c2ae85c2-b45b-4805-a306-7f30f25325b6",
+        "name": "朱迪娜娜",
+        "tag": "民族音乐",
+        "numberOfLoops": 0,
+        "duration": 162,
+        "localURI": "tijtqy51.oqb.mp3",
+        "series": "朱迪娜娜"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/xw37d6gz.audio"
+        ],
+        "id": "5b7ffcc3-fce5-4667-ba51-f83064dbabd0",
+        "name": "1.胡桃夹子",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 93,
+        "localURI": "ogi0vjod.0jv.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/30zmuhwt.audio"
+        ],
+        "id": "e2ef9770-3a4c-4d74-87d3-18062c66c75d",
+        "name": "2.糖果仙子舞曲",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 130,
+        "localURI": "mqp0srpp.21n.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/2iht571.audio"
+        ],
+        "id": "6f78175c-7606-48b5-8c59-a3da0aa7cd7c",
+        "name": "3.中国舞曲",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 97,
+        "localURI": "ggv5qzkd.221.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/xq8wjtkk.audio"
+        ],
+        "id": "7a3a61fa-8066-4340-bc93-5747ffcb9a48",
+        "name": "4.芦笛舞曲",
+        "tag": "古典音乐",
+        "numberOfLoops": 0,
+        "duration": 154,
+        "localURI": "5nzxetqc.cpy.mp3",
+        "series": "儿童古典音乐欣赏3"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/tq6fnxly.audio"
+        ],
+        "id": "40aa169b-2ebb-4d75-8719-fa35236e34ff",
+        "name": "The Blue-tail fly",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 70,
+        "localURI": "jofqoiho.her.mp3",
+        "series": "The Blue-tail fly"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/7/c8jdrvij.audio"
+        ],
+        "id": "842b33e0-79a1-40a3-8dc7-1cf4c8444786",
+        "name": "Oh, Susanna",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 80,
+        "localURI": "3yp5njnl.3bo.mp3",
+        "series": "Oh, Susanna"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/ini6a1bl.audio"
+        ],
+        "id": "f27e0181-ef79-4ae5-9343-2b9400c5d217",
+        "name": "Friends lullaby",
+        "tag": "儿歌",
+        "numberOfLoops": 0,
+        "duration": 81,
+        "localURI": "xe02wwym.anx.mp3",
+        "series": "Friends lullaby"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/4/5zp72rde.audio"
+        ],
+        "id": "996c40ed-8c4b-4991-88b9-006297eaaaeb",
+        "name": "My Mother's Kiss",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 60,
+        "localURI": "mkdf1b4s.nh1.mp3",
+        "series": "My Mother's Kiss（妈妈的吻）"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/olevq0wn.audio"
+        ],
+        "id": "e201a090-765f-42fd-a53a-d99362761634",
+        "name": "Dr. Seuss's ABC",
+        "tag": "童谣",
+        "numberOfLoops": 0,
+        "duration": 308,
+        "localURI": "b1oujyrx.l54.mp3",
+        "series": "Dr. Seuss’s ABC"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/y9mteuok.audio"
+        ],
+        "id": "526cc04a-dde9-423b-b8dd-aa8d1e1bb0b2",
+        "name": "Violin Concerto in G Major",
+        "tag": "小提琴曲",
+        "numberOfLoops": 0,
+        "duration": 259,
+        "localURI": "dtcmf4up.1kh.mp3",
+        "series": "小提琴协奏曲G大调"
       }
     ],
     "name": "玩耍"
@@ -380,7 +1232,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/3/z8w9v6v.audio"
         ],
-        "id": "38ad3777-2378-4b70-b2ca-cf117196eaec",
+        "id": "ae621371-145a-485a-b6c7-07bdf455c917",
         "name": "Went to Bed Early, Get up Early",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -392,7 +1244,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/aa4ufkb6.audio"
         ],
-        "id": "729a2401-4cfe-46d4-ad97-0c7d88725e15",
+        "id": "46b8f265-6457-47b0-baae-200c3411fb5f",
         "name": "Just for You",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -404,7 +1256,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/zgfn5na6.audio"
         ],
-        "id": "17dd4c6c-0f8e-4003-ad54-bc46de8de3d9",
+        "id": "b02a3f4d-1e99-4765-8918-506614c68d96",
         "name": "Sheep May Savely Graze",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -416,7 +1268,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/3wnmxm5a.audio"
         ],
-        "id": "b2ee1867-b529-42d3-854e-0b2aec310ea4",
+        "id": "c2169946-b40e-44e3-82ef-c516b82ebf06",
         "name": "Always With Me",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -428,7 +1280,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/3/vha8rxsu.audio"
         ],
-        "id": "4d2e74a6-64fb-40aa-a4f7-e8674ece309c",
+        "id": "80ef299b-946e-4e51-a4fd-81ac9f6ec245",
         "name": "The Nightingale",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -440,7 +1292,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/cyona57.audio"
         ],
-        "id": "96218ed6-0edf-4015-90a2-07eea543e062",
+        "id": "c6fe621d-5243-482e-8de6-7e061a3cc207",
         "name": "Twinkle Twinkle Little Star",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -452,7 +1304,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/2/ndu2socb.audio"
         ],
-        "id": "9567673d-8f0e-4581-b291-d3e0c5934b02",
+        "id": "0bfbdf1d-b6e9-48bd-9dbd-a391d0c17189",
         "name": "Fall Asleep",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -464,7 +1316,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/1/bzznwwib.audio"
         ],
-        "id": "c1175378-f511-48db-8d63-e037134a657b",
+        "id": "30b32ae7-dfd8-48c3-afb6-6073baae6b5b",
         "name": "Pillows in the Sky",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -476,7 +1328,7 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/5/au9qxrgo.audio"
         ],
-        "id": "6052901f-3a9b-4153-9683-e74de60c2f11",
+        "id": "f925b45c-bdcc-499b-97a5-1bc9c96175e4",
         "name": "Good Night",
         "tag": "音乐",
         "numberOfLoops": 0,
@@ -488,13 +1340,229 @@
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/g9co1qdq.audio"
         ],
-        "id": "dbaf1c7f-e632-49d3-8a6e-18ea2af599da",
+        "id": "806e9053-a764-4d16-880d-401b0c66d5c6",
         "name": "Waltz",
         "tag": "音乐",
         "numberOfLoops": 0,
         "duration": 317,
         "localURI": "ljswhwll.ken.mp3",
         "series": "华尔兹圆舞曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/oposipt5.audio"
+        ],
+        "id": "a2f2f710-3fde-486f-a015-0cebf365416f",
+        "name": "Moonlight Border",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 324,
+        "localURI": "xsdvvtuo.aq2.mp3",
+        "series": "月光边境"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/6/y3dmq9xe.audio"
+        ],
+        "id": "d6dca85e-76d4-4e98-aefb-a3498ab33ff3",
+        "name": "Elves of the Night",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 279,
+        "localURI": "qgyqbc0l.c3u.mp3",
+        "series": "森林狂想曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/4lvohjt9.audio"
+        ],
+        "id": "f298e5dd-a1c0-4e4b-bba7-7198fae79671",
+        "name": "Forest Sounds Make Baby Sleep",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 297,
+        "localURI": "xq3hahyx.ngi.mp3",
+        "series": "森林沉睡的宝宝"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/fqj6iazy.audio"
+        ],
+        "id": "b72f1562-7177-4c51-b25d-04a875dec775",
+        "name": "蒙古族摇篮曲",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 296,
+        "localURI": "tz0woyjy.uxg.mp3",
+        "series": "蒙古族摇篮曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/4t68qvjk.audio"
+        ],
+        "id": "c216e16b-79a4-42fa-a9c1-163c541ce791",
+        "name": "Father singing lullabies Teana",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 189,
+        "localURI": "ttxuf3qt.mhj.mp3",
+        "series": "爸爸演唱的天籁摇篮曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/2n9a51t5.audio"
+        ],
+        "id": "2b338517-0f6f-4d11-8552-7c031514f5c5",
+        "name": "Shake it shake baby",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 238,
+        "localURI": "ak3rhyvc.rq3.mp3",
+        "series": "摇呀摇小宝宝"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/rrhfmule.audio"
+        ],
+        "id": "dbca3466-e312-463b-a4b3-3c2d27aa58c3",
+        "name": "Hush, little baby, do not cry",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 331,
+        "localURI": "h4v3dnap.kzh.mp3",
+        "series": "嘘，小宝贝，不要哭"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/3/ai04dw69.audio"
+        ],
+        "id": "24d9e0e7-2adf-46e3-beb1-0abb458a86f1",
+        "name": "Now, I sleep",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 202,
+        "localURI": "0vzlkspc.zgx.mp3",
+        "series": "现在，我睡了"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/6/c41thhp4.audio"
+        ],
+        "id": "0e92cf68-882f-429a-8745-5bc25b6183fa",
+        "name": "Ragdoll fast asleep",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 107,
+        "localURI": "2k5xpn55.gll.mp3",
+        "series": "布娃娃快睡觉"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/9/orsnyf45.audio"
+        ],
+        "id": "6c15a02e-40ac-45cf-a991-0c8f1ac384eb",
+        "name": "The dream is still a smile",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 116,
+        "localURI": "bnc0llvj.gpu.mp3",
+        "series": "梦中还在微微笑"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/2/g677atc8.audio"
+        ],
+        "id": "13201d75-d47f-46ee-a19b-2c2ac416da61",
+        "name": "Good night, good night",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 167,
+        "localURI": "j1m2pxqm.an5.mp3",
+        "series": "晚安晚安"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/8/ta4e2gax.audio"
+        ],
+        "id": "fd4a8c5a-84da-4a9b-815a-9df56bd7d422",
+        "name": "Sleep baby",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 230,
+        "localURI": "lgwvadmd.rfi.mp3",
+        "series": "睡吧小宝贝"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/b3wfaaww.audio"
+        ],
+        "id": "d1247467-99d4-4b46-8987-5e3e433bcdaa",
+        "name": "Mummy's arms",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 395,
+        "localURI": "janpondj.rj1.mp3",
+        "series": "妈咪的怀抱里"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/1/bed3ms2o.audio"
+        ],
+        "id": "3bbbe80b-b708-48f4-a21e-12df62980eeb",
+        "name": "Brahms Lullaby",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 193,
+        "localURI": "bcbwmycg.xgd.mp3",
+        "series": "勃拉姆斯摇篮曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/5/mchvxrkp.audio"
+        ],
+        "id": "3506b16d-9aeb-4f7b-a76f-6ebedc093bff",
+        "name": "Good night, little kiss",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 486,
+        "localURI": "p202vvfr.fib.mp3",
+        "series": "晚安，小亲亲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/5/wp77ayrb.audio"
+        ],
+        "id": "57fddb85-54f7-4224-924a-6c8d9505da50",
+        "name": "Gold harp",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 253,
+        "localURI": "2wop1fri.nzf.mp3",
+        "series": "黄金竖琴"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/0/l26580q4.audio"
+        ],
+        "id": "11bd37fa-57ab-4e92-a650-8c2b1972272d",
+        "name": "Lullaby",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 146,
+        "localURI": "zsldx3qj.md0.mp3",
+        "series": "摇篮曲"
+      },
+      {
+        "remoteURL": [
+          "http://aoss.appshare.cn/a/8/eenxy1wm.audio"
+        ],
+        "id": "50eed274-0f8f-412e-afd6-b744421a471c",
+        "name": "Quiet month",
+        "tag": "音乐",
+        "numberOfLoops": 0,
+        "duration": 617,
+        "localURI": "tkviu2mu.gqm.mp3",
+        "series": "静谧的月"
       }
     ],
     "name": "睡前"
