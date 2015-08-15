@@ -18,9 +18,9 @@ class PlayListTableViewController: UITableViewController ,Module{
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
     
     var cellHeight : CGFloat = 0
-    var delegata : Operations?
+    var delegate : Operations?
     var downloader : Downloader!
-    
+    var userindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +32,7 @@ class PlayListTableViewController: UITableViewController ,Module{
         super.viewWillAppear(animated)
         
         //准备加载该界面,获取最新场景列表
-        currentSceneData = delegata!.getCurrentScenePlayList(nil)
+        currentSceneData = delegate!.getCurrentScenePlayList(nil)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
@@ -88,9 +88,9 @@ class PlayListTableViewController: UITableViewController ,Module{
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return currentSceneData.count
+        return currentSceneData.count
         //为了暂时能体现列表的歌曲在动,限定在只显示10首歌曲
-        return 10
+        //return 10
     }
 
     
@@ -140,13 +140,47 @@ class PlayListTableViewController: UITableViewController ,Module{
         var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
         
         UGCHomeVC.currentSceneData = self.currentSceneData
-        UGCHomeVC.delegate = self.delegata
+        UGCHomeVC.delegate = self.delegate
         self.navigationController?.pushViewController(UGCHomeVC, animated: true)
         
         println("切换到UGC界面")
+        postShareData()
     }
     
     
+    //MARK: 分享
+    
+    //发送分享内容
+    func postShareData()
+    {
+        //得到当前场景下的播放列表
+        if let _scenePlayList : [Dictionary<String,AnyObject>] = delegate?.getCurrentScenePlayList(nil){
+            
+            for i in 0..<_scenePlayList.count
+            {
+                //如果是用户自定义上传得歌曲,上传音乐文件到服务器
+                if _scenePlayList[i]["isUGC"] != nil
+                {
+                    let musicName = _scenePlayList[i]["name"] as! String
+                    println("需要上传歌曲:\(musicName)")
+                 
+                }
+            }
+            
+            //MARK:模拟后端存储
+            var sharerList = NSUserDefaults.standardUserDefaults().objectForKey("sharerList")as! [Dictionary<String,AnyObject>]
+            var shareData: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+            
+            shareData["sharerName"] = "用户\(userindex)的分享"
+            shareData["list"] = _scenePlayList
+            sharerList.append(shareData)
+            NSUserDefaults.standardUserDefaults().setObject(sharerList, forKey: "sharerList")
+            userindex++
+        }
+        
+        
+    }
+
     
 
 }

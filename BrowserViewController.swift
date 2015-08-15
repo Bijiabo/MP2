@@ -30,15 +30,6 @@ class NotificationScriptMessageHandler : NSObject ,WKScriptMessageHandler {
         //println("下载地址:")
        // println(receiveData[5])
         
-        //调用downloader下载
-//        cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!
-//        cacheRootURL = cacheRootURL.URLByAppendingPathComponent("media/audio/download")
-//        
-//        
-//        downloader.addTask(receiveData[1] as! String, cacheRootURL: cacheRootURL, filename: receiveData[0] as? String)
-//        downloader.startDownload()
-//        println(downloader.list)
-//        
         
         //标记已经下载的
         let operation = receiveData["operation"] as? String
@@ -56,18 +47,6 @@ class NotificationScriptMessageHandler : NSObject ,WKScriptMessageHandler {
     
     func addToSenceList(sceneName:String,sourceData :Dictionary<String,AnyObject>)
     {
-//        var currentAgeGroupData : Array<AnyObject> = delegate!.getCurentAgeGroupData()
-//        //println(currentAgeGroupData)
-//        
-//        for sceneItem in currentAgeGroupData
-//        {
-//            if sceneItem["name"] as! String == sceneName
-//            {
-//                var currentSceneList = sceneItem["list"]
-//                
-//                
-//            }
-//        }
         
         //var webResource : Dictionary<String,AnyObject> = genarateData(sourceData)
         delegate?.updateCurrentScenePlayList(sourceData, isAdd: true, sceneName: sceneName)
@@ -78,25 +57,6 @@ class NotificationScriptMessageHandler : NSObject ,WKScriptMessageHandler {
     {
         var currentAgeGroupData : Array<AnyObject> = delegate!.getCurentAgeGroupData()
         //println(currentAgeGroupData)
-        
-//        for sceneItem in currentAgeGroupData
-//        {
-//            if sceneItem["name"] as! String == marItem["sceneName"]as! String
-//            {
-//                var currentSceneList = sceneItem["list"] as! [Dictionary<String,AnyObject>]
-//                
-//                for listItem in currentSceneList
-//                {
-//                    if listItem["id"]as! String == marItem["id"]as! String
-//                    {
-//                        let id = marItem["id"] as! String
-//                        let jsString = "downloadCompleteById(\"\(id)\")"
-//                        wkWebView1.evaluateJavaScript(jsString, completionHandler: nil)
-//                        
-//                    }
-//                }
-//            }
-//        }
 
         for sceneItem in currentAgeGroupData
         {
@@ -197,15 +157,6 @@ class BrowserViewController: UIViewController  {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //初始化WKWebView方法
     func initWKWebView(obj :UIViewController){

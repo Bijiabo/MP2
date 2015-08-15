@@ -58,7 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         println(NSHomeDirectory())
-        println(UIScreen.mainScreen().bounds.width)
+        
+        //MARK: 模拟链接后端
+        var sharerList: [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
+        NSUserDefaults.standardUserDefaults().setObject(sharerList, forKey: "sharerList")
         
         //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String

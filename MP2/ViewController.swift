@@ -409,7 +409,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             playListVC.currentSceneData = playListData!
             playListVC.currentPlayingData = playingData!
             playListVC.moduleLoader = self.moduleLoader
-            playListVC.delegata = self.delegate
+            playListVC.delegate = self.delegate
             playListVC.title = "\(model!.status.currentScene)情景"
             
         }

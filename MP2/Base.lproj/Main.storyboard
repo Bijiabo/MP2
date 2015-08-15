@@ -367,7 +367,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playListItem" rowHeight="64" id="fco-3W-KCr" customClass="playlistTableViewCell" customModule="MP2" customModuleProvider="target">
+                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playListItem" rowHeight="64" id="fco-3W-KCr" customClass="playlistTableViewCell" customModule="MP2" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fco-3W-KCr" id="i3m-jB-M2t">
                                     <autoresizingMask key="autoresizingMask"/>

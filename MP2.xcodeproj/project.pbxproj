@@ -11,6 +11,7 @@
 		3328D61B1B46A99E00704F48 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
 		3328D61E1B46AA2F00704F48 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A126FAEB1B43AC7F009BE576 /* Alamofire.framework */; };
 		3328D6201B46AA3B00704F48 /* Alamofire.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = A126FAED1B43AC7F009BE576 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3331B06E1B7DCF3C006E9BBB /* ShareListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331B06D1B7DCF3C006E9BBB /* ShareListViewController.swift */; };
 		334001D21B593F9600153524 /* playlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334001D11B593F9600153524 /* playlistTableViewCell.swift */; };
 		334156191B5B6CB900DA051D /* TempListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156151B5B6CB900DA051D /* TempListTableViewCell.swift */; };
 		3341561A1B5B6CB900DA051D /* TempListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156161B5B6CB900DA051D /* TempListTableViewController.swift */; };
@@ -140,6 +141,7 @@
 
 /* Begin PBXFileReference section */
 		3328D6161B46A7BA00704F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3331B06D1B7DCF3C006E9BBB /* ShareListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareListViewController.swift; sourceTree = "<group>"; };
 		334001D11B593F9600153524 /* playlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = playlistTableViewCell.swift; sourceTree = "<group>"; };
 		334156151B5B6CB900DA051D /* TempListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewCell.swift; sourceTree = "<group>"; };
 		334156161B5B6CB900DA051D /* TempListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				336A1F281B5E635B00360293 /* iTunesGuide-images */,
 				336A1F341B63E96D00360293 /* UGC.storyboard */,
+				3331B06D1B7DCF3C006E9BBB /* ShareListViewController.swift */,
 				336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */,
 				336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */,
 				336A1F381B64BB1800360293 /* BrowserViewController.swift */,
@@ -515,6 +518,7 @@
 				A1B5842C1B34557300AD41D9 /* NowPlayingInfoCenter.swift in Sources */,
 				A126FB071B43C21F009BE576 /* DownloaderClasses.swift in Sources */,
 				336A1F391B64BB1800360293 /* BrowserViewController.swift in Sources */,
+				3331B06E1B7DCF3C006E9BBB /* ShareListViewController.swift in Sources */,
 				339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */,
 				A1C99B8B1B481E3400BA3881 /* Reachability.swift in Sources */,
 				A1A7654B1B46BA1A00C3B6F1 /* userInformationViewController.swift in Sources */,

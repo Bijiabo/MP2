@@ -116,7 +116,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             sceneDataCache["sceneName"] = _sceneName
             println("_SceneName\(_sceneName)")
             let _scenePlayList = getCurrentScenePlayList(_sceneName) as [Dictionary<String, AnyObject>]
-            println("_scenePlayList:\(_scenePlayList)")
+            //println("_scenePlayList:\(_scenePlayList)")
             let _index = status.getSceneIndexStatusCache()
             println("index:\(_index[_sceneName])")
             
@@ -143,7 +143,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             //继续读取
             scenesDataCache?.append(sceneDataCache)
         }
-        println("scenesDataCache:\(scenesDataCache)")
+        //println("scenesDataCache:\(scenesDataCache)")
     }
     private func _getCurrentScenePlaylist (sceneName:String?) -> [Dictionary<String,AnyObject>]
     {
@@ -375,21 +375,36 @@ class Server : NSObject , ModelManager ,StatusObserver
                         
                         for index in 0..<mutableArrayList.count
                         {
-                            if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                            //判断是否是分享文件,
+                            let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
+                            
+                            if shareList != nil
                             {
-                                mutableArrayList.addObject(ugcData)
-                                //sceneMusicList = mutableArrayList .copy() as! NSArray
-                                var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                                println(shareList)
                                 
-                                d["list"] = mutableArrayList
-                                d["name"] = sceneName
-                                
-                                _data[sceneItemIndex] = d
-                                
-                                completed = true
-                                
-                                break
-                                
+                                for _index in 0..<shareList!.count
+                                {
+                                    let shareListItem = shareList![_index]
+                                    
+                                    
+                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1
+                                    {
+                                        mutableArrayList.addObject(shareListItem)
+                                        //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                        var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                                        
+                                        d["list"] = mutableArrayList
+                                        d["name"] = sceneName
+                                        
+                                        _data[sceneItemIndex] = d
+                                        
+                                        completed = true
+                                        
+                                        break
+                                        
+                                        
+                                    }
+                                }
                                 
                             }
                             
@@ -410,23 +425,37 @@ class Server : NSObject , ModelManager ,StatusObserver
                         
                         for index in 0..<mutableArrayList.count
                         {
-                            if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                            
+                            //判断是否是分享文件,
+                            let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
+                            
+                            if shareList != nil
                             {
-                                mutableArrayList.addObject(ugcData)
-                                //sceneMusicList = mutableArrayList .copy() as! NSArray
-                                var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-                                
-                                d["list"] = mutableArrayList
-                                d["name"] = status.currentScene
-                                
-                                _data[sceneItemIndex] = d
-                                
-                                completed = true
-                                
-                                break
-                                
-                                
+                                for _index in 0..<shareList!.count
+                                {
+                                    let shareListItem = shareList![_index]
+                                    
+                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1
+                                    {
+                                        mutableArrayList.addObject(shareListItem)
+                                        //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                        var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                                        
+                                        d["list"] = mutableArrayList
+                                        d["name"] = status.currentScene
+                                        
+                                        _data[sceneItemIndex] = d
+                                        
+                                        completed = true
+                                        
+                                        break
+                                        
+                                        
+                                    }
+                                }
                             }
+                            
+                            
                             
                         }
                         
