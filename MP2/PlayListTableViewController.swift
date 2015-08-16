@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayListTableViewController: UITableViewController ,Module{
+class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,Module{
 
     var moduleLoader : ModuleLoader?
     @IBOutlet var uiView1: UITableView!
@@ -20,14 +20,28 @@ class PlayListTableViewController: UITableViewController ,Module{
     var cellHeight : CGFloat = 0
     var delegate : Operations?
     var downloader : Downloader!
-    var userindex = 0
+    var upYun = UpYun()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
         
-        
+        //初始化upYun
+        _initUpYun()
     }
     
+    private func _initUpYun()
+    {
+        upYun.passcode = "ukeX7vTiPkknHGT9gtUholk2MdI="
+        upYun.bucket = "earlyenglishstudy"
+        upYun.expiresIn = 6000
+    }
+    func downloadSuccess()
+    {
+        //var returnContent = NSUserDefaults.standardUserDefaults().objectForKey("returnContent") as! String
+        print(NSUserDefaults.standardUserDefaults().objectForKey("returnContent"))
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -136,17 +150,32 @@ class PlayListTableViewController: UITableViewController ,Module{
     //
     @IBAction func clickAddResourceButton(sender: UIBarButtonItem) {
         
-        //获取要跳转的界面
-        var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
-        
-        UGCHomeVC.currentSceneData = self.currentSceneData
-        UGCHomeVC.delegate = self.delegate
-        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
-        
-        println("切换到UGC界面")
-        postShareData()
+        var sheet = UIActionSheet(title: nil , delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil ,otherButtonTitles: "添加歌曲","列表分享")
+        sheet.showInView(self.view)
     }
     
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch buttonIndex
+        {
+        case 0:
+            break
+        case 1:
+            //获取要跳转的界面
+            var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
+            
+            UGCHomeVC.currentSceneData = self.currentSceneData
+            UGCHomeVC.delegate = self.delegate
+            self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+            
+            println("切换到UGC界面")
+        case 2:
+            postShareData()
+        default:
+            break
+        }
+        
+    }
     
     //MARK: 分享
     
@@ -154,30 +183,83 @@ class PlayListTableViewController: UITableViewController ,Module{
     func postShareData()
     {
         //得到当前场景下的播放列表
-        if let _scenePlayList : [Dictionary<String,AnyObject>] = delegate?.getCurrentScenePlayList(nil){
+        if var _scenePlayList : [Dictionary<String,AnyObject>] = delegate?.getCurrentScenePlayList(nil){
             
             for i in 0..<_scenePlayList.count
             {
-                //如果是用户自定义上传得歌曲,上传音乐文件到服务器
+                //如果是用户自定义上传的歌曲,上传音乐文件到服务器
                 if _scenePlayList[i]["isUGC"] != nil
                 {
-                    let musicName = _scenePlayList[i]["name"] as! String
-                    println("需要上传歌曲:\(musicName)")
-                 
+                    
+                    var localURL = _scenePlayList[i]["localURL"] as! String
+                    upYun.uploadFile(localURL, saveKey:_scenePlayList[i]["name"]as! NSString as String)
+                    
+                    let remoteURL : AnyObject? = "http://v0.api.upyun.com/earlyenglishstudy/media/\(localURL)"
+                    
+                  
+                    //MARK: 拼接远程URL
+                    _scenePlayList[i]["remoteURL"] = remoteURL
+                    
                 }
             }
             
-            //MARK:模拟后端存储
-            var sharerList = NSUserDefaults.standardUserDefaults().objectForKey("sharerList")as! [Dictionary<String,AnyObject>]
-            var shareData: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
             
-            shareData["sharerName"] = "用户\(userindex)的分享"
+            //要分享的歌单
+            var shareData: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+            //先保存到tmp文件夹
+            var savePathURL = NSURL(fileURLWithPath: NSHomeDirectory())?.URLByAppendingPathComponent("tmp")
+            
+           var fileName = ""
+            //获取宝宝名字
+           if let childName : String = NSUserDefaults.standardUserDefaults().stringForKey("childName")
+           {
+                shareData["sharerName"] = "来自 \(childName) 宝宝妈的分享"
+                savePathURL = savePathURL?.URLByAppendingPathComponent("\(childName).json")
+                fileName = "\(childName).json"
+            
+           }else{
+            
+                shareData["sharerName"] = "来自匿名宝妈的分享"
+                savePathURL = savePathURL?.URLByAppendingPathComponent("000.json")
+                fileName = "匿名妈妈.json"
+            }
+            
             shareData["list"] = _scenePlayList
-            sharerList.append(shareData)
-            NSUserDefaults.standardUserDefaults().setObject(sharerList, forKey: "sharerList")
-            userindex++
+            
+            let toFile = savePathURL?.relativePath!
+            
+            save(shareData,toFile:toFile!)
+            
+            upYun.uploadFile(toFile, saveKey: "/data/\(fileName)")
+            
         }
         
+    }
+    
+    //数组转换成Json
+    func toJSONString(dict:AnyObject)->NSString{
+        
+        var data = NSJSONSerialization.dataWithJSONObject(dict, options:NSJSONWritingOptions.PrettyPrinted , error: nil)
+        var strJson=NSString(data: data!, encoding: NSUTF8StringEncoding)
+        return strJson!
+        
+    }
+
+    func save(jsonData :AnyObject, toFile : String)
+    {
+        var error:NSError?
+        
+        let str: AnyObject = toJSONString(jsonData)
+        str.writeToFile(toFile, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
+        
+        if error != nil
+        {
+            println(error)
+        }
+        else
+        {
+            println("他喵的保存文件成功了好么!!!")
+        }
         
     }
 

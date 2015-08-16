@@ -711,5 +711,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     {
         return self.downloader!
     }
+    
+    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
+    {
+        model.updateCurrentScenePlayListByShare(ugcData, isAdd: isAdd, sceneName: sceneName)
+    }
 }
 

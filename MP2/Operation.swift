@@ -39,6 +39,8 @@ protocol ViewOperation {
     func getUploadList() ->Dictionary<String,NSURL>
     //得到整个App的下载器对象
     func getAppDownloader() -> Downloader
+    
+    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
 }
 
 //播放器功能操作方法接口

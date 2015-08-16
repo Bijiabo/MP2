@@ -47,4 +47,6 @@ protocol ModelManager
     
     //得到iTunes上传文件夹列表
     func getUploadList() ->Dictionary<String,NSURL>
+    
+    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
 }

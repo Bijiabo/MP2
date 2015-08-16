@@ -364,8 +364,10 @@ class Server : NSObject , ModelManager ,StatusObserver
             {
                 var completed : Bool = false
                 
-                if sceneName != nil{
+                if sceneName != nil
+                {
                     println(_data[sceneItemIndex]["name"])
+                    
                     if _data[sceneItemIndex]["name"]as! String == sceneName!
                     {
                         
@@ -387,7 +389,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                                     let shareListItem = shareList![_index]
                                     
                                     
-                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1
+                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1 && _index == shareList!.count-1
                                     {
                                         mutableArrayList.addObject(shareListItem)
                                         //sceneMusicList = mutableArrayList .copy() as! NSArray
@@ -416,6 +418,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                         break
                     }
                 }else{
+                    //是否为当前场景
                     if _data[sceneItemIndex]["name"]as! String == status.currentScene
                     {
                         
@@ -435,7 +438,8 @@ class Server : NSObject , ModelManager ,StatusObserver
                                 {
                                     let shareListItem = shareList![_index]
                                     
-                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1
+                                    //意思是循环一遍,没有相同的歌曲,这时候可以添加
+                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1 && _index == shareList!.count-1
                                     {
                                         mutableArrayList.addObject(shareListItem)
                                         //sceneMusicList = mutableArrayList .copy() as! NSArray
@@ -712,5 +716,50 @@ class Server : NSObject , ModelManager ,StatusObserver
         }
         
         return (isIn,sceneName)
+    }
+    
+    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
+    {
+        
+        for x in 0..<_data.count
+        {
+            if _data[x]["name"]as!String == status.currentScene
+            {
+                
+                var sceneMusicList =  _data[x]["list"] as! NSArray
+                var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
+                
+                
+//               
+//                //判断是否是分享文件,
+//                let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
+//                
+//                let shareListItem = ugcData
+//                
+//                if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1
+//                {
+//                    mutableArrayList.addObject(shareListItem)
+//                    //sceneMusicList = mutableArrayList .copy() as! NSArray
+//                    var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+//                    
+//                    d["list"] = mutableArrayList
+//                    d["name"] = status.currentScene
+//                    
+//                    _data[sceneItemIndex] = d
+//                    
+//                    completed = true
+//                    
+//                    break
+//                    
+//                    
+//                }
+                
+                }
+            
+            
+        }
+    
+    
+    
     }
 }
