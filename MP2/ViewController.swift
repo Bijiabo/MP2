@@ -400,8 +400,16 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //判断是否是跳转到播放列表界面
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
+            //获取所处界面的列表
+            let sceneName = model!.scenelist[self.view.tag]
+            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+            if model!.status.currentScene != sceneName
+            {
+                delegate?.switchToScene(sceneName)
+            }
             
             var playListData =  delegate?.getCurrentScenePlayList(nil)
+            
             var playingData = model?.currentPlayingData
             
             var playListVC : PlayListTableViewController = segue.destinationViewController as! PlayListTableViewController

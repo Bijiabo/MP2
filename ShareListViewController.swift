@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShareListViewController: UIViewController{
+class ShareListViewController: UIViewController,UIAlertViewDelegate{
 
     @IBOutlet weak var tableView1: UITableView!
     
@@ -83,7 +83,15 @@ class ShareListViewController: UIViewController{
         
         shareData = callbackData
         
+        
         self.tableView1.reloadData()
+        //用户点击添加到列表,服务器下载成功之后,添加到本地列表
+        delegate?.updateCurrentScenePlayList(shareData, isAdd: true, sceneName: nil)
+        
+        //添加成功提示
+        let add2List =  UIAlertView(title: nil, message: "添加成功", delegate: self, cancelButtonTitle: "ok")
+        add2List.alertViewStyle = UIAlertViewStyle.Default
+        add2List.show()
         
     }
     override func didReceiveMemoryWarning() {
@@ -113,7 +121,7 @@ class ShareListViewController: UIViewController{
         var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId) as! UITableViewCell
         
         
-        cell.textLabel?.text = "来自宝妈 " + sharerNameArray[indexPath.row] + " 的分享"
+        cell.textLabel?.text = "来自宝宝 " + sharerNameArray[indexPath.row] + " 妈妈的分享"
         
         
         
@@ -130,16 +138,13 @@ class ShareListViewController: UIViewController{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         
-       // let sharerData  = sharerList[indexPath.row]
-        
         let file  = "data/\(sharerNameArray[indexPath.row] ).json"
-        
+        println(file)
         upYun.downloadFile(file)
         
-        println(shareData)
+        //println(shareData)
         //添加列表
-       // delegate?.updateCurrentScenePlayList(sharerData, isAdd: true, sceneName: nil)
-        delegate?.updateCurrentScenePlayList(shareData, isAdd: true, sceneName: nil)
+        //delegate?.updateCurrentScenePlayList(shareData, isAdd: true, sceneName: nil)
         
     }
 

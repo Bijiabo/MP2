@@ -382,7 +382,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                             
                             if shareList != nil
                             {
-                                println(shareList)
+                                
                                 
                                 for _index in 0..<shareList!.count
                                 {
@@ -424,6 +424,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                         
                         
                         var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
+                        
                         var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
                         
                         for index in 0..<mutableArrayList.count
@@ -431,7 +432,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                             
                             //判断是否是分享文件,
                             let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
-                            
+                            println(shareList)
                             if shareList != nil
                             {
                                 for _index in 0..<shareList!.count
@@ -456,6 +457,26 @@ class Server : NSObject , ModelManager ,StatusObserver
                                         
                                         
                                     }
+                                }
+                            }else{
+                                
+                                //意思是循环一遍,没有相同的歌曲,这时候可以添加
+                                if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
+                                {
+                                    mutableArrayList.addObject(ugcData)
+                                    //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                    var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+                                    
+                                    d["list"] = mutableArrayList
+                                    d["name"] = status.currentScene
+                                    
+                                    _data[sceneItemIndex] = d
+                                    
+                                    completed = true
+                                    
+                                    break
+                                    
+                                    
                                 }
                             }
                             

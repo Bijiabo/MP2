@@ -66,9 +66,13 @@ class NotificationScriptMessageHandler : NSObject ,WKScriptMessageHandler {
                 for listItem in currentSceneList
                 {
                     
-                        let id = listItem["id"] as! String
+                    //MARK:待处理,iTunes上传的歌曲没有id
+                    if let id : AnyObject = listItem["id"]
+                    {
                         let jsString = "downloadCompleteById(\"\(id)\")"
                         wkWebView1.evaluateJavaScript(jsString, completionHandler: nil)
+                    }
+                    
                         
                     
                 }
@@ -138,7 +142,8 @@ class BrowserViewController: UIViewController  {
         //初始化WKWebView
         initWKWebView(self)
         
-        webView1.loadRequest(NSURLRequest(URL: NSURL(string: "http://localhost/UGC_HTML_2/UGC3rdOnlineResource.html")!))
+//        webView1.loadRequest(NSURLRequest(URL: NSURL(string: "http://localhost/UGC_HTML_2/UGC3rdOnlineResource.html")!))
+        webView1.loadRequest(NSURLRequest(URL: NSURL(string: "http://tnewp.cc/yy/UGC3rdOnlineResource.html")!))
         
         self.view.addSubview(webView1)
     }

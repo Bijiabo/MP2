@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,Module{
+class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,Module,UIAlertViewDelegate{
 
     var moduleLoader : ModuleLoader?
     @IBOutlet var uiView1: UITableView!
@@ -191,7 +191,7 @@ class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,
                 if _scenePlayList[i]["isUGC"] != nil
                 {
                     
-                    var localURL = _scenePlayList[i]["localURL"] as! String
+                    var localURL = _scenePlayList[i]["localURI"] as! String
                     upYun.uploadFile(localURL, saveKey:_scenePlayList[i]["name"]as! NSString as String)
                     
                     let remoteURL : AnyObject? = "http://v0.api.upyun.com/earlyenglishstudy/media/\(localURL)"
@@ -209,7 +209,13 @@ class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,
             //先保存到tmp文件夹
             var savePathURL = NSURL(fileURLWithPath: NSHomeDirectory())?.URLByAppendingPathComponent("tmp")
             
-           var fileName = ""
+            var date:NSDate = NSDate()
+            var formatter : NSDateFormatter = NSDateFormatter()
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            let dateString = formatter.stringFromDate(date)
+            
+            var fileName = ""
+            //fileName = "\(dateString).json"
             //获取宝宝名字
            if let childName : String = NSUserDefaults.standardUserDefaults().stringForKey("childName")
            {
@@ -233,6 +239,10 @@ class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,
             upYun.uploadFile(toFile, saveKey: "/data/\(fileName)")
             
         }
+        
+       let upSuccessAlert =  UIAlertView(title: nil, message: "分享成功", delegate: self, cancelButtonTitle: "ok")
+        upSuccessAlert.alertViewStyle = UIAlertViewStyle.Default
+        upSuccessAlert.show()
         
     }
     
