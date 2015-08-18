@@ -373,11 +373,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461491770.552988"
+            timestampString = "461576735.638913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457">
+            startingLineNumber = "504"
+            endingLineNumber = "504">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -867,11 +867,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461491770.552988"
+            timestampString = "461576735.638913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429">
+            startingLineNumber = "476"
+            endingLineNumber = "476">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -881,11 +881,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461491770.552988"
+            timestampString = "461573780.753172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1247,11 +1247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461491770.552988"
+            timestampString = "461576735.638913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434">
+            startingLineNumber = "481"
+            endingLineNumber = "481">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1261,11 +1261,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461491770.552988"
+            timestampString = "461576735.638913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440">
+            startingLineNumber = "487"
+            endingLineNumber = "487">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1451,11 +1451,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461175343.135408"
+            timestampString = "461573251.378835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1835,11 +1835,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461175343.135408"
+            timestampString = "461573251.378835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "_refreshNavigationBar(navigationBar:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1857,22 +1857,6 @@
             startingLineNumber = "243"
             endingLineNumber = "243"
             landmarkName = "CurrentPlayingDataHasChanged(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MP2/ViewController.swift"
-            timestampString = "461171725.867656"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "tabBar(_:didSelectItem:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2075,11 +2059,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461175343.135408"
+            timestampString = "461573251.378835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "playingStatusChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2315,11 +2299,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461491770.552988"
+            timestampString = "461573251.378835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>

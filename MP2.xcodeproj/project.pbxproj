@@ -38,6 +38,7 @@
 		334156191B5B6CB900DA051D /* TempListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156151B5B6CB900DA051D /* TempListTableViewCell.swift */; };
 		3341561A1B5B6CB900DA051D /* TempListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156161B5B6CB900DA051D /* TempListTableViewController.swift */; };
 		3341561C1B5B6CB900DA051D /* UGCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334156181B5B6CB900DA051D /* UGCViewController.swift */; };
+		335EB5711B83164200715678 /* UserFeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335EB5701B83164200715678 /* UserFeedBackViewController.swift */; };
 		336A1F271B5E607200360293 /* ItunesGuiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */; };
 		336A1F291B5E635B00360293 /* iTunesGuide-images in Resources */ = {isa = PBXBuildFile; fileRef = 336A1F281B5E635B00360293 /* iTunesGuide-images */; };
 		336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */; };
@@ -215,6 +216,7 @@
 		334156151B5B6CB900DA051D /* TempListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewCell.swift; sourceTree = "<group>"; };
 		334156161B5B6CB900DA051D /* TempListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewController.swift; sourceTree = "<group>"; };
 		334156181B5B6CB900DA051D /* UGCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGCViewController.swift; sourceTree = "<group>"; };
+		335EB5701B83164200715678 /* UserFeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeedBackViewController.swift; sourceTree = "<group>"; };
 		336A1F261B5E607200360293 /* ItunesGuiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesGuiderViewController.swift; sourceTree = "<group>"; };
 		336A1F281B5E635B00360293 /* iTunesGuide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iTunesGuide-images"; sourceTree = "<group>"; };
 		336A1F2A1B6383B700360293 /* UploadMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMessageViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */,
 				334001D11B593F9600153524 /* playlistTableViewCell.swift */,
 				3371A4221B6A090600C842E0 /* MainScrollViewController.swift */,
+				335EB5701B83164200715678 /* UserFeedBackViewController.swift */,
 				A1B583EC1B33034900AD41D9 /* Main.storyboard */,
 				A1B583EF1B33034900AD41D9 /* Images.xcassets */,
 				A1B583F11B33034900AD41D9 /* LaunchScreen.xib */,
@@ -711,6 +714,7 @@
 				3331B2211B7F066C006E9BBB /* MF_Base64Additions.m in Sources */,
 				3331B2221B7F066C006E9BBB /* NSData+Utils.m in Sources */,
 				3331B2231B7F066C006E9BBB /* NSData+MD5Digest.m in Sources */,
+				335EB5711B83164200715678 /* UserFeedBackViewController.swift in Sources */,
 				334156191B5B6CB900DA051D /* TempListTableViewCell.swift in Sources */,
 				3341561A1B5B6CB900DA051D /* TempListTableViewController.swift in Sources */,
 				3341561C1B5B6CB900DA051D /* UGCViewController.swift in Sources */,
