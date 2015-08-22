@@ -160,7 +160,7 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
             } else {
                 childPlayViewController.playPauseButton.setBackgroundImage(UIImage(named: "playButton")!, forState: UIControlState.Normal)
                 
-                //childPlayViewController.playPauseButton.tag = 0
+                childPlayViewController.playPauseButton.tag = 0
                 
             }
         }
