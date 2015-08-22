@@ -359,6 +359,59 @@
             <point key="canvasLocation" x="620" y="1357"/>
         </scene>
         <!--Root View Controller-->
+        <scene sceneID="akb-iE-vBL">
+            <objects>
+                <viewController storyboardIdentifier="rootVC" id="j7v-Fb-bwC" customClass="RootViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h8S-WU-PuH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gcz-WI-zJa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ybX-nk-rJs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOe-e7-PGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-921" y="1765"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wgo-B0-r2u">
+            <objects>
+                <navigationController storyboardIdentifier="LeftController" id="RSr-Kd-IWq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JdQ-Pl-PHV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OgZ-qB-a8R" kind="relationship" relationship="rootViewController" id="xi2-bP-Znp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bsM-i1-bni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="2087"/>
+        </scene>
+        <!--Left Controller-->
+        <scene sceneID="AAn-Ls-hQ1">
+            <objects>
+                <viewController id="OgZ-qB-a8R" customClass="LeftController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JQM-sf-Oxk"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Bu-NK-MTW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jq4-cU-K8r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qpR-E9-eZa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aFV-b3-4pA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620" y="2087"/>
+        </scene>
+        <!--Root View Controller-->
         <scene sceneID="vRv-Tn-WSn">
             <objects>
                 <tableViewController storyboardIdentifier="playListVC" id="e5g-jT-u7o" customClass="PlayListTableViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">

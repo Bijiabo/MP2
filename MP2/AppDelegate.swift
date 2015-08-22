@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
         else
         {
-            self.loadModule("Main", storyboardIdentifier: "mainVC")
+            self.loadModule("Main", storyboardIdentifier: "rootVC")
         }
         
         nowPlayingInfoCenter = NowPlayingInfoCenterController()
@@ -601,10 +601,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
             //hu
                 mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(storyboardIdentifier) as! UIViewController
                 
-                var navigationController : UINavigationController = mainVC as! UINavigationController
+//                var navigationController : UINavigationController = mainVC as! UINavigationController
                 
-                var mainViewController: AnyObject = navigationController.viewControllers[0]
+//                var mainViewController: AnyObject = navigationController.viewControllers[0]
                 
+                var mainViewController : RootViewController = mainVC as! RootViewController
                 
                 //若mainVC符合Module，则传入ModuleLoader
                 if let vc : Module = mainViewController as? Module
@@ -614,7 +615,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                     VC.moduleLoader = self
                 }
                 
-                if storyboardIdentifier == "mainVC"
+                if storyboardIdentifier == "rootVC"
                 {
                     
                     if let vc : ViewManager = mainViewController as? ViewManager

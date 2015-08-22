@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate , Module
 {
+    var menuDelegate:MenuDelegate?
+    
     var moduleLoader : ModuleLoader?
     
     var delegate : Operations?
@@ -164,6 +166,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
 
     //播放暂停按钮被点击
     @IBAction func togglePlayPause(sender: AnyObject) {
+        
+        if menuState == MenuState.Closed {
+            menuDelegate?.openMenu()
+        } else {
+            menuDelegate?.closeMenu()
+        }
+        
         
         self.scrollViewController.switchSceneToIndex(self.view.tag)
         
