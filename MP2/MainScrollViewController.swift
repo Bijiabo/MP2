@@ -9,6 +9,8 @@
 import UIKit
 
 class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,ViewManager {
+    
+    var menuDelegate:MenuDelegate?
 
     var moduleLoader : ModuleLoader?
     
@@ -81,6 +83,7 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
             
             mainVC1.model = self.model
             mainVC1.delegate = self.delegate
+            mainVC1.menuDelegate = self.menuDelegate
             mainVC1.moduleLoader = self.moduleLoader
             mainVC1.view.frame = frame
             mainVC1.view.tag = i

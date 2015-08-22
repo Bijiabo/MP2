@@ -118,7 +118,8 @@ class userInformationViewController: UIViewController , Module
         
         
         //关闭页面
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
+//        self.dismissViewControllerAnimated(true, completion: nil)
 //        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
         
         

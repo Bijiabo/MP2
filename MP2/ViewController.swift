@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate , Module
 {
+    var menuDelegate:MenuDelegate?
+    
     var moduleLoader : ModuleLoader?
     
     var delegate : Operations?
@@ -159,6 +161,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //播放暂停按钮被点击
     @IBAction func togglePlayPause(sender: AnyObject) {
         
+        
         self.scrollViewController.switchSceneToIndex(self.view.tag)
         
         //currentPlayingViewCode
@@ -251,6 +254,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
+        let sceneName = model!.scenelist[self.view.tag]
+        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+        
+        if model!.status.currentScene != sceneName
+        {
+            delegate?.switchToScene(sceneName)
+        }
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doDislike()
     }
@@ -398,6 +408,17 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
             
+            
+            let sceneName = model!.scenelist[self.view.tag]
+            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+            
+            if model!.status.currentScene != sceneName
+            {
+                delegate?.switchToScene(sceneName)
+            }
+            
+            
+            
             var playListData =  delegate?.getCurrentScenePlayList(nil)
             var playingData = model?.currentPlayingData
             
@@ -414,6 +435,15 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
     }
 
+    //MARK: 侧边菜单
+    @IBAction func clickLeftButton(sender: UIBarButtonItem) {
+        if menuState == MenuState.Closed {
+            menuDelegate?.openMenu()
+        } else {
+            menuDelegate?.closeMenu()
+        }
+    }
+    
 }
 
 

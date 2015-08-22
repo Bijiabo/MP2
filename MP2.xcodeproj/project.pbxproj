@@ -23,8 +23,11 @@
 		336A1F3C1B655AEC00360293 /* DownLoadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */; };
 		336A1F3E1B66668E00360293 /* DownLoadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */; };
 		3371A4231B6A090600C842E0 /* MainScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371A4221B6A090600C842E0 /* MainScrollViewController.swift */; };
+		33843C141B88A0270092A62E /* LeftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33843C131B88A0270092A62E /* LeftController.swift */; };
+		33843C191B88A0CC0092A62E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33843C181B88A0CC0092A62E /* RootViewController.swift */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
+		33E9536B1B88CF8F00A5078E /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E9536A1B88CF8F00A5078E /* FeedBackViewController.swift */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
 		A126FB051B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
 		A126FB071B43C21F009BE576 /* DownloaderClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB061B43C21F009BE576 /* DownloaderClasses.swift */; };
@@ -152,9 +155,12 @@
 		336A1F3B1B655AEC00360293 /* DownLoadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadTableViewController.swift; sourceTree = "<group>"; };
 		336A1F3D1B66668E00360293 /* DownLoadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadTableViewCell.swift; sourceTree = "<group>"; };
 		3371A4221B6A090600C842E0 /* MainScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScrollViewController.swift; sourceTree = "<group>"; };
+		33843C131B88A0270092A62E /* LeftController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftController.swift; sourceTree = "<group>"; };
+		33843C181B88A0CC0092A62E /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
+		33E9536A1B88CF8F00A5078E /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		A126FAE31B43AC7F009BE576 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		A126FB031B43C203009BE576 /* DownloaderProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloaderProtocols.swift; path = Downloader/DownloaderProtocols.swift; sourceTree = "<group>"; };
 		A126FB061B43C21F009BE576 /* DownloaderClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloaderClasses.swift; path = Downloader/DownloaderClasses.swift; sourceTree = "<group>"; };
@@ -282,6 +288,9 @@
 				339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */,
 				334001D11B593F9600153524 /* playlistTableViewCell.swift */,
 				3371A4221B6A090600C842E0 /* MainScrollViewController.swift */,
+				33843C131B88A0270092A62E /* LeftController.swift */,
+				33843C181B88A0CC0092A62E /* RootViewController.swift */,
+				33E9536A1B88CF8F00A5078E /* FeedBackViewController.swift */,
 				A1B583EC1B33034900AD41D9 /* Main.storyboard */,
 				A1B583EF1B33034900AD41D9 /* Images.xcassets */,
 				A1B583F11B33034900AD41D9 /* LaunchScreen.xib */,
@@ -523,8 +532,10 @@
 				A1B584111B33045400AD41D9 /* StatusManager.swift in Sources */,
 				A1B584221B33F26700AD41D9 /* ViewManager.swift in Sources */,
 				334001D21B593F9600153524 /* playlistTableViewCell.swift in Sources */,
+				33843C191B88A0CC0092A62E /* RootViewController.swift in Sources */,
 				A1B584171B3307A200AD41D9 /* Status.swift in Sources */,
 				336A1F3E1B66668E00360293 /* DownLoadTableViewCell.swift in Sources */,
+				33E9536B1B88CF8F00A5078E /* FeedBackViewController.swift in Sources */,
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
@@ -539,6 +550,7 @@
 				A1B5842F1B3480EC00AD41D9 /* Operation.swift in Sources */,
 				3371A4231B6A090600C842E0 /* MainScrollViewController.swift in Sources */,
 				A1A765511B46F33E00C3B6F1 /* CopyBundleFilesToCache.swift in Sources */,
+				33843C141B88A0270092A62E /* LeftController.swift in Sources */,
 				A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
