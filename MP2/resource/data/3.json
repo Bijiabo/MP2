@@ -1,6 +1,18 @@
 [
   {
     "list": [
+        {
+          "remoteURL": [
+            "http://aoss.appshare.cn/a/1/t0ubo8oy.audio"
+          ],
+          "id": "d751e50a-61fe-45b7-92a6-7e61cf5a0527",
+          "name": "Fragrance in the Morning",
+          "tag": "音乐",
+          "numberOfLoops": 0,
+          "duration": 160,
+          "localURI": "npvgc3vg.ru3.m4a",
+          "series": "清晨的芬芳"
+        },
       {
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/8csig7s2.audio"
@@ -126,6 +138,18 @@
   },
   {
     "list": [
+        {
+          "remoteURL": [
+            "http://aoss.appshare.cn/a/2/3sq15m4o.audio"
+          ],
+          "id": "b26b1212-99e0-47d1-976a-9cf67207d34e",
+          "name": "The Baby's Dance",
+          "tag": "儿歌",
+          "numberOfLoops": 0,
+          "duration": 40,
+          "localURI": "q1lbhtl0.kui.m4a",
+          "series": "The Baby's Dance"
+        },
       {
         "remoteURL": [
           "http://aoss.appshare.cn/a/4/w9neq3k6.audio"
@@ -251,6 +275,18 @@
   },
   {
     "list": [
+        {
+          "remoteURL": [
+            "http://aoss.appshare.cn/a/0/5v117utt.audio"
+          ],
+          "id": "de2a6b6f-6c64-4a5f-9416-58c5ec536b7e",
+          "name": "Colour Song",
+          "tag": "英文启蒙",
+          "numberOfLoops": 0,
+          "duration": 90,
+          "localURI": "e3yyhhs0.ndp.m4a",
+          "series": "Colour Song"
+        },
       {
         "remoteURL": [
           "http://aoss.appshare.cn/a/7/ngoyyikk.audio"
@@ -376,6 +412,18 @@
   },
   {
     "list": [
+        {
+          "remoteURL": [
+            "http://aoss.appshare.cn/a/6/bhhrr1pu.audio"
+          ],
+          "id": "79ab8766-5ac8-458d-ad80-13cd47141ea8",
+          "name": "Evening Hymn",
+          "tag": "音乐",
+          "numberOfLoops": 0,
+          "duration": 85,
+          "localURI": "gl0ylmib.j2z.m4a",
+          "series": "Classical Baby"
+        },
       {
         "remoteURL": [
           "http://aoss.appshare.cn/a/6/g0h0wphr.audio"

@@ -175,18 +175,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         let targetScene : String = model!.scenelist[selectedIndex]
         delegate?.switchToScene(targetScene)
         
-        /*
-        if delegate?.playing == true
-        {
-            delegate?.pause()
-        }
-        else
-        {
-            delegate?.play()
-        }
-        */
-
-        
         if playPauseButton.tag == 1 {
             //play
             delegate?.pause()
