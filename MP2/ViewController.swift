@@ -167,12 +167,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //播放暂停按钮被点击
     @IBAction func togglePlayPause(sender: AnyObject) {
         
-        if menuState == MenuState.Closed {
-            menuDelegate?.openMenu()
-        } else {
-            menuDelegate?.closeMenu()
-        }
-        
         
         self.scrollViewController.switchSceneToIndex(self.view.tag)
         
@@ -424,6 +418,12 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //判断是否是跳转到播放列表界面
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
+            println("viewtag:\(self.view.tag)--currentIndex\(model!.status.currentSceneIndex)")
+            
+                let sceneName = model!.scenelist[self.view.tag] as String
+                delegate?.switchToScene(sceneName)
+            
+            
             
             var playListData =  delegate?.getCurrentScenePlayList(nil)
             var playingData = model?.currentPlayingData
@@ -441,6 +441,15 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
     }
 
+    //MARK: 侧边菜单
+    @IBAction func clickLeftButton(sender: UIBarButtonItem) {
+        if menuState == MenuState.Closed {
+            menuDelegate?.openMenu()
+        } else {
+            menuDelegate?.closeMenu()
+        }
+    }
+    
 }
 
 

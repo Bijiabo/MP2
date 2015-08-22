@@ -30,7 +30,8 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
 
     
     var mainController:UINavigationController!
-    var leftController:UIViewController!
+    
+    var leftController:UINavigationController!
     
     var tapRecognizer:UITapGestureRecognizer?
     
@@ -46,7 +47,13 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
         mainScrollView.moduleLoader = self.moduleLoader
         mainScrollView.model = self.model
 //        (mainController.viewControllers[0] as! MainScrollViewController).menuDelegate = self
-        leftController = storyboard.instantiateViewControllerWithIdentifier("LeftController") as! UIViewController
+        leftController = storyboard.instantiateViewControllerWithIdentifier("LeftController") as! UINavigationController
+        
+        var leftVC = leftController.viewControllers[0] as! LeftController
+        leftVC.menuDelegate = self
+        
+        leftVC.rightVC = mainScrollView
+        
         self.view.addSubview(mainController.view)
         
         mainController.view.frame = self.view.bounds
@@ -57,8 +64,9 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
         leftController.view.frame = self.view.bounds
         self.view.bringSubviewToFront(mainController.view)
         
-        var panGesture = UIPanGestureRecognizer(target: self, action: Selector("pan:"))
-        self.mainController.view.addGestureRecognizer(panGesture)
+        //暂时去掉滑动显示功能
+        //var panGesture = UIPanGestureRecognizer(target: self, action: Selector("pan:"))
+        //self.mainController.view.addGestureRecognizer(panGesture)
         
         self.tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("closeMenu"))
     }

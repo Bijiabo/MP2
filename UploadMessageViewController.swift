@@ -13,7 +13,7 @@ class UploadMessageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "已上传内容"
+        self.title = "iTunes上传"
         // Do any additional setup after loading the view.
     }
 

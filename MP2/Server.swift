@@ -112,11 +112,11 @@ class Server : NSObject , ModelManager ,StatusObserver
             var sceneDataCache = Dictionary<String,AnyObject>()
             let _sceneName : String = scenelist[i]
             sceneDataCache["sceneName"] = _sceneName
-            println("_SceneName\(_sceneName)")
+            //println("_SceneName\(_sceneName)")
             let _scenePlayList = getCurrentScenePlayList(_sceneName) as [Dictionary<String, AnyObject>]
-            println("_scenePlayList:\(_scenePlayList)")
+           // println("_scenePlayList:\(_scenePlayList)")
             let _index = status.getSceneIndexStatusCache()
-            println("index:\(_index[_sceneName])")
+            //println("index:\(_index[_sceneName])")
             
             var _scenePlayingIndex = _index[_sceneName]
             

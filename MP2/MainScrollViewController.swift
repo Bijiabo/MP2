@@ -9,6 +9,7 @@
 import UIKit
 
 class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,ViewManager {
+    
     var menuDelegate:MenuDelegate?
 
     var moduleLoader : ModuleLoader?

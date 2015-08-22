@@ -610,7 +610,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 //若mainVC符合Module，则传入ModuleLoader
                 if let vc : Module = mainViewController as? Module
                 {
-                    var VC : Module = mainViewController as! Module
+                    var VC : Module = mainViewController as Module
                     
                     VC.moduleLoader = self
                 }
@@ -620,7 +620,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                     
                     if let vc : ViewManager = mainViewController as? ViewManager
                     {
-                        var VC : ViewManager = mainViewController as! ViewManager
+                        var VC : ViewManager = mainViewController as ViewManager
                         
                         VC.model = self.model
                         VC.delegate = self
