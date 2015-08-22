@@ -272,6 +272,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
+        let sceneName = model!.scenelist[self.view.tag]
+        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+        
+        if model!.status.currentScene != sceneName
+        {
+            delegate?.switchToScene(sceneName)
+        }
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doDislike()
     }
@@ -418,7 +425,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //判断是否是跳转到播放列表界面
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
-            println("viewtag:\(self.view.tag)--currentIndex\(model!.status.currentSceneIndex)")
+            
             
             let sceneName = model!.scenelist[self.view.tag]
             NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")

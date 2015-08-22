@@ -144,7 +144,10 @@ class PlayListTableViewController: UITableViewController ,Module{
     @IBAction func clickAddResourceButton(sender: UIBarButtonItem) {
         
         //获取要跳转的界面
-        var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
+//        var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
+        
+        //update by slimadam on 15/08/23
+        var UGCHomeVC : TempListTableViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("tempListTableVC") as! TempListTableViewController
         
         UGCHomeVC.currentSceneData = self.currentSceneData
         UGCHomeVC.delegate = self.delegata

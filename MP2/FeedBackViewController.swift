@@ -14,7 +14,7 @@ class FeedBackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        
         
 //        self.view.backgroundColor = UIColor.blackColor()
         _setImage("qrcode.jpg")

@@ -14,7 +14,7 @@ class LeftController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     var menuDelegate:MenuDelegate?
     
-    var menus : Array<String> = ["个人设置","意见与建议","关于"]
+    var menus : Array<String> = ["个人设置","意见与建议"]
     
     var rightVC : MainScrollViewController?
     
@@ -22,7 +22,8 @@ class LeftController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         super.viewDidLoad()
 //        self.tableView.backgroundColor = UIColor.blackColor()
         
-        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.view.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,10 +47,12 @@ class LeftController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = UITableViewCell()
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         cell.textLabel?.text = menus[indexPath.row]
+        cell.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 1)
         
+        cell.textLabel?.textColor = UIColor.whiteColor()
         return cell
     }
     
