@@ -21,8 +21,7 @@ protocol ModelManager
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> {get}
-    //不喜欢的歌曲
-    var disLikePlayingData :Dictionary<String,AnyObject>{get set}
+    
     //切换为下一首音频
     func next()
     
@@ -47,6 +46,4 @@ protocol ModelManager
     
     //得到iTunes上传文件夹列表
     func getUploadList() ->Dictionary<String,NSURL>
-    
-    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
 }

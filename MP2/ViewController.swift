@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate , Module,UIActionSheetDelegate
+class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAlertViewDelegate , Module
 {
     var moduleLoader : ModuleLoader?
     
@@ -175,6 +175,17 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         let targetScene : String = model!.scenelist[selectedIndex]
         delegate?.switchToScene(targetScene)
         
+        /*
+        if delegate?.playing == true
+        {
+            delegate?.pause()
+        }
+        else
+        {
+            delegate?.play()
+        }
+        */
+
         
         if playPauseButton.tag == 1 {
             //play
@@ -228,8 +239,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
                 
                 navigationBarTitle.title = "\(currentScene)磨耳朵"
             }
-            
-            
         }
         
         
@@ -242,38 +251,26 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         
         _refreshBackgroundImageView(view: backgroundImageView,sceneName: nil)
     }
+    //用户点击触发
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!)
+    {
+        let selectedIndex : Int = item.tag
+        println("tabTag:\(item.tag)")
+        let targetScene : String = model!.scenelist[selectedIndex]
+        delegate?.switchToScene(targetScene)
+    }
     
     //喜欢按钮触发事件
     @IBAction func tapLikeButton(sender: AnyObject)
     {
-        let sceneName = model!.scenelist[self.view.tag]
-        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
-        if model!.status.currentScene != sceneName
-        {
-            delegate?.switchToScene(sceneName)
-        }
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doLike()
     }
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
-        let sceneName = model!.scenelist[self.view.tag]
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
-        if model!.status.currentScene != sceneName
-        {
-            delegate?.switchToScene(sceneName)
-        }
-        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
-        model?.disLikePlayingData = model!.currentPlayingData
-        let thisSceneName = model?.scenelist[self.view.tag]
-        //点击不喜欢切歌
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "clickDisLike")
-        
-        //删除不喜欢的数据
-        delegate?.updateCurrentScenePlayList(model!.disLikePlayingData, isAdd: false, sceneName: thisSceneName)
         delegate?.doDislike()
-        
     }
     //改变播放按钮状态
     func playingStatusChanged(notification : NSNotification)
@@ -284,6 +281,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     private func _refreshPlayButton()
     {
         let currentPlayingViewCode = NSUserDefaults.standardUserDefaults().integerForKey("currentPlayingViewCode")
+//        let scenesVCCollection : [ViewController] = NSUserDefaults.standardUserDefaults().objectForKey("scenesVCCollection") as! [ViewController]
+//        for i in 0..<scenesVCCollection.count
+//        {
+//            let _view = scenesVCCollection[i]
+//            
+//            _view.playPauseButton.setBackgroundImage(UIImage(named: "pauseButton") , forState: UIControlState.Normal)
+//        }
         if currentPlayingViewCode == self.view.tag
         {
             if delegate?.playing == true
@@ -336,7 +340,14 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func _refreshNavigationBar (#navigationBar : UINavigationBar?) -> Void
     {
-
+        /*
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.whiteColor()
+        ]
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        */
         
         //outlet🈯️定的,一会儿需要删除
         if navigationBar == nil {return}
@@ -404,16 +415,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //判断是否是跳转到播放列表界面
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
-            //获取所处界面的列表
-            let sceneName = model!.scenelist[self.view.tag]
-            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
-            if model!.status.currentScene != sceneName
-            {
-                delegate?.switchToScene(sceneName)
-            }
             
             var playListData =  delegate?.getCurrentScenePlayList(nil)
-            
             var playingData = model?.currentPlayingData
             
             var playListVC : PlayListTableViewController = segue.destinationViewController as! PlayListTableViewController
@@ -421,56 +424,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             playListVC.currentSceneData = playListData!
             playListVC.currentPlayingData = playingData!
             playListVC.moduleLoader = self.moduleLoader
-            playListVC.delegate = self.delegate
+            playListVC.delegata = self.delegate
             playListVC.title = "\(model!.status.currentScene)情景"
             
-        }else if segue.identifier == "childInfoView"
-        {
-            
-            
-            
         }
         
         
-        
     }
-    
-    
-    @IBAction func clickLeftButton(sender: UIBarButtonItem) {
-        
-        var sheet = UIActionSheet(title: nil , delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil ,otherButtonTitles: "宝贝信息","使用反馈","录音")
-        sheet.showInView(self.view)
-    }
-    
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        
-        switch buttonIndex
-        {
-        case 0:
-            break
-            //孩子信息
-        case 1:
-            
-            //获取要孩子信息界面
-            var userInfoVC : userInformationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("userInformationSetting") as! userInformationViewController
-            
-            self.presentViewController(userInfoVC, animated: true, completion: nil)
-            
-            println("切换到UGC界面")
-            
-            //意见反馈
-        case 2:
-            //获取用户反馈界面
-            var userFeedBackVC : UserFeedBackViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("feedBackVC") as! UserFeedBackViewController
-            self.presentViewController(userFeedBackVC, animated: true, completion: nil)
-            println("切换到用户反馈界面")
-            
-        default:
-            break
-        }
-        
-    }
-    
 
 }
 

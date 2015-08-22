@@ -58,10 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK: application
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         println(NSHomeDirectory())
-        
-        //MARK: 模拟链接后端
-        var sharerList: [Dictionary<String,AnyObject>] = [Dictionary<String,AnyObject>]()
-        NSUserDefaults.standardUserDefaults().setObject(sharerList, forKey: "sharerList")
+        println(UIScreen.mainScreen().bounds.width)
         
         //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
@@ -183,7 +180,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func playNext()
     {
         model.next()
-        
     }
     
     func updateChildInformation()
@@ -710,11 +706,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func getAppDownloader() -> Downloader
     {
         return self.downloader!
-    }
-    
-    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
-    {
-        model.updateCurrentScenePlayListByShare(ugcData, isAdd: isAdd, sceneName: sceneName)
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,Module,UIAlertViewDelegate{
+class PlayListTableViewController: UITableViewController ,Module{
 
     var moduleLoader : ModuleLoader?
     @IBOutlet var uiView1: UITableView!
@@ -18,35 +18,28 @@ class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
     
     var cellHeight : CGFloat = 0
-    var delegate : Operations?
+    var delegata : Operations?
     var downloader : Downloader!
-    var upYun = UpYun()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        // Uncomment the following line to preserve selection between presentations
+         //self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        //初始化upYun
-        _initUpYun()
+        //self.title = "播放列表"
+        //println(currentSceneData[0]["name"] as! String)
+        
     }
     
-    private func _initUpYun()
-    {
-        upYun.passcode = "ukeX7vTiPkknHGT9gtUholk2MdI="
-        upYun.bucket = "earlyenglishstudy"
-        upYun.expiresIn = 6000
-    }
-    func downloadSuccess()
-    {
-        //var returnContent = NSUserDefaults.standardUserDefaults().objectForKey("returnContent") as! String
-        print(NSUserDefaults.standardUserDefaults().objectForKey("returnContent"))
-    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         //准备加载该界面,获取最新场景列表
-        currentSceneData = delegate!.getCurrentScenePlayList(nil)
+        currentSceneData = delegata!.getCurrentScenePlayList(nil)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
@@ -102,9 +95,9 @@ class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
         return currentSceneData.count
-        //为了暂时能体现列表的歌曲在动,限定在只显示10首歌曲
-        //return 10
     }
 
     
@@ -150,129 +143,72 @@ class PlayListTableViewController: UITableViewController ,UIActionSheetDelegate,
     //
     @IBAction func clickAddResourceButton(sender: UIBarButtonItem) {
         
-        var sheet = UIActionSheet(title: nil , delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil ,otherButtonTitles: "添加歌曲","列表分享")
-        sheet.showInView(self.view)
+        //获取要跳转的界面
+        var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
+        
+        UGCHomeVC.currentSceneData = self.currentSceneData
+        UGCHomeVC.delegate = self.delegata
+        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+        
+        println("切换到UGC界面")
     }
     
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    
+    /*
+    //界面跳转传值,navigation跳转不行
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        switch buttonIndex
+        if segue.identifier == "mainVC"
         {
-        case 0:
-            break
-        case 1:
-            //获取要跳转的界面
-            var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
+            var addMusicVC = segue.destinationViewController as! UGCViewController
             
-            UGCHomeVC.currentSceneData = self.currentSceneData
-            UGCHomeVC.delegate = self.delegate
-            self.navigationController?.pushViewController(UGCHomeVC, animated: true)
-            
-            println("切换到UGC界面")
-        case 2:
-            postShareData()
-        default:
-            break
+            addMusicVC.currentSceneData = self.currentSceneData
         }
-        
     }
-    
-    //MARK: 分享
-    
-    //发送分享内容
-    func postShareData()
-    {
-        //得到当前场景下的播放列表
-        if var _scenePlayList : [Dictionary<String,AnyObject>] = delegate?.getCurrentScenePlayList(nil){
-            
-            for i in 0..<_scenePlayList.count
-            {
-                //如果是用户自定义上传的歌曲,上传音乐文件到服务器
-                if _scenePlayList[i]["isUGC"] != nil
-                {
-                    
-                    var localURL = _scenePlayList[i]["localURI"] as! String
-                    upYun.uploadFile(localURL, saveKey:_scenePlayList[i]["name"]as! NSString as String)
-                    
-                    let remoteURL : AnyObject? = "http://v0.api.upyun.com/earlyenglishstudy/media/\(localURL)"
-                    
-                  
-                    //MARK: 拼接远程URL
-                    _scenePlayList[i]["remoteURL"] = remoteURL
-                    
-                }
-            }
-            
-            
-            //要分享的歌单
-            var shareData: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-            //先保存到tmp文件夹
-            var savePathURL = NSURL(fileURLWithPath: NSHomeDirectory())?.URLByAppendingPathComponent("tmp")
-            
-            var date:NSDate = NSDate()
-            var formatter : NSDateFormatter = NSDateFormatter()
-            formatter.dateFormat = "yyyyMMddHHmmss"
-            let dateString = formatter.stringFromDate(date)
-            
-            var fileName = ""
-            //fileName = "\(dateString).json"
-            //获取宝宝名字
-           if let childName : String = NSUserDefaults.standardUserDefaults().stringForKey("childName")
-           {
-                shareData["sharerName"] = "来自 \(childName) 宝宝妈的分享"
-                savePathURL = savePathURL?.URLByAppendingPathComponent("\(childName).json")
-                fileName = "\(childName).json"
-            
-           }else{
-            
-                shareData["sharerName"] = "来自匿名宝妈的分享"
-                savePathURL = savePathURL?.URLByAppendingPathComponent("000.json")
-                fileName = "匿名妈妈.json"
-            }
-            
-            shareData["list"] = _scenePlayList
-            
-            let toFile = savePathURL?.relativePath!
-            
-            save(shareData,toFile:toFile!)
-            
-            upYun.uploadFile(toFile, saveKey: "/data/\(fileName)")
-            
-        }
-        
-       let upSuccessAlert =  UIAlertView(title: nil, message: "分享成功", delegate: self, cancelButtonTitle: "ok")
-        upSuccessAlert.alertViewStyle = UIAlertViewStyle.Default
-        upSuccessAlert.show()
-        
+    */
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the specified item to be editable.
+        return true
     }
-    
-    //数组转换成Json
-    func toJSONString(dict:AnyObject)->NSString{
-        
-        var data = NSJSONSerialization.dataWithJSONObject(dict, options:NSJSONWritingOptions.PrettyPrinted , error: nil)
-        var strJson=NSString(data: data!, encoding: NSUTF8StringEncoding)
-        return strJson!
-        
-    }
+    */
 
-    func save(jsonData :AnyObject, toFile : String)
-    {
-        var error:NSError?
-        
-        let str: AnyObject = toJSONString(jsonData)
-        str.writeToFile(toFile, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
-        
-        if error != nil
-        {
-            println(error)
-        }
-        else
-        {
-            println("他喵的保存文件成功了好么!!!")
-        }
-        
+    /*
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
     }
+    */
 
-    
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }

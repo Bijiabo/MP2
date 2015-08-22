@@ -51,14 +51,6 @@ class UGCViewController: UIViewController,Module{
         }
     }
     
-    //跳转到分享列表
-    @IBAction func clickShareButton(sender: UIButton) {
-        
-        let shareListVC = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("shareListViewController") as! ShareListViewController
-        
-        shareListVC.delegate = self.delegate
-        self.navigationController?.pushViewController(shareListVC, animated: true)
-    }
     
     @IBAction func clickUploadDataButton(sender: UIButton) {
         

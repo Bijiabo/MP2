@@ -23,8 +23,6 @@ class Server : NSObject , ModelManager ,StatusObserver
     
     //当前播放数据
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-    //不喜欢的歌曲
-    var disLikePlayingData :Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
     //当前json文件路径
    // var currentJsonPath : NSURL?
     
@@ -116,7 +114,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             sceneDataCache["sceneName"] = _sceneName
             println("_SceneName\(_sceneName)")
             let _scenePlayList = getCurrentScenePlayList(_sceneName) as [Dictionary<String, AnyObject>]
-            //println("_scenePlayList:\(_scenePlayList)")
+            println("_scenePlayList:\(_scenePlayList)")
             let _index = status.getSceneIndexStatusCache()
             println("index:\(_index[_sceneName])")
             
@@ -143,7 +141,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             //继续读取
             scenesDataCache?.append(sceneDataCache)
         }
-        //println("scenesDataCache:\(scenesDataCache)")
+        println("scenesDataCache:\(scenesDataCache)")
     }
     private func _getCurrentScenePlaylist (sceneName:String?) -> [Dictionary<String,AnyObject>]
     {
@@ -242,32 +240,15 @@ class Server : NSObject , ModelManager ,StatusObserver
     func next() {
         
         let currentScenePlaylist : [Dictionary<String,AnyObject>] = _getCurrentScenePlaylist(nil)
-        let isDisLike = NSUserDefaults.standardUserDefaults().boolForKey("clickDisLike")
         
-        if isDisLike
+        if currentScenePlaylist.count > ( status.currentSceneIndex + 1 )
         {
-            if currentScenePlaylist.count > ( status.currentSceneIndex  )
-            {
-                status.set_CurrentSceneIndex(status.currentSceneIndex )
-            }
-            else
-            {
-                status.set_CurrentSceneIndex(0)
-            }
-            
-        }else{
-            
-            if currentScenePlaylist.count > ( status.currentSceneIndex + 1 )
-            {
-                status.set_CurrentSceneIndex(status.currentSceneIndex + 1)
-            }
-            else
-            {
-                status.set_CurrentSceneIndex(0)
-            }
+            status.set_CurrentSceneIndex(status.currentSceneIndex + 1)
         }
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "clickDisLike")
-        
+        else
+        {
+            status.set_CurrentSceneIndex(0)
+        }
     }
     
     //切换上一个音频
@@ -364,10 +345,8 @@ class Server : NSObject , ModelManager ,StatusObserver
             {
                 var completed : Bool = false
                 
-                if sceneName != nil
-                {
+                if sceneName != nil{
                     println(_data[sceneItemIndex]["name"])
-                    
                     if _data[sceneItemIndex]["name"]as! String == sceneName!
                     {
                         
@@ -377,36 +356,21 @@ class Server : NSObject , ModelManager ,StatusObserver
                         
                         for index in 0..<mutableArrayList.count
                         {
-                            //判断是否是分享文件,
-                            let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
-                            
-                            if shareList != nil
+                            if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
                             {
+                                mutableArrayList.addObject(ugcData)
+                                //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
                                 
+                                d["list"] = mutableArrayList
+                                d["name"] = sceneName
                                 
-                                for _index in 0..<shareList!.count
-                                {
-                                    let shareListItem = shareList![_index]
-                                    
-                                    
-                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1 && _index == shareList!.count-1
-                                    {
-                                        mutableArrayList.addObject(shareListItem)
-                                        //sceneMusicList = mutableArrayList .copy() as! NSArray
-                                        var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-                                        
-                                        d["list"] = mutableArrayList
-                                        d["name"] = sceneName
-                                        
-                                        _data[sceneItemIndex] = d
-                                        
-                                        completed = true
-                                        
-                                        break
-                                        
-                                        
-                                    }
-                                }
+                                _data[sceneItemIndex] = d
+                                
+                                completed = true
+                                
+                                break
+                                
                                 
                             }
                             
@@ -418,69 +382,32 @@ class Server : NSObject , ModelManager ,StatusObserver
                         break
                     }
                 }else{
-                    //是否为当前场景
                     if _data[sceneItemIndex]["name"]as! String == status.currentScene
                     {
                         
                         
                         var sceneMusicList =  _data[sceneItemIndex]["list"] as! NSArray
-                        
                         var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
                         
                         for index in 0..<mutableArrayList.count
                         {
-                            
-                            //判断是否是分享文件,
-                            let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
-                            println(shareList)
-                            if shareList != nil
+                            if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
                             {
-                                for _index in 0..<shareList!.count
-                                {
-                                    let shareListItem = shareList![_index]
-                                    
-                                    //意思是循环一遍,没有相同的歌曲,这时候可以添加
-                                    if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1 && _index == shareList!.count-1
-                                    {
-                                        mutableArrayList.addObject(shareListItem)
-                                        //sceneMusicList = mutableArrayList .copy() as! NSArray
-                                        var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-                                        
-                                        d["list"] = mutableArrayList
-                                        d["name"] = status.currentScene
-                                        
-                                        _data[sceneItemIndex] = d
-                                        
-                                        completed = true
-                                        
-                                        break
-                                        
-                                        
-                                    }
-                                }
-                            }else{
+                                mutableArrayList.addObject(ugcData)
+                                //sceneMusicList = mutableArrayList .copy() as! NSArray
+                                var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
                                 
-                                //意思是循环一遍,没有相同的歌曲,这时候可以添加
-                                if mutableArrayList[index]["localURI"]as! String != ugcData["localURI"]as! String && index == mutableArrayList.count-1
-                                {
-                                    mutableArrayList.addObject(ugcData)
-                                    //sceneMusicList = mutableArrayList .copy() as! NSArray
-                                    var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-                                    
-                                    d["list"] = mutableArrayList
-                                    d["name"] = status.currentScene
-                                    
-                                    _data[sceneItemIndex] = d
-                                    
-                                    completed = true
-                                    
-                                    break
-                                    
-                                    
-                                }
+                                d["list"] = mutableArrayList
+                                d["name"] = status.currentScene
+                                
+                                _data[sceneItemIndex] = d
+                                
+                                completed = true
+                                
+                                break
+                                
+                                
                             }
-                            
-                            
                             
                         }
                         
@@ -513,11 +440,10 @@ class Server : NSObject , ModelManager ,StatusObserver
                     {
                         if mutableArrayList[index]["localURI"]as! String == ugcData["localURI"]as! String
                         {
-                            //如果数组总量大于索引,可以删除
-                            if mutableArrayList.count >= index
-                            {
-                                mutableArrayList.removeObjectAtIndex(index)
-                            }
+                            //println("remoindex\(index)")
+                            //println("\(mutableArrayList.count)")
+                            mutableArrayList.removeObjectAtIndex(index)
+                            
                             //sceneMusicList = mutableArrayList .copy() as! NSArray
                             var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
                             
@@ -548,10 +474,11 @@ class Server : NSObject , ModelManager ,StatusObserver
         
         
         var error : NSError?
-        println(NSUserDefaults.standardUserDefaults().objectForKey("childBirthday"))
         if let childBirthday : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("childBirthday") as? NSDate
         {
             let childAge : (age : Int , month : Int) = AgeCalculator(birth: childBirthday).age
+            
+            //let filePath = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/data/\(childAge.age).json").relativePath!
             
             let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
             
@@ -559,6 +486,7 @@ class Server : NSObject , ModelManager ,StatusObserver
             
             //println(DataFilePath)
             
+            //"\(_data)".writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding, error: &error)
             
             if error != nil
             {
@@ -737,50 +665,5 @@ class Server : NSObject , ModelManager ,StatusObserver
         }
         
         return (isIn,sceneName)
-    }
-    
-    func updateCurrentScenePlayListByShare(ugcData:Dictionary<String,AnyObject> ,isAdd:Bool,sceneName:String?)
-    {
-        
-        for x in 0..<_data.count
-        {
-            if _data[x]["name"]as!String == status.currentScene
-            {
-                
-                var sceneMusicList =  _data[x]["list"] as! NSArray
-                var mutableArrayList : NSMutableArray = sceneMusicList.mutableCopy() as! NSMutableArray
-                
-                
-//               
-//                //判断是否是分享文件,
-//                let shareList = ugcData["list"] as? [Dictionary<String,AnyObject>]
-//                
-//                let shareListItem = ugcData
-//                
-//                if mutableArrayList[index]["localURI"]as! String != shareListItem["localURI"]as! String && index == mutableArrayList.count-1
-//                {
-//                    mutableArrayList.addObject(shareListItem)
-//                    //sceneMusicList = mutableArrayList .copy() as! NSArray
-//                    var d : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-//                    
-//                    d["list"] = mutableArrayList
-//                    d["name"] = status.currentScene
-//                    
-//                    _data[sceneItemIndex] = d
-//                    
-//                    completed = true
-//                    
-//                    break
-//                    
-//                    
-//                }
-                
-                }
-            
-            
-        }
-    
-    
-    
     }
 }
