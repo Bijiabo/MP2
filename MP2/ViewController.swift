@@ -420,8 +420,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         {
             println("viewtag:\(self.view.tag)--currentIndex\(model!.status.currentSceneIndex)")
             
-                let sceneName = model!.scenelist[self.view.tag] as String
+            let sceneName = model!.scenelist[self.view.tag]
+            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+            
+            if model!.status.currentScene != sceneName
+            {
                 delegate?.switchToScene(sceneName)
+            }
             
             
             
