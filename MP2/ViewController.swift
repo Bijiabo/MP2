@@ -66,12 +66,8 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         //添加一个观察者,如果接收到childNameHasChange消息,就修改孩子名
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateChildNameLabel"), name: "childDataHasChange", object: nil)
         
-        
-        
         //初始化下载提示页面
         initDownloadTipView()
-        
-        
         
         //加载完毕，发送通知
         NSNotificationCenter.defaultCenter().postNotificationName("MainPlayerViewControllerDidLoad", object: nil)
@@ -96,14 +92,12 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             }else{
                 childNameLabel.text = ""
             }
-            
-            
         }else{
             childNameLabel.text = ""
         }
         
-        
     }
+    
     //初始化各个界面
     func initSceneView()
     {

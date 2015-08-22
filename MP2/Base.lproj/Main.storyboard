@@ -104,7 +104,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="mainVC_0" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC_0" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="MP2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -217,8 +217,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQZ-fU-acp">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQZ-fU-acp">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Title" id="Ky4-yO-942">
                                         <barButtonItem key="leftBarButtonItem" image="userSetting" id="AwG-FM-olP">
@@ -240,8 +241,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DZt-NT-gVh" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="24f-Fz-6i3"/>
+                            <constraint firstItem="vQZ-fU-acp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="2HQ-na-kqi"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="g4V-gn-DN2" secondAttribute="bottom" constant="110" id="4eJ-bN-e5p"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="zdI-Vu-XdK" secondAttribute="bottom" constant="30" id="7Fg-lq-oTK"/>
+                            <constraint firstItem="vQZ-fU-acp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="9eh-eh-cyQ"/>
                             <constraint firstItem="11R-0x-mf7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="FmO-Ad-Eu7"/>
                             <constraint firstItem="11R-0x-mf7" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Fwd-qd-mKZ"/>
                             <constraint firstAttribute="trailing" secondItem="11R-0x-mf7" secondAttribute="trailing" id="GuZ-bG-j06"/>
@@ -250,6 +253,7 @@
                             <constraint firstItem="vQZ-fU-acp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="JHA-96-YFg"/>
                             <constraint firstItem="vQZ-fU-acp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="JjL-xC-wEg"/>
                             <constraint firstAttribute="trailing" secondItem="56b-pC-UrY" secondAttribute="trailing" id="Kjq-kf-AYg"/>
+                            <constraint firstItem="jyV-Pf-zRb" firstAttribute="leading" secondItem="vQZ-fU-acp" secondAttribute="trailing" constant="-600" id="LHw-6G-z2X"/>
                             <constraint firstAttribute="trailing" secondItem="RaV-Nu-56K" secondAttribute="trailing" id="MBW-zv-Awv"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="MpM-Fm-C7s"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="56b-pC-UrY" secondAttribute="bottom" id="NTs-7D-pU8"/>
@@ -263,8 +267,11 @@
                             <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="a7X-GX-hfX"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="top" secondItem="tmo-lT-DhH" secondAttribute="bottom" constant="-88" id="aFY-m3-PNB"/>
                             <constraint firstAttribute="centerX" secondItem="Tiz-L9-K1C" secondAttribute="centerX" id="bOy-fJ-hvR"/>
+                            <constraint firstItem="56b-pC-UrY" firstAttribute="top" secondItem="11R-0x-mf7" secondAttribute="bottom" constant="-128" id="eOE-80-abd"/>
                             <constraint firstAttribute="trailing" secondItem="vQZ-fU-acp" secondAttribute="trailing" id="fsm-xb-GlH"/>
+                            <constraint firstItem="jyV-Pf-zRb" firstAttribute="leading" secondItem="vQZ-fU-acp" secondAttribute="trailing" constant="-600" id="hD7-CB-wUa"/>
                             <constraint firstItem="RaV-Nu-56K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="kXP-Ql-egb"/>
+                            <constraint firstItem="11R-0x-mf7" firstAttribute="top" secondItem="vQZ-fU-acp" secondAttribute="bottom" constant="-64" id="kaY-wx-jcb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cfk-s2-4hZ" secondAttribute="trailing" id="kcc-WX-c52"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DZt-NT-gVh" secondAttribute="bottom" constant="30" id="lGA-Pw-cjr"/>
                             <constraint firstItem="g4V-gn-DN2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="lfe-e0-Yx4"/>
@@ -283,7 +290,11 @@
                                 <exclude reference="VOW-Zy-vAo"/>
                                 <exclude reference="WwG-FQ-ZWm"/>
                                 <exclude reference="a7X-GX-hfX"/>
+                                <exclude reference="yhp-YI-DQY"/>
+                                <exclude reference="2HQ-na-kqi"/>
+                                <exclude reference="9eh-eh-cyQ"/>
                                 <exclude reference="JHA-96-YFg"/>
+                                <exclude reference="JjL-xC-wEg"/>
                                 <exclude reference="kXP-Ql-egb"/>
                                 <exclude reference="uMC-eR-kjd"/>
                                 <exclude reference="QLv-TT-6uA"/>
@@ -291,6 +302,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="774-na-Gzb"/>
                     <connections>
                         <outlet property="audioName" destination="cfk-s2-4hZ" id="Y0g-du-wd1"/>
@@ -337,18 +349,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffs-J8-PTC">
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffs-J8-PTC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ffs-J8-PTC" firstAttribute="top" secondItem="bdR-rE-eOm" secondAttribute="bottom" constant="-20" id="0kY-l5-obc"/>
                             <constraint firstItem="eCr-ep-piM" firstAttribute="top" secondItem="ffs-J8-PTC" secondAttribute="bottom" id="3FR-8f-8ox"/>
                             <constraint firstAttribute="trailing" secondItem="ffs-J8-PTC" secondAttribute="trailing" id="TT9-d2-WOw"/>
                             <constraint firstItem="ffs-J8-PTC" firstAttribute="top" secondItem="JaW-Yb-yNZ" secondAttribute="top" id="i58-Fp-ufs"/>
                             <constraint firstItem="ffs-J8-PTC" firstAttribute="leading" secondItem="JaW-Yb-yNZ" secondAttribute="leading" id="si7-Tr-cI7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="i58-Fp-ufs"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="jIw-EQ-hVB"/>
                     <connections>
                         <outlet property="mainScrollView" destination="ffs-J8-PTC" id="ycx-Rb-RI2"/>

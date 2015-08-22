@@ -103,12 +103,6 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
         // Dispose of any resources that can be recreated.
     }
     
-    //开始拖动的时候触发事件
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        println(scrollView.contentOffset)
-        
-    }
-    
     //
     func scrollViewDidScroll(scrollView: UIScrollView) {
         println(scrollView.contentOffset)
@@ -125,11 +119,6 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
         }
     }
     
-    
-    //拖动结束触发:当手离开屏幕
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-    }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
