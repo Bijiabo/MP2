@@ -20,10 +20,11 @@ class LeftController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableView.backgroundColor = UIColor.blackColor()
-        
+
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.view.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 1)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

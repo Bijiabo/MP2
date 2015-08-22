@@ -28,6 +28,7 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
     
     var model : ModelManager?
 
+    var mainScrollView : MainScrollViewController!
     
     var mainController:UINavigationController!
     
@@ -41,7 +42,7 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
 
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         mainController = storyboard.instantiateViewControllerWithIdentifier("mainVC") as! UINavigationController
-        var mainScrollView = mainController.viewControllers[0] as! MainScrollViewController
+        mainScrollView = mainController.viewControllers[0] as! MainScrollViewController
         mainScrollView.menuDelegate = self
         mainScrollView.delegate = self.delegate
         mainScrollView.moduleLoader = self.moduleLoader
@@ -94,6 +95,11 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
     //打开菜单
     func openMenu() {
         
+        //打开菜单时候,给右边界面一个遮罩
+        var shadeView = UIView(frame: mainScrollView.view.frame)
+        shadeView.tag = 666888//随便做一个标记,方便删除view
+        mainScrollView.view.addSubview(shadeView)
+        
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationCurve(UIViewAnimationCurve.EaseIn)
         mainController.view.frame = CGRectMake(200, mainController.view.frame.origin.y, mainController.view.frame.size.width, mainController.view.frame.size.height)
@@ -105,6 +111,9 @@ class RootViewController: UIViewController ,MenuDelegate,Module,ViewManager{
     
     //关闭菜单
     func closeMenu() {
+        //关闭菜单以后,把遮罩删除掉
+        mainScrollView.view.viewWithTag(666888)?.removeFromSuperview()
+        
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationCurve(UIViewAnimationCurve.EaseIn)
         mainController.view.frame = CGRectMake(0, mainController.view.frame.origin.y, mainController.view.frame.size.width, mainController.view.frame.size.height)

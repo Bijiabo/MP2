@@ -608,23 +608,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
                 var mainViewController : RootViewController = mainVC as! RootViewController
                 
                 //若mainVC符合Module，则传入ModuleLoader
-                if let vc : Module = mainViewController as? Module
-                {
-                    var VC : Module = mainViewController as Module
-                    
-                    VC.moduleLoader = self
-                }
+//                if let vc : Module = mainViewController as? Module
+//                {
+//                    var VC : Module = mainViewController as Module
+//                    
+//                    VC.moduleLoader = self
+//                }
+                
+                
+                var VC : Module = mainViewController as Module
                 
                 if storyboardIdentifier == "rootVC"
                 {
                     
-                    if let vc : ViewManager = mainViewController as? ViewManager
-                    {
-                        var VC : ViewManager = mainViewController as ViewManager
-                        
-                        VC.model = self.model
-                        VC.delegate = self
-                    }
+//                    if let vc : ViewManager = mainViewController as? ViewManager
+//                    {
+//                        var VC : ViewManager = mainViewController as ViewManager
+//                        
+//                        VC.model = self.model
+//                        VC.delegate = self
+//                    }
+                    
+                    var VCC : ViewManager = mainViewController as ViewManager
+                    VCC.model = self.model
+                    VCC.delegate = self
                 }
             
             //MARK:待处理:默认情况下,启动哪个ViewController
