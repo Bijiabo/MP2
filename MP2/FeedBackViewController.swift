@@ -18,8 +18,10 @@ class FeedBackViewController: UIViewController {
         
 //        self.view.backgroundColor = UIColor.blackColor()
         _setImage("qrcode.jpg")
+        self.title = "意见与建议"
         
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,7 +34,7 @@ class FeedBackViewController: UIViewController {
         let resourceURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/image", isDirectory: true)
         let imgURL = resourceURL.URLByAppendingPathComponent(imgName)
         
-        println(imgURL)
+        //println(imgURL)
         
         //设置图片
         self.imageView.image = UIImage(contentsOfFile: imgURL.relativePath!)
@@ -41,6 +43,12 @@ class FeedBackViewController: UIViewController {
     @IBAction func clickBackButton(sender: UIBarButtonItem) {
         self.navigationController?.popViewControllerAnimated(true)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     /*
     // MARK: - Navigation

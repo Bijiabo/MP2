@@ -18,7 +18,7 @@ class PlayListTableViewController: UITableViewController ,Module{
     var currentPlayingData : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
     
     var cellHeight : CGFloat = 0
-    var delegata : Operations?
+    var delegate : Operations?
     var downloader : Downloader!
     
     override func viewDidLoad() {
@@ -37,9 +37,9 @@ class PlayListTableViewController: UITableViewController ,Module{
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
         //准备加载该界面,获取最新场景列表
-        currentSceneData = delegata!.getCurrentScenePlayList(nil)
+        currentSceneData = delegate!.getCurrentScenePlayList(nil)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
@@ -147,15 +147,35 @@ class PlayListTableViewController: UITableViewController ,Module{
 //        var UGCHomeVC : UGCViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("mainVC") as! UGCViewController
         
         //update by slimadam on 15/08/23
-        var UGCHomeVC : TempListTableViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("tempListTableVC") as! TempListTableViewController
-        
-        UGCHomeVC.currentSceneData = self.currentSceneData
-        UGCHomeVC.delegate = self.delegata
-        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
-        
-        println("切换到UGC界面")
+//        var UGCHomeVC : TempListTableViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("tempListTableVC") as! TempListTableViewController
+//        
+//        UGCHomeVC.currentSceneData = self.currentSceneData
+//        UGCHomeVC.delegate = self.delegata
+//        self.navigationController?.pushViewController(UGCHomeVC, animated: true)
+//        
+//        println("切换到UGC界面")
+        //如果上传列表不为空,跳转到上传列表界面
+        let tempListCount = delegate!.getUploadList().count
+        //println(tempListCount)
+        if tempListCount != 0
+        {
+            var tempListTableVC : TempListTableViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("tempListTableVC") as! TempListTableViewController
+            tempListTableVC.currentSceneData = self.currentSceneData
+            tempListTableVC.delegate = self.delegate
+            
+            self.navigationController?.pushViewController(tempListTableVC, animated: true)
+        }else{
+            gotoUploadMessageVC()
+        }
     }
     
+    func gotoUploadMessageVC()
+    {
+        //获取要跳转的界面
+        var uploadMessageVC : UploadMessageViewController = UIStoryboard(name: "UGC", bundle: nil).instantiateViewControllerWithIdentifier("uploadMessageVC") as! UploadMessageViewController
+        
+        self.navigationController?.pushViewController(uploadMessageVC, animated: true)
+    }
     
    
 

@@ -25,7 +25,7 @@ class NotificationScriptMessageHandler : NSObject ,WKScriptMessageHandler {
         js中:window.webkit.messageHandlers.notification.postMessage(data)
         */
         let receiveData = message.body as! Dictionary<String,AnyObject>
-        println(receiveData)
+        //println(receiveData)
         
         //println("下载地址:")
        // println(receiveData[5])

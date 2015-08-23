@@ -18,6 +18,9 @@ class userInformationViewController: UIViewController , Module
     
     let ageMax : Int = 6
     
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,7 +94,9 @@ class userInformationViewController: UIViewController , Module
     
     
     
-    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        childNameTextField.resignFirstResponder()
+    }
     @IBAction func tapSaveButton(sender: AnyObject) {
         if checkChildAgeGroupChanged()
         {

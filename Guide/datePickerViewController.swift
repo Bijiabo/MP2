@@ -80,6 +80,6 @@ class datePickerViewController: UIViewController , Module
         
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "applicationHadActivated")
         
-        moduleLoader?.loadModule("Main", storyboardIdentifier: "mainVC")
+        moduleLoader?.loadModule("Main", storyboardIdentifier: "rootVC")
     }
 }

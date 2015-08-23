@@ -168,7 +168,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         
         let selectedIndex : Int = self.view.tag
-        println("tabTag:\(selectedIndex)")
+//        println("tabTag:\(selectedIndex)")
         let targetScene : String = model!.scenelist[selectedIndex]
         delegate?.switchToScene(targetScene)
         
@@ -231,7 +231,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     
     func CurrentPlayingDataHasChanged(notification : NSNotification)
     {
-        println("CurrentPlayingDataHasChanged")
+//        println("CurrentPlayingDataHasChanged")
         refreshAudioInfoView()
         
         _refreshBackgroundImageView(view: backgroundImageView,sceneName: nil)
@@ -240,7 +240,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!)
     {
         let selectedIndex : Int = item.tag
-        println("tabTag:\(item.tag)")
+//        println("tabTag:\(item.tag)")
         let targetScene : String = model!.scenelist[selectedIndex]
         delegate?.switchToScene(targetScene)
     }
@@ -427,7 +427,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             playListVC.currentSceneData = playListData!
             playListVC.currentPlayingData = playingData!
             playListVC.moduleLoader = self.moduleLoader
-            playListVC.delegata = self.delegate
+            playListVC.delegate = self.delegate
             playListVC.title = "\(model!.status.currentScene)情景"
             
         }

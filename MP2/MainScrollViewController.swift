@@ -42,10 +42,14 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     
     @IBOutlet var mainScrollView: UIScrollView!
     
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.grayColor()
+//        self.view.backgroundColor = UIColor.grayColor()
+        self.view.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 1)
         /*初始化*/
         mainScrollView.delegate = self
         
@@ -66,7 +70,7 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     {
         //初始化scrollView大小
         mainScrollView.contentSize = CGSize(width: deviceWidth * CGFloat(pageCount), height: deviceHeight)
-        println(deviceWidth)
+        //println(deviceWidth)
         //标示首次加载
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isFirstLoad")
         var scenesVCCollection : [ViewController] = []
@@ -108,7 +112,7 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     
     //
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println(scrollView.contentOffset)
+       // println(scrollView.contentOffset)
         
         let rightFlag : Bool = (scrollView.contentOffset.x - lastOffset) > 0
         
@@ -137,7 +141,7 @@ class MainScrollViewController: UIViewController,UIScrollViewDelegate,Module,Vie
     }
     
     func switchSceneToIndex(index : Int) {
-        println("切换到场景序数\(index)")
+        //println("切换到场景序数\(index)")
         
         for childVC in self.childViewControllers {
             let childPlayViewController : ViewController = childVC as! ViewController

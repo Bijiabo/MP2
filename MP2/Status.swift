@@ -46,7 +46,7 @@ class Status : StatusManager {
     
     func getSceneIndexStatusCache ()-> Dictionary<String,Int>
     {
-        println("sceneName:index:\(_sceneIndexStatusCache)")
+//        println("sceneName:index:\(_sceneIndexStatusCache)")
         return _sceneIndexStatusCache
     }
     init()

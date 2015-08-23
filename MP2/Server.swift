@@ -141,12 +141,12 @@ class Server : NSObject , ModelManager ,StatusObserver
             //继续读取
             scenesDataCache?.append(sceneDataCache)
         }
-        println("scenesDataCache:\(scenesDataCache)")
+        //println("scenesDataCache:\(scenesDataCache)")
     }
     private func _getCurrentScenePlaylist (sceneName:String?) -> [Dictionary<String,AnyObject>]
     {
         
-        println("Server-->_getCurrentScenePlaylist ()")
+//        println("Server-->_getCurrentScenePlaylist ()")
         if sceneName != nil
         {
             for var i=0; i<_data.count; i++
@@ -268,7 +268,7 @@ class Server : NSObject , ModelManager ,StatusObserver
     //状态已改变
     func statusHasChanged(keyPath: String) {
         
-        println("whatfuck---\(keyPath)")
+//        println("whatfuck---\(keyPath)")
         
         //场景切换伴随着歌曲切换,所以只要判断歌曲切换了再更新界面就好了
         if keyPath == "currentSceneIndex"
@@ -346,7 +346,7 @@ class Server : NSObject , ModelManager ,StatusObserver
                 var completed : Bool = false
                 
                 if sceneName != nil{
-                    println(_data[sceneItemIndex]["name"])
+//                    println(_data[sceneItemIndex]["name"])
                     if _data[sceneItemIndex]["name"]as! String == sceneName!
                     {
                         

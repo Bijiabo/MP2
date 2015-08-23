@@ -41,7 +41,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     //播放数据改变通知
     func _CurrentPlayingDataHasChanged(notification : NSNotification)
     {
-        println("_CurrentPlayingDataHasChanged:\(notification)")
+//        println("_CurrentPlayingDataHasChanged:\(notification)")
         
         updateViewModel()
         
@@ -58,7 +58,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     func updateViewModel ()
     {
-        println("NowPlayingInfoCenter-->updateViewModel()")
+//        println("NowPlayingInfoCenter-->updateViewModel()")
         let title : String = model?.currentPlayingData["name"] as! String
         
         if lastTitle != title
@@ -91,7 +91,7 @@ class NowPlayingInfoCenterController : NSObject, ViewManager {
     
     func updateView ()
     {
-        println("NowPlayingInfoCenter-->updataView()")
+//        println("NowPlayingInfoCenter-->updataView()")
         _view.nowPlayingInfo = viewModel
     }
     

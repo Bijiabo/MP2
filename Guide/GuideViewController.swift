@@ -89,9 +89,9 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         if error == nil{
             
             pages = fileList!.count
-            println("pageNum=\(pages)")
+            //println("pageNum=\(pages)")
         }else{
-            println("setPageNum error!!!")
+            //println("setPageNum error!!!")
         }
         
         
@@ -113,7 +113,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
             imageFlag += subFix
         }
         
-        println("imageFlag:-->\(imageFlag)")
+        //println("imageFlag:-->\(imageFlag)")
         return imageFlag
     }
     //初始化scrollView的方法
@@ -129,7 +129,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         //初始化后的scrollView ->contentOffSet
         currentPix = scrollVIew1.contentOffset.x
         
-        println("currentPix \(currentPix)")
+//         println("currentPix \(currentPix)")
         
         //println("scrollView(width,height)->\(scrollVIew1.contentSize)")
         
@@ -265,7 +265,7 @@ class GuideViewController: UIViewController , UIScrollViewDelegate , Module
         //得到当前设备width或者height的最大值/2
         let greateerPixelDimension = UIScreen.mainScreen().bounds.size.width > UIScreen.mainScreen().bounds.size.height ? UIScreen.mainScreen().bounds.size.width :UIScreen.mainScreen().bounds.size.height * 2
         
-        println("当前设备大小:\(greateerPixelDimension)")
+//        println("当前设备大小:\(greateerPixelDimension)")
         switch greateerPixelDimension {
             
         case 480:

@@ -18,12 +18,16 @@ class LeftController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     var rightVC : MainScrollViewController?
     
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.view.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 1)
-        
+        self.tableView.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 1)
         
     }
 
@@ -76,6 +80,7 @@ class LeftController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
             menuDelegate?.closeMenu()
             var feedBackVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("feedBackVC") as! UIViewController
             self.rightVC?.navigationController?.pushViewController(feedBackVC, animated: true)
+            
         case 2:
             //关于
             println("关于")

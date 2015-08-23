@@ -223,7 +223,7 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Title" id="Ky4-yO-942">
-                                        <barButtonItem key="leftBarButtonItem" image="userSetting" id="AwG-FM-olP">
+                                        <barButtonItem key="leftBarButtonItem" image="menu" id="AwG-FM-olP">
                                             <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="clickLeftButton:" destination="vXZ-lx-hvc" id="fuh-Ff-RzZ"/>
@@ -258,6 +258,7 @@
                             <constraint firstAttribute="trailing" secondItem="RaV-Nu-56K" secondAttribute="trailing" id="MBW-zv-Awv"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="MpM-Fm-C7s"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="56b-pC-UrY" secondAttribute="bottom" id="NTs-7D-pU8"/>
+                            <constraint firstItem="56b-pC-UrY" firstAttribute="trailing" secondItem="DZt-NT-gVh" secondAttribute="trailing" constant="16" id="NmY-Wk-iUZ"/>
                             <constraint firstAttribute="centerX" secondItem="tmo-lT-DhH" secondAttribute="centerX" constant="4" id="OKv-yG-TXE"/>
                             <constraint firstItem="cfk-s2-4hZ" firstAttribute="top" secondItem="g4V-gn-DN2" secondAttribute="bottom" constant="16" id="QLv-TT-6uA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tmo-lT-DhH" secondAttribute="trailing" constant="4" id="Rr2-vm-ok3"/>
@@ -278,9 +279,11 @@
                             <constraint firstItem="g4V-gn-DN2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="lfe-e0-Yx4"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="RaV-Nu-56K" secondAttribute="bottom" id="lla-hE-eEY"/>
                             <constraint firstAttribute="centerX" secondItem="f3S-tj-hUN" secondAttribute="centerX" id="n6C-U0-tGO"/>
+                            <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="cfk-s2-4hZ" secondAttribute="leading" constant="-16" id="nuH-j9-kaI"/>
                             <constraint firstItem="tmo-lT-DhH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="sSm-Hh-vRE"/>
                             <constraint firstItem="DZt-NT-gVh" firstAttribute="leading" secondItem="zdI-Vu-XdK" secondAttribute="trailing" constant="10" id="tG2-GN-MZg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RaV-Nu-56K" secondAttribute="trailingMargin" constant="-16" id="uMC-eR-kjd"/>
+                            <constraint firstItem="56b-pC-UrY" firstAttribute="leading" secondItem="g4V-gn-DN2" secondAttribute="leading" constant="-16" id="wvG-Of-FAh"/>
                             <constraint firstAttribute="centerY" secondItem="Tiz-L9-K1C" secondAttribute="centerY" constant="-50" id="xVF-eA-aTA"/>
                             <constraint firstItem="RaV-Nu-56K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="xZE-zv-Gum"/>
                             <constraint firstItem="56b-pC-UrY" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="yhp-YI-DQY"/>
@@ -298,8 +301,11 @@
                                 <exclude reference="JjL-xC-wEg"/>
                                 <exclude reference="kXP-Ql-egb"/>
                                 <exclude reference="uMC-eR-kjd"/>
+                                <exclude reference="lfe-e0-Yx4"/>
                                 <exclude reference="QLv-TT-6uA"/>
+                                <exclude reference="zF9-lP-Pup"/>
                                 <exclude reference="JGl-6P-rMF"/>
+                                <exclude reference="24f-Fz-6i3"/>
                             </mask>
                         </variation>
                     </view>
@@ -437,28 +443,12 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioz-I6-gwG">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <navigationItem title="意见与建议" id="JWH-0y-N3A">
-                                        <barButtonItem key="rightBarButtonItem" title="返回" id="ORE-W7-BdS">
-                                            <connections>
-                                                <action selector="clickBackButton:" destination="pSB-Da-tCH" id="aQf-iu-U8q"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ioz-I6-gwG" firstAttribute="leading" secondItem="Uvk-Un-ov5" secondAttribute="leadingMargin" constant="-16" id="8vR-LU-skb"/>
                             <constraint firstAttribute="trailing" secondItem="mLj-DM-uSP" secondAttribute="trailing" constant="30" id="N7R-hN-2jN"/>
                             <constraint firstItem="mLj-DM-uSP" firstAttribute="leading" secondItem="Uvk-Un-ov5" secondAttribute="leading" constant="30" id="Owh-q3-CGU"/>
-                            <constraint firstAttribute="centerX" secondItem="ioz-I6-gwG" secondAttribute="centerX" id="SPr-o0-t91"/>
                             <constraint firstAttribute="centerX" secondItem="mLj-DM-uSP" secondAttribute="centerX" id="Wso-dl-ccE"/>
-                            <constraint firstItem="ioz-I6-gwG" firstAttribute="top" secondItem="Utg-Ql-cON" secondAttribute="bottom" id="Yr3-aY-VLr"/>
                             <constraint firstAttribute="centerY" secondItem="mLj-DM-uSP" secondAttribute="centerY" id="iF6-gs-wXg"/>
                         </constraints>
                     </view>
@@ -600,8 +590,8 @@
         <image name="bottomGradient" width="1242" height="423"/>
         <image name="dislike" width="30" height="30"/>
         <image name="like" width="30" height="30"/>
+        <image name="menu" width="22" height="22"/>
         <image name="playButton" width="200" height="200"/>
         <image name="topGradient" width="1242" height="423"/>
-        <image name="userSetting" width="22" height="22"/>
     </resources>
 </document>

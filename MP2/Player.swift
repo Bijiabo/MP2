@@ -143,7 +143,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
         
         if interuptionType == AVAudioSessionInterruptionType.Began.rawValue
         {
-            println("began interuption")
+//            println("began interuption")
             
             playingBeforeInteruption = _player.playing
             
@@ -163,7 +163,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
             AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
             AVAudioSession.sharedInstance().setActive(true, error: nil)
             
-            println("end interuption")
+//            println("end interuption")
             
         }
         
@@ -187,7 +187,7 @@ class Player : NSObject ,PlayerManager, AVAudioPlayerDelegate
     
     func audioSessionInterruptionTypeEnded (notification : NSNotification)
     {
-        println("audioSessionInterruptionTypeEnded")
+//        println("audioSessionInterruptionTypeEnded")
     }
 
     
