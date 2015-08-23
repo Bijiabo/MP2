@@ -177,10 +177,15 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             delegate?.pause()
             
             playPauseButton.tag = 0
+            
+            
+            
         } else {
             delegate?.play()
             
             playPauseButton.tag = 1
+            
+            
         }
         
     }
@@ -250,10 +255,13 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     {
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doLike()
+        
+        
     }
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
+        
         let sceneName = model!.scenelist[self.view.tag]
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         

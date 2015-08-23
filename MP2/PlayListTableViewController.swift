@@ -119,7 +119,7 @@ class PlayListTableViewController: UITableViewController ,Module{
         {
             cell.audioFromLabel.text = "来自用户上传"
         }else{
-            cell.audioFromLabel.text = "来自系统推送"
+            cell.audioFromLabel.text = "来自磨耳朵"
         }
         
         

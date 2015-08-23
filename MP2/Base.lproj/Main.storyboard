@@ -521,13 +521,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyO-Gk-HO6">
-                                            <rect key="frame" x="14" y="8" width="538" height="21"/>
+                                            <rect key="frame" x="14" y="8" width="538" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB2-QV-ZKf">
-                                            <rect key="frame" x="14" y="34" width="100" height="16"/>
+                                            <rect key="frame" x="14" y="33.5" width="100" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Fa7-sb-hF7"/>
                                                 <constraint firstAttribute="width" constant="100" id="OB0-qp-GQd"/>
@@ -537,7 +537,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnU-h2-CBF">
-                                            <rect key="frame" x="452" y="34" width="100" height="16"/>
+                                            <rect key="frame" x="134" y="33.5" width="100" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="XUR-w6-yuD"/>
                                                 <constraint firstAttribute="height" constant="16" id="fuB-1V-2xq"/>
@@ -551,11 +551,17 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="wnU-h2-CBF" secondAttribute="trailing" constant="40" id="0rI-60-C0X"/>
                                         <constraint firstItem="MyO-Gk-HO6" firstAttribute="top" secondItem="i3m-jB-M2t" secondAttribute="topMargin" id="4cx-5q-5nq"/>
                                         <constraint firstItem="MyO-Gk-HO6" firstAttribute="leading" secondItem="i3m-jB-M2t" secondAttribute="leadingMargin" constant="6" id="A7B-2g-wbw"/>
+                                        <constraint firstItem="dB2-QV-ZKf" firstAttribute="leading" secondItem="wnU-h2-CBF" secondAttribute="leading" constant="-120" id="AIj-Kr-CGl"/>
                                         <constraint firstItem="dB2-QV-ZKf" firstAttribute="top" secondItem="MyO-Gk-HO6" secondAttribute="bottom" constant="5" id="IpH-YS-G9c"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="MyO-Gk-HO6" secondAttribute="trailing" constant="40" id="Uog-0U-CAR"/>
                                         <constraint firstItem="dB2-QV-ZKf" firstAttribute="leading" secondItem="i3m-jB-M2t" secondAttribute="leadingMargin" constant="6" id="Vlb-sd-Xnm"/>
                                         <constraint firstItem="wnU-h2-CBF" firstAttribute="top" secondItem="MyO-Gk-HO6" secondAttribute="bottom" constant="5" id="pVx-Wt-eja"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="0rI-60-C0X"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="audioFromLabel" destination="dB2-QV-ZKf" id="awq-DK-FfW"/>

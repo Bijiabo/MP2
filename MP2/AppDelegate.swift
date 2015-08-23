@@ -569,9 +569,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         println("downloadItemIdQueue.count \(downloadQueue.count)")
         
         //所有下载任务完成触发
-        if downloadQueue.count == 2
+        if downloadQueue.count == 7
         {
-            NSNotificationCenter.defaultCenter().postNotificationName("DownloadStoped", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("DownloadStoped", object: self)
         }
         
     }
