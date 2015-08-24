@@ -256,7 +256,6 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         delegate?.doLike()
         
-        
     }
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
@@ -394,6 +393,10 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     {
         downloadingTipActivityView.startAnimating()
         downloadingTipView.hidden = false
+        let downloadingCount = NSUserDefaults.standardUserDefaults().integerForKey("downloadingCount")
+        let downloadCount = model!.getDownloadList().count
+        
+        //downloadingTipLabel.text = "已下载\(downloadingCount/downloadCount)"
     }
     
     func hideDownloadingTip ()
@@ -412,6 +415,12 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         
+        var playListData =  [Dictionary<String,AnyObject>]()
+        
+        var playingData = model?.currentPlayingData
+        
+        var playListVC : PlayListTableViewController = segue.destinationViewController as! PlayListTableViewController
+        
         //判断是否是跳转到播放列表界面
         if segue.identifier == "playListVCId" || segue.identifier == "playListVCId_0"
         {
@@ -422,21 +431,27 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
             
             if model!.status.currentScene != sceneName
             {
-                delegate?.switchToScene(sceneName)
+//                delegate?.switchToScene(sceneName)
+                println(sceneName)
+                playListData = delegate!.getCurrentScenePlayList(sceneName)
+                playListVC.title = "\(sceneName)情景"
+                
+            }else{
+                playListData = delegate!.getCurrentScenePlayList(nil)
+                playListVC.title = "\(model!.status.currentScene)情景"
             }
             
             
             
-            var playListData =  delegate?.getCurrentScenePlayList(nil)
-            var playingData = model?.currentPlayingData
             
-            var playListVC : PlayListTableViewController = segue.destinationViewController as! PlayListTableViewController
             
-            playListVC.currentSceneData = playListData!
+            
+            
+            playListVC.currentSceneData = playListData
             playListVC.currentPlayingData = playingData!
             playListVC.moduleLoader = self.moduleLoader
             playListVC.delegate = self.delegate
-            playListVC.title = "\(model!.status.currentScene)情景"
+            
             
         }
         

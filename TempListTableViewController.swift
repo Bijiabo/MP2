@@ -18,16 +18,17 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
     var selectedArray : [Int]! = []
     var delegate : Operations?
     var currentAgeGroupData : Array<AnyObject> = Array<AnyObject>()
-    
+    var currentScenePlayList : [Dictionary<String,AnyObject>] = []
     var currentSceneName :String?
     //表格显示数据
     
     //当界面被加载
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //
         localList = delegate!.getUploadList()
-        
+        currentScenePlayList = delegate!.getCurrentScenePlayList(nil)
         currentSceneName = getCurrentSceneName()
         //println(currentSceneName)
         // Uncomment the following line to preserve selection between presentations
@@ -100,23 +101,35 @@ class TempListTableViewController: UITableViewController ,UITableViewDelegate,UI
         var localListURL = localList["\(indexPath.row)"]!
         cell.textLabel!.text = localListURL.lastPathComponent!
         
-        for sceneItem in currentAgeGroupData
+//        for sceneItem in currentAgeGroupData
+//        {
+//            let listarray = sceneItem["list"]as!NSArray
+//            for listDictionary in listarray
+//            {
+//                
+//                let localURL:String = listDictionary["localURI"] as! String
+//                
+//                if localURL == localListURL.relativePath
+//                {
+//                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//                    
+//                }
+//            }
+//        }
+        
+        
+        for musicItem in currentScenePlayList
         {
-            let listarray = sceneItem["list"]as!NSArray
-            for listDictionary in listarray
+            let localURL : String = musicItem["localURI"] as! String
+            //println("localURL:\(localURL)\n")
+            println("localListURL:\(localListURL.relativePath!)")
+            if localURL == localListURL.relativePath!
             {
-                
-                let localURL:String = listDictionary["localURI"] as! String
-                
-                if localURL == localListURL.relativePath
-                {
-                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                    
-                }
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
+            
         }
         
-
         return cell
     }
     

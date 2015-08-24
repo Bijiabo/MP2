@@ -143,8 +143,7 @@ class Downloader : DownloaderProtocol
             }
             
         }
-        //发送通知
-        NSNotificationCenter.defaultCenter().postNotificationName("DownloadStarted", object: self)
+        
     }
     
     

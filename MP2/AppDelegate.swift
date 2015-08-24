@@ -199,8 +199,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func getCurrentScenePlayList(sceneName:String?) -> [Dictionary<String, AnyObject>]
     {
         
+        if sceneName != nil
+        {
+            return model.getCurrentScenePlayList(sceneName)
+        }else{
+            return model.getCurrentScenePlayList(nil)
+        }
         
-        return model.getCurrentScenePlayList(nil)
+        
     }
     
     //MARK:
@@ -427,7 +433,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         }
         
         downloader?.startDownload()
-        
+        //发送通知
+        NSNotificationCenter.defaultCenter().postNotificationName("DownloadStarted", object: self)
         mediaFilesNeedToDownloadQueue.removeAll(keepCapacity: false)
     }
     
@@ -519,7 +526,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     //MARK:
     //MARK: Download Operation Protocol
     func startAllDownload() {
-        
+        println("startAllDownload()====\(model.getDownloadList().count)")
         //获取下载列表
         let downloadList : [Dictionary<String,String>] = model.getDownloadList()
         
@@ -542,6 +549,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         
         //记录 用户已经选择下载过全部内容
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasDownloadAllMediaFiles")
+        //发送通知
+        NSNotificationCenter.defaultCenter().postNotificationName("DownloadStarted", object: self)
     }
     
     //MARK:
@@ -569,11 +578,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         println("downloadItemIdQueue.count \(downloadQueue.count)")
         
         //所有下载任务完成触发
-        if downloadQueue.count == 7
+        if downloadQueue.count == 0
         {
             NSNotificationCenter.defaultCenter().postNotificationName("DownloadStoped", object: self)
         }
-        
+        println("downloadCompleted(data:AnyObject)")
     }
     
     //下载出错

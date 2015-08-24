@@ -587,6 +587,8 @@ class Server : NSObject , ModelManager ,StatusObserver
         let fileList = fileManager.contentsOfDirectoryAtURL(NSURL(fileURLWithPath: homeDir)!, includingPropertiesForKeys: nil, options: nil, error: nil) as! [NSURL]
         var localList : Dictionary<String,NSURL> = Dictionary<String,NSURL>()
         
+        /*
+        //每首歌曲对应某个场景
         for item in fileList
         {
             //判断后缀
@@ -628,6 +630,18 @@ class Server : NSObject , ModelManager ,StatusObserver
             
         }
         
+        */
+        
+        for musicItem in fileList
+        {
+            if musicItem.lastPathComponent!.lowercaseString.hasSuffix("mp3") || musicItem.lastPathComponent!.lowercaseString.hasSuffix("m4a")
+            {
+                
+            localList["\(listCount)"] = musicItem
+            listCount++ 
+                
+            }
+        }
         
         return localList
     }

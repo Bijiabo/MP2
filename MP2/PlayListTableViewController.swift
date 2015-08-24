@@ -39,7 +39,7 @@ class PlayListTableViewController: UITableViewController ,Module{
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
         //准备加载该界面,获取最新场景列表
-        currentSceneData = delegate!.getCurrentScenePlayList(nil)
+        //currentSceneData = delegate!.getCurrentScenePlayList(nil)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
