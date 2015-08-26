@@ -31,13 +31,14 @@ class FeedBackViewController: UIViewController {
     
     private func _setImage(imgName : String)
     {
-        let resourceURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/image", isDirectory: true)
-        let imgURL = resourceURL.URLByAppendingPathComponent(imgName)
+//        let resourceURL : NSURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("resource/image", isDirectory: true)
         
-        //println(imgURL)
+        let imagePath = NSHomeDirectory().stringByAppendingString("/Library/Caches/images/\(imgName)")
+        
+//        println(imagePath)
         
         //设置图片
-        self.imageView.image = UIImage(contentsOfFile: imgURL.relativePath!)
+        self.imageView.image = UIImage(contentsOfFile: imagePath)
     }
 
     @IBAction func clickBackButton(sender: UIBarButtonItem) {

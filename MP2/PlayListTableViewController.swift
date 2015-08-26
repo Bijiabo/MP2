@@ -49,10 +49,10 @@ class PlayListTableViewController: UITableViewController ,Module{
         self.navigationController?.navigationBar.setBackgroundImage(navigationbarBackgroundImage, forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.translucent = false
         
-        let statusBarBackgroundViewPositionY : CGFloat = 0 - self.navigationController!.navigationBar.frame.size.height - 20.0
+        //let statusBarBackgroundViewPositionY : CGFloat = 0 - self.navigationController!.navigationBar.frame.size.height - 20.0
         
-        var uiView1 = UIView(frame: CGRect(x: 0, y: statusBarBackgroundViewPositionY , width: self.view.frame.size.width, height: 20))
-        uiView1.backgroundColor = UIColor.redColor()
+        //var uiView1 = UIView(frame: CGRect(x: 0, y: statusBarBackgroundViewPositionY , width: self.view.frame.size.width, height: 20))
+        //uiView1.backgroundColor = UIColor.redColor()
 
         //刷新当前界面
         self.tableView.reloadData()
@@ -60,7 +60,7 @@ class PlayListTableViewController: UITableViewController ,Module{
 //        self.view.addSubview(uiView1)
 //        self.view.sendSubviewToBack(uiView1)
     }
-    
+
     func createImageWithColor ( color : UIColor ) -> UIImage
     {
         let rect : CGRect = CGRectMake(0.0, 0.0, 1.0, 1.0)
@@ -102,6 +102,7 @@ class PlayListTableViewController: UITableViewController ,Module{
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let tempDataDictionary = currentSceneData[indexPath.row]
         let cellId = "playListItem"
         

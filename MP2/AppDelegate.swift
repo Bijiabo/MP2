@@ -68,8 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
         //拷贝音频资源到cache目录
         //MARK: 需要修改，应该是应用安装后首次启动执行一遍
-        CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy(dirPathInBundle: "resource/media") //拷贝媒体文件
-        CopyBundleFilesToCache(targetDirectoryInCache: "data").doCopy(dirPathInBundle: "resource/data") //拷贝数据
+        CopyBundleFilesToCache(targetDirectoryInCache: "images").doCopy("resource/image")
+        CopyBundleFilesToCache(targetDirectoryInCache: "media/audio").doCopy("resource/media") //拷贝媒体文件
+        CopyBundleFilesToCache(targetDirectoryInCache: "data").doCopy("resource/data") //拷贝数据
         
         //读取数据
         let jsonData : JSON = loadJSONData("0.json")
@@ -139,6 +140,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         reachability.startNotifier()
         
         addObserver()
+        //加载二维码图片:
+        if reachability.isReachableViaWiFi()
+        {
+            _cacheImg()
+            
+        }
         
         return true
     }
@@ -726,6 +733,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     func getAppDownloader() -> Downloader
     {
         return self.downloader!
+    }
+    
+    
+    private func _cacheImg()
+    {
+        
+        //定义NSURL
+        let imgURL:NSURL=NSURL(string:"http://app.moreii.com/qrcode.jpg")!
+        //定义要保存的目录
+        var targetPath = NSHomeDirectory().stringByAppendingString("/Library/Caches/images/\(imgURL.lastPathComponent!)")
+        //定义NSURLRequest
+        let request:NSURLRequest=NSURLRequest(URL:imgURL)
+        //异步获取图片
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(),
+            completionHandler: {(response:NSURLResponse!,data:NSData!,error:NSError!)->Void in
+                //将图片数据赋予UIImage
+                data.writeToFile(targetPath, atomically: true)
+                //let img=UIImage(data:data)
+                
+        })
     }
 }
 

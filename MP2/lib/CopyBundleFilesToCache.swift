@@ -20,7 +20,7 @@ class CopyBundleFilesToCache {
         
         if isNewVersion
         {
-            doCopy()
+            //doCopy()
         }
     }
     
@@ -41,7 +41,7 @@ class CopyBundleFilesToCache {
         
     }
     
-    func doCopy(dirPathInBundle : String = "resource/media") -> Void
+    func doCopy(dirPathInBundle : String) -> Void
     {
         let cachePath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as! String
         

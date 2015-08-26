@@ -260,16 +260,22 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
-        
+        println(self.view.tag)
         let sceneName = model!.scenelist[self.view.tag]
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         
+        //如果不喜欢按钮触发界面不是当前场景
         if model!.status.currentScene != sceneName
         {
-            delegate?.switchToScene(sceneName)
+//            delegate?.switchToScene(sceneName)
+//            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+//            delegate?.doDislike()
+        }else{
+            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
+            delegate?.doDislike()
         }
-        NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
-        delegate?.doDislike()
+        
+        
     }
     //改变播放按钮状态
     func playingStatusChanged(notification : NSNotification)
@@ -441,11 +447,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
                 playListVC.title = "\(model!.status.currentScene)情景"
             }
             
-            
-            
-            
-            
-            
+
             
             playListVC.currentSceneData = playListData
             playListVC.currentPlayingData = playingData!
