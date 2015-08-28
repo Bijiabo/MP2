@@ -245,11 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "662"
-            endingLineNumber = "662"
+            startingLineNumber = "678"
+            endingLineNumber = "678"
             landmarkName = "loadModule(_:storyboardIdentifier:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -277,11 +277,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "convertJSONtoArray(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -293,11 +293,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "convertJSONtoArray(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -373,11 +373,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462226251.863021"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511">
+            startingLineNumber = "518"
+            endingLineNumber = "518">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -387,11 +387,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "getCurrentScenePlayList(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -483,11 +483,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "getLocalMediaFilePath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -499,11 +499,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "getLocalMediaFilePath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -563,11 +563,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "getLocalMediaFilePath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -867,11 +867,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462226251.863021"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483">
+            startingLineNumber = "490"
+            endingLineNumber = "490">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -881,11 +881,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462226251.863021"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "clickLeftButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -929,11 +929,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "startAllDownload()"
             landmarkType = "5">
          </BreakpointContent>
@@ -945,13 +945,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
-            landmarkName = "alertView(_:clickedButtonAtIndex:)"
-            landmarkType = "5">
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -961,11 +961,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "showDownloadAlert(allDownload:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1199,11 +1199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "555"
-            endingLineNumber = "555"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
             landmarkName = "startAllDownload()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1215,11 +1215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462226251.863021"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488">
+            startingLineNumber = "495"
+            endingLineNumber = "495">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1229,11 +1229,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462226251.863021"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494">
+            startingLineNumber = "501"
+            endingLineNumber = "501">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1307,13 +1307,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "708"
-            endingLineNumber = "708"
-            landmarkName = "updateCurrentScenePlayList(_:isAdd:sceneName:)"
-            landmarkType = "5">
+            startingLineNumber = "724"
+            endingLineNumber = "724"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1355,13 +1355,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462377576.249157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "switchToScene(_:)"
-            landmarkType = "5">
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1403,13 +1403,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "getLocalMediaFilePath()"
-            landmarkType = "5">
+            startingLineNumber = "389"
+            endingLineNumber = "389"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1451,12 +1451,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462377576.249157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "doDislike()"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "doLike()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1499,12 +1499,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "playNext()"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "switchToScene(_:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1627,13 +1627,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "currentPlayingDataHasChanged()"
-            landmarkType = "5">
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1787,11 +1787,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462210274.712724"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "initDownloadTipView()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1803,11 +1803,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461943472.233923"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "tapLikeButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1819,11 +1819,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462099324.455533"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "tapDislikeButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2011,11 +2011,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462225775.207739"
+            timestampString = "462374748.388416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2027,11 +2027,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462210274.712724"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "_refreshBackgroundImageView(view:sceneName:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2043,11 +2043,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "461943472.233923"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "refreshAudioInfoView()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2107,13 +2107,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
-            landmarkName = "downloadMediaFilesInQueue()"
-            landmarkType = "5">
+            startingLineNumber = "441"
+            endingLineNumber = "441"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2123,13 +2123,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/AppDelegate.swift"
-            timestampString = "462266912.987242"
+            timestampString = "462400373.522693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
-            landmarkName = "startAllDownload()"
-            landmarkType = "5">
+            startingLineNumber = "552"
+            endingLineNumber = "552"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2139,11 +2139,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462210274.712724"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "downloadStarted(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2155,12 +2155,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MP2/ViewController.swift"
-            timestampString = "462210274.712724"
+            timestampString = "462399116.635746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "showDownloadingTip()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MP2/Recorder.swift"
+            timestampString = "462387712.658338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "dateToString(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MP2/Recorder.swift"
+            timestampString = "462377933.259326"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "toJSONString(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

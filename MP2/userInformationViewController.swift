@@ -98,6 +98,7 @@ class userInformationViewController: UIViewController , Module
         childNameTextField.resignFirstResponder()
     }
     @IBAction func tapSaveButton(sender: AnyObject) {
+        
         if checkChildAgeGroupChanged()
         {
             //若孩子年龄段改变，则发送通知

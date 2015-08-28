@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     var downloader : Downloader?
     
+    var dataCollector : DataCollector!
+    
     //缓存到本地的路径
     var cacheRootURL : NSURL!
     
@@ -63,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         println(NSHomeDirectory())
         //println(UIScreen.mainScreen().bounds.width)
         
+        
         //初始化缓存路径
         let cacheRootPath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as! String
         cacheRootURL = NSURL(fileURLWithPath: cacheRootPath)!.URLByAppendingPathComponent("media/audio")
@@ -83,7 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         //初始化downloader
         downloader = Downloader()
         downloader?.delegate = self
-
+        
+        //初始化数据收集类
+        dataCollector = DataCollector()
+        
         //检查音频文件是否存在
         let mediaFileURL : NSURL? = getLocalMediaFilePath()! // cacheRootURL.URLByAppendingPathComponent(model?.currentPlayingData["localURI"] as! String)
         
@@ -164,9 +170,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     }
 
     func applicationWillTerminate(application: UIApplication) {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("appWillTerminate", object: nil)
+        
+        
     }
     
-    //MARK:
     //MARK: ViewOperation
     
     func doLike() {
@@ -174,7 +183,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     }
     
     func doDislike() {
+        
         playNext()
+        
     }
 
     func wrongPlayerUrl() {
@@ -184,6 +195,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
     
     func switchToScene(scene : String)
     {
+        var argsDic : Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+        
+        argsDic["model"] = model as? AnyObject
+        argsDic["currentScene"] = model.status.currentScene
+        argsDic["toScene"] = scene
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("switchScene", object: argsDic)
         model.status.set_CurrentScene(scene)
     }
     
@@ -749,7 +767,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , Operations , UIAlertView
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(),
             completionHandler: {(response:NSURLResponse!,data:NSData!,error:NSError!)->Void in
                 //将图片数据赋予UIImage
-                data.writeToFile(targetPath, atomically: true)
+                if data != nil
+                {
+                    data.writeToFile(targetPath, atomically: true)
+                }
+                
                 //let img=UIImage(data:data)
                 
         })

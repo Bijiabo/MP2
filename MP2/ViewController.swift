@@ -170,7 +170,12 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
         let selectedIndex : Int = self.view.tag
 //        println("tabTag:\(selectedIndex)")
         let targetScene : String = model!.scenelist[selectedIndex]
-        delegate?.switchToScene(targetScene)
+        
+        if targetScene != model?.status.currentScene
+        {
+            delegate?.switchToScene(targetScene)
+        }
+        
         
         if playPauseButton.tag == 1 {
             //play
@@ -260,7 +265,9 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
     //不喜欢按钮触发事件
     @IBAction func tapDislikeButton(sender: AnyObject)
     {
-        println(self.view.tag)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("tapDislike", object:model as? AnyObject)
+        
         let sceneName = model!.scenelist[self.view.tag]
         NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
         
@@ -271,6 +278,7 @@ class ViewController: UIViewController , UITabBarDelegate , ViewManager , UIAler
 //            NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
 //            delegate?.doDislike()
         }else{
+            
             NSUserDefaults.standardUserDefaults().setInteger(self.view.tag, forKey: "currentPlayingViewCode")
             delegate?.doDislike()
         }

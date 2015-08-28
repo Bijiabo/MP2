@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3326B37A1B8F3D8300533E55 /* DataCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326B3791B8F3D8300533E55 /* DataCollector.swift */; };
 		3328D6171B46A7BA00704F48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3328D6161B46A7BA00704F48 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3328D61B1B46A99E00704F48 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = A1B5841F1B33331200AD41D9 /* resource */; };
 		3328D61E1B46AA2F00704F48 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A126FAEB1B43AC7F009BE576 /* Alamofire.framework */; };
@@ -26,6 +27,8 @@
 		33843C141B88A0270092A62E /* LeftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33843C131B88A0270092A62E /* LeftController.swift */; };
 		33843C191B88A0CC0092A62E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33843C181B88A0CC0092A62E /* RootViewController.swift */; };
 		339A4ECE1B579ABC00E52937 /* PlayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */; };
+		33A50BAB1B8F06CE00B7CA2D /* RecorderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A50BAA1B8F06CE00B7CA2D /* RecorderProtocol.swift */; };
+		33A50BB01B8F070000B7CA2D /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A50BAF1B8F070000B7CA2D /* Recorder.swift */; };
 		33A76B751B50E7640010DF0F /* Guide-images in Resources */ = {isa = PBXBuildFile; fileRef = 33A76B741B50E7640010DF0F /* Guide-images */; };
 		33E9536B1B88CF8F00A5078E /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E9536A1B88CF8F00A5078E /* FeedBackViewController.swift */; };
 		A126FB041B43C203009BE576 /* DownloaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126FB031B43C203009BE576 /* DownloaderProtocols.swift */; };
@@ -142,6 +145,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3326B3791B8F3D8300533E55 /* DataCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCollector.swift; sourceTree = "<group>"; };
 		3328D6161B46A7BA00704F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		334001D11B593F9600153524 /* playlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = playlistTableViewCell.swift; sourceTree = "<group>"; };
 		334156151B5B6CB900DA051D /* TempListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempListTableViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		33843C181B88A0CC0092A62E /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		339A4ECD1B579ABC00E52937 /* PlayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListTableViewController.swift; sourceTree = "<group>"; };
 		339A4ED41B581F4100E52937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		33A50BAA1B8F06CE00B7CA2D /* RecorderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderProtocol.swift; sourceTree = "<group>"; };
+		33A50BAF1B8F070000B7CA2D /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		33A76B741B50E7640010DF0F /* Guide-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guide-images"; sourceTree = "<group>"; };
 		33E9536A1B88CF8F00A5078E /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		A126FAE31B43AC7F009BE576 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -233,6 +239,16 @@
 			name = UGC;
 			sourceTree = "<group>";
 		};
+		33A50BB11B8F071C00B7CA2D /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				33A50BAA1B8F06CE00B7CA2D /* RecorderProtocol.swift */,
+				33A50BAF1B8F070000B7CA2D /* Recorder.swift */,
+				3326B3791B8F3D8300533E55 /* DataCollector.swift */,
+			);
+			name = Recorder;
+			sourceTree = "<group>";
+		};
 		A126FAE41B43AC7F009BE576 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +297,7 @@
 		A1B583E51B33034900AD41D9 /* MP2 */ = {
 			isa = PBXGroup;
 			children = (
+				33A50BB11B8F071C00B7CA2D /* Recorder */,
 				A1B5840F1B33043500AD41D9 /* protocol */,
 				A1B584081B3303D700AD41D9 /* lib */,
 				A1B583E81B33034900AD41D9 /* AppDelegate.swift */,
@@ -517,7 +534,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				334156191B5B6CB900DA051D /* TempListTableViewCell.swift in Sources */,
+				33A50BB01B8F070000B7CA2D /* Recorder.swift in Sources */,
 				3341561A1B5B6CB900DA051D /* TempListTableViewController.swift in Sources */,
+				3326B37A1B8F3D8300533E55 /* DataCollector.swift in Sources */,
 				3341561C1B5B6CB900DA051D /* UGCViewController.swift in Sources */,
 				A1E321DB1B4FD4360008D265 /* datePickerViewController.swift in Sources */,
 				A1E321DC1B4FD4360008D265 /* GuideViewController.swift in Sources */,
@@ -538,6 +557,7 @@
 				33E9536B1B88CF8F00A5078E /* FeedBackViewController.swift in Sources */,
 				A1B5840A1B3303F200AD41D9 /* swiftyJSON.swift in Sources */,
 				336A1F2B1B6383B700360293 /* UploadMessageViewController.swift in Sources */,
+				33A50BAB1B8F06CE00B7CA2D /* RecorderProtocol.swift in Sources */,
 				A1B583E91B33034900AD41D9 /* AppDelegate.swift in Sources */,
 				A1B584141B3305B800AD41D9 /* Server.swift in Sources */,
 				A1B5987A1B4FD92300257DDB /* module.swift in Sources */,
